@@ -5,7 +5,12 @@ export default async (request: Request): Promise<ApiRespone> => {
 
   return {
     body: JSON.stringify(body),
-    init: {headers: {'Content-type': 'text/json'}},
+    init: {
+      headers: {
+        'Content-type': 'text/json',
+        'Cache-control': 'public, max-age=' + 60 * 60 * 24,
+      },
+    },
   }
 }
 

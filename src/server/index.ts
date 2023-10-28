@@ -8,19 +8,21 @@ const port = argumentsParser(Bun.argv, '--port') ?? 3000
 const server = Bun.serve({
   port,
   async fetch(request) {
+    const cache = {'Cache-control': 'public, max-age=' + 60 * 60 * 24}
     const url = new URL(request.url)
     const redirectEntries = Object.entries(redirects)
     const redirectIndex = redirectEntries.map((x) => x[0]).indexOf(url.pathname)
     if (redirectIndex > -1) {
       return new Response(
-        Bun.file(import.meta.dir + redirectEntries[redirectIndex][1])
+        Bun.file(import.meta.dir + redirectEntries[redirectIndex][1]),
+        {headers: cache}
       )
     }
     const fileExists = await Bun.file(import.meta.dir + url.pathname).exists()
     if (fileExists) {
       const headers = url.pathname.includes('.less')
-        ? {'Content-Type': 'text/css'}
-        : undefined
+        ? {'Content-Type': 'text/css', ...cache}
+        : cache
       return new Response(Bun.file(import.meta.dir + url.pathname), {headers})
     }
     const apiEntries = Object.entries(api)
@@ -50,7 +52,7 @@ const server = Bun.serve({
 <meta name="keywords" content="Linguistics, Lithuanistics, Lingvistika, Lituanistika, Kalbotyra" />`,
         }),
         {
-          headers: {'Content-Type': 'text/html'},
+          headers: {'Content-Type': 'text/html', ...cache},
         }
       )
     }
@@ -63,7 +65,11 @@ const server = Bun.serve({
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">`,
       }),
-      {status: 404, statusText: '404', headers: {'Content-Type': 'text/html'}}
+      {
+        status: 404,
+        statusText: '404',
+        headers: {'Content-Type': 'text/html', ...cache},
+      }
     )
   },
 })
