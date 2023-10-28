@@ -1,0 +1,11 @@
+[paths]
+
+'/' = '/routes/Index.js'
+
+[redirects]
+
+'/favicon.ico' = '/assets/favicon.png'
+
+[api]
+
+'/api/example' = '/api/example.js'
