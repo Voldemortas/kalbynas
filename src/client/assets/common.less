@@ -1,0 +1,59 @@
+* {
+  --colour-white: #fffffc;
+  --colour-white-yellow: #feffeb;
+  --colour-white-dark: #f5f5f5;
+  --colour-black-dark: #0a0a0a;
+  --colour-black-light: #141414;
+
+  --pastel-colour-pink: #ffc6ff;
+  --pastel-colour-purple: #bdb2ff;
+  --pastel-colour-blue: #a0c4ff;
+  --pastel-colour-teal: #9bf6ff;
+  --pastel-colour-green: #caffbf;
+  --pastel-colour-yellow: #fdffb6;
+  --pastel-colour-orange: #ffd6a5;
+  --pastel-colour-red: #ffadad;
+
+  --main-colour-pink: #ff5cff;
+  --main-colour-purple: #401fff;
+  --main-colour-blue: #0a68ff;
+  --main-colour-teal: #47f0ff;
+  --main-colour-green: #77ff5c;
+  --main-colour-yellow: #faff5c;
+  --main-colour-orange: #ffac47;
+  --main-colour-red: #ff4747;
+
+  --dark-colour-pink: #8f008f;
+  --dark-colour-purple: #12007a;
+  --dark-colour-blue: #00378f;
+  --dark-colour-teal: #00838f;
+  --dark-colour-green: #147a00;
+  --dark-colour-yellow: #b1b800;
+  --dark-colour-orange: #a35a00;
+  --dark-colour-red: #a30000;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  min-width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  font-family: Noto, serif;
+  font-size: 18px;
+  background-color: var(--colour-white-dark);
+}
+
+a {
+  color: var(--main-colour-blue);
+  text-decoration: none;
+  &:hover,
+  &:active,
+  &:visited,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+

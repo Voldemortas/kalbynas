@@ -1,6 +1,7 @@
 [paths]
 
 '/' = '/routes/Index.js'
+'/dialectology' = '/routes/Dialectology.js'
 
 [redirects]
 
@@ -9,3 +10,4 @@
 [api]
 
 '/api/example' = '/api/example.js'
+'/api/navigation' = '/api/navigation.js'

@@ -4,16 +4,19 @@ import React, {useRef, useEffect} from 'react'
 import ReactDOM from 'react-dom/client'
 
 export default function StyledWrapper({
-  children,
+  children = [],
   stylesheet,
+  tag = 'div',
+  className,
 }: {
-  children: React.ReactNode | React.ReactNode[]
+  children?: React.ReactNode | React.ReactNode[]
   stylesheet: CSSStyleSheet
+  tag?: keyof HTMLElementTagNameMap
+  className?: string
 }) {
   const ref = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
-    console.log('ref update')
     if (ref.current !== null) {
       let combinedStyleSheet = new CSSStyleSheet()
       ;[
@@ -23,18 +26,23 @@ export default function StyledWrapper({
         combinedStyleSheet.insertRule(cssText)
       })
 
-      if (!!ref.current.shadowRoot) {
-        return
-      }
-      const shadow = ref.current.attachShadow({mode: 'open'})
-      const domContainer = document.createElement('span') as HTMLSpanElement
-      domContainer.setAttribute('style', 'display: contents')
-      ReactDOM.createRoot(domContainer).render(children)
+      const shadow =
+        ref.current.shadowRoot ?? ref.current.attachShadow({mode: 'open'})
 
+      const domContainer = document.createElement(tag) as HTMLElement
+      if (!!className) {
+        domContainer.setAttribute('class', className!)
+      } else {
+        domContainer.setAttribute('style', 'display: contents')
+      }
+      ReactDOM.createRoot(domContainer).render(children)
+      while (!!ref.current.shadowRoot!.firstChild) {
+        ref.current.shadowRoot!.removeChild(ref.current.shadowRoot!.lastChild!)
+      }
       ref.current.shadowRoot!.appendChild(domContainer)
       shadow.adoptedStyleSheets = [combinedStyleSheet]
     }
-  }, [ref])
+  }, [ref, children, className, tag])
 
   return <span ref={ref} style={{display: 'contents'}}></span>
 }
