@@ -99,7 +99,8 @@ async function build(folderName: string) {
     }
   ) {
     if (regex.test(file)) {
-      const content = await Bun.file(file).text()
+      const stream = await Bun.file(file).stream()
+      const content = await streamToString(stream)
       const transpiledContent = await transpiler.transpile(content)
       const newFilePath = file.replace(directory, OUT_DIR + folderName + outDir)
 
@@ -135,5 +136,15 @@ function readDirRecursively(path: string): string[] {
     }
   }
   return files
+}
+
+async function streamToString(stream: ReadableStream): Promise<string> {
+  const chunks = []
+
+  for await (const chunk of stream) {
+    chunks.push(Buffer.from(chunk))
+  }
+
+  return Buffer.concat(chunks).toString('utf-8')
 }
 
