@@ -1,6 +1,7 @@
 import {paths, redirects, api} from './config.toml'
 import argumentsParser from '~/utils/argsParser'
 import generateHtml from './template'
+import streamToString from '~/utils/streamToText'
 
 const port = argumentsParser(Bun.argv, '--port') ?? 3000
 
@@ -32,7 +33,10 @@ const server = Bun.serve({
     const pathsEntries = Object.entries(paths)
     const pathIndex = pathsEntries.map((x) => x[0]).indexOf(url.pathname)
     if (pathIndex > -1) {
-      const indexHtml = await Bun.file(import.meta.dir + '/index.html').text()
+      const indexHtmlStream = await Bun.file(
+        import.meta.dir + '/index.html'
+      ).stream()
+      const indexHtml = await streamToString(indexHtmlStream)
       return new Response(
         generateHtml({
           language: 'lt',

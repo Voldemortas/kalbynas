@@ -7,6 +7,7 @@ import {
   tsTranspilerOptions,
 } from './config'
 import less from 'less'
+import streamToString from '~/utils/streamToText'
 
 const OUT_DIR = import.meta.dir + '/../../out/'
 const CLIENT_DIR = import.meta.dir + `/../client/`
@@ -136,15 +137,5 @@ function readDirRecursively(path: string): string[] {
     }
   }
   return files
-}
-
-async function streamToString(stream: ReadableStream): Promise<string> {
-  const chunks = []
-
-  for await (const chunk of stream) {
-    chunks.push(Buffer.from(chunk))
-  }
-
-  return Buffer.concat(chunks).toString('utf-8')
 }
 
