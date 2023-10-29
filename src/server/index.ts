@@ -1,4 +1,4 @@
-import {paths, redirects, api} from './config.toml'
+import {paths, redirects, api, languages} from './config.toml'
 import argumentsParser from '~/utils/argsParser'
 import generateHtml from './template'
 import streamToString from '~/utils/streamToText'
@@ -14,7 +14,16 @@ const server = Bun.serve({
   async fetch(request) {
     const cache = {'Cache-control': 'public, max-age=' + 60 * 60 * 24 * 365}
     const url = new URL(request.url)
-    const pathName = (url.pathname as string).replace('.' + version, '')
+    const locales = Object.entries<string>(languages).filter(
+      ([key]) => key !== 'default'
+    )
+    const pathName = (url.pathname as string)
+      .replace('.' + version, '')
+      .replace(
+        new RegExp(`^/(${locales.map(([key, value]) => value).join('|')})`),
+        '/'
+      )
+      .replace('//', '/')
     const pathsEntries = Object.entries(paths)
     const pathIndex = pathsEntries.map((x) => x[0]).indexOf(pathName)
     const queryParams = [...url.searchParams.entries()]

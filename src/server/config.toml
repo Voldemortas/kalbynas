@@ -11,3 +11,9 @@
 
 '/api/example' = '/api/example.js'
 '/api/navigation' = '/api/navigation.js'
+
+[languages]
+
+default = 'lt'
+lt = 'lt'
+en = 'en'

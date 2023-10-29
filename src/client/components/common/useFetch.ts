@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import getLocale from './getLocale'
 
 type Status = 'loading' | 'done' | 'error'
 
@@ -19,7 +20,12 @@ export default function useFetch<T>(
   useEffect(() => {
     const controller = new AbortController()
     const signal = controller.signal
-    fetch(url, {signal, ...payload})
+    const locale = getLocale()
+    const newUrl =
+      locale === ''
+        ? url
+        : url + (url.includes('?') ? '&' : '?') + 'locale=' + locale
+    fetch(newUrl, {signal, ...payload})
       .then(async (response) => {
         const json = (await response.json()) as T
         setState({

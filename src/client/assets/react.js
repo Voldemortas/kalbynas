@@ -16,6 +16,7 @@ const useRef = react.useRef
 const useState = react.useState
 const useSyncExternalStore = react.useSyncExternalStore
 const useTransition = react.useTransition
+const createContext = react.createContext
 
 export {
   useCallback,
@@ -33,5 +34,6 @@ export {
   useState,
   useSyncExternalStore,
   useTransition,
+  createContext,
 }
 
