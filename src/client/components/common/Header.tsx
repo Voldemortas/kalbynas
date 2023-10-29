@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import StyledWrapper from './StyledWrapper'
 import stylesheet from './header.less'
 
@@ -6,6 +6,16 @@ export default function Header({navLinks = []}: HeaderProps) {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState<boolean | undefined>(
     undefined
   )
+  useEffect(() => {
+    if (isHamburgerOpen === true) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isHamburgerOpen])
   return (
     <StyledWrapper stylesheet={stylesheet} tag="header" className="header">
       <div
