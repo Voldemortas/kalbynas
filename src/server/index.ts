@@ -5,35 +5,53 @@ import streamToString from '~/utils/streamToText'
 
 const port = argumentsParser(Bun.argv, '--port') ?? 3000
 
+const version = await streamToString(
+  Bun.file(import.meta.dir + '/version.txt').stream()
+)
+
 const server = Bun.serve({
   port,
   async fetch(request) {
-    const cache = {'Cache-control': 'public, max-age=' + 60 * 60 * 24}
+    const cache = {'Cache-control': 'public, max-age=' + 60 * 60 * 24 * 365}
     const url = new URL(request.url)
+    const pathName = (url.pathname as string).replace('.' + version, '')
+    const pathsEntries = Object.entries(paths)
+    const pathIndex = pathsEntries.map((x) => x[0]).indexOf(pathName)
+    const queryParams = [...url.searchParams.entries()]
+    if (
+      !queryParams.find(([param]) => param === 'version') &&
+      pathIndex === -1
+    ) {
+      return Response.redirect(
+        pathName +
+          '?' +
+          [...queryParams, ['version', version]]
+            .map(([param, val]) => `${param}=${val}`)
+            .join('&')
+      )
+    }
     const redirectEntries = Object.entries(redirects)
-    const redirectIndex = redirectEntries.map((x) => x[0]).indexOf(url.pathname)
+    const redirectIndex = redirectEntries.map((x) => x[0]).indexOf(pathName)
     if (redirectIndex > -1) {
       return new Response(
         Bun.file(import.meta.dir + redirectEntries[redirectIndex][1]),
         {headers: cache}
       )
     }
-    const fileExists = await Bun.file(import.meta.dir + url.pathname).exists()
+    const fileExists = await Bun.file(import.meta.dir + pathName).exists()
     if (fileExists) {
-      const headers = url.pathname.includes('.less')
+      const headers = pathName.includes('.less')
         ? {'Content-Type': 'text/css', ...cache}
         : cache
-      return new Response(Bun.file(import.meta.dir + url.pathname), {headers})
+      return new Response(Bun.file(import.meta.dir + pathName), {headers})
     }
     const apiEntries = Object.entries(api)
-    const apiIndex = apiEntries.map((x) => x[0]).indexOf(url.pathname)
+    const apiIndex = apiEntries.map((x) => x[0]).indexOf(pathName)
     if (apiIndex > -1) {
       const apiFunc = require(('.' + apiEntries[apiIndex][1]) as string)
       const {body, init} = await apiFunc.default(request)
       return new Response(body, init)
     }
-    const pathsEntries = Object.entries(paths)
-    const pathIndex = pathsEntries.map((x) => x[0]).indexOf(url.pathname)
     if (pathIndex > -1) {
       const indexHtmlStream = await Bun.file(
         import.meta.dir + '/index.html'
@@ -42,7 +60,8 @@ const server = Bun.serve({
       return new Response(
         generateHtml({
           language: 'lt',
-          component: pathsEntries[pathIndex][1] as string,
+          component:
+            (pathsEntries[pathIndex][1] as string) + '?version=' + version,
           basicHtml: indexHtml,
           head: `<link rel="icon" type="image/x-icon" href="assets/favicon.png" />
 <title>Kalbynas.lt - Pakalbėkim apie kalbą</title>
@@ -52,7 +71,7 @@ const server = Bun.serve({
 <meta name="keywords" content="Linguistics, Lithuanistics, Lingvistika, Lituanistika, Kalbotyra" />`,
         }),
         {
-          headers: {'Content-Type': 'text/html', ...cache},
+          headers: {'Content-Type': 'text/html'},
         }
       )
     }

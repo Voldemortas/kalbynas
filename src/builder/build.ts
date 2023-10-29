@@ -23,6 +23,11 @@ const lessTransipiler = {
 const isDev = Bun.argv.includes('--dev')
 const isProd = Bun.argv.includes('--prod')
 
+const version = new Date()
+  .toISOString()
+  .replace(/\.[\d]*Z$/, '')
+  .replaceAll(/(:|-|T)/g, '')
+
 if (!(isDev || isProd))
   console.error('Canno build: Missing either --dev or --prod flags')
 
@@ -49,6 +54,7 @@ async function build(folderName: string) {
     outdir: './out/' + folderName,
     splitting: true,
   })
+  Bun.write(OUT_DIR + folderName + '/version.txt', version)
   fs.copyFileSync(
     import.meta.dir + `/index-${folderName}.html`,
     OUT_DIR + folderName + '/index.html'
@@ -64,7 +70,7 @@ async function build(folderName: string) {
   const files = readDirRecursively(CLIENT_DIR)
   for (const file of files) {
     if (/test/i.test(file)) {
-      return
+      continue
     }
     transpileFile(file, CLIENT_DIR, '', /\.tsx$/i, '.js', reactTranspiler)
     transpileFile(file, CLIENT_DIR, '', /\.ts$/i, '.js', reactTsTranspiler)
@@ -83,7 +89,7 @@ async function build(folderName: string) {
     const files = readDirRecursively(API_DIR)
     for (const file of files) {
       if (/test/i.test(file)) {
-        return
+        continue
       }
       transpileFile(file, API_DIR, '/api', /\.ts$/i, '.js', tsTranspiler)
     }
