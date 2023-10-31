@@ -1,21 +1,32 @@
 @media (min-width: 800px) {
-}
+  .languageChanger {
+    position: absolute;
+    right: 10px;
+    top: 17px;
+    z-index: 51;
 
-@media (max-width: 799px) {
-}
-
-.languageChanger {
-  position: absolute;
-  right: 10px;
-  top: 17px;
-  z-index: 51;
-
-  & a {
-    margin-right: 10px;
+    & a {
+      margin-right: 10px;
+    }
+  }
+  img {
+    height: 24px;
   }
 }
 
-img {
-  height: 24px;
+@media (max-width: 799px) {
+  img {
+    display: none;
+  }
+}
+
+.globe {
+  top: 15px;
+  right: 20px;
+  position: absolute;
+  cursor: pointer;
+  background: url(/assets/languageIcon.svg);
+  height: 28px;
+  width: 28px;
 }
 

@@ -5,45 +5,10 @@
 }
 
 @media (max-width: 799px) {
-  nav {
-    display: none;
-  }
   .logo {
     text-align: center;
     width: 100%;
   }
-  .hamburger-nav {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100%;
-    top: 0;
-    background-color: var(--colour-white);
-    & > *:not(:last-child) {
-      margin: 20px;
-    }
-    padding-top: 58px;
-    z-index: 100;
-  }
-  .hamburger-open {
-    animation-name: slidein;
-    animation-duration: 0.25s;
-    animation-fill-mode: forwards;
-  }
-  .hamburger-closed {
-    animation-name: slideout;
-    animation-duration: 0.25s;
-    animation-fill-mode: forwards;
-  }
-}
-.hamburger {
-  top: 15px;
-  left: 20px;
-  position: absolute;
-  font-size: 20px;
-  z-index: 101;
-  cursor: pointer;
 }
 
 .logo {
@@ -59,33 +24,3 @@
   display: flex;
   background: var(--pastel-colour-yellow);
 }
-
-nav {
-  text-align: center;
-  align-self: center;
-  width: 100%;
-  & > *:not(:last-child) {
-    margin-right: 20px;
-  }
-  & a {
-    font-size: 24px;
-  }
-}
-
-@keyframes slidein {
-  from {
-    left: -100%;
-  }
-  to {
-    left: 0;
-  }
-}
-@keyframes slideout {
-  to {
-    left: -100%;
-  }
-  from {
-    left: 0;
-  }
-}
-

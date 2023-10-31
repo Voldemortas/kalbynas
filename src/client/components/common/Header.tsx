@@ -1,37 +1,16 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext} from 'react'
 import StyledWrapper from './StyledWrapper'
 import stylesheet from './header.less'
 import LanguageChanger from './LanguageChanger'
-import getLocale from './getLocale'
 import config from '../getConfig'
+import ConfigContext from './ConfigContext'
+import Navigation from './Navigation'
 
-export default function Header({navLinks = []}: HeaderProps) {
-  const locale = getLocale()
-  const [isHamburgerOpen, setIsHamburgerOpen] = useState<boolean | undefined>(
-    undefined
-  )
-  useEffect(() => {
-    if (isHamburgerOpen === true) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-    return () => {
-      document.body.style.overflow = 'unset'
-    }
-  }, [isHamburgerOpen])
+export default function Header() {
+  const locale = useContext(ConfigContext).locale
+
   return (
     <StyledWrapper stylesheet={stylesheet} tag="header" className="header">
-      <div
-        role="button"
-        className={`hamburger`}
-        onClick={() => {
-          setIsHamburgerOpen(!isHamburgerOpen)
-        }}
-        title="Navigation menu"
-      >
-        ☰
-      </div>
       <div className="logo">
         <a
           href={`/${
@@ -43,19 +22,7 @@ export default function Header({navLinks = []}: HeaderProps) {
           Kalbyn[ɐ̝]s.lt
         </a>
       </div>
-      <nav
-        className={
-          isHamburgerOpen !== undefined
-            ? 'hamburger-nav hamburger-' + (isHamburgerOpen ? 'open' : 'closed')
-            : ''
-        }
-      >
-        {navLinks.map(({href, text}) => (
-          <a href={href} key={href + text}>
-            {text}
-          </a>
-        ))}
-      </nav>
+      <Navigation />
       <LanguageChanger />
     </StyledWrapper>
   )

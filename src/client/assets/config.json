@@ -4,5 +4,9 @@
     "languageDescriptions": {
         "lt": "svetainė lietuviškai",
         "en": "set language to English"
+    },
+    "languageNames": {
+        "lt": "Lietuviškai",
+        "en": "English"
     }
 }

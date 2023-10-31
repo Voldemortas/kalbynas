@@ -1,0 +1,106 @@
+@media (min-width: 800px) {
+  .content {
+    display: none;
+  }
+  .button {
+    display: none;
+  }
+}
+
+@media (max-width: 799px) {
+  .button {
+    display: contents;
+    &-z {
+      z-index: 1001;
+      position: absolute;
+    }
+  }
+  .globe {
+    top: 15px;
+    right: 20px;
+    position: absolute;
+    cursor: pointer;
+    background: url(/assets/languageIcon.svg);
+    height: 28px;
+    width: 28px;
+  }
+  .content {
+    z-index: 1000;
+    background-color: var(--colour-white);
+    top: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    animation-duration: 0.1s;
+    animation-fill-mode: forwards;
+    &.hidden {
+      display: none !important;
+    }
+    &.leftwards {
+      &.open {
+        animation-name: slideinleft;
+      }
+
+      &.close {
+        animation-name: slideoutleft;
+      }
+    }
+    &.rightwards {
+      &.open {
+        animation-name: slidein;
+      }
+
+      &.close {
+        animation-name: slideout;
+      }
+    }
+  }
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  padding-top: 58px;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  & > *:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
+@keyframes slidein {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0;
+  }
+}
+@keyframes slideout {
+  to {
+    left: -100%;
+  }
+  from {
+    left: 0;
+  }
+}
+
+@keyframes slideinleft {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 0;
+  }
+}
+@keyframes slideoutleft {
+  to {
+    right: -100vh;
+    display: none;
+  }
+  from {
+    right: 0;
+  }
+}
+
