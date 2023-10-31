@@ -4,7 +4,7 @@ import StyledWrapper from './StyledWrapper'
 
 type NavDrawerProps = {
   children?: React.ReactNode | React.ReactNode[]
-  direction?: 'rightwards' | 'leftwards'
+  direction?: 'rightwards' | 'leftwards' | 'downwards'
   clickable: React.ReactNode
   title: string
 }

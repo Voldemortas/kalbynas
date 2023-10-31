@@ -21,21 +21,26 @@ export default function LanguageChanger() {
           <StyledWrapper stylesheet={stylesheet} tag="div" className="globe" />
         }
         title="Language menu"
-        direction="leftwards"
+        direction="downwards"
       >
         <StyledWrapper
           stylesheet={stylesheetDrawer}
           tag="nav"
           className="mobile-nav"
         >
-          {config.acceptedLanguages.map((al) => (
-            <a href={changeUrlToLocale(al)}>
-              {
-                //@ts-ignore
-                config.languageNames[al]
-              }
-            </a>
-          ))}
+          <StyledWrapper stylesheet={stylesheet}>
+            {config.acceptedLanguages.map((al) => (
+              <a
+                href={changeUrlToLocale(al)}
+                className={currentLanguage === al ? 'sameLanguage' : ''}
+              >
+                {
+                  //@ts-ignore
+                  config.languageNames[al]
+                }
+              </a>
+            ))}
+          </StyledWrapper>
         </StyledWrapper>
       </NavDrawer>
       {config.acceptedLanguages.map((al) => (
