@@ -1,0 +1,8 @@
+{
+    "acceptedLanguages": ["lt", "en"],
+    "defaultLanguage": "lt",
+    "languageDescriptions": {
+        "lt": "svetainė lietuviškai",
+        "en": "set language to English"
+    }
+}

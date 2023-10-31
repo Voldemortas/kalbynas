@@ -1,8 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import StyledWrapper from './StyledWrapper'
 import stylesheet from './header.less'
+import LanguageChanger from './LanguageChanger'
+import getLocale from './getLocale'
+import config from '../getConfig'
 
 export default function Header({navLinks = []}: HeaderProps) {
+  const locale = getLocale()
   const [isHamburgerOpen, setIsHamburgerOpen] = useState<boolean | undefined>(
     undefined
   )
@@ -19,17 +23,25 @@ export default function Header({navLinks = []}: HeaderProps) {
   return (
     <StyledWrapper stylesheet={stylesheet} tag="header" className="header">
       <div
-        role="tooltip"
+        role="button"
         className={`hamburger`}
         onClick={() => {
           setIsHamburgerOpen(!isHamburgerOpen)
         }}
-        title="Hamburger menu"
+        title="Navigation menu"
       >
         ☰
       </div>
       <div className="logo">
-        <a href={'/'}>Kalbyn[ɐ̝]s.lt</a>
+        <a
+          href={`/${
+            (locale || config.defaultLanguage) === config.defaultLanguage
+              ? ''
+              : locale
+          }`}
+        >
+          Kalbyn[ɐ̝]s.lt
+        </a>
       </div>
       <nav
         className={
@@ -44,6 +56,7 @@ export default function Header({navLinks = []}: HeaderProps) {
           </a>
         ))}
       </nav>
+      <LanguageChanger />
     </StyledWrapper>
   )
 }

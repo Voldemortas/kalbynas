@@ -28,6 +28,7 @@ const reactOptions = {
     {key: /^([^]*\/[^\.]*)$/, value: '$1.js'},
     {key: /\.less$/, value: ".css\" assert {type: 'css'}//"},
     {key: /\.css$/, value: ".css\" assert {type: 'css'}//"},
+    {key: /\.json$/, value: ".json\" assert {type: 'json'}//"},
   ],
 }
 const apiOptions = {

@@ -2,8 +2,10 @@ import {paths, redirects, api, languages} from './config.toml'
 import argumentsParser from '~/utils/argsParser'
 import generateHtml from './template'
 import streamToString from '~/utils/streamToText'
+import isProd from '~/utils/isProd'
 
 const port = argumentsParser(Bun.argv, '--port') ?? 3000
+const isWithCache = isProd()
 
 const version = await streamToString(
   Bun.file(import.meta.dir + '/version.txt').stream()
@@ -12,7 +14,9 @@ const version = await streamToString(
 const server = Bun.serve({
   port,
   async fetch(request) {
-    const cache = {'Cache-control': 'public, max-age=' + 60 * 60 * 24 * 365}
+    const cache = isWithCache
+      ? {'Cache-control': 'public, max-age=' + 60 * 60 * 24 * 365}
+      : {'Cache-control': 'public, max-age=' + 60}
     const url = new URL(request.url)
     const locales = Object.entries<string>(languages).filter(
       ([key]) => key !== 'default'

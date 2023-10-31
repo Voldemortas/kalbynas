@@ -10,6 +10,10 @@ describe('getLocale', () => {
     const language = useLanguage('/en/labas')
     expect('en').toStrictEqual(language)
   })
+  test('/enlongate', () => {
+    const language = useLanguage('/enlongate')
+    expect('').toStrictEqual(language)
+  })
   test('/labas', () => {
     const language = useLanguage('/labas')
     expect('').toStrictEqual(language)

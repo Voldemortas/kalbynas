@@ -1,3 +1,4 @@
+import isProd from '~/utils/isProd'
 import getLocale from './getLocale'
 import type {ApiRespone} from './types'
 
@@ -11,7 +12,9 @@ export default async (request: Request): Promise<ApiRespone> => {
     init: {
       headers: {
         'Content-type': 'text/json',
-        'Cache-control': 'public, max-age=' + 60 * 60 * 24,
+        'Cache-control': isProd()
+          ? 'public, max-age=' + 60 * 60 * 24
+          : 'public max-age=60',
       },
     },
   }

@@ -16,13 +16,15 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 58px);
+    height: 100vh;
     width: 100%;
-    top: 58px;
+    top: 0;
     background-color: var(--colour-white);
     & > *:not(:last-child) {
       margin: 20px;
     }
+    padding-top: 58px;
+    z-index: 100;
   }
   .hamburger-open {
     animation-name: slidein;
@@ -40,6 +42,8 @@
   left: 20px;
   position: absolute;
   font-size: 20px;
+  z-index: 101;
+  cursor: pointer;
 }
 
 .logo {
