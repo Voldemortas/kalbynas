@@ -31,12 +31,9 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    animation-duration: 0.16s;
+    animation-duration: 0.333s;
     animation-fill-mode: forwards;
     &.hidden {
-      display: none !important;
-    }
-    &.close {
       display: none !important;
     }
     &.leftwards {
@@ -93,6 +90,10 @@
 @keyframes slideout {
   to {
     left: -100%;
+    width: 0%;
+  }
+  99% {
+    width: 100%;
   }
   from {
     left: 0;
@@ -110,7 +111,6 @@
 @keyframes slideoutleft {
   to {
     right: -100vw;
-    display: none;
   }
   from {
     right: 0;
@@ -128,6 +128,11 @@
 @keyframes slideoutdown {
   to {
     top: -100%;
+    width: 0;
+  }
+  99% {
+    top: -99%;
+    width: 100%;
   }
   from {
     top: 0;
