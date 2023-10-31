@@ -12,6 +12,7 @@ import streamToString from '~/utils/streamToText'
 const OUT_DIR = import.meta.dir + '/../../out/'
 const CLIENT_DIR = import.meta.dir + `/../client/`
 const API_DIR = import.meta.dir + `/../server/api/`
+const STATIC_DIR = import.meta.dir + `/../server/static/`
 
 const reactTranspiler = new BunTranspiler(reactOptions, reactTranspilerOptions)
 const reactTsTranspiler = new BunTranspiler(reactOptions, tsTranspilerOptions)
@@ -49,11 +50,15 @@ async function build(folderName: string) {
     force: true,
   })
   fs.mkdirSync(OUT_DIR + folderName)
-  await Bun.build({
-    entrypoints: ['src/server/index.ts'],
-    outdir: './out/' + folderName,
-    splitting: true,
-  })
+  try {
+    await Bun.build({
+      entrypoints: ['src/server/index.ts'],
+      outdir: './out/' + folderName,
+      splitting: true,
+    })
+  } catch (e) {
+    console.error(e)
+  }
   Bun.write(OUT_DIR + folderName + '/version.txt', version)
   fs.copyFileSync(
     import.meta.dir + `/index-${folderName}.html`,
@@ -93,6 +98,12 @@ async function build(folderName: string) {
       }
       transpileFile(file, API_DIR, '/api', /\.ts$/i, '.js', tsTranspiler)
     }
+  }
+
+  {
+    fs.cpSync(STATIC_DIR, OUT_DIR + folderName, {
+      recursive: true,
+    })
   }
 
   async function transpileFile(

@@ -1,4 +1,4 @@
-import {paths, redirects, api, languages} from './config.toml'
+import {paths, redirects, api, languages, noCache} from './config.toml'
 import argumentsParser from '~/utils/argsParser'
 import generateHtml from './template'
 import streamToString from '~/utils/streamToText'
@@ -14,9 +14,6 @@ const version = await streamToString(
 const server = Bun.serve({
   port,
   async fetch(request) {
-    const cache = isWithCache
-      ? {'Cache-control': 'public, max-age=' + 60 * 60 * 24 * 365}
-      : {'Cache-control': 'public, max-age=' + 60}
     const url = new URL(request.url)
     const locales = Object.entries<string>(languages).filter(
       ([key]) => key !== 'default'
@@ -28,12 +25,19 @@ const server = Bun.serve({
         '/'
       )
       .replace('//', '/')
+    const isNoCache = noCache.includes(pathName)
+    const cache = isNoCache
+      ? {'Cache-control': 'no-store'}
+      : isWithCache
+      ? {'Cache-control': 'public, max-age=' + 60 * 60 * 24 * 365}
+      : {'Cache-control': 'public, max-age=' + 60}
     const pathsEntries = Object.entries(paths)
     const pathIndex = pathsEntries.map((x) => x[0]).indexOf(pathName)
     const queryParams = [...url.searchParams.entries()]
     if (
       !queryParams.find(([param]) => param === 'version') &&
-      pathIndex === -1
+      pathIndex === -1 &&
+      !isNoCache
     ) {
       return Response.redirect(
         pathName +
