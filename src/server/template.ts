@@ -33,7 +33,7 @@ export function generateMeta(locale: 'en' | 'lt' | '', pathName: string) {
   }
 
   const KEYWORDS = {
-    lt: 'LLingvistika, Lituanistika, Kalbotyra, Baltistika',
+    lt: 'Lingvistika, Lituanistika, Kalbotyra, Baltistika',
     en: 'Linguistics, Lithuanistics, Baltistics',
   }
   return `
@@ -41,7 +41,7 @@ export function generateMeta(locale: 'en' | 'lt' | '', pathName: string) {
 <meta name="keywords" content="${KEYWORDS[language]}" />
 ${otherLanguages.map(
   (otherLang) =>
-    `<link rel="alternate" hreflang="${otherLang}" href="${changeUrlToLocale(
+    `<link rel="alternate" hreflang="${otherLang}" href="https://kalbynas${changeUrlToLocale(
       otherLang,
       pathName
     ).replace('#', '')}" />`
