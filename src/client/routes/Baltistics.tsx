@@ -5,7 +5,8 @@ import AjaxPage from '../components/AjaxPage'
 export default function Index() {
   return (
     <CommonPage>
-      <AjaxPage pageId="index" />
+      <AjaxPage pageId="baltistics" />
     </CommonPage>
   )
 }
+

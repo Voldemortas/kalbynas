@@ -14,7 +14,12 @@ export default function AjaxPage({pageId}: {pageId: string}) {
     <React.Suspense>
       {ajaxedPage.data!.body.map((content) => {
         if (!!content.text) {
-          return content.text
+          return (
+            <div
+              dangerouslySetInnerHTML={{__html: content.text}}
+              key={content.text}
+            />
+          )
         } else {
           const componentPathName = ajaxedPage.data!.definitions.find(
             ({name}) => {

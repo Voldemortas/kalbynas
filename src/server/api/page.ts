@@ -25,20 +25,21 @@ export default async (request: Request): Promise<ApiRespone> => {
 
 async function getBody(request: Request, locale: string) {
   const searchParams = [...new URL(request.url).searchParams.entries()]
-
   const pageId = searchParams.find(([id]) => id === 'pageId')
-  console.log(searchParams)
+
   if (!pageId) {
     console.log('noPageId')
     return null
   }
+
   const path = `${import.meta.dir}/../pages/${pageId[1]}.xml`
-  console.log({path})
   const file = Bun.file(path)
   const exists = await file.exists()
+
   if (!exists) {
     return null
   }
+
   const parser = new XMLParser({
     ignoreAttributes: false,
     isArray: () => false,
@@ -50,11 +51,13 @@ async function getBody(request: Request, locale: string) {
   const parsedBody = (page['language'] as {'@_lang': string; body: any}[]).find(
     (x) => x['@_lang'] === locale
   ) as {meta?: string; body: {content: string | string[]}}
+  const definitions = page['definitions'] ?? {Component: []}
 
   return {
-    definitions: [page['definitions']['Component']]
+    definitions: [definitions]
       .flat()
-      .map((x) => ({name: x['@_name'], path: x['@_path']})),
+      .map((x) => ({name: x['@_name'], path: x['@_path']}))
+      .filter(({name}) => !!name),
     meta: parsedBody.meta ?? {},
     body: [parsedBody.body['content']].flat().map((x) => {
       if (typeof x === 'string') {

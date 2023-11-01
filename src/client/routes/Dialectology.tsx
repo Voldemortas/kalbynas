@@ -1,11 +1,11 @@
 import React from 'react'
 import CommonPage from '../components/common/CommonPage'
+import AjaxPage from '../components/AjaxPage'
 
 export default function Index() {
   return (
     <CommonPage>
-      This will cover some Lithuanian dialectology I guess <br />
-      Work in progress
+      <AjaxPage pageId="dialectology" />
     </CommonPage>
   )
 }
