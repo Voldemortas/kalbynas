@@ -78,7 +78,7 @@ const server = Bun.serve({
       const indexHtml = await streamToString(indexHtmlStream)
       return new Response(
         generateHtml({
-          language: 'lt',
+          language: locale || 'lt',
           component:
             (pathsEntries[pathIndex][1] as string) + '?version=' + version,
           basicHtml: indexHtml,
