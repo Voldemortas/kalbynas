@@ -32,7 +32,12 @@ export default function LanguageChanger() {
             {config.acceptedLanguages.map((al) => (
               <a
                 href={changeUrlToLocale(al)}
+                //@ts-ignore
+                aria-label={config.languageDescriptions[al]}
                 className={currentLanguage === al ? 'sameLanguage' : ''}
+                rel="alternate"
+                hrefLang={al}
+                key={al}
               >
                 {
                   //@ts-ignore
@@ -44,12 +49,18 @@ export default function LanguageChanger() {
         </StyledWrapper>
       </NavDrawer>
       {config.acceptedLanguages.map((al) => (
-        <a href={changeUrlToLocale(al)}>
+        <a
+          href={changeUrlToLocale(al)}
+          rel="alternate"
+          hrefLang={al}
+          //@ts-ignore
+          aria-label={config.languageDescriptions[al]}
+          key={al}
+        >
           <img
             src={`/assets/${al}.png`}
             //@ts-ignore
             alt={config.languageDescriptions[al]}
-            key={al}
             //@ts-ignore
             title={config.languageDescriptions[al]}
           />
