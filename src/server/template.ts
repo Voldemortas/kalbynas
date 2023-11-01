@@ -1,3 +1,6 @@
+import changeUrlToLocale from '~/client/components/common/changeUrlToLocale'
+import config from '~/client/components/getConfig'
+
 export default function generateHtml(options: GenerateHtmlOptions) {
   const componentScript = options.component
     ? `<script type="module">
@@ -19,6 +22,39 @@ export default function generateHtml(options: GenerateHtmlOptions) {
     ${componentScript.replaceAll('\n', '\n    ')}
   </body>
 </html>`
+}
+
+export function generateMeta(locale: 'en' | 'lt' | '', pathName: string) {
+  const language = locale || (config.defaultLanguage as 'en' | 'lt')
+  const otherLanguages = config.acceptedLanguages.filter((x) => x !== language)
+  const DESCRIPTIONS = {
+    lt: 'Visokie su lietuvių kalba susiję dalykėliai',
+    en: 'Various mostly Lithuanian language related things',
+  }
+
+  const KEYWORDS = {
+    lt: 'LLingvistika, Lituanistika, Kalbotyra, Baltistika',
+    en: 'Linguistics, Lithuanistics, Baltistics',
+  }
+  return `
+<meta name="description" content="${DESCRIPTIONS[language]}" />
+<meta name="keywords" content="${KEYWORDS[language]}" />
+${otherLanguages.map(
+  (otherLang) =>
+    `<link rel="alternate" hreflang="${otherLang}" href="${changeUrlToLocale(
+      otherLang,
+      pathName
+    ).replace('#', '')}" />`
+)}`
+}
+export function generateTitle(locale: 'en' | 'lt' | '') {
+  const language = locale || (config.defaultLanguage as 'en' | 'lt')
+  const TITLES = {
+    lt: 'Kalbynas.lt - Pakalbėkim apie kalbą',
+    en: "Kalbynas.lt/en - Let's talk about language",
+  }
+
+  return TITLES[language]
 }
 
 interface GenerateHtmlOptions {

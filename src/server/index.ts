@@ -1,8 +1,9 @@
 import {paths, redirects, api, languages, noCache} from './config.toml'
 import argumentsParser from '~/utils/argsParser'
-import generateHtml from './template'
+import generateHtml, {generateMeta, generateTitle} from './template'
 import streamToString from '~/utils/streamToText'
 import isProd from '~/utils/isProd'
+import getLocale from '~/client/components/common/getLocale'
 
 const port = argumentsParser(Bun.argv, '--port') ?? 3000
 const isWithCache = isProd()
@@ -15,6 +16,7 @@ const server = Bun.serve({
   port,
   async fetch(request) {
     const url = new URL(request.url)
+    const locale = getLocale(url.pathname) as ''
     const locales = Object.entries<string>(languages).filter(
       ([key]) => key !== 'default'
     )
@@ -81,11 +83,12 @@ const server = Bun.serve({
             (pathsEntries[pathIndex][1] as string) + '?version=' + version,
           basicHtml: indexHtml,
           head: `<link rel="icon" type="image/x-icon" href="assets/favicon.png" />
-<title>Kalbynas.lt - Pakalbėkim apie kalbą</title>
+<title>${generateTitle(locale)}</title>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Various mostly Lithuanian language related things" />
-<meta name="keywords" content="Linguistics, Lithuanistics, Lingvistika, Lituanistika, Kalbotyra" />`,
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />${generateMeta(
+            locale,
+            pathName
+          )}`,
         }),
         {
           headers: {'Content-Type': 'text/html'},
@@ -99,7 +102,8 @@ const server = Bun.serve({
         head: `<link rel="icon" type="image/x-icon" href="assets/favicon.png">
 <title>Kalbynas.lt - 404</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">`,
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, follow">`,
       }),
       {
         status: 404,
