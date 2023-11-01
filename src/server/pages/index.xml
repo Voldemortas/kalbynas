@@ -1,0 +1,39 @@
+<page>
+    <definitions>
+        <Component name="Clicker" path="/components/Clicker.js" />
+    </definitions>
+    <language lang="lt">
+        <body>
+            <content>Susirinko rankų pristokot lėkt durnai akėt nenorėjo. Dešrelės eisi krankiau.
+                Smertnai
+                būt sulaukėt. Voliojos žinot valgai. Peržiemavojo ilgai numirė sėk sėklas. Paskirta
+                pirma išgena. Nesiliko gėda delmone.
+            </content>
+            <content>
+                <Clicker params='{"initial": 5}' />
+            </content>
+            <content>Paplak kuinų valgiais. Visaip pats pavasario. Prisivalgai šitas pakorė. Ragina
+                būtų
+                stakles būdas nepatingot. Pasakyt drąsa galvijį.
+            </content>
+        </body>
+    </language>
+    <language lang="en">
+        <body>
+            <content> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eleifend velit
+                eu
+                purus tincidunt convallis. Vivamus faucibus, mi vitae ornare posuere, tortor tortor
+                pellentesque turpis, id finibus diam dolor eget augue. Praesent varius nibh ligula,
+                at egestas nulla tincidunt vel.</content>
+            <content>
+                <Clicker params='{"initial": -5}' />
+            </content>
+            <content> Suspendisse fringilla, tortor id commodo porta, neque velit pretium tortor,
+                nec
+                consequat tellus diam sed odio. Vivamus a bibendum
+                purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a hendrerit
+                lectus. Praesent quam mi, gravida non elementum id, laoreet nec purus.
+            </content>
+        </body>
+    </language>
+</page>

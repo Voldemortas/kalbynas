@@ -12,6 +12,7 @@ import streamToString from '~/utils/streamToText'
 const OUT_DIR = import.meta.dir + '/../../out/'
 const CLIENT_DIR = import.meta.dir + `/../client/`
 const API_DIR = import.meta.dir + `/../server/api/`
+const PAGES_DIR = import.meta.dir + `/../server/pages/`
 const STATIC_DIR = import.meta.dir + `/../server/static/`
 
 const reactTranspiler = new BunTranspiler(reactOptions, reactTranspilerOptions)
@@ -97,6 +98,12 @@ async function build(folderName: string) {
         continue
       }
       transpileFile(file, API_DIR, '/api', /\.ts$/i, '.js', tsTranspiler)
+    }
+  }
+  {
+    const files = readDirRecursively(PAGES_DIR)
+    for (const file of files) {
+      transpileFile(file, PAGES_DIR, '/pages', /\.xml$/i, '.xml')
     }
   }
 

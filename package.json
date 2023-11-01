@@ -6,6 +6,7 @@
     "@types/react-dom": "^18.2.14",
     "bun-types": "latest",
     "bunTranspiler": "https://github.com/Voldemortas/BunTranspiler",
+    "fast-xml-parser": "^4.3.2",
     "less": "^4.2.0"
   },
   "peerDependencies": {
