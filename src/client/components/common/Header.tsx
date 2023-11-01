@@ -4,7 +4,6 @@ import stylesheet from './header.less'
 import LanguageChanger from './LanguageChanger'
 import config from '../getConfig'
 import ConfigContext from './ConfigContext'
-import Navigation from './Navigation'
 
 export default function Header() {
   const locale = useContext(ConfigContext).locale
@@ -22,7 +21,6 @@ export default function Header() {
           Kalbyn[ɐ̝]s.lt
         </a>
       </div>
-      <Navigation />
       <LanguageChanger />
     </StyledWrapper>
   )

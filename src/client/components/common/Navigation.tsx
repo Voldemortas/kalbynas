@@ -21,16 +21,11 @@ export default function Navigation() {
 
   return (
     <StyledWrapper stylesheet={stylesheet} tag="div">
+      <nav>
+        <NavigationLinks />
+      </nav>
       <NavDrawer
-        clickable={
-          <StyledWrapper
-            stylesheet={stylesheet}
-            tag="span"
-            className="hamburger"
-          >
-            ☰
-          </StyledWrapper>
-        }
+        clickable={<span className="nawDrawerClickable">☰</span>}
         title="Navigation menu"
       >
         <StyledWrapper
@@ -41,9 +36,6 @@ export default function Navigation() {
           <NavigationLinks />
         </StyledWrapper>
       </NavDrawer>
-      <nav>
-        <NavigationLinks />
-      </nav>
     </StyledWrapper>
   )
 }

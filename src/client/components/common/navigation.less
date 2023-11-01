@@ -20,12 +20,24 @@
 nav {
   text-align: center;
   align-self: center;
-  width: 100%;
+  width: 225px;
+  min-width: 225px;
+  max-width: 225px;
+  height: 100%;
+  background-color: var(--pastel-colour-yellow-3);
   & > *:not(:last-child) {
     margin-right: 20px;
   }
   & a {
     font-size: 24px !important;
+    color: var(--colour-black-light);
+    width: calc(100% - 20px);
+    display: block;
+    margin: 10px;
+    padding: 10px 0;
+    &:hover {
+      background-color: var(--pastel-colour-yellow-2);
+    }
   }
 }
 

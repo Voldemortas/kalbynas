@@ -4,6 +4,7 @@ noCache = ['/robots.txt', '/sitemap.txt']
 
 '/' = '/routes/Index.js'
 '/dialectology' = '/routes/Dialectology.js'
+'/baltistics' = '/routes/Dialectology.js'
 
 [redirects]
 

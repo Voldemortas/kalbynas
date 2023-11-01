@@ -28,7 +28,7 @@ export default function NavDrawer({
   }, [isOpen])
 
   return (
-    <StyledWrapper stylesheet={stylesheet}>
+    <StyledWrapper stylesheet={stylesheet} className="navDrawer">
       <div
         onClick={() => {
           console.log(new Date())

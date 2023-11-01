@@ -2,6 +2,9 @@ import React from 'react'
 import Header from './Header'
 import ConfigContext from './ConfigContext'
 import useLocale from './getLocale'
+import Navigation from './Navigation'
+import StyledWrapper from './StyledWrapper'
+import stylesheet from './commonPage.less'
 
 export default function CommonPage({
   children = [],
@@ -13,7 +16,10 @@ export default function CommonPage({
   return (
     <ConfigContext.Provider value={{locale}}>
       <Header />
-      {children}
+      <StyledWrapper stylesheet={stylesheet} tag="div" className="content">
+        <Navigation />
+        <main>{children}</main>
+      </StyledWrapper>
     </ConfigContext.Provider>
   )
 }

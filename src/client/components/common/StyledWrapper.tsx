@@ -14,7 +14,7 @@ export default function StyledWrapper({
   tag?: keyof HTMLElementTagNameMap
   className?: string
 }) {
-  const ref = useRef<HTMLSpanElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (ref.current !== null) {
@@ -44,6 +44,6 @@ export default function StyledWrapper({
     }
   }, [ref, children, className, tag])
 
-  return <span ref={ref} style={{display: 'contents'}}></span>
+  return <div ref={ref} style={{display: 'contents'}}></div>
 }
 

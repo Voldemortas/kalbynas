@@ -23,10 +23,16 @@ export default async (request: Request): Promise<ApiRespone> => {
 function getBody(locale: string | null) {
   switch (locale) {
     case 'en':
-      return [{href: '/en/dialectology', text: 'Dialectology'}]
+      return [
+        {href: '/en/dialectology', text: 'Dialectology'},
+        {href: '/en/baltistics', text: 'Baltistics'},
+      ]
 
     default:
-      return [{href: '/dialectology', text: 'Dialektologija'}]
+      return [
+        {href: '/dialectology', text: 'Dialektologija'},
+        {href: '/baltistics', text: 'Baltistika'},
+      ]
   }
 }
 
