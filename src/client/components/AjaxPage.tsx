@@ -10,21 +10,28 @@ export default function AjaxPage({pageId}: {pageId: string}) {
     return null
   }
 
-  return ajaxedPage.data!.body.map((content) => {
-    if (!!content.text) {
-      return content.text
-    } else {
-      const componentPathName = ajaxedPage.data!.definitions.find(({name}) => {
-        return content.componentName! === name
-      })!.path
-      const Component = React.lazy(() => import(componentPathName))
-      return (
-        <React.Suspense>
-          <Component {...JSON.parse(content.componentParams!)} />
-        </React.Suspense>
-      )
-    }
-  })
+  return (
+    <React.Suspense>
+      {ajaxedPage.data!.body.map((content) => {
+        if (!!content.text) {
+          return content.text
+        } else {
+          const componentPathName = ajaxedPage.data!.definitions.find(
+            ({name}) => {
+              return content.componentName! === name
+            }
+          )!.path
+          const Component = React.lazy(() => import(componentPathName))
+          return (
+            <Component
+              key={JSON.stringify(content)}
+              {...JSON.parse(content.componentParams!)}
+            />
+          )
+        }
+      })}
+    </React.Suspense>
+  )
 }
 
 interface AjaxPageModel {
