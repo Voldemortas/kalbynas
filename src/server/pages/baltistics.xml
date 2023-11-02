@@ -1,9 +1,9 @@
-
-<?xml-model href="example.dtd"?>
+<?xml-model href="example.xsd"?>
 <page>
     <language lang="lt">
         <body>
-            <content type="html"> Šiame puslapyje bus kalbama apie baltų kalbas. </content>
+            <content type="html"> Šiame puslapyje bus kalbama apie baltų kalbas </content>
+            <content type="component" path="/" params='{"a": "b"}' />
         </body>
     </language>
     <language lang="en">

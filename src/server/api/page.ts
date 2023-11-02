@@ -46,7 +46,12 @@ async function getBody(request: Request, locale: string) {
   })
   const stream = file.stream()
   const text = await streamToString(stream)
-  const {page} = parser.parse(text)
+  const reformatedText = text.replaceAll(
+    /<content type="html">([^]+?)<\/content>/g,
+    '<content type="html"><![CDATA[$1]]></content>'
+  )
+
+  const {page} = parser.parse(reformatedText)
 
   const parsedBody = (
     (page['language'] as {'@_lang': string; body: any}[]).find(

@@ -23,13 +23,13 @@
 </page>
 
 -->
-<?xml-model href="example.dtd"?>
+<?xml-model href="example.xsd"?>
 <page>
     <language lang="lt">
         <body>
-            <content type="html"><![CDATA[ Susirinko rankų pristokot lėkt durnai akėt nenorėjo. Dešrelės eisi
+            <content type="html">Susirinko rankų pristokot lėkt durnai akėt nenorėjo. Dešrelės eisi
                 krankiau.<a href="/">Kalbynas.lt</a> Smertnai būt sulaukėt. Voliojos žinot valgai.
-                Peržiemavojo ilgai numirė sėk sėklas. Paskirta pirma išgena. Nesiliko gėda delmone.]]></content>
+                Peržiemavojo ilgai numirė sėk sėklas. Paskirta pirma išgena. Nesiliko gėda delmone.</content>
             <content type="component" path="/components/Clicker.js"
                 params='{"initial": 5}' />
             <content type="html">Paplak kuinų valgiais. Visaip pats pavasario. Prisivalgai šitas
