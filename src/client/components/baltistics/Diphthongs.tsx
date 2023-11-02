@@ -29,7 +29,7 @@ export default function Diphthongs({figure}: {figure: string}) {
   return (
     <figure>
       <Table />
-      <figcaption className="center">{figure}</figcaption>
+      <caption className="center">{figure}</caption>
     </figure>
   )
 }
