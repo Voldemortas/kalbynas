@@ -2,13 +2,108 @@
 <page>
     <language lang="lt">
         <body>
-            <content type="html"> Šiame puslapyje bus kalbama apie baltų kalbas </content>
-            <content type="component" path="/" params='{"a": "b"}' />
+            <content type="html"> Šiame puslapyje bus kalbama apie baltų kalbas. Kažkokia pradžia
+                yra padaryta <a href="/en/baltistics" rel="alternate" hreflang="en">angliškame
+                puslapyje</a>
+            </content>
         </body>
     </language>
     <language lang="en">
         <body>
-            <content type="html"> In this page the we'll talk about Baltic languages. </content>
+            <content type="html">
+                <h1>Sound correspondences of Eastern Baltic languages and lects</h1>
+                    <h2>Phonology of
+                Common Baltic </h2>
+                    <p>The story must begin with the Common-Baltic (later CB)
+                phonological inventory from which each of the languages will diverge very
+                    similarly
+                    and yet with differences</p>
+                    <p>Let us start with consonants:
+                </p>
+                    <figure>
+                    <table class="outside inside">
+                        <tr>
+                            <td></td>
+                            <td>Labials</td>
+                            <td>Coronals</td>
+                            <td>Dorsals</td>
+                        </tr>
+                        <tr>
+                            <td>Plosives</td>
+                            <td>*p<br />*b</td>
+                            <td>*t<br />*d</td>
+                            <td>*k<br />*g</td>
+                        </tr>
+                        <tr>
+                            <td>Sibilants</td>
+                            <td></td>
+                            <td>*s (*z)<br />*š *ž</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Sonorants</td>
+                            <td>*m<br />*u̯</td>
+                            <td>*n<br />*r *l</td>
+                            <td><br />*i̯</td>
+                        </tr>
+                    </table>
+                    <figcaption class="center">
+                        CB consonants
+                    </figcaption>
+                </figure>
+                    <p>
+                Then the vowel system:
+                </p>
+                    <figure>
+                    <table class="outside center width-20">
+                        <tr>
+                            <td style="background-color: var(--pastel-colour-green)">ī̆</td>
+                            <td colspan="3"></td>
+                            <td style="background-color: var(--pastel-colour-green)">ū̆</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style="background-color: var(--pastel-colour-green)">ē̆</td>
+                            <td></td>
+                            <td style="background-color: var(--pastel-colour-orange)">ō</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td style="background-color: var(--pastel-colour-green)">ā̆</td>
+                            <td colspan="2"></td>
+                        </tr>
+                    </table>
+                    <figcaption class="center">
+                        CB vowels
+                    </figcaption>
+                </figure>
+                    <p>
+                As seen in the Table 2 CB vowels, all vowels except for the *ō had long and short
+                counterparts, *ō, however, was only long as the short ŏ (PIE *o, *h<sub>3</sub>o, h<sub>
+                3</sub>e) merged with the short *ă. </p>
+                    <p>
+                    Due to the accentuation/prosody and the upcoming sound changes it’s worth
+                mentioning that every member of the sonorants class could form a phonetic
+                tautosyllabic diphthong:
+                </p>
+            </content>
+            <content type="component" path="/components/baltistics/Diphthongs.js"
+                params='{"figure":"CB diphthongs"}' />
+            <content type="html"> The existence of diphthongs where the first member is long is
+                basically limited to happen in the inflectional endings, although, the word *dōu̯bē
+                (a pit) is believed to have had it in the root. In the table <i>CB
+                    diphthongs</i> diphthongs in the non-green background are dubious. The cases of
+                *ii̯ > *ī, *uu̯ > *ū are uncertain as it might have happened in in Pre-Common-Baltic
+                times and later it probably got extended even more. </content>
+            <content type="html">
+                <h2>
+                    Phonology of Common Eastern Baltic
+                </h2>
+                <p>
+                    <i>To be continued</i>
+                </p>
+            </content>
         </body>
     </language>
 </page> 

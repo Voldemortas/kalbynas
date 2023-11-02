@@ -10,24 +10,27 @@ export default function AjaxPage({pageId}: {pageId: string}) {
 
   return (
     <React.Suspense>
-      {ajaxedPage.data!.map((content) => {
-        if (content.type === 'html') {
-          return (
-            <div
-              dangerouslySetInnerHTML={{__html: content.text}}
-              key={content.text}
-            />
-          )
-        } else {
-          const Component = React.lazy(() => import(content.path))
-          return (
-            <Component
-              key={JSON.stringify(content)}
-              {...JSON.parse(content.params!)}
-            />
-          )
-        }
-      })}
+      <article>
+        {ajaxedPage.data!.map((content) => {
+          if (content.type === 'html') {
+            return (
+              <div
+                dangerouslySetInnerHTML={{__html: content.text}}
+                key={content.text}
+                style={{display: 'contents'}}
+              />
+            )
+          } else {
+            const Component = React.lazy(() => import(content.path))
+            return (
+              <Component
+                key={JSON.stringify(content)}
+                {...JSON.parse(content.params ?? '{}')}
+              />
+            )
+          }
+        })}
+      </article>
     </React.Suspense>
   )
 }
