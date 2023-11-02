@@ -25,18 +25,10 @@ function isGreen(nucleus: string, offglide: string) {
   )
 }
 
-export default function Diphthongs({figure}: {figure: string}) {
-  return (
-    <figure>
-      <Table />
-      <caption className="center">{figure}</caption>
-    </figure>
-  )
-}
-
-function Table() {
+export default function Diphthongs({caption}: {caption: string}) {
   return (
     <table className="center width-40 outside inside">
+      <caption className="center">{caption}</caption>
       {OFFGLIDE.map((glide, gi) => (
         <tr key={glide}>
           {NUCLEUS.map((nucleus, ni, narr) => {
