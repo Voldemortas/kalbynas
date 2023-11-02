@@ -1,9 +1,7 @@
 import React from 'react'
-import getLocale from './common/getLocale'
 import useFetch from './common/useFetch'
 
 export default function AjaxPage({pageId}: {pageId: string}) {
-  const locale = getLocale()
   const ajaxedPage = useFetch<AjaxPageModel>(`/api/page?pageId=${pageId}`)
 
   if (ajaxedPage.status !== 'done') {
@@ -12,8 +10,8 @@ export default function AjaxPage({pageId}: {pageId: string}) {
 
   return (
     <React.Suspense>
-      {ajaxedPage.data!.body.map((content) => {
-        if (!!content.text) {
+      {ajaxedPage.data!.map((content) => {
+        if (content.type === 'html') {
           return (
             <div
               dangerouslySetInnerHTML={{__html: content.text}}
@@ -21,16 +19,11 @@ export default function AjaxPage({pageId}: {pageId: string}) {
             />
           )
         } else {
-          const componentPathName = ajaxedPage.data!.definitions.find(
-            ({name}) => {
-              return content.componentName! === name
-            }
-          )!.path
-          const Component = React.lazy(() => import(componentPathName))
+          const Component = React.lazy(() => import(content.path))
           return (
             <Component
               key={JSON.stringify(content)}
-              {...JSON.parse(content.componentParams!)}
+              {...JSON.parse(content.params!)}
             />
           )
         }
@@ -39,15 +32,13 @@ export default function AjaxPage({pageId}: {pageId: string}) {
   )
 }
 
-interface AjaxPageModel {
-  meta: {
-    description?: string
-    keywords?: string
-  }
-  definitions: {name: string; path: string}[]
-  body: (
-    | {text: string; componentName?: never; componentParams?: never}
-    | {componentName: string; componentParams?: string; text?: never}
-  )[]
-}
+export type AjaxPageModel = (
+  | {type: 'html'; text: string; path: never; params: never}
+  | {
+      type: 'component'
+      text: never
+      path: string
+      params?: string
+    }
+)[]
 

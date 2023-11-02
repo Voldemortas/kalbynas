@@ -3,6 +3,7 @@ import getLocale from './getLocale'
 import type {ApiRespone} from './types'
 import {XMLParser} from 'fast-xml-parser'
 import streamToString from '~/utils/streamToText'
+import type {AjaxPageModel} from '~/client/components/AjaxPage'
 
 export default async (request: Request): Promise<ApiRespone> => {
   const locale = getLocale(request) ?? 'lt'
@@ -28,7 +29,6 @@ async function getBody(request: Request, locale: string) {
   const pageId = searchParams.find(([id]) => id === 'pageId')
 
   if (!pageId) {
-    console.log('noPageId')
     return null
   }
 
@@ -48,28 +48,29 @@ async function getBody(request: Request, locale: string) {
   const text = await streamToString(stream)
   const {page} = parser.parse(text)
 
-  const parsedBody = (page['language'] as {'@_lang': string; body: any}[]).find(
-    (x) => x['@_lang'] === locale
-  ) as {meta?: string; body: {content: string | string[]}}
-  const definitions = page['definitions'] ?? {Component: []}
+  const parsedBody = (
+    (page['language'] as {'@_lang': string; body: any}[]).find(
+      (x) => x['@_lang'] === locale
+    ) as {
+      body: {
+        content: (
+          | {['#text']: string; ['@_type']: 'html'}
+          | {
+              ['@_type']: 'component'
+              ['@_name']: string
+              ['@_path']: string
+              ['@_params']: string | undefined | null
+            }
+        )[]
+      }
+    }
+  ).body.content
 
-  return {
-    definitions: [definitions]
-      .flat()
-      .map((x) => ({name: x['@_name'], path: x['@_path']}))
-      .filter(({name}) => !!name),
-    meta: parsedBody.meta ?? {},
-    body: [parsedBody.body['content']].flat().map((x) => {
-      if (typeof x === 'string') {
-        return {text: x}
-      }
-      const component = Object.entries(x)
-      return {
-        componentName: component[0][0],
-        //@ts-ignore
-        componentParams: component[0][1]['@_params'] as string,
-      }
-    }),
-  }
+  return [parsedBody].flat().map((element) => {
+    return Object.entries(element).reduce(
+      (acc, [key, value]) => ({...acc, [key.replace(/(@_)|#/, '')]: value}),
+      {}
+    )
+  }) as AjaxPageModel
 }
 

@@ -1,0 +1,8 @@
+<!ELEMENT page (language+)>
+<!ELEMENT language (body)>
+<!ATTLIST language lang (en | lt) #REQUIRED>
+<!ELEMENT body (content+)>
+<!ELEMENT content (#PCDATA)>
+<!ATTLIST content type (component | html) #REQUIRED>
+<!ATTLIST content path CDATA #IMPLIED>
+<!ATTLIST content params CDATA #IMPLIED>
