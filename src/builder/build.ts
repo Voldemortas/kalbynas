@@ -19,7 +19,15 @@ const reactTranspiler = new BunTranspiler(reactOptions, reactTranspilerOptions)
 const reactTsTranspiler = new BunTranspiler(reactOptions, tsTranspilerOptions)
 const tsTranspiler = new BunTranspiler(apiOptions, tsTranspilerOptions)
 const lessTransipiler = {
-  transpile: async (code: string) => (await less.render(code)).css,
+  transpile: async (code: string) =>
+    (
+      await less.render(code, {
+        globalVars: {
+          mobile: '(max-width: 799px)',
+          desktop: '(min-width: 800px)',
+        },
+      })
+    ).css,
 }
 
 const isDev = Bun.argv.includes('--dev')
