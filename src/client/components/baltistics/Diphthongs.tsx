@@ -29,42 +29,44 @@ export default function Diphthongs({caption}: {caption: string}) {
   return (
     <table className="center width-40 outside inside">
       <caption className="center">{caption}</caption>
-      {OFFGLIDE.map((glide, gi) => (
-        <tr key={glide}>
-          {NUCLEUS.map((nucleus, ni, narr) => {
-            if (gi === 0 && ni === 0) {
-              return <td key="empty"></td>
-            }
-            if (ni === 0) {
-              return <td key={glide}>*{glide}</td>
-            }
-            if (gi === 0) {
-              return <td key={nucleus}>*{nucleus}</td>
-            }
-            if (
-              (nucleus.includes('i') ||
-                nucleus.includes('ī') ||
-                nucleus.includes('u') ||
-                nucleus.includes('ū')) &&
-              (glide.includes('i') || glide.includes('u'))
-            ) {
-              return <td key={nucleus + glide} className="noBorder"></td>
-            }
-            return (
-              <td
-                key={nucleus + glide}
-                style={
-                  isGreen(nucleus, glide)
-                    ? {backgroundColor: 'var(--pastel-colour-green)'}
-                    : {}
-                }
-              >
-                *{nucleus + glide}
-              </td>
-            )
-          })}
-        </tr>
-      ))}
+      <tbody>
+        {OFFGLIDE.map((glide, gi) => (
+          <tr key={glide}>
+            {NUCLEUS.map((nucleus, ni, narr) => {
+              if (gi === 0 && ni === 0) {
+                return <td key="empty"></td>
+              }
+              if (ni === 0) {
+                return <td key={glide}>*{glide}</td>
+              }
+              if (gi === 0) {
+                return <td key={nucleus}>*{nucleus}</td>
+              }
+              if (
+                (nucleus.includes('i') ||
+                  nucleus.includes('ī') ||
+                  nucleus.includes('u') ||
+                  nucleus.includes('ū')) &&
+                (glide.includes('i') || glide.includes('u'))
+              ) {
+                return <td key={nucleus + glide} className="noBorder"></td>
+              }
+              return (
+                <td
+                  key={nucleus + glide}
+                  style={
+                    isGreen(nucleus, glide)
+                      ? {backgroundColor: 'var(--pastel-colour-green)'}
+                      : {}
+                  }
+                >
+                  *{nucleus + glide}
+                </td>
+              )
+            })}
+          </tr>
+        ))}
+      </tbody>
     </table>
   )
 }
