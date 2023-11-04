@@ -3,7 +3,6 @@ import getLocale from './getLocale'
 import type {ApiRespone} from './types'
 import {XMLParser} from 'fast-xml-parser'
 import streamToString from '~/utils/streamToText'
-import type {AjaxPageModel} from '~/client/components/AjaxPage'
 
 export default async (request: Request): Promise<ApiRespone> => {
   const locale = getLocale(request) ?? 'lt'
@@ -37,6 +36,7 @@ async function getBody(request: Request, locale: string) {
   const exists = await file.exists()
 
   if (!exists) {
+    console.log('no exists')
     return null
   }
 
@@ -44,38 +44,19 @@ async function getBody(request: Request, locale: string) {
     ignoreAttributes: false,
     isArray: () => false,
   })
+
   const stream = file.stream()
   const text = await streamToString(stream)
   const reformatedText = text.replaceAll(
-    /<content type="html">([^]+?)<\/content>/g,
-    '<content type="html"><![CDATA[$1]]></content>'
+    /<language lang="([^]+?)">([^]+?)<\/language>/g,
+    '<language type="$1"><![CDATA[$2]]></language>'
   )
 
   const {page} = parser.parse(reformatedText)
 
   const parsedBody = (
-    (page['language'] as {'@_lang': string; body: any}[]).find(
-      (x) => x['@_lang'] === locale
-    ) as {
-      body: {
-        content: (
-          | {['#text']: string; ['@_type']: 'html'}
-          | {
-              ['@_type']: 'component'
-              ['@_name']: string
-              ['@_path']: string
-              ['@_params']: string | undefined | null
-            }
-        )[]
-      }
-    }
-  ).body.content
+    page['language'] as {'@_lang': string; '#text': any; '@_type': any}[]
+  ).find((x) => x['@_lang'] === locale || x['@_type'] === locale)
 
-  return [parsedBody].flat().map((element) => {
-    return Object.entries(element).reduce(
-      (acc, [key, value]) => ({...acc, [key.replace(/(@_)|#/, '')]: value}),
-      {}
-    )
-  }) as AjaxPageModel
+  return parsedBody!['#text'] ?? null
 }
-

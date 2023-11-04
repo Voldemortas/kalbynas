@@ -25,10 +25,10 @@ function isGreen(nucleus: string, offglide: string) {
   )
 }
 
-export default function Diphthongs({caption}: {caption: string}) {
+export default function Diphthongs({children}: {children: React.ReactNode}) {
   return (
     <table className="center width-40 outside inside">
-      <caption className="center">{caption}</caption>
+      <caption className="center">{children}</caption>
       <tbody>
         {OFFGLIDE.map((glide, gi) => (
           <tr key={glide}>

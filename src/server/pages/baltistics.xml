@@ -1,190 +1,179 @@
+
 <?xml-model href="example.xsd"?>
 <page>
     <language lang="lt">
-        <body>
-            <content type="html">
-                <h1>Garsų atitikmenys baltų kalbose ir tarmėse</h1>
-                    <h2>Bendrinės baltų kalbos
-                fonologija </h2>
-                    <p>
-                    Reikia pradėti nuo Bendrinės Baltų Kalbos (toliau BBK)
-                    fonologinės sistemos, iš kurios tuometinėms tarmėms besivystant, atsirado rytų
-                baltų kalbos, kurios nors ir panašios, bet visgi skirtingos.
-                </p>
-                <table
-                    class="outside inside vertical-headings-mobile">
-                    <caption class="center">
-                        BBK priebalsiai
-                    </caption>
-                    <tr>
-                        <th style="height: 100px"></th>
-                        <th>Lūpiniai</th>
-                        <th>Liežuvio<br />priešakiniai</th>
-                        <th>Gomuriniai</th>
-                    </tr>
-                    <tr>
-                        <td>Sprogstamieji</td>
-                        <td>*p<br />*b</td>
-                        <td>*t<br />*d</td>
-                        <td>*k<br />*g</td>
-                    </tr>
-                    <tr>
-                        <td>Pučiamieji</td>
-                        <td></td>
-                        <td>*s (*z)<br />*š *ž</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Pusbalsiai</td>
-                        <td>*m<br />*u̯</td>
-                        <td>*n<br />*r *l</td>
-                        <td><br />*i̯</td>
-                    </tr>
-                </table>
-                <table
-                    class="outside center width-20 ">
-                    <caption class="center">
-                        BKK balsiai
-                    </caption>
-                    <tr>
-                        <td style="background-color: var(--pastel-colour-green)">ī̆</td>
-                        <td colspan="3"></td>
-                        <td style="background-color: var(--pastel-colour-green)">ū̆</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td style="background-color: var(--pastel-colour-green)">ē̆</td>
-                        <td></td>
-                        <td style="background-color: var(--pastel-colour-orange)">ō</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"></td>
-                        <td style="background-color: var(--pastel-colour-green)">ā̆</td>
-                        <td colspan="2"></td>
-                    </tr>
-                </table>
-                    <p>
-                Kaip galima pastebėti, visi balsiai išskyrus *ō galėjo būti tiek trumpi, tiek ilgi,
-                *ō buvo tik ilgas, nes trumpas Indo-Europiečių prokalbės (toliau ide.) *ŏ (ide. *o,
-                *h₃o, h₃e) sutapo su trumpuoju *ă.</p>
-                    <p>
-                    Kaip ir lietuvių kalboje, balsiai su pusbalsiais galėjo sudaryti (mišriuosius)
-                dvigarsius:</p>
-            </content>
-            <content type="component" path="/components/baltistics/Diphthongs.js"
-                params='{"caption":"BBK dvigarsiai"}' />
-            <content type="html">
-                <p>Dvibalsių, kurių pirmasis dėmuo buvo ilgasis balsis nėra apstu ir jie dažniausiai
-                aptinkami galūnėse, tačia retsykiais jie pasitaikydavo ir šaknyse, kaip kad žodyje
-                *dōu̯bē (duobė). Dvigarsiai dėl kurių neabejojama <i>lentėlėje BKK
-                        dvigarsiai</i> yra pažymėti žaliu fonu. Dėl *ii̯ > *ī, *uu̯ > *ū nėra lengva
-                sutarti, tačiau gali būt, kad toks procesas vyko dar prieš BBK, o vėliau buvo
-                išplėtotas labiau.</p></content>
-            <content type="html">
-                <h2>
-                    Rytų Baltų fonologinė sistema
-                </h2>
-                <p>
-                    <i>Laukite tęsinio</i>
-                </p>
-            </content>
-        </body>
+        <h1>Garsų atitikmenys baltų kalbose ir tarmėse</h1>
+        <h2>Bendrinės baltų kalbos
+            fonologija </h2>
+        <p>
+            Reikia pradėti nuo Bendrinės Baltų Kalbos (toliau BBK)
+            fonologinės sistemos, iš kurios tuometinėms tarmėms besivystant, atsirado rytų
+            baltų kalbos, kurios nors ir panašios, bet visgi skirtingos.
+        </p>
+        <table
+            class="outside inside vertical-headings-mobile">
+            <caption class="center">
+                BBK priebalsiai
+            </caption>
+            <tr>
+                <th style="height: 100px"></th>
+                <th>Lūpiniai</th>
+                <th>Liežuvio<br />priešakiniai</th>
+                <th>Gomuriniai</th>
+            </tr>
+            <tr>
+                <td>Sprogstamieji</td>
+                <td>*p<br />*b</td>
+                <td>*t<br />*d</td>
+                <td>*k<br />*g</td>
+            </tr>
+            <tr>
+                <td>Pučiamieji</td>
+                <td></td>
+                <td>*s (*z)<br />*š *ž</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Pusbalsiai</td>
+                <td>*m<br />*u̯</td>
+                <td>*n<br />*r *l</td>
+                <td>
+                    <br />*i̯</td>
+            </tr>
+        </table>
+        <table
+            class="outside center width-20 ">
+            <caption class="center">
+                BKK balsiai
+            </caption>
+            <tr>
+                <td style="background-color: var(--pastel-colour-green)">ī̆</td>
+                <td colspan="3"></td>
+                <td style="background-color: var(--pastel-colour-green)">ū̆</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="background-color: var(--pastel-colour-green)">ē̆</td>
+                <td></td>
+                <td style="background-color: var(--pastel-colour-orange)">ō</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td style="background-color: var(--pastel-colour-green)">ā̆</td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+        <p>
+            Kaip galima pastebėti, visi balsiai išskyrus *ō galėjo būti tiek trumpi, tiek ilgi,
+            *ō buvo tik ilgas, nes trumpas Indo-Europiečių prokalbės (toliau ide.) *ŏ (ide. *o,
+        *h₃o, h₃e) sutapo su trumpuoju *ă.</p>
+        <p>
+            Kaip ir lietuvių kalboje, balsiai su pusbalsiais galėjo sudaryti (mišriuosius)
+        dvigarsius:</p>
+        <component path="/components/baltistics/Diphthongs.js">BBK dvigarsiai</component>
+        <p>Dvibalsių,
+        kurių pirmasis dėmuo buvo ilgasis balsis nėra apstu ir jie dažniausiai aptinkami galūnėse,
+        tačia retsykiais jie pasitaikydavo ir šaknyse, kaip kad žodyje *dōu̯bē (duobė). Dvigarsiai
+        dėl kurių neabejojama <i>lentėlėje BKK
+                dvigarsiai</i> yra pažymėti žaliu fonu. Dėl *ii̯ &gt; *ī, *uu̯ &gt; *ū nėra lengva
+        sutarti, tačiau gali būt, kad toks procesas vyko dar prieš BBK, o vėliau buvo išplėtotas
+        labiau.</p>
+        <h2>
+            Rytų Baltų fonologinė sistema
+        </h2>
+        <p>
+            <i>Laukite tęsinio</i>
+        </p>
     </language>
     <language lang="en">
-        <body>
-            <content type="html">
-                <h1>Sound correspondences of Eastern Baltic languages and lects</h1>
-                    <h2>Phonology of
-                Common Baltic </h2>
-                    <p>The story must begin with the Common-Baltic (later CB)
-                phonological inventory from which each of the languages will diverge very
-                    similarly
-                    and yet with differences</p>
-                    <p>Let us start with consonants:
-                </p>
-                <table
-                    class="outside inside vertical-headings-mobile">
-                    <caption class="center">
-                        CB consonants
-                    </caption>
-                    <tr>
-                        <th style="height: 75px"></th>
-                        <th>Labials</th>
-                        <th>Coronals</th>
-                        <th>Dorsals</th>
-                    </tr>
-                    <tr>
-                        <td>Plosives</td>
-                        <td>*p<br />*b</td>
-                        <td>*t<br />*d</td>
-                        <td>*k<br />*g</td>
-                    </tr>
-                    <tr>
-                        <td>Sibilants</td>
-                        <td></td>
-                        <td>*s (*z)<br />*š *ž</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Sonorants</td>
-                        <td>*m<br />*u̯</td>
-                        <td>*n<br />*r *l</td>
-                        <td><br />*i̯</td>
-                    </tr>
-                </table>
-                <p>
-                    Then the vowel system:
-                </p>
-                <table
-                    class="outside center width-20">
-                    <caption class="center">
-                        CB vowels
-                    </caption>
-                    <tr>
-                        <td style="background-color: var(--pastel-colour-green)">ī̆</td>
-                        <td colspan="3"></td>
-                        <td style="background-color: var(--pastel-colour-green)">ū̆</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td style="background-color: var(--pastel-colour-green)">ē̆</td>
-                        <td></td>
-                        <td style="background-color: var(--pastel-colour-orange)">ō</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"></td>
-                        <td style="background-color: var(--pastel-colour-green)">ā̆</td>
-                        <td colspan="2"></td>
-                    </tr>
-                </table>
-                    <p> As
-                seen in the Table 2 CB vowels, all vowels except for the *ō had long and short
-                counterparts, *ō, however, was only long as the short ŏ (PIE *o, *h₃o, h₃e) merged
-                with the short *ă. </p>
-                    <p>
-                    Due to the accentuation/prosody and the upcoming sound changes it’s worth
-                mentioning that every member of the sonorants class could form a phonetic
-                tautosyllabic diphthong:
-                </p>
-            </content>
-            <content type="component" path="/components/baltistics/Diphthongs.js"
-                params='{"caption":"CB diphthongs"}' />
-            <content type="html"> The existence of diphthongs where the first member is long is
-                basically limited to happen in the inflectional endings, although, the word *dōu̯bē
-                (a pit) is believed to have had it in the root. In the table <i>CB
-                    diphthongs</i> diphthongs in the non-green background are dubious. The cases of
-                *ii̯ > *ī, *uu̯ > *ū are uncertain as it might have happened in in Pre-Common-Baltic
-                times and later it probably got extended even more. </content>
-            <content type="html">
-                <h2>
-                    Phonology of Common Eastern Baltic
-                </h2>
-                <p>
-                    <i>To be continued</i>
-                </p>
-            </content>
-        </body>
+        <h1>Sound correspondences of Eastern Baltic languages and lects</h1>
+        <h2>Phonology of
+            Common Baltic </h2>
+        <p>The story must begin with the Common-Baltic (later CB)
+            phonological inventory from which each of the languages will diverge very
+            similarly
+            and yet with differences</p>
+        <p>Let us start with consonants:
+        </p>
+        <table
+            class="outside inside vertical-headings-mobile">
+            <caption class="center">
+                CB consonants
+            </caption>
+            <tr>
+                <th style="height: 75px"></th>
+                <th>Labials</th>
+                <th>Coronals</th>
+                <th>Dorsals</th>
+            </tr>
+            <tr>
+                <td>Plosives</td>
+                <td>*p<br />*b</td>
+                <td>*t<br />*d</td>
+                <td>*k<br />*g</td>
+            </tr>
+            <tr>
+                <td>Sibilants</td>
+                <td></td>
+                <td>*s (*z)<br />*š *ž</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Sonorants</td>
+                <td>*m<br />*u̯</td>
+                <td>*n<br />*r *l</td>
+                <td>
+                    <br />*i̯</td>
+            </tr>
+        </table>
+        <p>
+            Then the vowel system:
+        </p>
+        <table
+            class="outside center width-20">
+            <caption class="center">
+                CB vowels
+            </caption>
+            <tr>
+                <td style="background-color: var(--pastel-colour-green)">ī̆</td>
+                <td colspan="3"></td>
+                <td style="background-color: var(--pastel-colour-green)">ū̆</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="background-color: var(--pastel-colour-green)">ē̆</td>
+                <td></td>
+                <td style="background-color: var(--pastel-colour-orange)">ō</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td style="background-color: var(--pastel-colour-green)">ā̆</td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+        <p> As
+            seen in the Table 2 CB vowels, all vowels except for the *ō had long and short
+        counterparts, *ō, however, was only long as the short ŏ (PIE *o, *h₃o, h₃e) merged
+            with the short *ă. </p>
+        <p>
+            Due to the accentuation/prosody and the upcoming sound changes it’s worth
+            mentioning that every member of the sonorants class could form a phonetic
+            tautosyllabic diphthong:
+        </p>
+        <component
+            path="/components/baltistics/Diphthongs.js">CB diphthongs</component> The existence of
+        diphthongs where the first member is long is basically limited to happen in the inflectional
+        endings, although, the word *dōu̯bē (a pit) is believed to have had it in the root. In the
+        table <i>CB
+            diphthongs</i> diphthongs in the non-green background are dubious. The cases of *ii̯
+        &gt; *ī, *uu̯ &gt; *ū are uncertain as it might have happened in in Pre-Common-Baltic times
+        and later it probably got extended even more. <h2>
+            Phonology of Common Eastern Baltic
+        </h2>
+        <p>
+            <i>To be continued</i>
+        </p>
     </language>
-</page> 
+</page>

@@ -1,18 +1,9 @@
-
 <?xml-model href="example.xsd"?>
 <page>
-    <language lang="lt">
-        <body>
-            <content type="html">Sveiki atvykę į <a href="/">Kalbynas.lt</a>. Šioje sveitainė bus
-                pateikiama tiek įvairi informacija, tiek įvairūs sukurti įrankiai. Kol kas svetainė
-                yra kuriama, bet vis tiek siūlome pasižvalgyti.</content>
-        </body>
-    </language>
-    <language lang="en">
-        <body>
-            <content type="html">Welcome to the English version of <a href="/">Kalbynas.lt</a>. In
-                this website you'll be able to find various information and tools. The site is still
-                under consturction but you're more than welcome to take a look at it.</content>
-        </body>
-    </language>
+    <language lang="lt"> Sveiki atvykę į <a href="/">Kalbynas.lt</a>. Šioje sveitainė bus pateikiama
+        tiek įvairi informacija, tiek įvairūs sukurti įrankiai. Kol kas svetainė yra kuriama, bet
+        vis tiek siūlome pasižvalgyti. </language>
+    <language lang="en">Welcome to the English version of <a href="/">Kalbynas.lt</a>. In this
+        website you'll be able to find various information and tools. The site is still under
+        consturction but you're more than welcome to take a look at it. </language>
 </page> 

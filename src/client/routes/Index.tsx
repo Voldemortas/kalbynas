@@ -1,6 +1,6 @@
 import React from 'react'
 import CommonPage from '../components/common/CommonPage'
-import AjaxPage from '../components/AjaxPage'
+import AjaxPage from '../components/ajax/AjaxPage'
 
 export default function Index() {
   return (

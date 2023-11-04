@@ -1,15 +1,6 @@
 <?xml-model href="example.xsd"?>
 <page>
-    <language lang="lt">
-        <body>
-            <content type="html"> Šiame puslapyje bus kalbama apie Lietuvių kalbos tarmes ir
-                susijusius dalykus. </content>
-        </body>
-    </language>
-    <language lang="en">
-        <body>
-            <content type="html"> In this page the we'll talk about Lithuanian dialectolog and
-                related things </content>
-        </body>
-    </language>
+    <language lang="lt"> Šiame puslapyje bus kalbama apie Lietuvių kalbos tarmes ir susijusius
+        dalykus. </language>
+    <language lang="en"> In this page the we'll talk about Lithuanian dialectolog and related things </language>
 </page> 

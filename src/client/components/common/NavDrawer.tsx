@@ -31,7 +31,6 @@ export default function NavDrawer({
     <StyledWrapper stylesheet={stylesheet} className="navDrawer">
       <div
         onClick={() => {
-          console.log(new Date())
           setIsOpen(!isOpen)
         }}
         role="button"

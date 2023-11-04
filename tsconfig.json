@@ -3,6 +3,7 @@
     "baseUrl": "./src",
     "paths": {
       "~/*": ["*"],
+      "~test/*": ["test/*"],
     },
     "lib": ["ESNext", "DOM"],
     "module": "esnext",

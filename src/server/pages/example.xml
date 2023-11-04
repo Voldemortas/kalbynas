@@ -2,52 +2,30 @@
  File structure: 
 
  <page> - a must
-    <definitions> - define custom React components with paths 
-        <Component name="IamComponent" path="/path" />
-    </definitions>
-    <language lang="lt"> - a must
-        <meta> - not required
-            <description></description> - not required, 
-            <keywords></keywords> - not required
-        <body> - required, can be empty, supports html and defined Components
-            <content 
-                type="html/component"
-                path="/path/to/component.js"
-                params='{"json": "data"}'
-            > 
-                - must enclose text/components
-                <IamComponent params="should be parsed by JSON" />
-            </content>
-        </body>
+    <language lang="lt"> - Lithuanian content
+        <div>
+            <component path="/components/Clicker.js" params='{"JSON": true}'>
+                I act like a child
+            </components>
+        </div>
     </language>
 </page>
 
 -->
 <?xml-model href="example.xsd"?>
 <page>
-    <language lang="lt">
-        <body>
-            <content type="html">Susirinko rankų pristokot lėkt durnai akėt nenorėjo. Dešrelės eisi
-                krankiau.<a href="/">Kalbynas.lt</a> Smertnai būt sulaukėt. Voliojos žinot valgai.
-                Peržiemavojo ilgai numirė sėk sėklas. Paskirta pirma išgena. Nesiliko gėda delmone.</content>
-            <content type="component" path="/components/Clicker.js"
-                params='{"initial": 5}' />
-            <content type="html">Paplak kuinų valgiais. Visaip pats pavasario. Prisivalgai šitas
-                pakorė. Ragina būtų stakles būdas nepatingot. Pasakyt drąsa galvijį. </content>
-        </body>
-    </language>
-    <language lang="en">
-        <body>
-            <content type="html"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                eleifend velit eu purus tincidunt convallis. Vivamus faucibus, mi vitae ornare
-                posuere, tortor tortor pellentesque turpis, id finibus diam dolor eget augue.
-                Praesent varius nibh ligula, at egestas nulla tincidunt vel.</content>
-            <content type="component" path="/components/Clicker.js"
-                params='{"initial": 5}' />
-            <content type="html"> Suspendisse fringilla, tortor id commodo porta, neque velit
-                pretium tortor, nec consequat tellus diam sed odio. Vivamus a bibendum purus. Lorem
-                ipsum dolor sit amet, consectetur adipiscing elit. Nam a hendrerit lectus. Praesent
-                quam mi, gravida non elementum id, laoreet nec purus. </content>
-        </body>
-    </language>
+    <language lang="lt"> Susirinko rankų pristokot lėkt durnai akėt nenorėjo. Dešrelės eisi
+        krankiau.<a href="/">Kalbynas.lt</a> Smertnai būt sulaukėt. Voliojos žinot valgai.
+        Peržiemavojo ilgai numirė sėk sėklas. Paskirta pirma išgena. Nesiliko gėda delmone. <component
+            path="/components/Clicker.js"
+            params='{"initial": 5}'>labas</component> Paplak kuinų valgiais. Visaip pats pavasario.
+        Prisivalgai šitas pakorė. Ragina būtų stakles būdas nepatingot. Pasakyt drąsa galvijį. </language>
+    <language lang="en"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eleifend
+        velit eu purus tincidunt convallis. Vivamus faucibus, mi vitae ornare posuere, tortor tortor
+        pellentesque turpis, id finibus diam dolor eget augue. Praesent varius nibh ligula, at
+        egestas nulla tincidunt vel. <component path="/components/Clicker.js"
+            params='{"initial": 5}' /> Suspendisse fringilla, tortor id commodo porta, neque velit
+        pretium tortor, nec consequat tellus diam sed odio. Vivamus a bibendum purus. Lorem ipsum
+        dolor sit amet, consectetur adipiscing elit. Nam a hendrerit lectus. Praesent quam mi,
+        gravida non elementum id, laoreet nec purus. </language>
 </page>
