@@ -9,7 +9,7 @@ export default function Header() {
   const locale = useContext(ConfigContext).locale
 
   return (
-    <StyledWrapper stylesheet={stylesheet} tag="header" className="header">
+    <StyledWrapper stylesheets={stylesheet} tag="header" className="header">
       <div className="logo">
         <a
           href={`/${

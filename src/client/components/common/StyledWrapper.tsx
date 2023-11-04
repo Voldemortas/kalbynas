@@ -5,24 +5,26 @@ import ReactDOM from 'react-dom/client'
 
 export default function StyledWrapper({
   children = [],
-  stylesheet,
+  stylesheets,
   tag = 'div',
   className,
 }: {
   children?: React.ReactNode | React.ReactNode[]
-  stylesheet: CSSStyleSheet
+  stylesheets: CSSStyleSheet | CSSStyleSheet[]
   tag?: keyof HTMLElementTagNameMap
   className?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
+  const sheets = [stylesheets].flat(2)
+  const cssRules = [...sheets.map((x) => [...x.cssRules])].flat()
+  const globalRules = [...document.styleSheets]
+    .map((x) => [...x.cssRules])
+    .flat()
 
   useEffect(() => {
     if (ref.current !== null) {
       let combinedStyleSheet = new CSSStyleSheet()
-      ;[
-        ...[...document.styleSheets].map((x) => [...x.cssRules]).flat(),
-        ...stylesheet.cssRules,
-      ].forEach(({cssText}) => {
+      ;[...globalRules, ...cssRules].forEach(({cssText}) => {
         combinedStyleSheet.insertRule(cssText)
       })
 

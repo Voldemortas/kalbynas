@@ -12,23 +12,23 @@ export default function LanguageChanger() {
 
   return (
     <StyledWrapper
-      stylesheet={stylesheet}
+      stylesheets={stylesheet}
       tag="div"
-      className="languageChanger"
+      className="languageChanger mobile-nav"
     >
       <NavDrawer
         clickable={
-          <StyledWrapper stylesheet={stylesheet} tag="div" className="globe" />
+          <StyledWrapper stylesheets={stylesheet} tag="div" className="globe" />
         }
         title="Language menu"
         direction="downwards"
       >
         <StyledWrapper
-          stylesheet={stylesheetDrawer}
+          stylesheets={stylesheetDrawer}
           tag="nav"
           className="mobile-nav"
         >
-          <StyledWrapper stylesheet={stylesheet}>
+          <StyledWrapper stylesheets={stylesheet}>
             {config.acceptedLanguages.map((al) => (
               <a
                 href={changeUrlToLocale(al)}

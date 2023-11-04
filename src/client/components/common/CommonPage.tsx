@@ -16,7 +16,7 @@ export default function CommonPage({
   return (
     <ConfigContext.Provider value={{locale}}>
       <Header />
-      <StyledWrapper stylesheet={stylesheet} tag="div" className="content">
+      <StyledWrapper stylesheets={stylesheet} tag="div" className="content">
         <Navigation />
         <main>{children}</main>
       </StyledWrapper>

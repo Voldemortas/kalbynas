@@ -28,7 +28,7 @@ export default function NavDrawer({
   }, [isOpen])
 
   return (
-    <StyledWrapper stylesheet={stylesheet} className="navDrawer">
+    <StyledWrapper stylesheets={stylesheet} className="navDrawer">
       <div
         onClick={() => {
           setIsOpen(!isOpen)

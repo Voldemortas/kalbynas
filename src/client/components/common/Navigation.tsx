@@ -20,7 +20,7 @@ export default function Navigation() {
     ))
 
   return (
-    <StyledWrapper stylesheet={stylesheet} tag="div">
+    <StyledWrapper stylesheets={stylesheet} tag="div">
       <nav>
         <NavigationLinks />
       </nav>
@@ -29,7 +29,7 @@ export default function Navigation() {
         title="Navigation menu"
       >
         <StyledWrapper
-          stylesheet={stylesheetDrawer}
+          stylesheets={stylesheetDrawer}
           tag="nav"
           className="mobile-nav"
         >
