@@ -58,5 +58,5 @@ async function getBody(request: Request, locale: string) {
     page['language'] as {'@_lang': string; '#text': any; '@_type': any}[]
   ).find((x) => x['@_lang'] === locale || x['@_type'] === locale)
 
-  return parsedBody!['#text'] ?? null
+  return parsedBody!['#text'].replaceAll(/\s+/g, ' ') ?? null
 }
