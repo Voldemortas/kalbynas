@@ -24,28 +24,26 @@ export default function LanguageChanger() {
         direction="downwards"
       >
         <StyledWrapper
-          stylesheets={stylesheetDrawer}
+          stylesheets={[stylesheetDrawer, stylesheet]}
           tag="nav"
           className="mobile-nav"
         >
-          <StyledWrapper stylesheets={stylesheet}>
-            {config.acceptedLanguages.map((al) => (
-              <a
-                href={changeUrlToLocale(al)}
+          {config.acceptedLanguages.map((al) => (
+            <a
+              href={changeUrlToLocale(al)}
+              //@ts-ignore
+              aria-label={config.languageDescriptions[al]}
+              className={currentLanguage === al ? 'sameLanguage' : ''}
+              rel="alternate"
+              hrefLang={al}
+              key={al}
+            >
+              {
                 //@ts-ignore
-                aria-label={config.languageDescriptions[al]}
-                className={currentLanguage === al ? 'sameLanguage' : ''}
-                rel="alternate"
-                hrefLang={al}
-                key={al}
-              >
-                {
-                  //@ts-ignore
-                  config.languageNames[al]
-                }
-              </a>
-            ))}
-          </StyledWrapper>
+                config.languageNames[al]
+              }
+            </a>
+          ))}
         </StyledWrapper>
       </NavDrawer>
       {config.acceptedLanguages.map((al) => (
