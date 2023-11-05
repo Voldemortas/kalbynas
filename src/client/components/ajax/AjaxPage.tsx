@@ -1,6 +1,5 @@
 import React from 'react'
 import useFetch from '../common/useFetch'
-import Loadable from './Loadable'
 import HtmlResolver from './HtmlResolver'
 
 export default function AjaxPage({pageId}: {pageId: string}) {

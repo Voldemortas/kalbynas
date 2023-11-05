@@ -1,21 +1,21 @@
 import React from 'react'
-import HtmlResolver from './HtmlResolver'
+import InjectedPage from './InjectedPage'
 
-export default function Loadable({
+export default function Loadable<T extends {}>({
   path,
-  params = '{}',
-  children = '',
+  params,
+  childrenNodes,
 }: {
   path: string
-  params?: string
-  children: string
+  params: T
+  childrenNodes: ChildNode[]
 }) {
   const Component = React.lazy(() => import(path))
 
   return (
     <React.Suspense fallback="Loading...">
-      <Component {...JSON.parse(params)}>
-        <HtmlResolver>{children}</HtmlResolver>
+      <Component {...params}>
+        <InjectedPage childrenNodes={childrenNodes} />
       </Component>
     </React.Suspense>
   )
