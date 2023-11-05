@@ -10,37 +10,41 @@
             fonologinės sistemos, iš kurios tuometinėms tarmėms besivystant, atsirado rytų
             baltų kalbos, kurios nors ir panašios, bet visgi skirtingos.
         </p>
-        <table
-            class="outside inside vertical-headings-mobile">
-            <caption class="center">
-                BBK priebalsiai
-            </caption>
-            <tr>
-                <th style="height: 100px"></th>
-                <th>Lūpiniai</th>
-                <th>Liežuvio<br />priešakiniai</th>
-                <th>Gomuriniai</th>
-            </tr>
-            <tr>
-                <td>Sprogstamieji</td>
-                <td>*p<br />*b</td>
-                <td>*t<br />*d</td>
-                <td>*k<br />*g</td>
-            </tr>
-            <tr>
-                <td>Pučiamieji</td>
-                <td></td>
-                <td>*s (*z)<br />*š *ž</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Pusbalsiai</td>
-                <td>*m<br />*u̯</td>
-                <td>*n<br />*r *l</td>
-                <td>
-                    <br />*i̯</td>
-            </tr>
-        </table>
+        <component
+            path="/components/table/VerticalHeader.js"
+        >
+            <table
+                class="outside inside">
+                <caption class="center">
+                    BBK priebalsiai
+                </caption>
+                <tr>
+                    <th></th>
+                    <th>Lūpiniai</th>
+                    <th>Liežuvio<br />priešakiniai</th>
+                    <th>Gomuriniai</th>
+                </tr>
+                <tr>
+                    <td>Sprogstamieji</td>
+                    <td>*p<br />*b</td>
+                    <td>*t<br />*d</td>
+                    <td>*k<br />*g</td>
+                </tr>
+                <tr>
+                    <td>Pučiamieji</td>
+                    <td></td>
+                    <td>*s (*z)<br />*š *ž</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Pusbalsiai</td>
+                    <td>*m<br />*u̯</td>
+                    <td>*n<br />*r *l</td>
+                    <td>
+                        <br />*i̯</td>
+                </tr>
+            </table>
+        </component>
         <table
             class="outside center width-20 ">
             <caption class="center">
@@ -97,7 +101,7 @@
         <p>Let us start with consonants:
         </p>
         <table
-            class="outside inside vertical-headings-mobile">
+            class="outside inside">
             <caption class="center">
                 CB consonants
             </caption>
