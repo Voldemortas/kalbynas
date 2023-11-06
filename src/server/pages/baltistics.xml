@@ -74,14 +74,14 @@
         <p>
         Kaip galima pastebėti, visi balsiai išskyrus *ō galėjo būti tiek trumpi, tiek ilgi,
             *ō buvo tik ilgas, nes trumpas Indo-Europiečių prokalbės (toliau ide.) *ŏ (ide. *o,
-        *h₃o, h₃e) sutapo su trumpuoju *ă.</p>
+        *h&#x2083o, h&#x2083e) sutapo su trumpuoju *ă.</p>
         <p>
             Kaip ir lietuvių kalboje, balsiai su pusbalsiais galėjo sudaryti (mišriuosius)
         dvigarsius:</p>
         <component
             path="/components/baltistics/Diphthongs.js"
             shortCaption="trumpieji BBK dvigarsiai"
-            longCaption="ilgieji BBK dvigarsiai"
+            longCaption="ilgieji BBaK dvigarsiai"
         />
         <p>Dvibalsių, kurių pirmasis dėmuo buvo ilgasis
         balsis nėra apstu ir jie dažniausiai aptinkami galūnėse, tačia retsykiais jie pasitaikydavo
@@ -91,11 +91,57 @@
         sutarti, tačiau gali būt, kad toks procesas vyko dar prieš BBK, o vėliau buvo išplėtotas
         labiau.</p>
         <h2>
-            Rytų Baltų fonologinė sistema
+            Rytų Baltų fonologinė raida
         </h2>
         <p>
-            <i>Laukite tęsinio</i>
+            Bene svarbiausias ir kone vienintelis fonologinis skirtumas tarp vakarų ir rytų baltų
+        (toliau RB)
+            yra BKK dvigarsių *ei, (rečiau *ai, *e&#x0304i, *a&#x0304i) pakeitimas atskira fonema >
+        *e&#x0304&#x2081,
+            tačiau šio pakitimo dažnis tarp rytų baltų kalbų skiriasi - latvių ir
+            latgalių kalbose jis labai dažnas, o lietuvių ir žemaičių k. - retesnis.
         </p>
+        <div
+            class="flex-box flex-box-bottom">
+            <table
+                class="outside inside center width-80">
+                <caption class="center">
+                    Rytų baltų ilgieji balsiai
+                </caption>
+                <tr>
+                    <td>*i&#x0304</td>
+                    <td>*u&#x0304</td>
+                </tr>
+                <tr>
+                    <td>*e&#x0304&#x2081 < <span class="dotted" title="*ai, *e&#x0304i, *a&#x0304i">
+        *ei</span></td>
+                    <td>*o&#x0304</td>
+                </tr>
+                <tr>
+                    <td>*e&#x0304&#x2082 < *e&#x0304</td>
+                    <td>*a&#x0304</td>
+                </tr>
+            </table>
+            <table
+                class="outside inside center width-80">
+                <caption class="center">
+                    RB trumpieji balsiai
+                </caption>
+                <tr>
+                    <td>*i</td>
+                    <td>*u</td>
+                </tr>
+                <tr>
+                    <td>*e</td>
+                    <td>*a</td>
+                </tr>
+            </table>
+        </div>
+        <p>Tuo tarpu
+        priebalsių sistema išliko ta pati.</p>
+        <h2>Atskirų rytų baltų kalbų ir tarmių kaita</h2>
+        <i>Laukite
+        tęsinio...</i>
     </language>
     <language lang="en">
         <h1>Sound correspondences of Eastern Baltic languages and lects</h1>
@@ -165,7 +211,8 @@
         <p>
         As
             seen in the Table 2 CB vowels, all vowels except for the *ō had long and short
-        counterparts, *ō, however, was only long as the short ŏ (PIE *o, *h₃o, h₃e) merged
+        counterparts, *ō, however, was only long as the short ŏ (PIE *o, *h&#x2083o, h&#x2083e)
+        merged
             with the short *ă. </p>
         <p>
             Due to the accentuation/prosody and the upcoming sound changes it’s worth
@@ -184,8 +231,54 @@
         &gt; *ī, *uu̯ &gt; *ū are uncertain as it might have happened in in Pre-Common-Baltic times
         and later it probably got extended even more.</p>
          <h2>
-            Phonology of Common Eastern Baltic
+            Developments of Common Eastern Baltic phonology
         </h2>
+        <p>
+            The most important and probably the sole phonological difference setting Western and
+        Easter Balts (later EB) apart is the the dipthongs *ei, (less common *ai, *e&#x0304i,
+        *a&#x0304i) becoming a separate foneme > *e&#x0304&#x2081. Yet the frequency of this change
+        differs among languages - Latvian and Latgalian have it more frequently while in Lithuanian
+        and Samogitian it's rarer.
+        </p>
+        <div
+            class="flex-box flex-box-bottom">
+            <table
+                class="outside inside center width-80">
+                <caption class="center">
+                    EB long vowels
+                </caption>
+                <tr>
+                    <td>*i&#x0304</td>
+                    <td>*u&#x0304</td>
+                </tr>
+                <tr>
+                    <td>*e&#x0304&#x2081 < <span class="dotted" title="*ai, *e&#x0304i, *a&#x0304i">
+        *ei</span></td>
+                    <td>*o&#x0304</td>
+                </tr>
+                <tr>
+                    <td>*e&#x0304&#x2082 < *e&#x0304</td>
+                    <td>*a&#x0304</td>
+                </tr>
+            </table>
+            <table
+                class="outside inside center width-80">
+                <caption class="center">
+                    EB short vowels
+                </caption>
+                <tr>
+                    <td>*i</td>
+                    <td>*u</td>
+                </tr>
+                <tr>
+                    <td>*e</td>
+                    <td>*a</td>
+                </tr>
+            </table>
+        </div>
+        <p>Meanwhile
+        the consonant system remained the same.</p>
+        <h2>Developments of each Eastern Baltic language</h2>
         <p>
             <i>To be continued</i>
         </p>
