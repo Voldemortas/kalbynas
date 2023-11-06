@@ -1,49 +1,80 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
+import useMobile from '../common/useMobile'
+
+const TH_SELECTOR = 'tr:first-child > th'
+const TD_SELECTOR = 'td'
 
 export default function VerticalHeader({
   children = [],
-  mobile = true,
+  mobileOnly = true,
 }: {
   children: React.ReactNode[]
-  mobile?: boolean
+  mobileOnly?: boolean
 }) {
   const ref = useRef<HTMLTableRowElement>(null)
+  const isMobile = useMobile()
+  const [thStyles, setThStyles] = useState<string[]>([])
+
+  const needResizing = !mobileOnly || isMobile
+
+  useEffect(() => {
+    if (
+      ref.current &&
+      ref.current.querySelectorAll(TH_SELECTOR).length === thStyles.length
+    ) {
+      ;[...ref.current.querySelectorAll(TH_SELECTOR)].forEach((th, thId) => {
+        if (th.innerHTML === '') {
+          return
+        }
+        const style = thStyles[thId]
+        if (!needResizing) {
+          if (style !== '') {
+            th.setAttribute('style', style)
+          } else {
+            th.removeAttribute('style')
+          }
+        } else {
+          th.setAttribute('style', 'max-width: 0')
+          const tdLenght = [...ref.current!.querySelectorAll(TD_SELECTOR)][thId]
+            .clientWidth
+          const preRotateThWidth = th.firstElementChild!.clientWidth
+          const preRotateThHeight = th.firstElementChild!.clientHeight
+
+          const calculatedTranslate = (preRotateThHeight + tdLenght + 2) / 2
+          th.setAttribute(
+            'style',
+            `${style}
+          transform-origin: bottom left;
+              transform: translate(${calculatedTranslate}px, 0) rotate(-90deg);
+              max-width: ${preRotateThHeight}px;
+              height: ${preRotateThWidth}px;
+              vertical-align: bottom;
+          `.replaceAll(/\s+/g, ' ')
+          )
+        }
+      })
+    }
+  }, [ref, needResizing, thStyles])
 
   useEffect(() => {
     if (ref.current) {
-      const ths = [...ref.current.querySelectorAll('th')]
-      const tds = [...ref.current.querySelectorAll('td')]
-      ths.forEach(async (th, thId) => {
-        if (th.textContent === '') {
-          return
+      const tds = [...ref.current.querySelectorAll(TD_SELECTOR)]
+      ;[...ref.current.querySelectorAll(TH_SELECTOR)].forEach((th, thId) => {
+        const divElement = document.createElement('div')
+        while (th.firstChild) {
+          divElement.appendChild(th.firstChild)
         }
-        const preRotateThWidth = th.clientWidth
-        const preRotateThHeight = th.clientHeight
-        const thStyle = `${th.getAttribute('style')};`.replace('null;', '')
-        th.setAttribute('style', 'display: none')
-        await Promise.resolve(setTimeout(() => {}, 1))
-        const td = tds.find((_, tdId) => tdId === thId)!
-        const maxTdWidth = td.clientWidth
-        const maxWidth = Math.max(maxTdWidth, 0)
-        console.log({preRotateThWidth, preRotateThHeight, maxTdWidth})
-        th.setAttribute(
-          'style',
-          `${thStyle}
-          transform-origin: bottom left;
-          transform: translate(${
-            18 * 2 + maxWidth - (maxTdWidth - 20) / 2
-          }px, 0) rotate(-90deg);
-          max-width: ${maxWidth}px;
-          height: ${[preRotateThWidth]}px;
-        `
-            .replaceAll(/\s+/g, ' ')
+        setThStyles((thS) => {
+          const newThS = [...thS]
+          newThS[thId] = `${th.getAttribute('style')};`
             .replace('null;', '')
-        )
+            .replace(';;', ';')
+          return newThS
+        })
+        th.insertAdjacentElement('afterbegin', divElement)
       })
-      // const lenght = Math.max(...ths.map((x) => x.clientWidth))
-      // const height = Math.max(...ths.map((x) => x.clientHeight))
     }
-  }, [children])
+  }, [ref])
 
   return <div ref={ref} children={children} />
 }
