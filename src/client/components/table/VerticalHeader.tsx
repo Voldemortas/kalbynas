@@ -76,6 +76,6 @@ export default function VerticalHeader({
     }
   }, [ref])
 
-  return <div ref={ref} children={children} />
+  return <div ref={ref} children={children} style={{display: 'contents'}} />
 }
 

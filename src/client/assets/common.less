@@ -93,6 +93,8 @@ article {
 }
 
 table {
+  width: fit-content;
+  height: fit-content;
   margin-left: auto;
   margin-right: auto;
   &.width-20 {
@@ -138,5 +140,14 @@ td.noBorder {
 
 caption {
   caption-side: bottom;
+}
+
+.flex-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  &-bottom {
+    place-items: flex-end;
+  }
 }
 

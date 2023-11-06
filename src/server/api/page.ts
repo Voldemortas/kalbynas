@@ -47,10 +47,12 @@ async function getBody(request: Request, locale: string) {
 
   const stream = file.stream()
   const text = await streamToString(stream)
-  const reformatedText = text.replaceAll(
-    /<language lang="([^]+?)">([^]+?)<\/language>/g,
-    '<language type="$1"><![CDATA[$2]]></language>'
-  )
+  const reformatedText = text
+    .replaceAll(
+      /<language lang="([^]+?)">([^]+?)<\/language>/g,
+      '<language type="$1"><![CDATA[$2]]></language>'
+    )
+    .replaceAll(/<component([^]+?)\/>/g, '<component$1></component>')
 
   const {page} = parser.parse(reformatedText)
 
@@ -60,3 +62,4 @@ async function getBody(request: Request, locale: string) {
 
   return parsedBody!['#text'].replaceAll(/\s+/g, ' ') ?? null
 }
+
