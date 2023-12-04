@@ -15,19 +15,33 @@ const API_DIR = import.meta.dir + `/../server/api/`
 const PAGES_DIR = import.meta.dir + `/../server/pages/`
 const STATIC_DIR = import.meta.dir + `/../server/static/`
 
+const cssTranspiler = {
+  transpile: async (code: string) =>
+    await `const css = new CSSStyleSheet();\ncss.replaceSync(\`${code.replaceAll(
+      '`',
+      '\\`'
+    )}\`);\nexport default css`,
+}
+const jsonTranspiller = {
+  transpile: async (code: string) =>
+    await `export default ${code.replaceAll('`', '\\`')}`,
+}
+
 const reactTranspiler = new BunTranspiler(reactOptions, reactTranspilerOptions)
 const reactTsTranspiler = new BunTranspiler(reactOptions, tsTranspilerOptions)
 const tsTranspiler = new BunTranspiler(apiOptions, tsTranspilerOptions)
 const lessTransipiler = {
   transpile: async (code: string) =>
-    (
-      await less.render(code, {
-        globalVars: {
-          mobile: '(max-width: 799px)',
-          desktop: '(min-width: 800px)',
-        },
-      })
-    ).css,
+    await cssTranspiler.transpile(
+      (
+        await less.render(code, {
+          globalVars: {
+            mobile: '(max-width: 799px)',
+            desktop: '(min-width: 800px)',
+          },
+        })
+      ).css
+    ),
 }
 
 const isDev = Bun.argv.includes('--dev')
@@ -88,8 +102,9 @@ async function build(folderName: string) {
     }
     transpileFile(file, CLIENT_DIR, '', /\.tsx$/i, '.js', reactTranspiler)
     transpileFile(file, CLIENT_DIR, '', /\.ts$/i, '.js', reactTsTranspiler)
-    transpileFile(file, CLIENT_DIR, '', /\.less$/i, '.css', lessTransipiler)
-    transpileFile(file, CLIENT_DIR, '', /\.css$/i, '.css')
+    transpileFile(file, CLIENT_DIR, '', /\.less$/i, '.css')
+    transpileFile(file, CLIENT_DIR, '', /\.less$/i, '.css.js', lessTransipiler)
+    transpileFile(file, CLIENT_DIR, '', /\.json$/i, '.json.js', jsonTranspiller)
   }
 
   fs.rmdirSync(OUT_DIR + folderName + '/api', {

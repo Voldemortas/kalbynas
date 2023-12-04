@@ -16,6 +16,9 @@ export default function generateHtml(options: GenerateHtmlOptions) {
   <head>
     ${options.head?.replaceAll('\n', '\n    ')}
     <link rel="stylesheet" href="/assets/common.css">
+    <style>
+      <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
+  </style>
   </head>
     <body>
     ${options.basicHtml.replaceAll('\n', '\n    ')}
