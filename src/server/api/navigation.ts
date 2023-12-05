@@ -1,7 +1,7 @@
 import isProd from '~/utils/isProd'
 import getLocale from './getLocale'
 import type {ApiRespone} from './types'
-import {disabledCache} from './config.toml'
+const disabledCache = true
 
 export default async (request: Request): Promise<ApiRespone> => {
   const locale = getLocale(request)

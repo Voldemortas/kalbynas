@@ -3,7 +3,7 @@ import getLocale from './getLocale'
 import type {ApiRespone} from './types'
 import {XMLParser} from 'fast-xml-parser'
 import streamToString from '~/utils/streamToText'
-import {disabledCache} from './config.toml'
+const disabledCache = true
 
 export default async (request: Request): Promise<ApiRespone> => {
   const locale = getLocale(request) ?? 'lt'
