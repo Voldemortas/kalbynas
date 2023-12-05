@@ -1,4 +1,11 @@
-import {paths, redirects, api, languages, noCache} from './config.toml'
+import {
+  paths,
+  redirects,
+  api,
+  languages,
+  noCache,
+  disabledCache,
+} from './config.toml'
 import argumentsParser from '~/utils/argsParser'
 import generateHtml, {generateMeta, generateTitle} from './template'
 import streamToString from '~/utils/streamToText'
@@ -6,7 +13,7 @@ import isProd from '~/utils/isProd'
 import getLocale from '~/client/components/common/getLocale'
 
 const port = argumentsParser(Bun.argv, '--port') ?? 3000
-const isWithCache = isProd()
+const isWithCache = isProd() && !disabledCache
 
 const version = await streamToString(
   Bun.file(import.meta.dir + '/version.txt').stream()
@@ -37,6 +44,7 @@ const server = Bun.serve({
     const pathIndex = pathsEntries.map((x) => x[0]).indexOf(pathName)
     const queryParams = [...url.searchParams.entries()]
     if (
+      !disabledCache &&
       !queryParams.find(([param]) => param === 'version') &&
       pathIndex === -1 &&
       !isNoCache

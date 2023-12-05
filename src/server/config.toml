@@ -1,3 +1,4 @@
+disabledCache = true
 noCache = ['/robots.txt', '/sitemap.txt']
 
 [paths]
