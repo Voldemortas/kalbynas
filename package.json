@@ -27,3 +27,4 @@
     "watch": "bun src/utils/watcher.ts"
   }
 }
+ 

@@ -13,10 +13,10 @@ export default async (request: Request): Promise<ApiRespone> => {
     init: {
       headers: {
         'Content-type': 'text/json',
-        'Cache-control':
-          isProd() && !disabledCache
-            ? 'public, max-age=' + 60 * 60 * 24
-            : 'public max-age=60',
+        // 'Cache-control':
+        //   isProd() && !disabledCache
+        //     ? 'public, max-age=' + 60 * 60 * 24
+        //     : 'public max-age=60',
       },
     },
   }
