@@ -1,7 +1,7 @@
 import isProd from '~/utils/isProd'
 import getLocale from './getLocale'
 import type {ApiRespone} from './types'
-const disabledCache = true
+const disabledCache = false
 
 export default async (request: Request): Promise<ApiRespone> => {
   const locale = getLocale(request)
@@ -13,10 +13,10 @@ export default async (request: Request): Promise<ApiRespone> => {
     init: {
       headers: {
         'Content-type': 'text/json',
-        // 'Cache-control':
-        //   isProd() && !disabledCache
-        //     ? 'public, max-age=' + 60 * 60 * 24
-        //     : 'public max-age=60',
+        'Cache-control':
+          isProd() && !disabledCache
+            ? 'public, max-age=' + 60 * 60 * 24
+            : 'public max-age=60',
       },
     },
   }

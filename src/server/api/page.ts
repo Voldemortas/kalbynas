@@ -3,7 +3,7 @@ import getLocale from './getLocale'
 import type {ApiRespone} from './types'
 import {XMLParser} from 'fast-xml-parser'
 import streamToString from '~/utils/streamToText'
-const disabledCache = true
+const disabledCache = false
 
 export default async (request: Request): Promise<ApiRespone> => {
   const locale = getLocale(request) ?? 'lt'
@@ -15,10 +15,10 @@ export default async (request: Request): Promise<ApiRespone> => {
     init: {
       headers: {
         'Content-type': 'text/json',
-        // 'Cache-control':
-        //   isProd() && !disabledCache
-        //     ? 'public, max-age=' + 60 * 60 * 24
-        //     : 'public max-age=60',
+        'Cache-control':
+          isProd() && !disabledCache
+            ? 'public, max-age=' + 60 * 60 * 24
+            : 'public max-age=60',
       },
       status: body ? 200 : 400,
     },

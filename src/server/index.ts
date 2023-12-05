@@ -39,8 +39,7 @@ const server = Bun.serve({
       ? {'Cache-control': 'no-store'}
       : isWithCache
       ? {'Cache-control': 'public, max-age=' + 60 * 60 * 24 * 365}
-      : // : {'Cache-control': 'public, max-age=' + 60}
-        {}
+      : {'Cache-control': 'public, max-age=' + 60}
     const pathsEntries = Object.entries(paths)
     const pathIndex = pathsEntries.map((x) => x[0]).indexOf(pathName)
     const queryParams = [...url.searchParams.entries()]
