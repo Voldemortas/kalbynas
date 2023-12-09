@@ -66,7 +66,8 @@ const server = Bun.serve({
         {headers: cache}
       )
     }
-    const fileExists = await Bun.file(import.meta.dir + pathName).exists()
+    const myFile = Bun.file(import.meta.dir + pathName)
+    const fileExists = await myFile.exists()
     if (fileExists) {
       //TODO do normal handling
       const headers = pathName.includes('.less')
@@ -74,11 +75,14 @@ const server = Bun.serve({
         : pathName.includes('.js')
         ? {'Content-Type': 'text/javascript', ...cache}
         : cache
-      if (pathName.includes('.less') || pathName.includes('.js')) {
-        let txt = await Bun.file(import.meta.dir + pathName).text()
-        return new Response(txt, {headers})
+      if (
+        ['.less', '.css', '.js', '.html'].some((ending) =>
+          ending.includes(pathName)
+        )
+      ) {
+        return new Response(await myFile.text(), {headers})
       }
-      return new Response(Bun.file(import.meta.dir + pathName), {headers})
+      return new Response(myFile.stream(), {headers})
     }
     const apiEntries = Object.entries(api)
     const apiIndex = apiEntries.map((x) => x[0]).indexOf(pathName)
