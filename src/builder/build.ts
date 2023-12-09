@@ -7,7 +7,6 @@ import {
   tsTranspilerOptions,
 } from './config'
 import less from 'less'
-import streamToString from '~/utils/streamToText'
 
 const OUT_DIR = import.meta.dir + '/../../out/'
 const CLIENT_DIR = import.meta.dir + `/../client/`
@@ -147,8 +146,7 @@ async function build(folderName: string) {
     }
   ) {
     if (regex.test(file)) {
-      const stream = await Bun.file(file).stream()
-      const content = await Bun.file(file).text() //await streamToString(stream)
+      const content = await Bun.file(file).text()
       const transpiledContent = await transpiler.transpile(content)
       const newFilePath = file.replace(directory, OUT_DIR + folderName + outDir)
 

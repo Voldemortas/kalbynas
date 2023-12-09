@@ -8,7 +8,6 @@ import {
 } from './config.toml'
 import argumentsParser from '~/utils/argsParser'
 import generateHtml, {generateMeta, generateTitle} from './template'
-import streamToString from '~/utils/streamToText'
 import isProd from '~/utils/isProd'
 import getLocale from '~/client/components/common/getLocale'
 
@@ -16,9 +15,6 @@ const port = argumentsParser(Bun.argv, '--port') ?? 3000
 const isWithCache = isProd() && !disabledCache
 
 const version = await Bun.file(import.meta.dir + '/version.txt').text()
-// await streamToString(
-//   Bun.file(import.meta.dir + '/version.txt').stream()
-//)
 
 const server = Bun.serve({
   port,
@@ -69,18 +65,14 @@ const server = Bun.serve({
     const myFile = Bun.file(import.meta.dir + pathName)
     const fileExists = await myFile.exists()
     if (fileExists) {
-      //TODO do normal handling
       const headers = pathName.includes('.less')
         ? {'Content-Type': 'text/css', ...cache}
         : pathName.includes('.js')
         ? {'Content-Type': 'text/javascript', ...cache}
         : cache
-      if (
-        ['.less', '.css', '.js', '.html'].some((ending) =>
-          ending.includes(pathName)
-        )
-      ) {
-        return new Response(await myFile.text(), {headers})
+      if (pathName.includes('.js') || pathName.includes('.js')) {
+        const txt = await myFile.text()
+        return new Response(txt, {headers})
       }
       return new Response(myFile.stream(), {headers})
     }
@@ -92,10 +84,7 @@ const server = Bun.serve({
       return new Response(body, init)
     }
     if (pathIndex > -1) {
-      const indexHtmlStream = await Bun.file(
-        import.meta.dir + '/index.html'
-      ).stream()
-      const indexHtml = await Bun.file(import.meta.dir + '/index.html').text() //await streamToString(indexHtmlStream)
+      const indexHtml = await Bun.file(import.meta.dir + '/index.html').text()
       return new Response(
         generateHtml({
           language: locale || 'lt',

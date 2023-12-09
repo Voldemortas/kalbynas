@@ -2,7 +2,6 @@ import isProd from '~/utils/isProd'
 import getLocale from './getLocale'
 import type {ApiRespone} from './types'
 import {XMLParser} from 'fast-xml-parser'
-import streamToString from '~/utils/streamToText'
 const disabledCache = false
 
 export default async (request: Request): Promise<ApiRespone> => {
@@ -47,8 +46,7 @@ async function getBody(request: Request, locale: string) {
     isArray: () => false,
   })
 
-  const stream = file.stream()
-  const text = await file.text() //await streamToString(stream)
+  const text = await file.text()
   const reformatedText = text
     .replaceAll(
       /<language lang="([^]+?)">([^]+?)<\/language>/g,
