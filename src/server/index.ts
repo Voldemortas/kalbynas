@@ -15,9 +15,10 @@ import getLocale from '~/client/components/common/getLocale'
 const port = argumentsParser(Bun.argv, '--port') ?? 3000
 const isWithCache = isProd() && !disabledCache
 
-const version = await streamToString(
-  Bun.file(import.meta.dir + '/version.txt').stream()
-)
+const version = await Bun.file(import.meta.dir + '/version.txt').text()
+// await streamToString(
+//   Bun.file(import.meta.dir + '/version.txt').stream()
+//)
 
 const server = Bun.serve({
   port,
@@ -67,9 +68,16 @@ const server = Bun.serve({
     }
     const fileExists = await Bun.file(import.meta.dir + pathName).exists()
     if (fileExists) {
+      //TODO do normal handling
       const headers = pathName.includes('.less')
         ? {'Content-Type': 'text/css', ...cache}
+        : pathName.includes('.js')
+        ? {'Content-Type': 'text/javascript', ...cache}
         : cache
+      if (pathName.includes('.less') || pathName.includes('.js')) {
+        let txt = await Bun.file(import.meta.dir + pathName).text()
+        return new Response(txt, {headers})
+      }
       return new Response(Bun.file(import.meta.dir + pathName), {headers})
     }
     const apiEntries = Object.entries(api)
@@ -83,7 +91,7 @@ const server = Bun.serve({
       const indexHtmlStream = await Bun.file(
         import.meta.dir + '/index.html'
       ).stream()
-      const indexHtml = await streamToString(indexHtmlStream)
+      const indexHtml = await Bun.file(import.meta.dir + '/index.html').text() //await streamToString(indexHtmlStream)
       return new Response(
         generateHtml({
           language: locale || 'lt',

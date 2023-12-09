@@ -148,7 +148,7 @@ async function build(folderName: string) {
   ) {
     if (regex.test(file)) {
       const stream = await Bun.file(file).stream()
-      const content = await streamToString(stream)
+      const content = await Bun.file(file).text() //await streamToString(stream)
       const transpiledContent = await transpiler.transpile(content)
       const newFilePath = file.replace(directory, OUT_DIR + folderName + outDir)
 

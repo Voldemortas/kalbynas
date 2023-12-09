@@ -48,7 +48,7 @@ async function getBody(request: Request, locale: string) {
   })
 
   const stream = file.stream()
-  const text = await streamToString(stream)
+  const text = await file.text() //await streamToString(stream)
   const reformatedText = text
     .replaceAll(
       /<language lang="([^]+?)">([^]+?)<\/language>/g,
