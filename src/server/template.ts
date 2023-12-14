@@ -16,7 +16,8 @@ export default function generateHtml(options: GenerateHtmlOptions) {
   <head>
     ${options.head?.replaceAll('\n', '\n    ')}
     <link rel="stylesheet" href="/assets/common.css">
-    <style>
+    <link rel="preload" as="image" href="assets/lt.png" media="(max-width: 100px)">
+    <link rel="preload" as="image" href="assets/en.png" media="(max-width: 100px)">
       <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
   </style>
   </head>
