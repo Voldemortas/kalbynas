@@ -91,10 +91,10 @@ const server = Bun.serve({
           component:
             (pathsEntries[pathIndex][1] as string) + '?version=' + version,
           basicHtml: indexHtml,
-          head: `<link rel="icon" type="image/x-icon" href="assets/favicon.png" />
+          head: `<link rel="icon" type="image/x-icon" href="assets/favicon.png">
 <title>${generateTitle(locale)}</title>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />${generateMeta(
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">${generateMeta(
             locale,
             pathName
           )}`,

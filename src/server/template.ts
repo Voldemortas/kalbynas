@@ -16,8 +16,8 @@ export default function generateHtml(options: GenerateHtmlOptions) {
   <head>
     ${options.head?.replaceAll('\n', '\n    ')}
     <link rel="stylesheet" href="/assets/common.css">
-    <link rel="preload" as="image" href="/assets/lt.png" media="(max-width: 100px)">
-    <link rel="preload" as="image" href="/assets/en.png" media="(max-width: 100px)">
+    <link rel="preload" as="image" href="/assets/lt.png">
+    <link rel="preload" as="image" href="/assets/en.png">
     <link href='/assets/notoSans.css' rel='stylesheet'>
   </head>
     <body>
@@ -40,14 +40,14 @@ export function generateMeta(locale: 'en' | 'lt' | '', pathName: string) {
     en: 'Linguistics, Lithuanistics, Baltistics',
   }
   return `
-<meta name="description" content="${DESCRIPTIONS[language]}" />
-<meta name="keywords" content="${KEYWORDS[language]}" />
+<meta name="description" content="${DESCRIPTIONS[language]}">
+<meta name="keywords" content="${KEYWORDS[language]}">
 ${otherLanguages.map(
   (otherLang) =>
-    `<link rel="alternate" hreflang="${otherLang}" href="https://kalbynas ${changeUrlToLocale(
+    `<link rel="alternate" hreflang="${otherLang}" href="https://kalbynas.lt${changeUrlToLocale(
       otherLang,
       pathName
-    ).replace('#', '')}" />`
+    ).replace('#', '')}">`
 )}`
 }
 export function generateTitle(locale: 'en' | 'lt' | '') {
