@@ -1,11 +1,14 @@
 import React from 'react'
 import CommonPage from '../components/common/CommonPage'
-import AjaxPage from '../components/ajax/AjaxPage'
+import {IndexPageType} from '~/server/ssr'
 
-export default function Index() {
+export default function Index(props: IndexPageType) {
   return (
     <CommonPage>
-      <AjaxPage pageId="index" />
+      <article>
+        <h1>{props.h1}</h1>
+        <p dangerouslySetInnerHTML={{__html: props.text}} />
+      </article>
     </CommonPage>
   )
 }

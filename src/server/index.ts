@@ -85,6 +85,12 @@ const server = Bun.serve({
     }
     if (pathIndex > -1) {
       const indexHtml = await Bun.file(import.meta.dir + '/index.html').text()
+
+      const pageData = await (async () => {
+        const apiFunc = require(('./ssr' + (pathName ?? 'index')) as string)
+        return await apiFunc.default({request, locale})
+      })()
+
       return new Response(
         generateHtml({
           language: locale || 'lt',
@@ -98,6 +104,7 @@ const server = Bun.serve({
             locale,
             pathName
           )}`,
+          pageData,
         }),
         {
           headers: {'Content-Type': 'text/html'},

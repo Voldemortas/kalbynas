@@ -22,7 +22,7 @@ const tsTranspilerOptions: BunTranspilerOptions = {
 }
 
 const reactOptions = {
-  ignores: [/react-dom\/client/i],
+  ignores: [/react-dom\/client/i, /^\~\/server[^]+/i],
   transformations: [
     {key: /^react$/i, value: '/assets/react.js'},
     {key: /^([^]*\/[^\.]*)$/, value: '$1.js'},

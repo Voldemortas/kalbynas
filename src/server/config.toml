@@ -15,6 +15,7 @@ noCache = ['/robots.txt', '/sitemap.txt']
 
 '/api/navigation' = '/api/navigation.js'
 '/api/page' = '/api/page.js'
+'/api/page/v2' = '/api/page.v2.js'
 
 [languages]
 

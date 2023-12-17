@@ -8,13 +8,18 @@ export default function generateHtml(options: GenerateHtmlOptions) {
 
     const domContainer = document.querySelector("#root")
     const root = ReactDOM.createRoot(domContainer)
-    root.render(React.createElement(React.StrictMode,null,React.createElement(Component, {})))
+    root.render(React.createElement(React.StrictMode,null,React.createElement(Component, ${JSON.stringify(
+      options.pageData ?? {}
+    )})))
 </script>`
     : ''
   return `<!DOCTYPE html>
 <html ${options.language ? `lang="${options.language}"` : ''}>
   <head>
     ${options.head?.replaceAll('\n', '\n    ')}
+    <style>
+        * {}
+    </style>
     <link rel="stylesheet" href="/assets/common.css">
     <link rel="preload" as="image" href="/assets/lt.png">
     <link rel="preload" as="image" href="/assets/en.png">
@@ -65,5 +70,6 @@ interface GenerateHtmlOptions {
   component?: string
   head?: string
   language?: string
+  pageData?: object
 }
 

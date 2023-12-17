@@ -5,7 +5,8 @@ type Status = 'loading' | 'done' | 'error'
 
 export default function useFetch<T>(
   url: string,
-  payload: FetchRequestInit = {}
+  payload: FetchRequestInit = {},
+  method: 'text' | 'json' = 'json'
 ) {
   const [state, setState] = useState<{
     status: Status
@@ -27,7 +28,9 @@ export default function useFetch<T>(
         : url + (url.includes('?') ? '&' : '?') + 'locale=' + locale
     fetch(newUrl, {signal, ...payload})
       .then(async (response) => {
-        const json = (await response.json()) as T
+        const json = (
+          method === 'json' ? await response.json() : await response.text()
+        ) as T
         setState({
           status: 'done',
           data: json,

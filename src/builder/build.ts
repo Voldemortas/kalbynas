@@ -11,7 +11,7 @@ import less from 'less'
 const OUT_DIR = import.meta.dir + '/../../out/'
 const CLIENT_DIR = import.meta.dir + `/../client/`
 const API_DIR = import.meta.dir + `/../server/api/`
-const PAGES_DIR = import.meta.dir + `/../server/pages/`
+const SSR_DIR = import.meta.dir + `/../server/ssr/`
 const STATIC_DIR = import.meta.dir + `/../server/static/`
 
 const cssTranspiler = {
@@ -122,10 +122,14 @@ async function build(folderName: string) {
       transpileFile(file, API_DIR, '/api', /\.ts$/i, '.js', tsTranspiler)
     }
   }
+
   {
-    const files = readDirRecursively(PAGES_DIR)
+    const files = readDirRecursively(SSR_DIR)
     for (const file of files) {
-      transpileFile(file, PAGES_DIR, '/pages', /\.xml$/i, '.xml')
+      if (/test/i.test(file)) {
+        continue
+      }
+      transpileFile(file, SSR_DIR, '/ssr', /\.ts$/i, '.js', tsTranspiler)
     }
   }
 

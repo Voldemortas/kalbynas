@@ -8,7 +8,7 @@ export default function VerticalHeader({
   children = [],
   mobileOnly = true,
 }: {
-  children: React.ReactNode[]
+  children: React.ReactNode[] | React.ReactNode
   mobileOnly?: boolean
 }) {
   const ref = useRef<HTMLTableRowElement>(null)

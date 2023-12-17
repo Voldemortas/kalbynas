@@ -17,11 +17,11 @@ function isGreen(nucleus: string, offglide: string) {
 }
 
 export default function Diphthongs({
-  shortcaption: shortCaption,
-  longcaption: longCaption,
+  shortCaption,
+  longCaption,
 }: {
-  shortcaption: string
-  longcaption: string
+  shortCaption: string
+  longCaption: string
 }) {
   return (
     <div className="flex-box">
