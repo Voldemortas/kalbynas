@@ -18,7 +18,7 @@ export default function generateHtml(options: GenerateHtmlOptions) {
     <link rel="stylesheet" href="/assets/common.css">
     <link rel="preload" as="image" href="/assets/lt.png">
     <link rel="preload" as="image" href="/assets/en.png">
-    <link href='/assets/notoSans.css' rel='stylesheet'>
+    <link href='/assets/DoulosSIL.css' rel='stylesheet'>
   </head>
     <body>
     ${options.basicHtml.replaceAll('\n', '\n    ')}
