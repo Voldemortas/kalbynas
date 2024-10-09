@@ -1,12 +1,17 @@
+import Body from '../common/Body'
 import Component from './Component'
-export default function Index({msg}: {msg: string}) {
+export default function Index({src}: {src: string}) {
   return (
-    <>
-      <Component message={msg} />
-      <hr />
-      <a href="/">Index page</a>
-      <br />
-      <img src="/static/punkim.png" alt="Pumkin" height={200} />
-    </>
+    <Body
+      nav={{
+        links: [
+          {link: '/', key: '/', text: 'Pagrindinis'},
+          {link: '/pumkin', key: '/pumkin', text: 'Moliūgas'},
+        ],
+        selected: '/pumkin',
+      }}
+    >
+      <Component src={src} />
+    </Body>
   )
 }

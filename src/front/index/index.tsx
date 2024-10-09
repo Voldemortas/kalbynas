@@ -1,10 +1,17 @@
-import Component from './Component'
+import Body from '../common/Body'
+
 export default function Index({msg}: {msg: string}) {
   return (
-    <>
-      <Component message={msg} />
-      <hr />
-      <a href="/pumkin">Visit another page</a>
-    </>
+    <Body
+      nav={{
+        links: [
+          {link: '/', key: '/', text: 'Pagrindinis'},
+          {link: '/pumkin', key: '/pumkin', text: 'Moliūgas'},
+        ],
+        selected: '/',
+      }}
+    >
+      {msg}
+    </Body>
   )
 }

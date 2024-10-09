@@ -1,4 +1,5 @@
 import IndexBack from './back/pages/index/index'
+import PumkinBack from './back/pages/pumkin/index'
 import ApiTest from './back/api/test'
 
 const config: PageType<ReactType | RedirectType | BackType>[] = [
@@ -16,15 +17,15 @@ const config: PageType<ReactType | RedirectType | BackType>[] = [
     resolve: {
       type: 'react',
       path: 'front/pumkin/index.ts',
-      resolver: IndexBack,
+      resolver: PumkinBack,
     },
-    params: ['Pumkin page'],
+    params: ['/static/punkim.png'],
   },
   {
     path: '/favicon.ico',
     resolve: {
       type: 'redirect',
-      path: 'static/punkim.png',
+      path: 'static/favicon.ico',
     },
     params: [],
   },
