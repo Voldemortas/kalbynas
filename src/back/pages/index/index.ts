@@ -1,3 +1,3 @@
-export default function index(params: string[]) {
+export default function index(request: Request, params: string[]) {
   return {msg: params[0] ?? ':('}
 }

@@ -1,6 +1,7 @@
 import IndexBack from './back/pages/index/index'
 import PumkinBack from './back/pages/pumkin/index'
 import ApiTest from './back/api/test'
+import getUrl from './back/pages/common/getUrl'
 
 const config: PageType<ReactType | RedirectType | BackType>[] = [
   {
@@ -39,6 +40,16 @@ const config: PageType<ReactType | RedirectType | BackType>[] = [
   },
 ]
 
+export function getPage(
+  request: Request,
+  resolveType: 'react' | 'redirect' | 'back'
+) {
+  const {pathname} = getUrl(request)
+  return config.filter(
+    ({path, resolve}) => path === pathname && resolve.type === resolveType
+  )[0]
+}
+
 export type PageType<T> = {
   path: string
   resolve: T
@@ -49,7 +60,7 @@ export type ReactType = {
   type: 'react'
   path: string
   // biome-ignore lint/complexity/noBannedTypes: <explanation>
-  resolver: (params: string[]) => Object
+  resolver: (request: Request, params: string[]) => Object
 }
 
 export type RedirectType = {
@@ -59,7 +70,7 @@ export type RedirectType = {
 
 export type BackType = {
   type: 'back'
-  resolver: (params: string[]) => Response
+  resolver: (request: Request, params: string[]) => Response
 }
 
 export default config

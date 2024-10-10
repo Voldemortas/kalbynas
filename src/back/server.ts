@@ -1,5 +1,6 @@
-import pages, {type BackType, type PageType, type ReactType} from '../pages'
+import pages from '../pages'
 import renderReact from './pages/common/renderReact'
+import getUrl from './pages/common/getUrl'
 
 const server = Bun.serve({
   port: 3008,
@@ -7,24 +8,22 @@ const server = Bun.serve({
     const {sub, pathname, href} = getUrl(request)
 
     if (/^\/static\//.test(pathname)) {
-      return serveStatic(`out${pathname}`)
+      return serveStatic(request)
     }
     if (/^\/front\//.test(pathname)) {
-      return serveStatic(`out${pathname}`)
+      return serveStatic(request)
     }
 
     for (const page of pages) {
       if (page.path === pathname) {
         if (page.resolve.type === 'redirect') {
-          return serveStatic(`out/${page.resolve.path}`)
+          return serveRedirect(request)
         }
         if (page.resolve.type === 'back') {
-          return page.resolve.resolver(page.params)
+          return page.resolve.resolver(request, page.params)
         }
         if (page.resolve.type === 'react') {
-          const reactParams = page.resolve.resolver(page.params)
-
-          return renderReact(page.resolve.path as string, reactParams)
+          return renderReact(request)
         }
       }
     }
@@ -33,24 +32,25 @@ const server = Bun.serve({
   },
 })
 
-function getUrl(request: Request) {
-  const url = new URL(request.url)
-  const sub = url.hostname.split('.')[0]
-  const pathname = url.pathname
-  const href = url.href
-
-  return {sub, pathname, href}
+async function serveRedirect(request: Request) {
+  const {pathname} = getUrl(request)
+  return await serveStatic(
+    request,
+    pages.filter((p) => p.path === pathname && p.resolve.type === 'redirect')[0]
+      .path
+  )
 }
 
-async function serveStatic(pathname: string) {
-  const file = Bun.file(pathname)
+async function serveStatic(request: Request, staticPath?: string) {
+  const {pathname} = getUrl(request)
+  const file = Bun.file(`out${staticPath ?? pathname}`)
   if (!(await file.exists())) {
     return await FourOFour()
   }
   return new Response(file)
 }
 
-async function FourOFour(pathname?: string) {
+async function FourOFour(request?: string) {
   return new Response(null, {status: 404, statusText: 'Not found'})
 }
 
