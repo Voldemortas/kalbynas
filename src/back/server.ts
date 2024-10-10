@@ -1,4 +1,4 @@
-import pages from '../pages'
+import pages, {getPage, type PageType, type RedirectType} from '../pages'
 import renderReact from './pages/common/renderReact'
 import getUrl from './pages/common/getUrl'
 
@@ -33,12 +33,8 @@ const server = Bun.serve({
 })
 
 async function serveRedirect(request: Request) {
-  const {pathname} = getUrl(request)
-  return await serveStatic(
-    request,
-    pages.filter((p) => p.path === pathname && p.resolve.type === 'redirect')[0]
-      .path
-  )
+  const page = getPage(request, 'redirect') as PageType<RedirectType>
+  return await serveStatic(request, page.resolve.path)
 }
 
 async function serveStatic(request: Request, staticPath?: string) {
