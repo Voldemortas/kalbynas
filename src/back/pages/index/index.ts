@@ -1,3 +1,4 @@
+import getNavigation from '../../common/navigation'
 import getUrl from '../common/getUrl'
 
 export default function index(request: Request, params: string[]) {
@@ -5,5 +6,5 @@ export default function index(request: Request, params: string[]) {
 
   const msg = sub === 'en' ? 'English!' : 'Lietuviškai!'
 
-  return {msg}
+  return {msg, nav: getNavigation(request, '/')}
 }

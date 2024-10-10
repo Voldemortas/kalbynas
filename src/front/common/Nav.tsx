@@ -1,12 +1,12 @@
 import React from 'react'
 import './common.css'
 
-export type Props = {
+export type NavProps = {
   selected?: string
   links: {text: string; link: string; key: string}[]
 }
 
-export default function Nav({selected = undefined, links}: Props) {
+export default function Nav({selected = undefined, links}: NavProps) {
   return (
     <nav className="Common__Nav">
       {links.map((link) => (

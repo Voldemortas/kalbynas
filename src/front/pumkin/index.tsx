@@ -1,16 +1,10 @@
 import Body from '../common/Body'
 import Component from './Component'
-export default function Index({src}: {src: string}) {
+import type {NavProps} from '../common/Nav'
+
+export default function Index({src, nav}: {src: string; nav: NavProps}) {
   return (
-    <Body
-      nav={{
-        links: [
-          {link: '/', key: '/', text: 'Pagrindinis'},
-          {link: '/pumkin', key: '/pumkin', text: 'Moliūgas'},
-        ],
-        selected: '/pumkin',
-      }}
-    >
+    <Body nav={nav}>
       <Component src={src} />
     </Body>
   )

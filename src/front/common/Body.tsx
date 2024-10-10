@@ -1,5 +1,5 @@
 import React, {type ReactNode} from 'react'
-import Nav, {type Props as NavProps} from './Nav'
+import Nav, {type NavProps} from './Nav'
 import Header from './Header'
 import './common.css'
 
