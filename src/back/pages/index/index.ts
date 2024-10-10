@@ -1,3 +1,9 @@
+import getUrl from '../common/getUrl'
+
 export default function index(request: Request, params: string[]) {
-  return {msg: params[0] ?? ':('}
+  const {sub} = getUrl(request)
+
+  const msg = sub === 'en' ? 'English!' : 'Lietuviškai!'
+
+  return {msg}
 }
