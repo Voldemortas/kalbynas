@@ -1,11 +1,16 @@
-import React from 'react'
-import './common.css'
+import React, {useRef} from 'react'
+import './header.css'
+import Dialog, {type DialogRef} from './Dialog'
 
 export default function Header() {
+  const languagesRef = useRef<DialogRef>(null)
+
   return (
     <header className="Common__Header">
-      <div className="Common__Header__Logo">Kalbyn[ɐ̝]s</div>
-      <div className="Common__Header__Languages">
+      <div className="Common__Header__Logo">
+        <a href="/">Kalbyn[ɐ̝]s</a>
+      </div>
+      <div className="Common__Header__Languages--desktop">
         <a
           href={getNewUrl('lt')}
           title="lietuvių k."
@@ -18,6 +23,36 @@ export default function Header() {
           <img src="/static/en.png" alt="English" />
         </a>
       </div>
+      <div className="Common__Header__Languages--mobile">
+        <div
+          style={{
+            backgroundImage: 'url("/static/languageIcon.svg")',
+            width: 50,
+            height: 50,
+          }}
+          aria-labelledby="language-selector"
+          onClick={() => languagesRef.current?.switch()}
+          onKeyUp={() => languagesRef.current?.switch()}
+        />
+        <div className="sr-only" id="language-selector">
+          <span lang="en">Change language</span>
+          <span lang="lt">Pakeisti kalbą</span>
+        </div>
+      </div>
+      <Dialog ref={languagesRef}>
+        <a
+          href={getNewUrl('lt')}
+          title="lietuvių k."
+          rel="alternate"
+          hrefLang="lt"
+        >
+          Lietuvių k.
+        </a>
+        <br />
+        <a href={getNewUrl('en')} title="English" rel="alternate" hrefLang="en">
+          English
+        </a>
+      </Dialog>
     </header>
   )
 }

@@ -1,5 +1,6 @@
-import React from 'react'
-import './common.css'
+import React, {useRef} from 'react'
+import './nav.css'
+import Dialog, {type DialogRef} from './Dialog'
 
 export type NavProps = {
   selected?: string
@@ -7,8 +8,10 @@ export type NavProps = {
 }
 
 export default function Nav({selected = undefined, links}: NavProps) {
-  return (
-    <nav className="Common__Nav">
+  const menuRef = useRef<DialogRef>(null)
+
+  const NavLinks = (
+    <>
       {links.map((link) => (
         <a
           href={link.link}
@@ -21,6 +24,20 @@ export default function Nav({selected = undefined, links}: NavProps) {
           {link.text}
         </a>
       ))}
-    </nav>
+    </>
+  )
+
+  return (
+    <>
+      <div
+        className="Common__Nav__Hamburger"
+        onClick={() => menuRef.current?.switch()}
+        onKeyUp={() => menuRef.current?.switch()}
+      >
+        ≡
+      </div>
+      <Dialog ref={menuRef}>{NavLinks}</Dialog>
+      <nav className="Common__Nav">{NavLinks}</nav>
+    </>
   )
 }
