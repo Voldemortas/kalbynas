@@ -3,7 +3,7 @@ import getUrl from '../pages/common/getUrl.ts'
 import config from '../../pages'
 
 export default function robots(request: Request, params: string[]) {
-  const {origin} = getUrl(request)
+  const {origin} = getUrl(request, true)
 
   return new Response(
     config
