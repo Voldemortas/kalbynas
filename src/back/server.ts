@@ -3,7 +3,6 @@ import renderReact from './pages/common/renderReact'
 import getUrl from './pages/common/getUrl'
 
 const server = Bun.serve({
-  port: 3008,
   async fetch(request) {
     const {sub, pathname, href} = getUrl(request)
 
