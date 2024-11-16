@@ -2,9 +2,27 @@ import IndexBack from './back/pages/index/index'
 import DialectologyBack from './back/pages/dialectology/index'
 import BaltisticsBack from './back/pages/baltistics/index'
 import ApiTest from './back/api/test'
+import Robots from './back/static/robots'
+import Sitemap from './back/static/sitemap'
 import getUrl from './back/pages/common/getUrl'
 
 const config: PageType<ReactType | RedirectType | BackType>[] = [
+  {
+    path: '/robots.txt',
+    resolve: {
+      type: 'back',
+      resolver: Robots,
+    },
+    params: [],
+  },
+  {
+    path: '/sitemap.txt',
+    resolve: {
+      type: 'back',
+      resolver: Sitemap,
+    },
+    params: [],
+  },
   {
     path: '/',
     resolve: {
