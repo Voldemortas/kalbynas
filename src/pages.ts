@@ -1,5 +1,6 @@
 import IndexBack from './back/pages/index/index'
-import PumkinBack from './back/pages/pumkin/index'
+import DialectologyBack from './back/pages/dialectology/index'
+import BaltisticsBack from './back/pages/baltistics/index'
 import ApiTest from './back/api/test'
 import getUrl from './back/pages/common/getUrl'
 
@@ -11,16 +12,25 @@ const config: PageType<ReactType | RedirectType | BackType>[] = [
       path: 'front/index/index.ts',
       resolver: IndexBack,
     },
-    params: ['hello world!'],
+    params: [],
   },
   {
-    path: '/pumkin',
+    path: '/dialectology',
     resolve: {
       type: 'react',
-      path: 'front/pumkin/index.ts',
-      resolver: PumkinBack,
+      path: 'front/dialectology/index.ts',
+      resolver: DialectologyBack,
     },
-    params: ['/static/punkim.png'],
+    params: [],
+  },
+  {
+    path: '/baltistics',
+    resolve: {
+      type: 'react',
+      path: 'front/baltistics/index.ts',
+      resolver: BaltisticsBack,
+    },
+    params: [],
   },
   {
     path: '/favicon.ico',

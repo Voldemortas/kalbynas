@@ -1,14 +1,14 @@
 import Translation, {type Translations} from './Translation'
 
-const nav: Translations = {
-  index: new Translation({
-    lt: 'Pagrininis',
-    en: 'Main',
+const translations: Translations = {
+  dialectology: new Translation({
+    lt: 'Dialektologija',
+    en: 'Dialectology',
   }),
-  pumpkin: new Translation({
-    lt: 'Moliūgas',
-    en: 'Pumkin',
+  baltistics: new Translation({
+    lt: 'Baltistika',
+    en: 'Baltistics',
   }),
 }
 
-export default nav
+export default translations

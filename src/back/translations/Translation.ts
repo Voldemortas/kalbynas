@@ -18,11 +18,10 @@ export default class Translation {
 
     let answer = this.texts[loc]
     for (let i = 0; i < params.length; i++) {
-      const pattern = new RegExp(`[^\\](\$${i})`, 'g')
+      const pattern = new RegExp(`[\^\\\\␐](\\\$${i})`, 'g')
       answer = answer.replaceAll(pattern, params[i])
     }
 
-    console.log({answer})
     return answer
   }
 }

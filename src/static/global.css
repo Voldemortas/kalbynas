@@ -22,7 +22,7 @@ body,
   font-size: 18px;
   background-color: var(--color-green-white);
   font-family: 'Tahoma', sans-serif;
-  color: var(--color-gree-black);
+  color: var(--color-green-black);
 }
 
 a {
@@ -54,3 +54,96 @@ a {
   clip: rect(0,0,0,0);
   border: 0;
 }
+
+.center {
+  text-align: center;
+}
+
+article {
+  text-align: justify;
+  max-width: 840px;
+  display: inline-block;
+  margin: 0px 20px;
+
+  p {
+    text-indent: 15px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 30px;
+  }
+  h2 {
+    text-align: center;
+    font-size: 24px;
+  }
+}
+
+table {
+  width: fit-content;
+  height: fit-content;
+  margin-left: auto;
+  margin-right: auto;&.width-20 {
+  & td,
+  th {
+    width: 20px;
+  }
+}
+  &.width-40 {
+    & td,
+    th {
+      width: 40px;
+    }
+  }
+  &.width-60 {
+    & td,
+    th {
+      width: 60px;
+    }
+  }
+  &.width-80 {
+    & td,
+    th {
+      width: 80px;
+    }
+  }
+  &.width-100 {
+    & td,
+    th {
+      width: 100px;
+    }
+  }
+  &.outside {
+    border-style: solid;
+    border-width: 1px;
+  }
+  &.inside {
+    border-collapse: collapse;
+    & td,
+    th {
+      border-style: solid;
+      border-width: 1px;
+    }
+  }
+}
+
+td.noBorder {
+  border-width: 0 !important;
+}
+
+caption {
+  caption-side: bottom;
+}
+
+.flex-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  &-bottom {
+    place-items: flex-end;
+  }
+}
+
+.ipa {
+  font-family: 'DoulosSILW', sans-serif;
+}
+
