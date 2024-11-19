@@ -22,14 +22,11 @@
     "build-prod": "NODE_ENV=\"production\" bun run build",
     "build": "bun run build.ts",
     "watch": "bun run watch.ts",
-    "serve": "bun run out/back/server.js"
+    "serve": "bun run out/back/server.js",
+    "serve-pm2": "bunx --bun pm2 start"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

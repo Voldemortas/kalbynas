@@ -1,5 +1,5 @@
 module.exports = {
-  name: "My App",
-  script: "out/back/server.js",
-  exec_mode : "cluster"
-};
+  name: 'Kalbynas',
+  script: 'out/back/server.js',
+  interpreter: 'bun',
+}

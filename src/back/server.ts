@@ -3,6 +3,7 @@ import renderReact from './pages/common/renderReact'
 import getUrl from './pages/common/getUrl'
 
 const server = Bun.serve({
+  port: Bun.env.KALBYNAS_PORT,
   async fetch(request) {
     const {sub, pathname, href} = getUrl(request)
 
