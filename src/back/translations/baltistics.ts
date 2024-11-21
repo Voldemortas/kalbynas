@@ -81,9 +81,12 @@ const translations: Translations = {
     en: 'To be continued',
   }),
   labials: new Translation({lt: 'Lūpiniai', en: 'Labials'}),
-  coronals: new Translation({lt: 'Liežuvio priešakiniai', en: 'Coronals'}),
-  dorsals: new Translation({lt: 'Gomuriniai', en: 'Dorsals'}),
-  plosives: new Translation({lt: 'Sprogstamieji', en: 'Plosives'}),
+  coronals: new Translation({
+    lt: 'Liežuvio prieša\u00adkiniai',
+    en: 'Coronals',
+  }),
+  dorsals: new Translation({lt: 'Gomu\u00adriniai', en: 'Dorsals'}),
+  plosives: new Translation({lt: 'Sprog\u00adstamieji', en: 'Plosives'}),
   sibilants: new Translation({lt: 'Pučiamieji', en: 'Sibilants'}),
   sonorants: new Translation({lt: 'Pusbalsiai', en: 'Sonorants'}),
   commonConsonantsCaption: new Translation({

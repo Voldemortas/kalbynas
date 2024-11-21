@@ -34,16 +34,33 @@ const server = Bun.serve({
 
 async function serveRedirect(request: Request) {
   const page = getPage(request, 'redirect') as PageType<RedirectType>
-  return await serveStatic(request, page.resolve.path)
+  return await serveStatic(request, page.resolve.path, page.params)
 }
 
-async function serveStatic(request: Request, staticPath?: string) {
+async function serveStatic(
+  request: Request,
+  staticPath?: string,
+  params: string[] = []
+) {
   const {pathname} = getUrl(request)
   const file = Bun.file(`out${staticPath ?? pathname}`)
   if (!(await file.exists())) {
     return await FourOFour()
   }
-  return new Response(file)
+  const headers = getHeadersForRedirect(params)
+  return new Response(file, headers)
+}
+
+function getHeadersForRedirect(params: string[]): ResponseInit {
+  if (params.length === 0) {
+    return {}
+  }
+  if (params.length === 2) {
+    if (params[0] === 'headers' && !!params[1]) {
+      return {headers: JSON.parse(params[1])}
+    }
+  }
+  return {}
 }
 
 async function FourOFour(request?: string) {

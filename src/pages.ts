@@ -59,6 +59,14 @@ const config: PageType<ReactType | RedirectType | BackType>[] = [
     params: [],
   },
   {
+    path: '/global.css',
+    resolve: {
+      type: 'redirect',
+      path: '/static/global.scss',
+    },
+    params: ['headers', '{"Content-type": "text/css"}'],
+  },
+  {
     path: '/api/test',
     resolve: {
       type: 'back',

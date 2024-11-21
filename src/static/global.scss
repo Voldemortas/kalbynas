@@ -1,13 +1,13 @@
 * {
-  --color-green-white: #FAFCFA;
-  --color-green-black: #04100C;
-  --color-green-7: #173A2C;
-  --color-green-6: #2B644A;
-  --color-green-5: #38805F;
-  --color-green-4: #48AD7E;
-  --color-green-3: #6EC499;
-  --color-green-2: #99D6B5;
-  --color-green-1: #C4E9D1;
+  --color-green-white: #fafcfa;
+  --color-green-black: #04100c;
+  --color-green-7: #173a2c;
+  --color-green-6: #2b644a;
+  --color-green-5: #38805f;
+  --color-green-4: #48ad7e;
+  --color-green-3: #6ec499;
+  --color-green-2: #99d6b5;
+  --color-green-1: #c4e9d1;
 }
 
 html,
@@ -21,13 +21,14 @@ body,
   position: relative;
   font-size: 18px;
   background-color: var(--color-green-white);
-  font-family: 'Tahoma', sans-serif;
+  font-family: "Tahoma", sans-serif;
   color: var(--color-green-black);
 }
 
 a {
   color: var(--color-green-6);
   text-decoration: none;
+
   &:hover,
   &:active,
   &:visited,
@@ -41,7 +42,7 @@ a {
 }
 
 .ipa {
-  font-family: 'DoulosSILW', sans-serif;
+  font-family: "DoulosSILW", sans-serif;
 }
 
 .sr-only {
@@ -51,7 +52,7 @@ a {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   border: 0;
 }
 
@@ -68,10 +69,12 @@ article {
   p {
     text-indent: 15px;
   }
+
   h1 {
     text-align: center;
     font-size: 30px;
   }
+
   h2 {
     text-align: center;
     font-size: 24px;
@@ -82,42 +85,51 @@ table {
   width: fit-content;
   height: fit-content;
   margin-left: auto;
-  margin-right: auto;&.width-20 {
-  & td,
-  th {
-    width: 20px;
+  margin-right: auto;
+
+  &.width-20 {
+    & td,
+    th {
+      width: 20px;
+    }
   }
-}
+
   &.width-40 {
     & td,
     th {
       width: 40px;
     }
   }
+
   &.width-60 {
     & td,
     th {
       width: 60px;
     }
   }
+
   &.width-80 {
     & td,
     th {
       width: 80px;
     }
   }
+
   &.width-100 {
     & td,
     th {
       width: 100px;
     }
   }
+
   &.outside {
     border-style: solid;
     border-width: 1px;
   }
+
   &.inside {
     border-collapse: collapse;
+
     & td,
     th {
       border-style: solid;
@@ -130,6 +142,10 @@ td.noBorder {
   border-width: 0 !important;
 }
 
+td, th {
+  hyphens: manual;
+}
+
 caption {
   caption-side: bottom;
 }
@@ -138,12 +154,12 @@ caption {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
   &-bottom {
     place-items: flex-end;
   }
 }
 
 .ipa {
-  font-family: 'DoulosSILW', sans-serif;
+  font-family: "DoulosSILW", sans-serif;
 }
-
