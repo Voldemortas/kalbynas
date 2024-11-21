@@ -1,6 +1,6 @@
 import htmlHeaders from '../../common/htmlHeaders'
 import htmlTemplate from './default.html'
-import {type ReactType, type PageType, getPage} from '../../../pages'
+import {getPage, type PageType, type ReactType} from '../../../pages'
 import getUrl from './getUrl'
 
 const title = {
@@ -19,19 +19,23 @@ const alternates = ['lt', 'en']
 const defaultLocale = 'lt'
 
 export default async function renderReact(request: Request) {
+  const hash = Bun.env.HASH
   const {sub, pathname} = getUrl(request)
   const locale = (alternates.find((a) => a === sub) ?? defaultLocale) as
     | 'lt'
     | 'en'
   const htmlFile = await Bun.file(`${import.meta.dir}/${htmlTemplate}`).text()
   const page = getPage(request, 'react') as PageType<ReactType>
+  const path = page.resolve.path.replace(/\.ts$/, '')
 
   const newHtmlFile = htmlFile
     .replaceAll(
       'const globalParams = undefined',
       `const globalParams = ${JSON.stringify(page.resolve.resolver(request, page.params))}`
     )
-    .replaceAll(/placeholderPath/g, page.resolve.path.replace(/\.ts$/, ''))
+    .replaceAll(/global.css/g, `global.css?hash=${hash}`)
+    .replaceAll(/placeholderPath.css/g, `${path}.css?hash=${hash}`)
+    .replaceAll(/placeholderPath.js/g, `${path}.js?hash=${hash}`)
     .replaceAll('<html>', `<html lang="${locale}">`)
     .replaceAll(
       '<meta name="description" content="placeholder">',

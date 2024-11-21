@@ -4,6 +4,7 @@ export default function getUrl(request: Request, strictHttp = false) {
   const pathname = url.pathname
   const href = url.href
   const origin = url.origin.replace(/(^http:)/, strictHttp ? 'https:' : '$1')
+  const searchParams = url.searchParams
 
-  return {sub, pathname, href, origin}
+  return {sub, pathname, href, origin, searchParams}
 }

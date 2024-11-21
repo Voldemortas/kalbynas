@@ -1,10 +1,11 @@
 import {$} from 'bun'
 import buildFront from './build-front'
-import pages from './src/pages'
 import type {PageType, ReactType} from './src/pages'
+import pages from './src/pages'
 import buildBack from './build-back'
 
 export default async function build() {
+  const hash = crypto.randomUUID().split('-')[0]
   await $`rm -rf out`
   await $`rm -rf temp`
   await $`mkdir out`
@@ -14,6 +15,7 @@ export default async function build() {
     .map((p) => p.resolve.path)
   await buildFront(frontPaths)
   await buildBack()
+  await Bun.write('out/.env', `HASH=${hash}`)
 }
 
 await build()

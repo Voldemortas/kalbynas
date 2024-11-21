@@ -42,25 +42,46 @@ async function serveStatic(
   staticPath?: string,
   params: string[] = []
 ) {
-  const {pathname} = getUrl(request)
+  const {pathname, searchParams} = getUrl(request)
   const file = Bun.file(`out${staticPath ?? pathname}`)
   if (!(await file.exists())) {
     return await FourOFour()
   }
-  const headers = getHeadersForRedirect(params)
+  const headers = getHeadersForRedirect(params, getCacheDuration(request))
   return new Response(file, headers)
 }
 
-function getHeadersForRedirect(params: string[]): ResponseInit {
+function getHeadersForRedirect(
+  params: string[],
+  cacheDuration = 0
+): ResponseInit {
+  const cache = {
+    'Cache-Control': `max-age=${cacheDuration}`,
+  }
   if (params.length === 0) {
-    return {}
+    return {
+      headers: cache,
+    }
   }
   if (params.length === 2) {
     if (params[0] === 'headers' && !!params[1]) {
-      return {headers: JSON.parse(params[1])}
+      return {headers: {...cache, ...JSON.parse(params[1])}}
     }
   }
-  return {}
+  return {
+    headers: cache,
+  }
+}
+
+function getCacheDuration(request: Request) {
+  const {pathname, searchParams} = getUrl(request)
+  if (searchParams.get('hash') === Bun.env.HASH) {
+    return 2592000
+  }
+  if (/^\/static\//.test(pathname)) {
+    return 604800
+  }
+  return 0
 }
 
 async function FourOFour(request?: string) {
