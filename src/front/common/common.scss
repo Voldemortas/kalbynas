@@ -9,7 +9,11 @@
   text-align: center;
   overflow-y: auto;
 
-  @media (max-width: variables.$mobile-breakpoint) {
+  @media (width <= variables.$mobile-breakpoint) {
     width: 100%;
+  }
+
+  @media (width > variables.$mobile-breakpoint) {
+    border-top: 1px solid var(--color-green-2);
   }
 }
