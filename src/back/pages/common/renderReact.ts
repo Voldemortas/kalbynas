@@ -2,6 +2,9 @@ import htmlHeaders from '../../common/htmlHeaders'
 import htmlTemplate from './default.html'
 import {getPage, type PageType, type ReactType} from '../../../pages'
 import getUrl from './getUrl'
+import getFileWithFallbacks from './readFileWithFallback.ts'
+
+const HTML_TEMPLATE_FALLBACK = 'default.html'
 
 const title = {
   lt: 'kalbynas.lt - Pakalbėkim apie kalbą',
@@ -24,7 +27,13 @@ export default async function renderReact(request: Request) {
   const locale = (alternates.find((a) => a === sub) ?? defaultLocale) as
     | 'lt'
     | 'en'
-  const htmlFile = await Bun.file(`${import.meta.dir}/${htmlTemplate}`).text()
+  const htmlFile = await (
+    await getFileWithFallbacks(
+      `${import.meta.dir}/${htmlTemplate}`,
+      `${import.meta.dir}/${HTML_TEMPLATE_FALLBACK}`
+    )
+  ).text()
+
   const page = getPage(request, 'react') as PageType<ReactType>
   const path = page.resolve.path.replace(/\.ts$/, '')
 
