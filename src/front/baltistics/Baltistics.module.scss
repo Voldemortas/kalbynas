@@ -1,0 +1,10 @@
+@use 'sass:string';
+
+$uniqueId: unique-id();
+/* #{$uniqueId} */
+
+._#{$uniqueId} {
+  &_tbc {
+    font-style: italic;
+  }
+}
