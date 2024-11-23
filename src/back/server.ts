@@ -1,10 +1,26 @@
 import pages, {getPage, type PageType, type RedirectType} from '../pages'
 import renderReact from './pages/common/renderReact'
 import getUrl from './pages/common/getUrl'
+import IS_PROD from './pages/common/isProd.ts'
+
+const lastUpdated = new Date().getTime().toString()
 
 const server = Bun.serve({
   port: Bun.env.KALBYNAS_PORT,
-  async fetch(request) {
+  websocket: {
+    async message(ws, message) {},
+    async open(ws) {
+      ws.send(lastUpdated)
+    },
+  },
+  async fetch(request): Promise<Response | undefined> {
+    if (!IS_PROD) {
+      const success = server.upgrade(request)
+      if (success) {
+        return undefined
+      }
+    }
+
     const {sub, pathname, href} = getUrl(request)
 
     if (/^\/static\//.test(pathname)) {
@@ -23,7 +39,7 @@ const server = Bun.serve({
           return page.resolve.resolver(request, page.params)
         }
         if (page.resolve.type === 'react') {
-          return renderReact(request)
+          return renderReact(request, lastUpdated)
         }
       }
     }

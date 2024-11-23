@@ -30,5 +30,8 @@ process.on('SIGINT', () => {
 
 async function runServer() {
   await build()
-  return Bun.spawn(['bun', 'run', 'out/back/server.js'])
+  return Bun.spawn(['bun', 'run', 'src/back/server.ts'], {
+    stdout: 'inherit',
+    env: {...Bun.env, PRODUCTION: 'false'},
+  })
 }

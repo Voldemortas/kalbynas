@@ -3,8 +3,10 @@ import htmlTemplate from './default.html'
 import {getPage, type PageType, type ReactType} from '../../../pages'
 import getUrl from './getUrl'
 import getFileWithFallbacks from './readFileWithFallback.ts'
+import IS_PROD from './isProd.ts'
 
 const HTML_TEMPLATE_FALLBACK = 'default.html'
+const DEVELOPMENT_HTML = 'development.html'
 
 const title = {
   lt: 'kalbynas.lt - Pakalbėkim apie kalbą',
@@ -21,8 +23,7 @@ const keywords = {
 const alternates = ['lt', 'en']
 const defaultLocale = 'lt'
 
-export default async function renderReact(request: Request) {
-  const hash = Bun.env.HASH
+export default async function renderReact(request: Request, hash: string) {
   const {sub, pathname} = getUrl(request)
   const locale = (alternates.find((a) => a === sub) ?? defaultLocale) as
     | 'lt'
@@ -38,9 +39,16 @@ export default async function renderReact(request: Request) {
   const path = page.resolve.path.replace(/\.ts$/, '')
 
   const newHtmlFile = htmlFile
+    .replace(
+      '<script id="dev"></script>',
+      IS_PROD
+        ? ''
+        : await Bun.file(`${import.meta.dir}/${DEVELOPMENT_HTML}`).text()
+    )
+    .replace('const hash = undefined', IS_PROD ? '' : `const hash = '${hash}'`)
     .replaceAll(
       'const globalParams = undefined',
-      `const globalParams = ${JSON.stringify(page.resolve.resolver(request, page.params))}`
+      `    const globalParams = ${JSON.stringify(page.resolve.resolver(request, page.params))}`
     )
     .replaceAll(/global.css/g, `global.css?hash=${hash}`)
     .replaceAll(/placeholderPath.css/g, `${path}.css?hash=${hash}`)

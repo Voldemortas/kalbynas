@@ -15,7 +15,10 @@ export default async function build() {
     .map((p) => p.resolve.path)
   await buildFront(frontPaths)
   await buildBack()
-  await Bun.write('out/.env', `HASH=${hash}`)
+  await Bun.write(
+    'out/.env',
+    `HASH=${hash}\nPRODUCTION=${Bun.env.NODE_ENV === 'production'}`
+  )
 }
 
 await build()
