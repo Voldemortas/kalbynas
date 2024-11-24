@@ -1,5 +1,5 @@
-import getUrl from '../pages/common/getUrl'
-import translations from '../translations/nav'
+import getUrl from 'back/pages/common/getUrl'
+import translations from 'back/translations/nav'
 
 const LINKS = [
   {text: 'dialectology', link: '/dialectology'},

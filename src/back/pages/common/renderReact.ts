@@ -1,6 +1,6 @@
-import htmlHeaders from '../../common/htmlHeaders'
+import htmlHeaders from 'back/common/htmlHeaders'
 import htmlTemplate from './default.html'
-import {getPage, type PageType, type ReactType} from '../../../pages'
+import {getPage, type PageType, type ReactType} from 'src/pages.ts'
 import getUrl from './getUrl'
 import getFileWithFallbacks from './readFileWithFallback.ts'
 import IS_PROD from './isProd.ts'

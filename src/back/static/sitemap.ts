@@ -1,6 +1,6 @@
-import textHeaders from '../common/textHeaders'
-import getUrl from '../pages/common/getUrl.ts'
-import config from '../../pages'
+import textHeaders from 'back/common/textHeaders'
+import getUrl from 'back/pages/common/getUrl.ts'
+import config from 'src/pages'
 
 export default function robots(request: Request, params: string[]) {
   const {origin} = getUrl(request, true)

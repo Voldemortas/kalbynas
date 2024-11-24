@@ -1,5 +1,5 @@
-import currentIsoDate from '../common/date'
-import jsonHeaders from '../common/jsonHeaders'
+import currentIsoDate from 'back/common/date'
+import jsonHeaders from 'back/common/jsonHeaders'
 
 export default function test(request: Request, params: string[]) {
   return new Response(

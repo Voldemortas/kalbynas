@@ -1,8 +1,8 @@
-import pages, {getPage, type PageType, type RedirectType} from '../pages'
-import renderReact from './pages/common/renderReact'
-import getUrl from './pages/common/getUrl'
-import IS_PROD from './pages/common/isProd.ts'
-import {getConfigVars} from './common/getConfigVar.ts'
+import pages, {getPage, type PageType, type RedirectType} from 'src/pages'
+import renderReact from 'back/pages/common/renderReact'
+import getUrl from 'back/pages/common/getUrl'
+import IS_PROD from 'back/pages/common/isProd.ts'
+import {getConfigVars} from 'back/common/getConfigVar.ts'
 
 const lastUpdated = new Date().getTime().toString()
 const {HASH, KALBYNAS_PORT, HOSTNAME} = getConfigVars()
@@ -24,7 +24,7 @@ const server = Bun.serve({
       }
     }
 
-    const {sub, pathname, href} = getUrl(request)
+    const {pathname} = getUrl(request)
 
     if (/^\/static\//.test(pathname)) {
       return serveStatic(request)

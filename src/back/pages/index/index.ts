@@ -1,5 +1,5 @@
-import getNavigation from '../../common/navigation'
-import getUrl from '../common/getUrl'
+import getNavigation from 'back/common/navigation'
+import getUrl from 'back/pages/common/getUrl'
 
 export default function index(request: Request, params: string[]) {
   const {sub} = getUrl(request)

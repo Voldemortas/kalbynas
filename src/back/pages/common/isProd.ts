@@ -1,4 +1,4 @@
-import getConfigVar from '../../common/getConfigVar.ts'
+import getConfigVar from 'back/common/getConfigVar.ts'
 
 const IS_PROD =
   Bun.env.NODE_ENV === 'production' || getConfigVar('PRODUCTION') === 'true'

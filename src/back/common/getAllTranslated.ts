@@ -1,4 +1,4 @@
-import type {Translations} from '../translations/Translation'
+import type {Translations} from 'back/translations/Translation'
 
 export default function getAllTranslated(
   translations: Translations,
