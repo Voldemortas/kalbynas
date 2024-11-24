@@ -1,14 +1,6 @@
-import React, {
-  useState,
-  useImperativeHandle,
-  useRef,
-  forwardRef,
-  useEffect,
-  type Ref,
-  type ReactNode,
-} from 'react'
+import React, {forwardRef, type ReactNode, type Ref, useEffect, useImperativeHandle, useRef, useState,} from 'react'
 
-import './dialog.css'
+import style from './dialog.module.scss'
 
 export type DialogRef = {
   switch: () => void
@@ -41,16 +33,16 @@ function Dialog({children}: DialogProps, ref: Ref<DialogRef>) {
   }, [isEnabled])
 
   return (
-    <dialog ref={dialogRef} className="Dialog">
+    <dialog ref={dialogRef} className={style('dialog')}>
       <button
         type="button"
         onClick={() => setEnabled(false)}
         onKeyUp={() => setEnabled(false)}
-        className="Dialog__Close"
+        className={style('close')}
       >
         &#128473;
       </button>
-      <div className="Dialog__Content">{children}</div>
+      <div className={style('content')}>{children}</div>
     </dialog>
   )
 }

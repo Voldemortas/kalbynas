@@ -1,23 +1,30 @@
-.Dialog {
-  max-width: none !important;
-  max-height: none !important;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--color-green-white);
-  border: 0;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  font-size: 25px;
+@use 'sass:string';
 
-  &__Content {
+$uniqueId: unique-id();
+/* #{$uniqueId} */
+
+._#{$uniqueId} {
+  &_dialog {
+    max-width: none !important;
+    max-height: none !important;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-green-white);
+    border: 0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+  }
+
+  &_content {
     position: relative;
     display: block;
     margin-top: 75px;
     text-align: center;
   }
 
-  &__Close {
+  &_close {
     position: absolute;
     display: block;
     top: 20px;

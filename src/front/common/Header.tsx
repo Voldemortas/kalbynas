@@ -1,16 +1,16 @@
 import React, {useRef} from 'react'
-import './header.css'
+import styles from './header.module.scss'
 import Dialog, {type DialogRef} from './Dialog'
 
 export default function Header() {
   const languagesRef = useRef<DialogRef>(null)
 
   return (
-    <header className="Common__Header">
-      <div className="Common__Header__Logo">
+    <header className={styles('header')}>
+      <div className={styles('logo')}>
         <a href="/">Kalbyn[ɐ̝]s</a>
       </div>
-      <div className="Common__Header__Languages--desktop">
+      <div className={styles('languages--desktop')}>
         <a
           href={getNewUrl('lt')}
           title="lietuvių k."
@@ -23,7 +23,7 @@ export default function Header() {
           <img src="/static/en.png" alt="English" />
         </a>
       </div>
-      <div className="Common__Header__Languages--mobile">
+      <div className={styles('languages--mobile')}>
         <div
           style={{
             backgroundImage: 'url("/static/languageIcon.svg")',

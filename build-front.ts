@@ -24,7 +24,8 @@ export default async function buildFront(entrypoints: string[]) {
       scssFiles.map(async (f) => {
         const {css} = await sass.compileAsync(`${TEMP_DIR}${f}`)
         await Bun.write(`${TEMP_DIR}${f.replace(/\.scss$/, '.css')}`, css)
-        if (/\.module\.scss$/.test(f) && scssVariablePattern.test(css)) {
+        //TODO check why scssVariablePattern.test(css) doesn't work
+        if (/\.module\.scss$/.test(f)) {
           await Bun.write(
             `${TEMP_DIR}${f.replace(/\.scss$/, '.js')}`,
             generateJS(css.split('\n')[0].replace('/* ', '').replace(' */', ''))
