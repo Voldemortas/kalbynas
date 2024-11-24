@@ -1,11 +1,13 @@
+import isProd from './src/back/pages/common/isProd.ts'
+
 export default async function buildBack() {
-  const b = await Bun.build({
+  const buildOutput = await Bun.build({
     entrypoints: ['src/back/server.ts'],
     outdir: 'out/back',
     target: 'bun',
-    minify: Bun.env.NODE_ENV === 'production',
+    minify: isProd,
   })
-  if (!b.success) {
-    console.error(b.logs)
+  if (!buildOutput.success) {
+    console.error(buildOutput.logs)
   }
 }

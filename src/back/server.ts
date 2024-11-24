@@ -2,11 +2,14 @@ import pages, {getPage, type PageType, type RedirectType} from '../pages'
 import renderReact from './pages/common/renderReact'
 import getUrl from './pages/common/getUrl'
 import IS_PROD from './pages/common/isProd.ts'
+import {getConfigVars} from './common/getConfigVar.ts'
 
 const lastUpdated = new Date().getTime().toString()
+const {HASH, KALBYNAS_PORT, HOSTNAME} = getConfigVars()
 
 const server = Bun.serve({
-  port: Bun.env.KALBYNAS_PORT,
+  port: KALBYNAS_PORT,
+  hostname: HOSTNAME,
   websocket: {
     async message(ws, message) {},
     async open(ws) {
@@ -91,7 +94,7 @@ function getHeadersForRedirect(
 
 function getCacheDuration(request: Request) {
   const {pathname, searchParams} = getUrl(request)
-  if (searchParams.get('hash') === Bun.env.HASH) {
+  if (searchParams.get('hash') === HASH) {
     return 2592000
   }
   if (/^\/static\//.test(pathname)) {

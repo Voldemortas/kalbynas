@@ -1,6 +1,7 @@
 import {$} from 'bun'
 import * as sass from 'sass'
 import {readdir} from 'node:fs/promises'
+import isProd from './src/back/pages/common/isProd.ts'
 
 const TEMP_DIR = 'temp/'
 
@@ -49,7 +50,7 @@ export default async function buildFront(entrypoints: string[]) {
       entrypoints: entrypoints.map((e) => e.replace(/^front/, TEMP_DIR)),
       outdir: 'out/front',
       experimentalCss: true,
-      minify: Bun.env.NODE_ENV === 'production',
+      minify: isProd,
       root: TEMP_DIR,
     })
     if (!buildOutput.success) {

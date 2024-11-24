@@ -3,6 +3,7 @@ import buildFront from './build-front'
 import type {PageType, ReactType} from './src/pages'
 import pages from './src/pages'
 import buildBack from './build-back'
+import isProd from './src/back/pages/common/isProd.ts'
 
 export default async function build() {
   const hash = crypto.randomUUID().split('-')[0]
@@ -15,10 +16,7 @@ export default async function build() {
     .map((p) => p.resolve.path)
   await buildFront(frontPaths)
   await buildBack()
-  await Bun.write(
-    'out/.env',
-    `HASH=${hash}\nPRODUCTION=${Bun.env.NODE_ENV === 'production'}`
-  )
+  await Bun.write('out/.env', `HASH=${hash}\nPRODUCTION=${isProd}`)
 }
 
 await build()
