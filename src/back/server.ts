@@ -93,12 +93,24 @@ function getHeadersForRedirect(
 }
 
 function getCacheDuration(request: Request) {
+  const WEEK = 604800
+  const MONTH = 2592000
+  const HOUR = 3600
   const {pathname, searchParams} = getUrl(request)
   if (searchParams.get('hash') === HASH) {
-    return 2592000
+    return MONTH
+  }
+  if (searchParams.get('hash') === lastUpdated) {
+    return HOUR
   }
   if (/^\/static\//.test(pathname)) {
-    return 604800
+    return WEEK
+  }
+  if (/^\/front\/chunk-/.test(pathname)) {
+    return MONTH
+  }
+  if (pathname === '/favicon.ico') {
+    return MONTH
   }
   return 0
 }
