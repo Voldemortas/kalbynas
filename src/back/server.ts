@@ -42,7 +42,7 @@ const server = Bun.serve({
           return page.resolve.resolver(request, page.params)
         }
         if (page.resolve.type === 'react') {
-          return renderReact(request, lastUpdated)
+          return renderReact(request, HASH ?? lastUpdated)
         }
       }
     }
