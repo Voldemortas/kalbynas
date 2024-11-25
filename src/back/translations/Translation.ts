@@ -1,7 +1,7 @@
 export default class Translation {
   private static DEFAULT_LOCALE = 'lt'
   private locales: string[]
-  private texts: Record<string, string>
+  private readonly texts: Record<string, string>
   public constructor(texts: Record<string, string>) {
     this.locales = Object.keys(texts)
     if (this.locales.indexOf(Translation.DEFAULT_LOCALE) === -1) {
@@ -18,8 +18,8 @@ export default class Translation {
 
     let answer = this.texts[loc]
     for (let i = 0; i < params.length; i++) {
-      const pattern = new RegExp(`[\^\\\\␐](\\\$${i})`, 'g')
-      answer = answer.replaceAll(pattern, params[i])
+      const pattern = new RegExp(`([\^\\\\␐]?)(\\\$${i})`, 'g')
+      answer = answer.replaceAll(pattern, `$1${params[i]}`)
     }
 
     return answer

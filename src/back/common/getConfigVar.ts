@@ -1,10 +1,11 @@
 import parseArgs from './parseArgs.ts'
+import getBunEnv from 'back/common/getBunEnv.ts'
 
 export default function getConfigVar<T extends string | undefined>(
   name: string,
   defaultValue?: string | T
 ): string | T {
-  return parseArgs(`--${name}`) ?? Bun.env[name] ?? (defaultValue as T)
+  return parseArgs(name) ?? getBunEnv()[name] ?? (defaultValue as T)
 }
 
 export function getConfigVars<T extends {[key: string]: string}>(defaults?: T) {
@@ -14,7 +15,7 @@ export function getConfigVars<T extends {[key: string]: string}>(defaults?: T) {
     .filter((arg) => pattern.test(arg))
     .map((arg) => arg.split('=')[0].slice(2))
   const envs = Object.keys(defaultVars).concat(
-    Object.keys(Bun.env).concat(argvs)
+    Object.keys(getBunEnv()).concat(argvs)
   )
   return envs.reduce((acc: {[key: string]: string | undefined}, cur) => {
     acc[cur] = getConfigVar(cur, defaultVars[cur])

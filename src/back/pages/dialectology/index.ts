@@ -1,13 +1,8 @@
-import getNavigation from 'back/common/navigation'
-import getUrl from 'back/pages/common/getUrl'
 import translations from 'back/translations/dialectology'
-import getAllTranslated from 'back/common/getAllTranslated'
+import getPageWithAllTranslations from 'back/pages/common/getPageWithAllTranslations.ts'
+
+const NAV_LINK = '/dialectology'
 
 export default function index(request: Request, params: string[]) {
-  const {sub} = getUrl(request)
-
-  return {
-    ...getAllTranslated(translations, sub),
-    nav: getNavigation(request, '/dialectology'),
-  }
+  return getPageWithAllTranslations(request, NAV_LINK, translations)
 }

@@ -1,10 +1,9 @@
 type ParseArgsOptions =
   | {
       delimiter?: string
-      isPlain: false
+      isPlain?: false
     }
   | {
-      delimiter: never
       isPlain: true
     }
 
@@ -17,7 +16,7 @@ export default function parseArgs(
     : /(?:)/g
   for (let i = 0; i < Bun.argv.length; i++) {
     const arg = Bun.argv[i]
-    if (options.isPlain && arg === argName) {
+    if (options.isPlain && arg === `--${argName}`) {
       return argName
     }
     const matches = [...arg.matchAll(regexPattern)]

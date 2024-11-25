@@ -1,16 +1,15 @@
 import type {Translations} from 'back/translations/Translation'
 
-export default function getAllTranslated(
+export default function getAllTranslated<T extends {[key: string]: string}>(
   translations: Translations,
   locale: string,
   params: Record<string, string[] | string | undefined> = {}
-) {
+): T {
   return Object.keys(translations).reduce(
-    (acc, cur) => ({
-      // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
-      ...acc,
-      [cur]: translations[cur].format(locale, ...(params[cur] ?? [])),
-    }),
+    (acc: {[key: string]: string}, cur) => {
+      acc[cur] = translations[cur].format(locale, ...(params[cur] ?? []))
+      return acc
+    },
     {}
-  )
+  ) as T
 }
