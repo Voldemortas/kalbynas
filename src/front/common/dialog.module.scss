@@ -1,5 +1,3 @@
-@use 'sass:string';
-
 $uniqueId: unique-id();
 /* #{$uniqueId} */
 
@@ -38,5 +36,6 @@ $uniqueId: unique-id();
     border-width: 0;
     cursor: pointer;
     font-size: 20px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
   }
 }

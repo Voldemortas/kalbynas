@@ -1,5 +1,4 @@
 @use '../variables.scss' as variables;
-@use 'sass:string';
 
 $uniqueId: unique-id();
 /* #{$uniqueId} */
@@ -11,7 +10,8 @@ $uniqueId: unique-id();
   }
 
   &_main {
-    width: calc(100% - 1px - variables.$nav-width);
+    $navWidthWithBorder: variables.$nav-width + 1px;
+    width: calc(100% - $navWidthWithBorder);
     text-align: center;
     overflow-y: auto;
 

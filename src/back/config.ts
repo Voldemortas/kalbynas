@@ -1,4 +1,5 @@
 export const ROOT = `${import.meta.dir}/..`
+export const FRONT_ROOT = `${import.meta.dir}/../front`
 export const PROD_HOST = 'kalbynas.lt'
 export const ALTERNATES = ['lt', 'en'] as const
 export type ALTERNATES_TYPE = (typeof ALTERNATES)[number]

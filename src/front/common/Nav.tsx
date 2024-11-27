@@ -33,6 +33,9 @@ export default function Nav({selected = undefined, links}: NavProps) {
         className={styles('hamburger')}
         onClick={() => menuRef.current?.switch()}
         onKeyUp={() => menuRef.current?.switch()}
+        // biome-ignore lint/a11y/useSemanticElements: <explanation>
+        role={'button'}
+        tabIndex={0}
       >
         ≡
       </div>

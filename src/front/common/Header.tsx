@@ -34,6 +34,8 @@ export default function Header() {
           aria-labelledby="language-selector"
           onClick={() => languagesRef.current?.switch()}
           onKeyUp={() => languagesRef.current?.switch()}
+          role="button"
+          tabIndex={0}
         />
         <div className="sr-only" id="language-selector">
           <span lang="en">Change language</span>
