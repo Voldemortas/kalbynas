@@ -1,10 +1,8 @@
-import getNavigation from 'back/common/navigation'
-import getUrl from 'back/pages/common/getUrl'
+import translations from 'back/translations/index'
+import getPageWithAllTranslations from 'back/pages/common/getPageWithAllTranslations.ts'
+
+const NAV_LINK = ''
 
 export default function index(request: Request, params: string[]) {
-  const {sub} = getUrl(request)
-
-  const msg = sub === 'en' ? 'English!' : 'Lietuviškai!'
-
-  return {msg, nav: getNavigation(request, '/')}
+  return getPageWithAllTranslations(request, NAV_LINK, translations)
 }

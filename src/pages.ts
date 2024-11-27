@@ -1,7 +1,6 @@
 import IndexBack from './back/pages/index/index'
 import DialectologyBack from './back/pages/dialectology/index'
 import BaltisticsBack from './back/pages/baltistics/index'
-import ApiTest from './back/api/test'
 import Robots from './back/static/robots'
 import Sitemap from './back/static/sitemap'
 import getUrl from './back/pages/common/getUrl'
@@ -66,14 +65,14 @@ const config: PageType<ReactType | RedirectType | BackType>[] = [
     },
     params: ['headers', '{"content-type": "text/css"}'],
   },
-  {
-    path: '/api/test',
-    resolve: {
-      type: 'back',
-      resolver: ApiTest,
-    },
-    params: ['hello world!'],
-  },
+  // {
+  //   path: '/api/test',
+  //   resolve: {
+  //     type: 'back',
+  //     resolver: ApiTest,
+  //   },
+  //   params: ['hello world!'],
+  // },
 ]
 
 export function getPage(
