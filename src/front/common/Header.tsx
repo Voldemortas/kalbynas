@@ -1,6 +1,7 @@
 import React, {useRef} from 'react'
 import styles from './header.module.scss'
 import Dialog, {type DialogRef} from './Dialog'
+import {DEFAULT_ALTERNATE} from "back/config.ts";
 
 export default function Header() {
   const languagesRef = useRef<DialogRef>(null)
@@ -58,7 +59,6 @@ export default function Header() {
 }
 
 function getNewUrl(subdomain: string) {
-  const DEFAULT_LOCALE = 'lt'
   const splitHostName = window.location.hostname.split('.')
   let domain: string
   if (splitHostName.length === 2) {
@@ -66,7 +66,7 @@ function getNewUrl(subdomain: string) {
   } else {
     domain = `${splitHostName[1]}.${splitHostName[2]}`
   }
-  const sub = subdomain === DEFAULT_LOCALE ? '' : `${subdomain}.`
+  const sub = subdomain === DEFAULT_ALTERNATE ? '' : `${subdomain}.`
   const protocol = `${window.location.protocol}//`
   const port = window.location.port === '' ? '' : `:${window.location.port}`
   return protocol + sub + domain + port + window.location.pathname

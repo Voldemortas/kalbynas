@@ -1,3 +1,3 @@
-const htmlHeaders = {headers: {'Content-Type': 'text/html'}}
+const htmlHeaders = {headers: {'content-type': 'text/html'}}
 
 export default htmlHeaders

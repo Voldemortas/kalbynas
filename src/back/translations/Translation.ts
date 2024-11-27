@@ -1,20 +1,20 @@
+import {type ALTERNATES_TYPE, DEFAULT_ALTERNATE} from "back/config.ts";
+
 export default class Translation {
-  private static DEFAULT_LOCALE = 'lt'
-  private locales: string[]
+  private locales: ALTERNATES_TYPE[]
   private readonly texts: Record<string, string>
-  public constructor(texts: Record<string, string>) {
-    this.locales = Object.keys(texts)
-    if (this.locales.indexOf(Translation.DEFAULT_LOCALE) === -1) {
+  public constructor(texts: {[key in ALTERNATES_TYPE]?: string}) {
+    this.locales = Object.keys(texts) as ALTERNATES_TYPE[]
+    if (this.locales.indexOf(DEFAULT_ALTERNATE) === -1) {
       throw new Error(
-        `Translation is missing default=${Translation.DEFAULT_LOCALE} locale`
+        `Translation is missing default=${DEFAULT_ALTERNATE} locale`
       )
     }
     this.texts = texts
   }
 
-  public format(locale: string, ...params: string[]) {
-    const loc =
-      this.locales.indexOf(locale) === -1 ? Translation.DEFAULT_LOCALE : locale
+  public format(locale: ALTERNATES_TYPE, ...params: string[]) {
+    const loc = this.locales.indexOf(locale) === -1 ? DEFAULT_ALTERNATE : locale
 
     let answer = this.texts[loc]
     for (let i = 0; i < params.length; i++) {

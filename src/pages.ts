@@ -64,7 +64,7 @@ const config: PageType<ReactType | RedirectType | BackType>[] = [
       type: 'redirect',
       path: '/static/global.scss',
     },
-    params: ['headers', '{"Content-type": "text/css"}'],
+    params: ['headers', '{"content-type": "text/css"}'],
   },
   {
     path: '/api/test',
@@ -78,10 +78,11 @@ const config: PageType<ReactType | RedirectType | BackType>[] = [
 
 export function getPage(
   request: Request,
-  resolveType: 'react' | 'redirect' | 'back'
+  resolveType: 'react' | 'redirect' | 'back',
+  conf = config
 ) {
   const {pathname} = getUrl(request)
-  return config.filter(
+  return conf.filter(
     ({path, resolve}) => path === pathname && resolve.type === resolveType
   )[0]
 }

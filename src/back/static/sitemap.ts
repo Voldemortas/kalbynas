@@ -2,7 +2,7 @@ import textHeaders from 'back/common/textHeaders'
 import getUrl from 'back/pages/common/getUrl.ts'
 import config from 'src/pages'
 
-export default function robots(request: Request, params: string[]) {
+export default function sitemap(request: Request, params: string[]) {
   const {origin} = getUrl(request, true)
 
   return new Response(

@@ -1,15 +1,16 @@
 import type {Translations} from 'back/translations/Translation'
+import type {ALTERNATES_TYPE} from "back/config.ts";
 
-export default function getAllTranslated<T extends {[key: string]: string}>(
+export default function getAllTranslated(
   translations: Translations,
-  locale: string,
+  locale: ALTERNATES_TYPE,
   params: Record<string, string[] | string | undefined> = {}
-): T {
+): {[key: string]: string} {
   return Object.keys(translations).reduce(
     (acc: {[key: string]: string}, cur) => {
       acc[cur] = translations[cur].format(locale, ...(params[cur] ?? []))
       return acc
     },
     {}
-  ) as T
+  ) as {[key: string]: string}
 }

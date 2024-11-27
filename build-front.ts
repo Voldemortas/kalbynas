@@ -51,7 +51,7 @@ export default async function buildFront(entrypoints: string[]) {
       entrypoints: entrypoints.map((e) => e.replace(/^front/, TEMP_DIR)),
       outdir: 'out/front',
       experimentalCss: true,
-      minify: isProd,
+      minify: isProd(),
       root: TEMP_DIR,
       target: 'browser',
       splitting: true,
