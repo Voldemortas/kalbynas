@@ -15,7 +15,6 @@ body,
 #root {
   min-height: 100%;
   min-width: 100%;
-  height: 100%;
   margin: 0 !important;
   padding: 0 !important;
   position: relative;
@@ -64,7 +63,7 @@ article {
   text-align: justify;
   max-width: 840px;
   display: inline-block;
-  margin: 0px 20px;
+  margin: 0 20px;
 
   p {
     text-indent: 15px;
