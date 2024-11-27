@@ -4,12 +4,13 @@ import getUrl from './getUrl'
 import isProd from './isProd.ts'
 import {ALTERNATES, DEFAULT_ALTERNATE, FILES_FOR_BUILD, PROD_HOST,} from 'back/config.ts'
 import translations from 'back/translations/renderReact.ts'
+import defaultHtml from './default.html'
 
 export default async function renderReact(request: Request, hash: string) {
   const {sub, pathname} = getUrl(request)
   const locale =
     ALTERNATES.find((alternate) => alternate === sub) ?? DEFAULT_ALTERNATE
-  const htmlFile = await Bun.file(FILES_FOR_BUILD.DEFAULT_HTML).text()
+  const htmlFile = await Bun.file(`${import.meta.dir}/${defaultHtml}`).text()
 
   const page = getPage(request, 'react') as PageType<ReactType>
   const path = page.resolve.path.replace(/\.ts$/, '')
