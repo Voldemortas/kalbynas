@@ -1,5 +1,8 @@
 # Kalbynas
 
+[![test](https://github.com/Voldemortas/kalbynas/actions/workflows/test.yml/badge.svg)](https://github.com/Voldemortas/kalbynas/actions/workflows/test.yml)
+[![test-coverage](https://github.com/Voldemortas/kalbynas/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/Voldemortas/kalbynas/actions/workflows/test-coverage.yml)
+
 ## Live project
 
 Project living live can be accessed by visiting [kalbynas.lt](https://kalbynas.lt)
