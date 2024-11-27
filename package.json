@@ -28,7 +28,7 @@
     "build": "bun run build.ts",
     "watch": "bun --env-file=out/.env run watch.ts",
     "serve": "bun --env-file=out/.env run src/back/server.ts",
-    "serve-prod": "bun --env-file=out/.env run out/back/server.js",
+    "serve-prod": "bun --env-file=out/.env run out/server.js",
     "serve-pm2": "bunx --bun pm2 start"
   },
   "browserslist": {

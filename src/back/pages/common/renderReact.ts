@@ -2,15 +2,18 @@ import htmlHeaders from 'back/common/htmlHeaders'
 import {getPage, type PageType, type ReactType} from 'src/pages.ts'
 import getUrl from './getUrl'
 import isProd from './isProd.ts'
-import {ALTERNATES, DEFAULT_ALTERNATE, FILES_FOR_BUILD, PROD_HOST,} from 'back/config.ts'
+import {ALTERNATES, DEFAULT_ALTERNATE, PROD_HOST} from 'back/config.ts'
 import translations from 'back/translations/renderReact.ts'
 import defaultHtml from './default.html'
+import developmentHtml from './development.html'
 
 export default async function renderReact(request: Request, hash: string) {
   const {sub, pathname} = getUrl(request)
   const locale =
     ALTERNATES.find((alternate) => alternate === sub) ?? DEFAULT_ALTERNATE
-  const htmlFile = await Bun.file(`${import.meta.dir}/${defaultHtml}`).text()
+  const htmlFile = await Bun.file(
+    defaultHtml.replaceAll(/^\./g, import.meta.dir)
+  ).text()
 
   const page = getPage(request, 'react') as PageType<ReactType>
   const path = page.resolve.path.replace(/\.ts$/, '')
@@ -18,7 +21,11 @@ export default async function renderReact(request: Request, hash: string) {
   const newHtmlFile = htmlFile
     .replace(
       '<script id="dev"></script>',
-      isProd() ? '' : await Bun.file(FILES_FOR_BUILD.DEVELOPMENT_HTML).text()
+      isProd()
+        ? ''
+        : await Bun.file(
+            developmentHtml.replaceAll(/^\./g, import.meta.dir)
+          ).text()
     )
     .replace('const hash = undefined', isProd() ? '' : `const hash = '${hash}'`)
     .replaceAll(

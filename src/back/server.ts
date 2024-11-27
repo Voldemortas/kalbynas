@@ -17,7 +17,7 @@ const server = Bun.serve({
     },
   },
   async fetch(request): Promise<Response | undefined> {
-    if (!IS_PROD) {
+    if (!IS_PROD()) {
       const success = server.upgrade(request)
       if (success) {
         return undefined
