@@ -1,0 +1,13 @@
+$mobile-breakpoint: 800px;
+
+p {
+  color: red;
+}
+
+.test {
+  color: green;
+
+  @media (width > $mobile-breakpoint) {
+    color: blue;
+  }
+}

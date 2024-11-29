@@ -1,0 +1,18 @@
+$uniqueId: unique-id();
+/* #{$uniqueId} */
+
+._#{$uniqueId} {
+  p {
+    color: red;
+  }
+
+  &_test {
+    color: green;
+  }
+
+  @media (width > 800px) {
+    &_test {
+      color: blue;
+    }
+  }
+}

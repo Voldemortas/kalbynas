@@ -2,7 +2,7 @@ import {afterEach, describe, expect, it, mock} from 'bun:test'
 import {fireEvent, render, screen} from '@testing-library/react'
 import Dialog, {type DialogRef} from 'front/common/Dialog.tsx'
 import {useRef} from 'react'
-import mockModuleScss from 'test/mockModuleScss.ts'
+import mockModuleScss from 'test/build/mockModuleScss.ts'
 
 describe('Dialog Component', () => {
   afterEach(() => {

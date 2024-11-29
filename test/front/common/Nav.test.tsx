@@ -1,6 +1,6 @@
 import {afterEach, beforeEach, describe, expect, it, mock} from 'bun:test'
 import {render, screen} from '@testing-library/react'
-import mockModuleScss from 'test/mockModuleScss.ts'
+import mockModuleScss from 'test/build/mockModuleScss.ts'
 import Nav from 'front/common/Nav.tsx'
 import React from 'react'
 import {ModuleMocker} from 'test/ModuleMocker.ts'
