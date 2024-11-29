@@ -1,26 +1,20 @@
 @use '../variables.scss' as variables;
 
-$uniqueId: unique-id();
-/* #{$uniqueId} */
+.container {
+  display: flex;
+}
 
-._#{$uniqueId} {
+.main {
+  $navWidthWithBorder: variables.$nav-width + 1px;
+  width: calc(100% - $navWidthWithBorder);
+  text-align: center;
+  overflow-y: auto;
 
-  &_container {
-    display: flex;
+  @media (width <= variables.$mobile-breakpoint) {
+    width: 100%;
   }
 
-  &_main {
-    $navWidthWithBorder: variables.$nav-width + 1px;
-    width: calc(100% - $navWidthWithBorder);
-    text-align: center;
-    overflow-y: auto;
-
-    @media (width <= variables.$mobile-breakpoint) {
-      width: 100%;
-    }
-
-    @media (width > variables.$mobile-breakpoint) {
-      border-top: 1px solid var(--color-green-2);
-    }
+  @media (width > variables.$mobile-breakpoint) {
+    border-top: 1px solid var(--color-green-2);
   }
 }

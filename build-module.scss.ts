@@ -9,29 +9,48 @@ export async function getAllModuleScssFiles(rootDit = TEMP_DIR) {
   )
 }
 
-export async function decorateModuleWithPrefix(moduleContent: string) {
+export async function decorateModuleWithPrefix({
+  moduleContent,
+  moduleFileName,
+  style,
+}: {
+  moduleContent?: string
+  moduleFileName?: string
+  style?: sass.OutputStyle | undefined
+}) {
   const regex = /(^(\.))|((^@media \([\s\w>=<\d]+\)\s{\n\s+)\.)/gm
-  const compiledSource = await sass.compileStringAsync(moduleContent, {
-    style: 'expanded',
-  })
-  const changedClassesToChildren = compiledSource.css.replaceAll(regex, '$4&_')
-  return `
-$uniqueId: unique-id();
-/* #{$uniqueId} */
+  let compileResult: string
+  if (moduleFileName) {
+    compileResult = (
+      await sass.compileAsync(moduleFileName, {
+        style: 'expanded',
+      })
+    ).css
+  } else if (moduleContent) {
+    compileResult = (
+      await sass.compileStringAsync(moduleContent, {
+        style,
+      })
+    ).css
+  } else {
+    throw new Error('missing')
+  }
+  const changedClassesToChildren = compileResult.replaceAll(regex, '$4&_')
+  return `$uniqueId: unique-id();
+  /* #{$uniqueId} */
 
-._#{$uniqueId} {
-  ${changedClassesToChildren}
-}`
+  ._#{$uniqueId} {
+    ${changedClassesToChildren}
+  }`
 }
 
 export async function replaceModuleFileWithDecoratedContent(
   filePath: string,
   newFilePath?: string
-): Promise<void> {
-  const file = Bun.file(filePath)
-  const writer = Bun.file(newFilePath ?? filePath).writer()
-  const moduleContent = await file.text()
-  const decoratedContent = await decorateModuleWithPrefix(moduleContent)
-  writer.write(decoratedContent)
-  await writer.flush()
+) {
+  const decoratedContent = await decorateModuleWithPrefix({
+    moduleFileName: filePath,
+  })
+  await Bun.write(newFilePath ?? filePath, decoratedContent)
+  return decoratedContent
 }

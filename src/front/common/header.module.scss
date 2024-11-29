@@ -1,67 +1,61 @@
-@use '../variables.scss';
-@use 'sass:string';
+@use '../variables.scss' as variables;
+@use "sass:math";
 
-$uniqueId: unique-id();
-/* #{$uniqueId} */
+.header {
+  width: 100%;
+  height: variables.$header-height;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-green-2);
 
-._#{$uniqueId} {
-
-  &_header {
-    width: 100%;
-    height: variables.$header-height;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--color-green-2);
-
-    @media (width > variables.$mobile-breakpoint) {
-      position: sticky;
-      top: 0;
-      border-bottom: unset;
-    }
+  @media (width > variables.$mobile-breakpoint) {
+    position: sticky;
+    top: 0;
+    border-bottom: unset;
   }
+}
 
-  &_languages {
-    right: 0;
-    margin-top: calc(variables.$header-height * 1 / 4);
-    margin-right: calc(variables.$header-height * 1 / 3);
+.languages {
+  right: 0;
+  margin-top: math.div(variables.$header-height, 4);
+  margin-right: math.div(variables.$header-height, 3);
 
-    &--desktop {
-      & > a > img {
-        height: calc(variables.$header-height * 1 / 2);
-        padding-left: calc(variables.$header-height * 1 / 4);
-      }
-
-      @media (width <= variables.$mobile-breakpoint) {
-        display: none;
-      }
+  &--desktop {
+    & > a > img {
+      height: math.div(variables.$header-height, 2);
+      padding-left: math.div(variables.$header-height, 4);
     }
-
-    &--mobile {
-      display: none;
-
-      @media (width <= variables.$mobile-breakpoint) {
-        display: block;
-        position: absolute;
-        right: 0;
-
-        & > div {
-          cursor: pointer;
-        }
-      }
-    }
-  }
-
-  &_logo {
-    font-size: calc(variables.$header-height * 0.6);
-    width: variables.$nav-width;
-    text-align: center;
 
     @media (width <= variables.$mobile-breakpoint) {
-      width: 100%;
+      display: none;
     }
+  }
 
-    @media (width > variables.$mobile-breakpoint) {
-      border-right: 1px solid var(--color-green-2);
+  &--mobile {
+    display: none;
+
+    @media (width <= variables.$mobile-breakpoint) {
+      display: block;
+      position: absolute;
+      right: 0;
+
+      & > div {
+        cursor: pointer;
+      }
     }
+  }
+}
+
+.logo {
+  font-size: variables.$header-height * 0.6;
+  width: variables.$nav-width;
+  text-align: center;
+
+  @media (width <= variables.$mobile-breakpoint) {
+    width: 100%;
+  }
+
+  @media (width > variables.$mobile-breakpoint) {
+    border-right: 1px solid var(--color-green-2);
   }
 }

@@ -51,17 +51,8 @@ suggested for this reason.
 follow this snippet:
 
 ```scss
-//myModule.module.scss
-@use 'sass:string';
-
-$uniqueId: unique-id();
-/* #{$uniqueId} */
-//the comment above is required
-
-._#{$uniqueId} {
-  &_italic {
-    font-style: italic;
-  }
+.italic {
+  font-style: italic;
 }
 ```
 

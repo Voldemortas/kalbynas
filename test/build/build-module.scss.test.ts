@@ -22,7 +22,7 @@ describe('build-module.scss', () => {
   })
   describe('decorateModuleWithPrefix', () => {
     it('works correctly with tag', async () => {
-      const result = await decorateModuleWithPrefix(SCSS)
+      const result = await decorateModuleWithPrefix({moduleContent: SCSS})
       expect(result.replaceAll(/\s+/g, '')).toBe(
         `
         $uniqueId: unique-id();
@@ -34,7 +34,7 @@ describe('build-module.scss', () => {
       )
     })
     it('works correctly with class', async () => {
-      const result = await decorateModuleWithPrefix(`.${SCSS}`)
+      const result = await decorateModuleWithPrefix({moduleContent: `.${SCSS}`})
       expect(result.replaceAll(/\s+/g, '')).toBe(
         `
         $uniqueId: unique-id();
@@ -46,9 +46,9 @@ describe('build-module.scss', () => {
       )
     })
     it('works correctly with media', async () => {
-      const result = await decorateModuleWithPrefix(
-        `@media (width <= 800px) {.${SCSS}}`
-      )
+      const result = await decorateModuleWithPrefix({
+        moduleContent: `@media (width <= 800px) {.${SCSS}}`,
+      })
       expect(result.replaceAll(/\s+/g, '')).toBe(
         `
         $uniqueId: unique-id();

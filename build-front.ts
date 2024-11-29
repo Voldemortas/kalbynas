@@ -2,6 +2,7 @@ import {$} from 'bun'
 import * as sass from 'sass'
 import {readdir} from 'node:fs/promises'
 import isProd from './src/back/pages/common/isProd.ts'
+import {getAllModuleScssFiles, replaceModuleFileWithDecoratedContent,} from './build-module.scss.ts'
 
 const TEMP_DIR = 'temp/'
 
@@ -9,30 +10,22 @@ export default async function buildFront(entrypoints: string[]) {
   await $`cp src/front ${TEMP_DIR} -r`
 
   try {
-    const scssVariablePattern = /^\/\*\s(\w+)\s\*\/\n/g
-    const isMatchingScss = (name: string) => /\.scss$/.test(name)
     const isMatchingTsx = (name: string) => /\.tsx$/.test(name)
-
-    const scssFiles = (await readdir(TEMP_DIR, {recursive: true})).filter(
-      isMatchingScss
-    )
     const tsxFiles = (await readdir(TEMP_DIR, {recursive: true})).filter(
       isMatchingTsx
     )
 
-    await Promise.all(
-      scssFiles.map(async (f) => {
-        const {css} = await sass.compileAsync(`${TEMP_DIR}${f}`)
-        await Bun.write(`${TEMP_DIR}${f.replace(/\.scss$/, '.css')}`, css)
-        //TODO check why scssVariablePattern.test(css) doesn't work
-        if (/\.module\.scss$/.test(f)) {
-          await Bun.write(
-            `${TEMP_DIR}${f.replace(/\.scss$/, '.js')}`,
-            generateJS(css.split('\n')[0].replace('/* ', '').replace(' */', ''))
-          )
-        }
-      })
-    )
+    const allModuleScssFiles = await getAllModuleScssFiles()
+    for (const moduleScssFile of allModuleScssFiles) {
+      const filePath = `./${TEMP_DIR}/${moduleScssFile}`
+      const css = await replaceModuleFileWithDecoratedContent(filePath)
+      const compiledCss = await sass.compileStringAsync(css)
+      await Bun.write(filePath.replace(/\.scss$/, '.css'), compiledCss.css)
+      const hash = compiledCss.css.match(
+        /^\/\*\s(\w+)\s\*\/\n/
+      ) as RegExpExecArray
+      await Bun.write(filePath.replace(/\.scss$/, '.js'), generateJS(hash[1]))
+    }
 
     await Promise.all(
       tsxFiles.map(async (f) => {
