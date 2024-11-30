@@ -1,4 +1,5 @@
-$uniqueId: unique-id();
+@use "sass:string";
+$uniqueId: string.unique-id();
 /* #{$uniqueId} */
 
 ._#{$uniqueId} {

@@ -36,7 +36,8 @@ export async function decorateModuleWithPrefix({
     throw new Error('missing')
   }
   const changedClassesToChildren = compileResult.replaceAll(regex, '$4&_')
-  return `$uniqueId: unique-id();
+  return `@use "sass:string";
+$uniqueId: string.unique-id();
   /* #{$uniqueId} */
 
   ._#{$uniqueId} {

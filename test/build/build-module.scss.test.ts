@@ -24,8 +24,8 @@ describe('build-module.scss', () => {
     it('works correctly with tag', async () => {
       const result = await decorateModuleWithPrefix({moduleContent: SCSS})
       expect(result.replaceAll(/\s+/g, '')).toBe(
-        `
-        $uniqueId: unique-id();
+        `@use "sass:string";
+        $uniqueId: string.unique-id();
         /* #{$uniqueId} */
         ._#{$uniqueId} {
           ${SCSS}
@@ -36,8 +36,8 @@ describe('build-module.scss', () => {
     it('works correctly with class', async () => {
       const result = await decorateModuleWithPrefix({moduleContent: `.${SCSS}`})
       expect(result.replaceAll(/\s+/g, '')).toBe(
-        `
-        $uniqueId: unique-id();
+        `@use "sass:string";
+        $uniqueId: string.unique-id();
         /* #{$uniqueId} */
         ._#{$uniqueId} {
           &_${SCSS}
@@ -50,8 +50,8 @@ describe('build-module.scss', () => {
         moduleContent: `@media (width <= 800px) {.${SCSS}}`,
       })
       expect(result.replaceAll(/\s+/g, '')).toBe(
-        `
-        $uniqueId: unique-id();
+        `@use "sass:string";
+        $uniqueId: string.unique-id();
         /* #{$uniqueId} */
         ._#{$uniqueId} {
           @media (width <= 800px) {&_${SCSS}}
