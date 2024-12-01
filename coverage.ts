@@ -19,7 +19,7 @@ export function generateHsl(colourPercentage: number) {
     (MAX_H_COLOUR - MIN_H_COLOUR) /
     (MAX_BOUND_PERCENTAGE - MIN_BOUND_PERCENTAGE)
 
-  return step * normalisedPercentage
+  return Math.round(step * normalisedPercentage)
 }
 
 const shellOutput = await $`bun test --coverage`.quiet().nothrow()
