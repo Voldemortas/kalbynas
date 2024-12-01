@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'bun:test'
 import robots from 'back/static/robots.ts'
-import textHeaders from 'back/common/textHeaders.ts'
+import {textHeaders} from 'back/common/responseHeaders.ts'
 import assertHeaders from 'test/back/assertHeaders.ts'
 
 describe('robots.txt', () => {

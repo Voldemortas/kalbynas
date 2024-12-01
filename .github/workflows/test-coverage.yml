@@ -15,7 +15,9 @@ jobs:
         run: echo "LINES_COVERAGE=`bun run ./lines-coverage.ts`" >> $GITHUB_ENV
       - name: Set functions coverage to env
         run: echo "FUNCTIONS_COVERAGE=`bun run ./func-coverage.ts`" >> $GITHUB_ENV
-      - name: Update gist
+      - name: Set files coverage to env
+        run: echo "FILES_COVERAGE=`bun run ./files-coverage.ts`" >> $GITHUB_ENV
+      - name: Update gist with lines coverage
         uses: gorgbus/gist-actions@main
         env:
           GITHUB_TOKEN: ${{ secrets.GIST_SECRET }}
@@ -24,7 +26,7 @@ jobs:
           gist_id: "311fbde44b381b8a16f2876b9f0eb24b"
           file_name: "kalbynas-lines.json"
           content: ${{ env.LINES_COVERAGE }}
-      - name: Update gist
+      - name: Update gist with functions coverage
         uses: gorgbus/gist-actions@main
         env:
           GITHUB_TOKEN: ${{ secrets.GIST_SECRET }}
@@ -33,3 +35,12 @@ jobs:
           gist_id: "311fbde44b381b8a16f2876b9f0eb24b"
           file_name: "kalbynas-functions.json"
           content: ${{ env.FUNCTIONS_COVERAGE }}
+      - name: Update gist with files coverage
+        uses: gorgbus/gist-actions@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIST_SECRET }}
+        with:
+          action: "update"
+          gist_id: "311fbde44b381b8a16f2876b9f0eb24b"
+          file_name: "kalbynas-files.json"
+          content: ${{ env.FILES_COVERAGE }}

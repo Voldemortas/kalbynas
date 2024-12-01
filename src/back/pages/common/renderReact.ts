@@ -1,4 +1,4 @@
-import htmlHeaders from 'back/common/htmlHeaders'
+import {htmlHeaders} from 'back/common/responseHeaders.ts'
 import {getPage, type PageType, type ReactType} from 'src/pages.ts'
 import getUrl from './getUrl'
 import isProd from './isProd.ts'

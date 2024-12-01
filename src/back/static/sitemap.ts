@@ -1,4 +1,4 @@
-import textHeaders from 'back/common/textHeaders'
+import {textHeaders} from 'back/common/responseHeaders'
 import getUrl from 'back/pages/common/getUrl.ts'
 import config from 'src/pages'
 

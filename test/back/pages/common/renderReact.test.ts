@@ -1,7 +1,7 @@
 import {afterEach, beforeEach, describe, expect, it, mock, spyOn,} from 'bun:test'
 import assertHeaders from 'test/back/assertHeaders.ts'
 import renderReact from 'back/pages/common/renderReact.ts'
-import htmlHeaders from 'back/common/htmlHeaders.ts'
+import {htmlHeaders} from 'back/common/responseHeaders.ts'
 import * as Page from 'src/pages.ts'
 import * as isProd from 'back/pages/common/isProd.ts'
 

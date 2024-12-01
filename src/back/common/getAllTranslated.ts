@@ -1,5 +1,5 @@
-import type {Translations} from 'back/translations/Translation'
-import type {ALTERNATES_TYPE} from "back/config.ts";
+import type {Translations} from 'back/common/Translation.ts'
+import type {ALTERNATES_TYPE} from 'back/config.ts'
 
 export default function getAllTranslated(
   translations: Translations,

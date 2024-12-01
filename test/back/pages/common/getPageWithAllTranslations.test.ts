@@ -1,7 +1,7 @@
 import {describe, expect, mock, spyOn, test} from 'bun:test'
 import getPageWithAllTranslations from 'back/pages/common/getPageWithAllTranslations.ts'
 import makeNavigation from 'test/makeNavigation.ts'
-import Translation from 'back/translations/Translation.ts'
+import Translation from 'back/common/Translation.ts'
 import * as getUrl from 'back/pages/common/getUrl.ts'
 import * as getNavigation from 'back/common/navigation.ts'
 

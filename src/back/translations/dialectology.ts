@@ -1,4 +1,4 @@
-import Translation, {type Translations} from './Translation'
+import Translation, {type Translations} from 'back/common/Translation.ts'
 
 const translations: Translations = {
   text: new Translation({

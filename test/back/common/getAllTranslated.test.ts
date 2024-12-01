@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'bun:test'
 import getAllTranslated from 'back/common/getAllTranslated.ts'
-import Translation from 'back/translations/Translation.ts'
+import Translation from 'back/common/Translation.ts'
 
 describe('getAllTranslated', () => {
   test('gets simple translations for locale', () => {
