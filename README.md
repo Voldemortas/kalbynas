@@ -1,6 +1,6 @@
 # Kalbynas
 
-[![test](https://github.com/Voldemortas/kalbynas/actions/workflows/test.yml/badge.svg)](https://github.com/Voldemortas/kalbynas/actions/workflows/test.yml)
+[//]: # ([![test]&#40;https://github.com/Voldemortas/kalbynas/actions/workflows/test.yml/badge.svg&#41;]&#40;https://github.com/Voldemortas/kalbynas/actions/workflows/test.yml&#41;)
 [![test-coverage](https://github.com/Voldemortas/kalbynas/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/Voldemortas/kalbynas/actions/workflows/test-coverage.yml)
 
 ## Live project

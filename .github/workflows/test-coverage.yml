@@ -11,5 +11,25 @@ jobs:
         uses: oven-sh/setup-bun@v2
       - name: Install dependencies
         run: bun install
-      - name: Get test coverage
-        run: bun test --coverage
+      - name: Set lines coverage to env
+        run: echo "LINES_COVERAGE=`bun run ./lines-coverage.ts`" >> $GITHUB_ENV
+      - name: Set functions coverage to env
+        run: echo "FUNCTIONS_COVERAGE=`bun run ./func-coverage.ts`" >> $GITHUB_ENV
+      - name: Update gist
+        uses: gorgbus/gist-actions@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIST_SECRET }}
+        with:
+          action: "update"
+          gist_id: "311fbde44b381b8a16f2876b9f0eb24b"
+          file_name: "kalbynas-lines.json"
+          content: ${{ env.LINES_COVERAGE }}
+      - name: Update gist
+        uses: gorgbus/gist-actions@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIST_SECRET }}
+        with:
+          action: "update"
+          gist_id: "311fbde44b381b8a16f2876b9f0eb24b"
+          file_name: "kalbynas-functions.json"
+          content: ${{ env.FUNCTIONS_COVERAGE }}
