@@ -1,5 +1,5 @@
 declare module '*.html' {
-    const content: string;
+    const content: {'index': string};
     export default content;
   }
   

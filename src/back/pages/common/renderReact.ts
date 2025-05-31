@@ -12,7 +12,7 @@ export default async function renderReact(request: Request, hash: string) {
   const locale =
     ALTERNATES.find((alternate) => alternate === sub) ?? DEFAULT_ALTERNATE
   const htmlFile = await Bun.file(
-    defaultHtml.replaceAll(/^\./g, import.meta.dir)
+    (defaultHtml.index ?? defaultHtml).replaceAll(/^\./g, import.meta.dir)
   ).text()
 
   const page = getPage(request, 'react') as PageType<ReactType>
@@ -24,7 +24,7 @@ export default async function renderReact(request: Request, hash: string) {
       isProd()
         ? ''
         : await Bun.file(
-            developmentHtml.replaceAll(/^\./g, import.meta.dir)
+            (developmentHtml.index ?? developmentHtml).replaceAll(/^\./g, import.meta.dir)
           ).text()
     )
     .replace('const hash = undefined', isProd() ? '' : `const hash = '${hash}'`)
