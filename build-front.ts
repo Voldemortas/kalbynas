@@ -18,13 +18,14 @@ export default async function buildFront(entrypoints: string[]) {
     const allModuleScssFiles = await getAllModuleScssFiles()
     for (const moduleScssFile of allModuleScssFiles) {
       const filePath = `./${TEMP_DIR}/${moduleScssFile}`
-      const css = await replaceModuleFileWithDecoratedContent(filePath)
+      const escapedFilePath = filePath.replaceAll(/\.module\.scss/g, '_module.scss')
+      const css = await replaceModuleFileWithDecoratedContent(filePath, escapedFilePath)
       const compiledCss = await sass.compileStringAsync(css)
-      await Bun.write(filePath.replace(/\.scss$/, '.css'), compiledCss.css)
+      await Bun.write(escapedFilePath.replace(/\.scss$/, '.css'), compiledCss.css)
       const hash = compiledCss.css.match(
         /^\/\*\s(\w+)\s\*\/\n/
       ) as RegExpExecArray
-      await Bun.write(filePath.replace(/\.scss$/, '.js'), generateJS(hash[1]))
+      await Bun.write(escapedFilePath.replace(/\.scss$/, '.js'), generateJS(hash[1]))
     }
 
     await Promise.all(
@@ -34,7 +35,7 @@ export default async function buildFront(entrypoints: string[]) {
           tsxFile,
           (await tsxFile.text()).replace(
             /import (\w+) from (['"])([.\w\/\-_]+)\.module\.s?css\2/g,
-            'import $2$3.module.css$2\nimport $1 from $2$3.module.js$2\n'
+            'import $2$3_module.css$2\nimport $1 from $2$3_module.js$2\n'
           )
         )
       })
