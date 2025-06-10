@@ -4,6 +4,7 @@ import translations from 'back/translations/nav'
 const LINKS = [
   {text: 'dialectology', link: '/dialectology'},
   {text: 'baltistics', link: '/baltistics'},
+  {text: 'articles', link: '/articles'},
 ]
 
 export default function getNavigation(request: Request, selected: string) {

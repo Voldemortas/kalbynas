@@ -1,5 +1,6 @@
 import IndexBack from './back/pages/index/index'
 import DialectologyBack from './back/pages/dialectology/index'
+import ArticlesBack from './back/pages/articles/index'
 import BaltisticsBack from './back/pages/baltistics/index'
 import Robots from './back/static/robots'
 import Sitemap from './back/static/sitemap'
@@ -37,6 +38,15 @@ const config: PageType<ReactType | RedirectType | BackType>[] = [
       type: 'react',
       path: 'front/dialectology/index.ts',
       resolver: DialectologyBack,
+    },
+    params: [],
+  },
+  {
+    path: '/articles',
+    resolve: {
+      type: 'react',
+      path: 'front/articles/index.ts',
+      resolver: ArticlesBack,
     },
     params: [],
   },

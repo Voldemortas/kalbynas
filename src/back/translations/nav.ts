@@ -9,6 +9,10 @@ const translations: Translations = {
     lt: 'Baltistika',
     en: 'Baltistics',
   }),
+  articles: new Translation({
+    lt: 'Straipsniai',
+    en: 'Articles',
+  }),
 }
 
 export default translations

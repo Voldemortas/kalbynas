@@ -16,6 +16,7 @@ describe('sitemap.txt', () => {
     expect(responseText.split('\n')).toStrictEqual([
       'https://en.kalbynas.lt/',
       'https://en.kalbynas.lt/dialectology',
+      'https://en.kalbynas.lt/articles',
       'https://en.kalbynas.lt/baltistics',
     ])
   })

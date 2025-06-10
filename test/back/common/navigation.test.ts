@@ -15,6 +15,11 @@ describe('getUrl', () => {
           link: '/baltistics',
           text: 'Baltistics',
         },
+        {
+          key: '/articles',
+          link: '/articles',
+          text: 'Articles',
+        },
       ],
       selected: 'a',
     })
@@ -33,6 +38,11 @@ describe('getUrl', () => {
           key: '/baltistics',
           link: '/baltistics',
           text: 'Baltistika',
+        },
+        {
+          key: '/articles',
+          link: '/articles',
+          text: 'Straipsniai',
         },
       ],
       selected: '/baltistics',
