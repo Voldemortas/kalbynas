@@ -5,6 +5,18 @@ import BaltisticsBack from './back/pages/baltistics/index'
 import Robots from './back/static/robots'
 import Sitemap from './back/static/sitemap'
 import getUrl from './back/pages/common/getUrl'
+import SingleArticle from 'back/pages/articles/singleArticle'
+import articleList from 'back/pages/articles/allArticles'
+
+const allArticles: PageType<ReactType>[] = articleList.map((_, id) => ({
+  path: `/articles/${id}`,
+  resolve: {
+    type: 'react',
+    path: 'front/articles/SingleArticle.ts',
+    resolver: SingleArticle,
+  },
+  params: [],
+}))
 
 const config: PageType<ReactType | RedirectType | BackType>[] = [
   {
@@ -50,6 +62,7 @@ const config: PageType<ReactType | RedirectType | BackType>[] = [
     },
     params: [],
   },
+  ...allArticles,
   {
     path: '/baltistics',
     resolve: {

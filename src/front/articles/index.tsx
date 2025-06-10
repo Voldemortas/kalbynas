@@ -1,11 +1,23 @@
 import Body from 'front/common/Body'
 import type {NavProps} from 'front/common/Nav'
-import Articles from './Articles'
 
-export default function Index({text, nav}: {text: string; nav: NavProps}) {
+export default function Index({
+  text,
+  articleList,
+  nav,
+}: {text: string; articleList: {id: number; title: string}[]; nav: NavProps}) {
   return (
     <Body nav={nav}>
-      <Articles text={text} />
+      <section>
+        {text}
+        <ol>
+          {articleList.map(({id, title}) => (
+            <li key={id}>
+              <a href={`/articles/${id}`}>{title}</a>
+            </li>
+          ))}
+        </ol>
+      </section>
     </Body>
   )
 }

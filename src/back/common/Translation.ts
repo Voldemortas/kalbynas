@@ -1,4 +1,4 @@
-import {type ALTERNATES_TYPE, DEFAULT_ALTERNATE} from "back/config.ts";
+import {type ALTERNATES_TYPE, DEFAULT_ALTERNATE} from 'back/config.ts'
 
 export default class Translation {
   private locales: ALTERNATES_TYPE[]
@@ -13,8 +13,11 @@ export default class Translation {
     this.texts = texts
   }
 
-  public format(locale: ALTERNATES_TYPE, ...params: string[]) {
-    const loc = this.locales.indexOf(locale) === -1 ? DEFAULT_ALTERNATE : locale
+  public format(locale: string, ...params: string[]) {
+    const loc =
+      this.locales.indexOf(locale as ALTERNATES_TYPE) === -1
+        ? DEFAULT_ALTERNATE
+        : locale
 
     let answer = this.texts[loc]
     for (let i = 0; i < params.length; i++) {

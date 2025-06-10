@@ -17,6 +17,7 @@ describe('sitemap.txt', () => {
       'https://en.kalbynas.lt/',
       'https://en.kalbynas.lt/dialectology',
       'https://en.kalbynas.lt/articles',
+      'https://en.kalbynas.lt/articles/0',
       'https://en.kalbynas.lt/baltistics',
     ])
   })

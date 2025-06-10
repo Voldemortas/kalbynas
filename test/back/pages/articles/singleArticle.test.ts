@@ -1,6 +1,5 @@
 import {describe, expect, mock, test} from 'bun:test'
-import articles from 'back/pages/articles/index.ts'
-import translations from 'back/translations/articles'
+import singleArticle from 'back/pages/articles/singleArticle.ts'
 import makeNavigation from 'test/makeNavigation.ts'
 import Article from 'back/pages/articles/Article'
 import Translation from 'back/common/Translation'
@@ -13,12 +12,20 @@ const ALL_ARTICLES: Article[] = [
     content: new Translation({lt: 'turinys', en: 'content'}),
     date: new Date(),
   }),
+  new Article({
+    title: new Translation({lt: 'pavadinimas2', en: 'title2'}),
+    content: new Translation({lt: 'turinys2', en: 'content2'}),
+    date: new Date(),
+  }),
 ]
 
-describe('pages/articles/index', () => {
-  test('returns Articles page', () => {
+describe('pages/articles/singleArticle  ', () => {
+  test('returns an article', () => {
     const getPageWithAllTranslationsMock = mock().mockReturnValue(NAVIGATION)
-    const getUrlMock = mock().mockReturnValue({sub: 'lt'})
+    const getUrlMock = mock().mockReturnValue({
+      sub: 'lt',
+      pathname: '/articles/1',
+    })
     mock.module('back/pages/common/getPageWithAllTranslations', () => ({
       default: getPageWithAllTranslationsMock,
     }))
@@ -28,15 +35,14 @@ describe('pages/articles/index', () => {
     mock.module('back/pages/common/getUrl', () => ({
       default: getUrlMock,
     }))
-    const page = articles(REQUEST, [])
+    const page = singleArticle(REQUEST, [])
     expect(getPageWithAllTranslationsMock).toHaveBeenCalledWith(
       REQUEST,
       '/articles',
-      translations
+      ALL_ARTICLES[1].toTranslations()
     )
     expect(page).toEqual({
       ...NAVIGATION,
-      articleList: [{title: 'pavadinimas', id: 0}],
     })
   })
 })
