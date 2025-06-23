@@ -5,7 +5,11 @@ export default function Index({
   text,
   articleList,
   nav,
-}: {text: string; articleList: {id: number; title: string}[]; nav: NavProps}) {
+}: {
+  text: string
+  articleList: {id: number; title: string}[]
+  nav: NavProps
+}) {
   return (
     <Body nav={nav}>
       <section>

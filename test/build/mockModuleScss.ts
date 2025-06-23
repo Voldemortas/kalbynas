@@ -1,4 +1,4 @@
-import {spyOn} from "bun:test";
+import {spyOn} from 'bun:test'
 
 export default function mockModuleScss(path: string, prefix = '') {
   const styles = require(path)

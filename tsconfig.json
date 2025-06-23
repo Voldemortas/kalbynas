@@ -1,25 +1,13 @@
 {
   "compilerOptions": {
     "paths": {
-      "back/*": [
-        "./src/back/*"
-      ],
-      "front/*": [
-        "./temp/*",
-        "./src/front/*"
-      ],
-      "src/*": [
-        "./src/*"
-      ],
-      "test/*": [
-        "./test/*"
-      ]
+      "back/*": ["./src/back/*"],
+      "front/*": ["./temp/*", "./src/front/*"],
+      "src/*": ["./src/*"],
+      "test/*": ["./test/*"]
     },
     // Enable latest features
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
+    "lib": ["ESNext", "DOM"],
     "target": "ESNext",
     "module": "ESNext",
     "moduleDetection": "force",
@@ -39,9 +27,6 @@
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false,
     "esModuleInterop": true,
-    "typeRoots": [
-      "./node_modules/@types",
-      "./typings"
-    ]
+    "typeRoots": ["./node_modules/@types", "./typings"]
   }
 }

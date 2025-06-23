@@ -13,6 +13,7 @@
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
     "@types/sass": "^1.45.0",
+    "prettier": "^3.6.0",
     "sass": "^1.89.2"
   },
   "peerDependencies": {
@@ -29,10 +30,15 @@
     "watch": "bun run watch.ts",
     "serve": "bun run src/back/server.ts",
     "serve-prod": "bun run out/server.js",
-    "serve-pm2": "bunx --bun pm2 start"
+    "serve-pm2": "bunx --bun pm2 start",
+    "prettify": "bunx prettier `git diff HEAD --name-only --diff-filter d`  --write"
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

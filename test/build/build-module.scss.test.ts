@@ -73,10 +73,9 @@ describe('build-module.scss', () => {
 
     it('correctly updates module.scss file', async () => {
       await replaceModuleFileWithDecoratedContent(filePath, newFilePath)
-      const expectedScss = (await Bun.file(expectedFilePath).text()).replaceAll(
-        /\s+/g,
-        ''
-      )
+      const expectedScss = (await Bun.file(expectedFilePath).text())
+        .replaceAll(/\s+/g, '')
+        .replaceAll(`'sass:string'`, `"sass:string"`)
       const newScss = (await Bun.file(newFilePath).text()).replaceAll(
         /\s+/g,
         ''

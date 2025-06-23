@@ -8,7 +8,7 @@ export default async function buildBack() {
     target: 'bun',
     minify: isProd(),
     external: ['*.html'],
-    env: 'inline'
+    env: 'inline',
   })
   if (!buildOutput.success) {
     console.error(buildOutput.logs)

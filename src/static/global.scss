@@ -20,7 +20,7 @@ body,
   position: relative;
   font-size: 18px;
   background-color: var(--color-green-white);
-  font-family: "Tahoma", sans-serif;
+  font-family: 'Tahoma', sans-serif;
   color: var(--color-green-black);
 }
 
@@ -41,7 +41,7 @@ a {
 }
 
 .ipa {
-  font-family: "DoulosSILW", sans-serif;
+  font-family: 'DoulosSILW', sans-serif;
 }
 
 .sr-only {
@@ -141,7 +141,8 @@ td.noBorder {
   border-width: 0 !important;
 }
 
-td, th {
+td,
+th {
   hyphens: manual;
 }
 
@@ -160,5 +161,5 @@ caption {
 }
 
 .ipa {
-  font-family: "DoulosSILW", sans-serif;
+  font-family: 'DoulosSILW', sans-serif;
 }

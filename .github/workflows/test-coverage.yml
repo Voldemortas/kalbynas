@@ -1,5 +1,5 @@
 name: test-coverage
-on: [ push, pull_request ]
+on: [push, pull_request]
 jobs:
   build:
     name: build-app
@@ -22,25 +22,25 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GIST_SECRET }}
         with:
-          action: "update"
-          gist_id: "311fbde44b381b8a16f2876b9f0eb24b"
-          file_name: "kalbynas-lines.json"
+          action: 'update'
+          gist_id: '311fbde44b381b8a16f2876b9f0eb24b'
+          file_name: 'kalbynas-lines.json'
           content: ${{ env.LINES_COVERAGE }}
       - name: Update gist with functions coverage
         uses: gorgbus/gist-actions@main
         env:
           GITHUB_TOKEN: ${{ secrets.GIST_SECRET }}
         with:
-          action: "update"
-          gist_id: "311fbde44b381b8a16f2876b9f0eb24b"
-          file_name: "kalbynas-functions.json"
+          action: 'update'
+          gist_id: '311fbde44b381b8a16f2876b9f0eb24b'
+          file_name: 'kalbynas-functions.json'
           content: ${{ env.FUNCTIONS_COVERAGE }}
       - name: Update gist with files coverage
         uses: gorgbus/gist-actions@main
         env:
           GITHUB_TOKEN: ${{ secrets.GIST_SECRET }}
         with:
-          action: "update"
-          gist_id: "311fbde44b381b8a16f2876b9f0eb24b"
-          file_name: "kalbynas-files.json"
+          action: 'update'
+          gist_id: '311fbde44b381b8a16f2876b9f0eb24b'
+          file_name: 'kalbynas-files.json'
           content: ${{ env.FILES_COVERAGE }}

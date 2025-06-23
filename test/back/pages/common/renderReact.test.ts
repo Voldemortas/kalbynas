@@ -1,4 +1,12 @@
-import {afterEach, beforeEach, describe, expect, it, mock, spyOn,} from 'bun:test'
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  mock,
+  spyOn,
+} from 'bun:test'
 import assertHeaders from 'test/back/assertHeaders.ts'
 import renderReact from 'back/pages/common/renderReact.ts'
 import {htmlHeaders} from 'back/common/responseHeaders.ts'
@@ -25,10 +33,10 @@ describe('renderReact', () => {
     const responseText = await response.text()
     const expectedHtml = (
       await Bun.file(`${import.meta.dir}/default_lt.html`).text()
-    ).replace(`"hello": `, `"hello":`)
+    ).replace(`hello: 'world'`, `"hello":"world"`)
 
     expect(pageMock).toHaveBeenCalledWith(DEFAULT_REQUEST, 'react')
-    expect(responseText).toEqual(expectedHtml)
+    expect(responseText).toEqualIgnoringWhitespace(expectedHtml)
     assertHeaders(response, htmlHeaders.headers)
   })
   it('correctly renders english locale page', async () => {
@@ -38,10 +46,10 @@ describe('renderReact', () => {
     const responseText = await response.text()
     const expectedHtml = (
       await Bun.file(`${import.meta.dir}/default_en.html`).text()
-    ).replace(`"hello": `, `"hello":`)
+    ).replace(`hello: 'world'`, `"hello":"world"`)
 
     expect(pageMock).toHaveBeenCalledWith(ENGLISH_REQUEST, 'react')
-    expect(responseText).toEqual(expectedHtml)
+    expect(responseText).toEqualIgnoringWhitespace(expectedHtml)
     assertHeaders(response, htmlHeaders.headers)
   })
 })

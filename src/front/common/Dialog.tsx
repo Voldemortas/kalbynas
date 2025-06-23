@@ -1,4 +1,12 @@
-import React, {forwardRef, type ReactNode, type Ref, useEffect, useImperativeHandle, useRef, useState,} from 'react'
+import React, {
+  forwardRef,
+  type ReactNode,
+  type Ref,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react'
 
 import style from './dialog.module.scss'
 

@@ -3,10 +3,8 @@ import buildFront from './build-front'
 import type {PageType, ReactType} from './src/pages'
 import pages from './src/pages'
 import buildBack from './build-back'
-import isProd from './src/back/pages/common/isProd.ts'
 
 export default async function build() {
-  const hash = crypto.randomUUID().split('-')[0]
   await $`rm -rf out`
   await $`rm -rf temp`
   await $`mkdir out`

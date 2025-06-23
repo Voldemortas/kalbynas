@@ -2,7 +2,10 @@ import {$} from 'bun'
 import * as sass from 'sass'
 import {readdir} from 'node:fs/promises'
 import isProd from './src/back/pages/common/isProd.ts'
-import {getAllModuleScssFiles, replaceModuleFileWithDecoratedContent,} from './build-module.scss.ts'
+import {
+  getAllModuleScssFiles,
+  replaceModuleFileWithDecoratedContent,
+} from './build-module.scss.ts'
 
 const TEMP_DIR = 'temp/'
 
@@ -18,14 +21,26 @@ export default async function buildFront(entrypoints: string[]) {
     const allModuleScssFiles = await getAllModuleScssFiles()
     for (const moduleScssFile of allModuleScssFiles) {
       const filePath = `./${TEMP_DIR}/${moduleScssFile}`
-      const escapedFilePath = filePath.replaceAll(/\.module\.scss/g, '_module.scss')
-      const css = await replaceModuleFileWithDecoratedContent(filePath, escapedFilePath)
+      const escapedFilePath = filePath.replaceAll(
+        /\.module\.scss/g,
+        '_module.scss'
+      )
+      const css = await replaceModuleFileWithDecoratedContent(
+        filePath,
+        escapedFilePath
+      )
       const compiledCss = await sass.compileStringAsync(css)
-      await Bun.write(escapedFilePath.replace(/\.scss$/, '.css'), compiledCss.css)
+      await Bun.write(
+        escapedFilePath.replace(/\.scss$/, '.css'),
+        compiledCss.css
+      )
       const hash = compiledCss.css.match(
         /^\/\*\s(\w+)\s\*\/\n/
       ) as RegExpExecArray
-      await Bun.write(escapedFilePath.replace(/\.scss$/, '.js'), generateJS(hash[1]))
+      await Bun.write(
+        escapedFilePath.replace(/\.scss$/, '.js'),
+        generateJS(hash[1])
+      )
     }
 
     await Promise.all(
@@ -44,7 +59,6 @@ export default async function buildFront(entrypoints: string[]) {
     const buildOutput = await Bun.build({
       entrypoints: entrypoints.map((e) => e.replace(/^front/, TEMP_DIR)),
       outdir: 'out/front',
-      experimentalCss: true,
       minify: isProd(),
       root: TEMP_DIR,
       target: 'browser',

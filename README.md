@@ -11,7 +11,7 @@ Project living live can be accessed by visiting [kalbynas.lt](https://kalbynas.l
 
 ## Code tree
 
-Define routes in `/src/pages.ts`   
+Define routes in `/src/pages.ts`  
 Write react code in `/src/front/` (each route component is suggested to be in its own directory)  
 Write backend code in `/src/back/`  
 Add static content in `/src/static/`
@@ -21,15 +21,15 @@ Add static content in `/src/static/`
 Code building works in several steps:
 
 0. Removes `/out/` directory and creates an empty one
-0. Copies content from `/src/static` to `/out/static`
-0. Creates `/temp/` directory and copies content from `/src/front/` there
-0. Runs *SASS* compiler on `*.scss` files found in `/temp` and creates corresponding `[name].css` files
-0. If the file was `*.module.scss` and it had `$uniqueId` then creates `[name].js` file used for unique-prefixed styles
-0. Checks every `*.tsx` file and updates imports for original `*.module.scss` to include both new compiled `.css` and
+1. Copies content from `/src/static` to `/out/static`
+2. Creates `/temp/` directory and copies content from `/src/front/` there
+3. Runs _SASS_ compiler on `*.scss` files found in `/temp` and creates corresponding `[name].css` files
+4. If the file was `*.module.scss` and it had `$uniqueId` then creates `[name].js` file used for unique-prefixed styles
+5. Checks every `*.tsx` file and updates imports for original `*.module.scss` to include both new compiled `.css` and
    `.js` files
-0. Checks `/src/pages/` for *React* entry points and based on them builds single `[name].js` and `[name].css` files into
+6. Checks `/src/pages/` for _React_ entry points and based on them builds single `[name].js` and `[name].css` files into
    `/out/front/` directory
-0. Compiles `/src/back/server.ts` into bundled `/out/back/server.js`
+7. Compiles `/src/back/server.ts` into bundled `/out/back/server.js`
 
 ## Predefined commands
 
@@ -70,10 +70,10 @@ export default function MyComponent() {
 
 Sass generated `$uniqueId` is required in order for custom css modules implementation to work.
 
-~~*Pm2* is not supported as it's not that friendly with a bun runtime.~~
+~~_Pm2_ is not supported as it's not that friendly with a bun runtime.~~
 
 Pm2 can be run by bun, so it works now, see `package.json` for a working example.
 
----------
+---
 
 This project was created using [Voldemortas/bun-react-server](https://github.com/Voldemortas/bun-react-server) template

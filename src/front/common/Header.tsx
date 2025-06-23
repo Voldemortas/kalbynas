@@ -1,7 +1,7 @@
 import React, {useRef} from 'react'
 import styles from './header.module.scss'
 import Dialog, {type DialogRef} from './Dialog'
-import {DEFAULT_ALTERNATE} from "back/config.ts";
+import {DEFAULT_ALTERNATE} from 'back/config.ts'
 
 export default function Header() {
   const languagesRef = useRef<DialogRef>(null)
