@@ -8,6 +8,7 @@
   --color-green-3: #6ec499;
   --color-green-2: #99d6b5;
   --color-green-1: #c4e9d1;
+  --default-font: 'Tahoma', sans-serif;
 }
 
 html,
@@ -20,7 +21,7 @@ body,
   position: relative;
   font-size: 18px;
   background-color: var(--color-green-white);
-  font-family: 'Tahoma', sans-serif;
+  font-family: var(--default-font);
   color: var(--color-green-black);
 }
 
@@ -162,4 +163,16 @@ caption {
 
 .ipa {
   font-family: 'DoulosSILW', sans-serif;
+}
+
+.ipa-monospace {
+  font-family: 'NotoSans', monospace;
+}
+
+.default-font {
+  font-family: var(--default-font), sans-serif;
+}
+
+.dashed-border {
+  border: 0.5px dashed var(--color-green-black);
 }

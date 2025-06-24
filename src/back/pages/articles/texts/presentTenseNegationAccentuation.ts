@@ -1,5 +1,7 @@
 import Article from '../Article'
 import Translation from 'back/common/Translation'
+import Lithuanian from './presentTenseNegation/Lithuanian'
+import {renderToStaticMarkup} from 'react-dom/server'
 
 export default new Article({
   title: new Translation({
@@ -8,7 +10,7 @@ export default new Article({
   }),
   date: new Date('2025-06-10'),
   content: new Translation({
-    lt: 'Labas pasauli',
+    lt: renderToStaticMarkup(Lithuanian()),
     en: 'Hello world!',
   }),
 })

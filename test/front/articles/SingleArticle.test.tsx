@@ -1,10 +1,22 @@
-import {afterEach, describe, expect, it, mock, spyOn} from 'bun:test'
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  mock,
+  spyOn,
+} from 'bun:test'
 import {render, screen} from '@testing-library/react'
 import * as Body from 'front/common/Body.tsx'
 import React from 'react'
 import SingleArticle from 'front/articles/SingleArticle.tsx'
+import mockModuleScss from 'test/build/mockModuleScss.ts'
 
 describe('<SingleArticle />', () => {
+  beforeEach(async () => {
+    mockModuleScss('front/articles/singleArticle.module.scss')
+  })
   afterEach(() => {
     mock.restore()
   })
