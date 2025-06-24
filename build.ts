@@ -9,6 +9,8 @@ export default async function build() {
   await $`rm -rf temp`
   await $`mkdir out`
   await $`cp -r src/static/ out/static/`
+  await $`cp src/back/pages/common/default.html out/`
+  await $`cp src/back/pages/common/development.html out/`
   const frontPaths = (pages as PageType<ReactType>[])
     .filter((p) => p.resolve.type === 'react')
     .map((p) => p.resolve.path)
