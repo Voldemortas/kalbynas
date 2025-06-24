@@ -52,8 +52,8 @@ export const presentTenseAShortTable = () => (
     </tr>
     <tr>
       <td>II</td>
-      <td>gelì &nbspbarì girì</td>
-      <td>nègeli &nbspnèbari nègiri</td>
+      <td>gelì &nbsp;barì girì</td>
+      <td>nègeli &nbsp;nèbari nègiri</td>
     </tr>
     <tr>
       <td>III</td>
@@ -72,8 +72,8 @@ export const presentTenseACircumflexTable = () => (
     </tr>
     <tr>
       <td>II</td>
-      <td>piešì &nbspdylì kentì</td>
-      <td>nepiešì &nbspnedylì nekentì</td>
+      <td>piešì &nbsp;dylì kentì</td>
+      <td>nepiešì &nbsp;nedylì nekentì</td>
     </tr>
     <tr>
       <td>III</td>
@@ -92,8 +92,8 @@ export const presentTenseAAcuteTable = () => (
     </tr>
     <tr>
       <td>II</td>
-      <td>kéiki &nbspléidi tvóji</td>
-      <td>nekéiki &nbspneléidi netvóji</td>
+      <td>kéiki &nbsp;léidi tvóji</td>
+      <td>nekéiki &nbsp;neléidi netvóji</td>
     </tr>
     <tr>
       <td>III</td>
@@ -146,13 +146,13 @@ export const presentTenseIShortTable = () => (
     </tr>
     <tr>
       <td>II</td>
-      <td>tikì &nbspravì &nbspminì</td>
-      <td>nètiki &nbspnèravi &nbspnèmini</td>
+      <td>tikì &nbsp;ravì &nbsp;minì</td>
+      <td>nètiki &nbsp;nèravi &nbsp;nèmini</td>
     </tr>
     <tr>
       <td>III</td>
-      <td>tìki &nbsprãvi &nbspmìni</td>
-      <td>nètiki &nbspnèravi &nbspnèmini</td>
+      <td>tìki &nbsp;rãvi &nbsp;mìni</td>
+      <td>nètiki &nbsp;nèravi &nbsp;nèmini</td>
     </tr>
   </tbody>
 )
@@ -166,13 +166,13 @@ export const presentTenseICircumflexTable = () => (
     </tr>
     <tr>
       <td>II</td>
-      <td>gailì &nbspvilkì &nbsptylì</td>
-      <td>negailì &nbspnevilkì &nbspnetylì</td>
+      <td>gailì &nbsp;vilkì &nbsp;tylì</td>
+      <td>negailì &nbsp;nevilkì &nbsp;netylì</td>
     </tr>
     <tr>
       <td>III</td>
-      <td>gaìli &nbspvil̃ki &nbsptỹli</td>
-      <td>negaìli &nbspnevil̃ki &nbspnetỹli</td>
+      <td>gaìli &nbsp;vil̃ki &nbsp;tỹli</td>
+      <td>negaìli &nbsp;nevil̃ki &nbsp;netỹli</td>
     </tr>
   </tbody>
 )
@@ -186,13 +186,13 @@ export const presentTenseIAcuteTable = () => (
     </tr>
     <tr>
       <td>II</td>
-      <td>stóvi &nbspnóri &nbspséiki</td>
-      <td>nestóvi &nbspnenóri &nbspneséiki</td>
+      <td>stóvi &nbsp;nóri &nbsp;séiki</td>
+      <td>nestóvi &nbsp;nenóri &nbsp;neséiki</td>
     </tr>
     <tr>
       <td>II</td>
-      <td>stóvi &nbspnóri &nbspséiki</td>
-      <td>nestóvi &nbspnenóri &nbspneséiki</td>
+      <td>stóvi &nbsp;nóri &nbsp;séiki</td>
+      <td>nestóvi &nbsp;nenóri &nbsp;neséiki</td>
     </tr>
   </tbody>
 )
@@ -222,10 +222,10 @@ export const presentTenseOTable = () => (
     <tr>
       <td>III</td>
       <td>
-        C<u>V́</u>Co &nbspC<u>Ṽ</u>Co &nbspC<u>V̆</u>Co
+        C<u>V́</u>Co &nbsp;C<u>Ṽ</u>Co &nbsp;C<u>V̆</u>Co
       </td>
       <td>
-        neC<u>V́</u>Co &nbspneC<u>Ṽ</u>Co &nbspneC<u>V̆</u>Co
+        neC<u>V́</u>Co &nbsp;neC<u>Ṽ</u>Co &nbsp;neC<u>V̆</u>Co
       </td>
     </tr>
   </tbody>
@@ -245,8 +245,8 @@ export const presentTenseOShortTable = () => (
     </tr>
     <tr>
       <td>III</td>
-      <td>žìno &nbspsãko &nbspmãto</td>
-      <td>nežìno &nbspnesãko &nbspnemãto</td>
+      <td>žìno &nbsp;sãko &nbsp;mãto</td>
+      <td>nežìno &nbsp;nesãko &nbsp;nemãto</td>
     </tr>
   </tbody>
 )
@@ -265,8 +265,8 @@ export const presentTenseOCircumflexTable = () => (
     </tr>
     <tr>
       <td>III</td>
-      <td>rū̃ko &nbsplaĩko &nbspvaĩko</td>
-      <td>nerū̃ko &nbspnelaĩko &nbspnevaĩko</td>
+      <td>rū̃ko &nbsp;laĩko &nbsp;vaĩko</td>
+      <td>nerū̃ko &nbsp;nelaĩko &nbsp;nevaĩko</td>
     </tr>
   </tbody>
 )
@@ -285,8 +285,8 @@ export const presentTenseOAcuteTable = () => (
     </tr>
     <tr>
       <td>III</td>
-      <td>móko &nbsptáiko &nbspgliáudo</td>
-      <td>nemóko &nbspnetáiko &nbspnegliáudo</td>
+      <td>móko &nbsp;táiko &nbsp;gliáudo</td>
+      <td>nemóko &nbsp;netáiko &nbsp;negliáudo</td>
     </tr>
   </tbody>
 )
@@ -316,10 +316,10 @@ export const pastTenseOTable = () => (
     <tr>
       <td>III</td>
       <td>
-        C<u>V́</u>Co &nbspC<u>Ṽ</u>Co &nbspC<u>V̆</u>Co
+        C<u>V́</u>Co &nbsp;C<u>Ṽ</u>Co &nbsp;C<u>V̆</u>Co
       </td>
       <td>
-        neC<u>V́</u>Co &nbspneC<u>Ṽ</u>Co &nbspneC<u>V̆</u>Co
+        neC<u>V́</u>Co &nbsp;neC<u>Ṽ</u>Co &nbsp;neC<u>V̆</u>Co
       </td>
     </tr>
   </tbody>
@@ -339,8 +339,8 @@ export const pastTenseOShortTable = () => (
     </tr>
     <tr>
       <td>III</td>
-      <td>sùko &nbsplìko &nbsptãpo</td>
-      <td>nesùko &nbspnelìko &nbspnetãpo</td>
+      <td>sùko &nbsp;lìko &nbsp;tãpo</td>
+      <td>nesùko &nbsp;nelìko &nbsp;netãpo</td>
     </tr>
   </tbody>
 )
@@ -359,8 +359,8 @@ export const pastTenseOCircumflexTable = () => (
     </tr>
     <tr>
       <td>III</td>
-      <td>vil̃ko &nbspriñko &nbspgrį̃žo</td>
-      <td>nevil̃ko &nbspneriñko &nbspnegrį̃žo</td>
+      <td>vil̃ko &nbsp;riñko &nbsp;grį̃žo</td>
+      <td>nevil̃ko &nbsp;neriñko &nbsp;negrį̃žo</td>
     </tr>
   </tbody>
 )
@@ -379,8 +379,8 @@ export const pastTenseOAcuteTable = () => (
     </tr>
     <tr>
       <td>III</td>
-      <td>áugo &nbspšóko &nbspdė́jo</td>
-      <td>neáugo &nbspnešóko &nbspnedė́jo</td>
+      <td>áugo &nbspšóko &nbsp;dė́jo</td>
+      <td>neáugo &nbsp;nešóko &nbsp;nedė́jo</td>
     </tr>
   </tbody>
 )
@@ -410,10 +410,10 @@ export const pastTenseETable = () => (
     <tr>
       <td>III</td>
       <td>
-        C<u>V́</u>Co &nbspC<u>Ṽ</u>Co &nbspC<u>V̆</u>Co
+        C<u>V́</u>Co &nbsp;C<u>Ṽ</u>Co &nbsp;C<u>V̆</u>Co
       </td>
       <td>
-        neC<u>V́</u>Co &nbspneC<u>Ṽ</u>Co &nbspneC<u>V̆</u>Co
+        neC<u>V́</u>Co &nbsp;neC<u>Ṽ</u>Co &nbsp;neC<u>V̆</u>Co
       </td>
     </tr>
   </tbody>
@@ -433,8 +433,8 @@ export const pastTenseEShortTable = () => (
     </tr>
     <tr>
       <td>III</td>
-      <td>sùko &nbsplìko &nbsptãpo</td>
-      <td>nesùko &nbspnelìko &nbspnetãpo</td>
+      <td>sùko &nbsp;lìko &nbsp;tãpo</td>
+      <td>nesùko &nbsp;nelìko &nbsp;netãpo</td>
     </tr>
   </tbody>
 )
@@ -453,8 +453,8 @@ export const pastTenseECircumflexTable = () => (
     </tr>
     <tr>
       <td>III</td>
-      <td>vil̃ko &nbspė̃jo &nbspgrį̃žo</td>
-      <td>nevil̃ko &nbspneė̃jo &nbspnegrį̃žo</td>
+      <td>vil̃ko &nbspė̃jo &nbsp;grį̃žo</td>
+      <td>nevil̃ko &nbsp;neė̃jo &nbsp;negrį̃žo</td>
     </tr>
   </tbody>
 )
@@ -473,8 +473,8 @@ export const pastTenseEAcuteTable = () => (
     </tr>
     <tr>
       <td>III</td>
-      <td>áugo &nbspšóko &nbspdė́jo</td>
-      <td>neáugo &nbspnešóko &nbspnedė́jo</td>
+      <td>áugo &nbspšóko &nbsp;dė́jo</td>
+      <td>neáugo &nbsp;nešóko &nbsp;nedė́jo</td>
     </tr>
   </tbody>
 )
