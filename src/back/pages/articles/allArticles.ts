@@ -1,6 +1,6 @@
-import type Article from './Article'
+import {ArticleList} from './Article'
 import presentTenseNegationAccentuation from './texts/presentTenseNegationAccentuation'
 
-const articleList: Article[] = [presentTenseNegationAccentuation]
+const articleList = new ArticleList([presentTenseNegationAccentuation])
 
-export default articleList
+export default articleList.list

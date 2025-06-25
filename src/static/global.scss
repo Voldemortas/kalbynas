@@ -176,3 +176,18 @@ caption {
 .dashed-border {
   border: 0.5px dashed var(--color-green-black);
 }
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.triangle-pointer-left::before {
+  content: '◄ ';
+}
+.triangle-pointer-right::after {
+  content: ' ►';
+}

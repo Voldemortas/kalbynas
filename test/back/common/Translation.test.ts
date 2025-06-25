@@ -1,5 +1,6 @@
 import {describe, expect, test} from 'bun:test'
 import Translation from 'back/common/Translation.ts'
+import {DEFAULT_ALTERNATE} from 'back/config.ts'
 
 describe('Translation', () => {
   test('throws an error if default locale is missing', () => {
@@ -22,5 +23,9 @@ describe('Translation', () => {
       'tariu labas, Petrai!'
     )
     expect(translations.format('en', 'Peter')).toBe('hi Peter!')
+  })
+  test('formats simple text to DEFAULT_LOCALE', () => {
+    const translations = new Translation('springs')
+    expect(translations.format(DEFAULT_ALTERNATE)).toStrictEqual('springs')
   })
 })

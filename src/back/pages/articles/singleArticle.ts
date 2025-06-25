@@ -10,9 +10,11 @@ export default function getSingleArticle(request: Request, params: string[]) {
   if (!(id && !!id[1] && articleList.length > +id[1])) {
     throw new Error(`No such article found: id=${id}`)
   }
-  return getPageWithAllTranslations(
+  const allTranslations = getPageWithAllTranslations(
     request,
     NAV_LINK,
     articleList[+id[1]].toTranslations()
   )
+
+  return allTranslations
 }

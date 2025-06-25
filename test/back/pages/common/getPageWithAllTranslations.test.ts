@@ -31,7 +31,7 @@ describe('getPageWithAllTranslations', () => {
     )
     expect(getAllTranslatedMock).toHaveBeenCalledWith(TRANSLATION, SUB)
     expect(getNavigationMock).toHaveBeenCalledWith(REQUEST, NAVIGATION.selected)
-    expect(page).toEqual({nav: NAVIGATION, ...TRANSLATIONS})
+    expect(page).toEqual({locale: 'lt', nav: NAVIGATION, ...TRANSLATIONS})
     mock.restore()
   })
 })
