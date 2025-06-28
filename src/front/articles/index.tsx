@@ -7,7 +7,7 @@ export default function Index({
   nav,
 }: {
   text: string
-  articleList: {id: number; title: string}[]
+  articleList: {id: string; title: string}[]
   nav: NavProps
 }) {
   return (

@@ -17,8 +17,8 @@ describe('sitemap.txt', () => {
       'https://en.kalbynas.lt/',
       'https://en.kalbynas.lt/dialectology',
       'https://en.kalbynas.lt/articles',
-      'https://en.kalbynas.lt/articles/0',
-      'https://en.kalbynas.lt/articles/1',
+      'https://en.kalbynas.lt/articles/prefixed-verbs-accentuation',
+      'https://en.kalbynas.lt/articles/prefixed-verbs-accentuation-2',
       'https://en.kalbynas.lt/baltistics',
     ])
   })

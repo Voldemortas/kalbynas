@@ -8,8 +8,8 @@ import getUrl from './back/pages/common/getUrl'
 import SingleArticle from 'back/pages/articles/singleArticle'
 import articleList from 'back/pages/articles/allArticles'
 
-const allArticles: PageType<ReactType>[] = articleList.map((_, id) => ({
-  path: `/articles/${id}`,
+const allArticles: PageType<ReactType>[] = articleList.map(({id}) => ({
+  path: `/articles/${id.format()}`,
   resolve: {
     type: 'react',
     path: 'front/articles/SingleArticle.ts',

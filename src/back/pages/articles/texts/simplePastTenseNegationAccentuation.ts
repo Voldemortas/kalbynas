@@ -14,4 +14,5 @@ export default new Article({
     lt: renderToStaticMarkup(Lithuanian()),
     en: renderToStaticMarkup(English()),
   }),
+  id: new Translation('prefixed-verbs-accentuation-2'),
 })

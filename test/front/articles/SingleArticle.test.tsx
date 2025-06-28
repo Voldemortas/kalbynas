@@ -36,8 +36,10 @@ describe('<SingleArticle />', () => {
         author="author"
         date="2016-09-21"
         content="content"
-        previous="previous"
-        next="next"
+        previousTitle="previous"
+        previousId="previous-article"
+        nextTitle="next"
+        nextId="next-article"
         id="2"
       />
     )
@@ -51,9 +53,9 @@ describe('<SingleArticle />', () => {
     const nextLink = screen.getByText(ArticleTranslations.next.format(LOCALE))
     expect(previousLink).toBeInTheDocument()
     expect(previousLink).toHaveAttribute('title', 'previous')
-    expect(previousLink).toHaveAttribute('href', '/articles/1')
+    expect(previousLink).toHaveAttribute('href', '/articles/previous-article')
     expect(nextLink).toBeInTheDocument()
     expect(nextLink).toHaveAttribute('title', 'next')
-    expect(nextLink).toHaveAttribute('href', '/articles/3')
+    expect(nextLink).toHaveAttribute('href', '/articles/next-article')
   })
 })

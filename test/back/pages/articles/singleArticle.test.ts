@@ -3,28 +3,35 @@ import singleArticle from 'back/pages/articles/singleArticle.ts'
 import makeNavigation from 'test/makeNavigation.ts'
 import Article from 'back/pages/articles/Article'
 import Translation from 'back/common/Translation'
+import {DEFAULT_ALTERNATE} from 'back/config.ts'
 
 const REQUEST = mock() as unknown as Request
-const NAVIGATION = {nav: makeNavigation('articles')}
+const NAVIGATION_LOCALE = {
+  nav: makeNavigation('articles'),
+  locale: DEFAULT_ALTERNATE,
+}
 const ALL_ARTICLES: Article[] = [
   new Article({
     title: new Translation({lt: 'pavadinimas', en: 'title'}),
     content: new Translation({lt: 'turinys', en: 'content'}),
     date: new Date(),
+    id: new Translation('first'),
   }),
   new Article({
     title: new Translation({lt: 'pavadinimas2', en: 'title2'}),
     content: new Translation({lt: 'turinys2', en: 'content2'}),
     date: new Date(),
+    id: new Translation('second'),
   }),
 ]
 
 describe('pages/articles/singleArticle  ', () => {
   test('returns an article', () => {
-    const getPageWithAllTranslationsMock = mock().mockReturnValue(NAVIGATION)
+    const getPageWithAllTranslationsMock =
+      mock().mockReturnValue(NAVIGATION_LOCALE)
     const getUrlMock = mock().mockReturnValue({
       sub: 'lt',
-      pathname: '/articles/1',
+      pathname: '/articles/second',
     })
     mock.module('back/pages/common/getPageWithAllTranslations', () => ({
       default: getPageWithAllTranslationsMock,
@@ -42,7 +49,7 @@ describe('pages/articles/singleArticle  ', () => {
       ALL_ARTICLES[1].toTranslations()
     )
     expect(page).toEqual({
-      ...NAVIGATION,
+      ...NAVIGATION_LOCALE,
     })
   })
 })

@@ -28,20 +28,20 @@ export default function SingleArticle(
         {/* biome-ignore lint/security/noDangerouslySetInnerHtml: intended behaviour */}
         <section dangerouslySetInnerHTML={{__html: params.content}} />
         <footer>
-          {!!params.previous ? (
+          {!!params.previousId ? (
             <a
               className="float-left triangle-pointer-left"
-              href={`/articles/${+params.id - 1}`}
-              title={params.previous}
+              href={`/articles/${params.previousId}`}
+              title={params.previousTitle}
             >
               {ArticleTranslations.previous.format(locale)}
             </a>
           ) : null}
-          {!!params.next ? (
+          {!!params.nextId ? (
             <a
               className="float-right triangle-pointer-right"
-              href={`/articles/${+params.id + 1}`}
-              title={params.next}
+              href={`/articles/${params.nextId}`}
+              title={params.nextTitle}
             >
               {ArticleTranslations.next.format(locale)}
             </a>
