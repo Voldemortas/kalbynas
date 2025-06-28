@@ -190,7 +190,7 @@ export const presentTenseIAcuteTable = () => (
       <td>nestóvi &nbsp;nenóri &nbsp;neséiki</td>
     </tr>
     <tr>
-      <td>II</td>
+      <td>III</td>
       <td>stóvi &nbsp;nóri &nbsp;séiki</td>
       <td>nestóvi &nbsp;nenóri &nbsp;neséiki</td>
     </tr>

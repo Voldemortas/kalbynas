@@ -1,15 +1,15 @@
 import Article from '../Article'
 import Translation from 'back/common/Translation'
-import Lithuanian from './presentTenseNegation/Lithuanian'
+import Lithuanian from './simplePastTenseNegation/Lithuanian'
 import {renderToStaticMarkup} from 'react-dom/server'
-import English from 'back/pages/articles/texts/presentTenseNegation/English.tsx'
+import English from './simplePastTenseNegation/English.tsx'
 
 export default new Article({
   title: new Translation({
-    lt: 'Priešdėlinių esamojo laiko veiksmažodžių kirčiavimas',
-    en: 'Accentuation of the prefixed present tense verbs',
+    lt: 'Priešdėlinių būtojo kartinio laiko veiksmažodžių kirčiavimas',
+    en: 'Accentuation of the prefixed simple past tense verbs',
   }),
-  date: new Date('2025-06-10'),
+  date: new Date('2025-06-28'),
   content: new Translation({
     lt: renderToStaticMarkup(Lithuanian()),
     en: renderToStaticMarkup(English()),
