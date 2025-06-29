@@ -180,10 +180,6 @@ export default function English() {
         conclusion was made that {ItalicBlock('-ė')} conjugation verbs that have
         the suffix -y- in the infinitive (later in text <i>suffixed</i>) keep
         the stress in the root in all the cases.{' '}
-        <i>
-          Spustelėkite rodykles/trikampius norėdami pasiekti daugiau
-          informacijos.
-        </i>
         <i>Click on the arrow for detailed information.</i>
         {Details({
           summary: {element: pastTenseETable, caption: E_CAPTION},
