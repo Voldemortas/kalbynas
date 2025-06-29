@@ -1,3 +1,5 @@
+@use '../front/variables.scss' as variables;
+
 * {
   --color-green-white: #fafcfa;
   --color-green-black: #04100c;
@@ -54,6 +56,23 @@ a {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+@media (width > variables.$mobile-breakpoint) {
+  .sr-view {
+    display: none;
+  }
+  .desktop-view {
+    display: unset;
+  }
+}
+@media (width <= variables.$mobile-breakpoint) {
+  .sr-view {
+    display: unset;
+  }
+  .desktop-view {
+    display: none;
+  }
 }
 
 .center {

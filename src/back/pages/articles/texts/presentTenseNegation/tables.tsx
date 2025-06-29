@@ -1,3 +1,6 @@
+import type {ReactNode} from 'react'
+import {renderToStaticMarkup} from 'react-dom/server'
+
 export const table = ({
   table,
   caption,
@@ -11,34 +14,50 @@ export const table = ({
   </table>
 )
 
+export const MobileTd = ({children}: {children: ReactNode}) => {
+  const stackMarkup = renderToStaticMarkup(children).replaceAll(
+    /\s+/g,
+    '<br />'
+  )
+  return (
+    <td>
+      <span
+        className="sr-view"
+        dangerouslySetInnerHTML={{__html: stackMarkup}}
+      />
+      <span className="desktop-view">{children}</span>
+    </td>
+  )
+}
+
 export const presentTenseATable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>
         C<u>V́</u>Cu CṼC<u>u</u> CV̆C<u>u</u>
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Cu neCṼC<u>u</u> <u>ne</u>CV̆Cu
-      </td>
+      </MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>
         C<u>V́</u>Ci CṼC<u>i</u> CV̆C<u>i</u>
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Ci neCṼC<u>i</u> <u>ne</u>CV̆Ci
-      </td>
+      </MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>
         C<u>V́</u>Ca C<u>Ṽ</u>Ca C<u>V̆</u>Ca
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Ca neC<u>Ṽ</u>Ca <u>ne</u>CV̆Ca
-      </td>
+      </MobileTd>
     </tr>
   </tbody>
 )
@@ -46,19 +65,19 @@ export const presentTenseATable = () => (
 export const presentTenseAShortTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>geliù barù giriù</td>
-      <td>nègeliu nèbaru nègiriu</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>geliù barù giriù</MobileTd>
+      <MobileTd>nègeliu nèbaru nègiriu</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>gelì &nbsp;barì girì</td>
-      <td>nègeli &nbsp;nèbari nègiri</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>gelì &nbsp;barì girì</MobileTd>
+      <MobileTd>nègeli &nbsp;nèbari nègiri</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>gẽlia bãra gìria</td>
-      <td>nègelia nèbara nègiria</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>gẽlia bãra gìria</MobileTd>
+      <MobileTd>nègelia nèbara nègiria</MobileTd>
     </tr>
   </tbody>
 )
@@ -66,19 +85,19 @@ export const presentTenseAShortTable = () => (
 export const presentTenseACircumflexTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>piešiù dylù kenčiù</td>
-      <td>nepiešiù nedylù nekenčiù</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>piešiù dylù kenčiù</MobileTd>
+      <MobileTd>nepiešiù nedylù nekenčiù</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>piešì &nbsp;dylì kentì</td>
-      <td>nepiešì &nbsp;nedylì nekentì</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>piešì &nbsp;dylì kentì</MobileTd>
+      <MobileTd>nepiešì &nbsp;nedylì nekentì</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>piẽšia dỹla keñčia</td>
-      <td>nepiẽšia nedỹla nekeñčia</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>piẽšia dỹla keñčia</MobileTd>
+      <MobileTd>nepiẽšia nedỹla nekeñčia</MobileTd>
     </tr>
   </tbody>
 )
@@ -86,19 +105,19 @@ export const presentTenseACircumflexTable = () => (
 export const presentTenseAAcuteTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>kéikiu léidžiu tvóju</td>
-      <td>nekéikiu neléidžiu netvóju</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>kéikiu léidžiu tvóju</MobileTd>
+      <MobileTd>nekéikiu neléidžiu netvóju</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>kéiki &nbsp;léidi tvóji</td>
-      <td>nekéiki &nbsp;neléidi netvóji</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>kéiki &nbsp;léidi tvóji</MobileTd>
+      <MobileTd>nekéiki &nbsp;neléidi netvóji</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>kéikia léidžia tvója</td>
-      <td>nekéikia neléidžia netvója</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>kéikia léidžia tvója</MobileTd>
+      <MobileTd>nekéikia neléidžia netvója</MobileTd>
     </tr>
   </tbody>
 )
@@ -108,31 +127,31 @@ export const presentTenseAAcuteTable = () => (
 export const presentTenseITable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>
         C<u>V́</u>Cu CṼC<u>u</u> CV̆C<u>u</u>
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Cu neCṼC<u>u</u> <u>ne</u>CV̆Cu
-      </td>
+      </MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>
         C<u>V́</u>Ci CṼC<u>i</u> CV̆C<u>i</u>
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Ci neCṼC<u>i</u> <u>ne</u>CV̆Ci
-      </td>
+      </MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>
         C<u>V́</u>Ci C<u>Ṽ</u>Ci C<u>V̆</u>Ci
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Ci neC<u>Ṽ</u>Ci <u>ne</u>CV̆Ci
-      </td>
+      </MobileTd>
     </tr>
   </tbody>
 )
@@ -140,19 +159,19 @@ export const presentTenseITable = () => (
 export const presentTenseIShortTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>tikiù raviù miniù</td>
-      <td>nètikiu nèraviu nèminiu</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>tikiù raviù miniù</MobileTd>
+      <MobileTd>nètikiu nèraviu nèminiu</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>tikì &nbsp;ravì &nbsp;minì</td>
-      <td>nètiki &nbsp;nèravi &nbsp;nèmini</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>tikì &nbsp;ravì &nbsp;minì</MobileTd>
+      <MobileTd>nètiki &nbsp;nèravi &nbsp;nèmini</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>tìki &nbsp;rãvi &nbsp;mìni</td>
-      <td>nètiki &nbsp;nèravi &nbsp;nèmini</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>tìki &nbsp;rãvi &nbsp;mìni</MobileTd>
+      <MobileTd>nètiki &nbsp;nèravi &nbsp;nèmini</MobileTd>
     </tr>
   </tbody>
 )
@@ -160,19 +179,19 @@ export const presentTenseIShortTable = () => (
 export const presentTenseICircumflexTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>gailiù vilkiù tyliù</td>
-      <td>negailiù nevilkiù netyliù</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>gailiù vilkiù tyliù</MobileTd>
+      <MobileTd>negailiù nevilkiù netyliù</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>gailì &nbsp;vilkì &nbsp;tylì</td>
-      <td>negailì &nbsp;nevilkì &nbsp;netylì</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>gailì &nbsp;vilkì &nbsp;tylì</MobileTd>
+      <MobileTd>negailì &nbsp;nevilkì &nbsp;netylì</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>gaìli &nbsp;vil̃ki &nbsp;tỹli</td>
-      <td>negaìli &nbsp;nevil̃ki &nbsp;netỹli</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>gaìli &nbsp;vil̃ki &nbsp;tỹli</MobileTd>
+      <MobileTd>negaìli &nbsp;nevil̃ki &nbsp;netỹli</MobileTd>
     </tr>
   </tbody>
 )
@@ -180,19 +199,19 @@ export const presentTenseICircumflexTable = () => (
 export const presentTenseIAcuteTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>stóviu nóriu séikiu</td>
-      <td>nestóviu nenóriu neséikiu</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>stóviu nóriu séikiu</MobileTd>
+      <MobileTd>nestóviu nenóriu neséikiu</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>stóvi &nbsp;nóri &nbsp;séiki</td>
-      <td>nestóvi &nbsp;nenóri &nbsp;neséiki</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>stóvi &nbsp;nóri &nbsp;séiki</MobileTd>
+      <MobileTd>nestóvi &nbsp;nenóri &nbsp;neséiki</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>stóvi &nbsp;nóri &nbsp;séiki</td>
-      <td>nestóvi &nbsp;nenóri &nbsp;neséiki</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>stóvi &nbsp;nóri &nbsp;séiki</MobileTd>
+      <MobileTd>nestóvi &nbsp;nenóri &nbsp;neséiki</MobileTd>
     </tr>
   </tbody>
 )
@@ -202,31 +221,31 @@ export const presentTenseIAcuteTable = () => (
 export const presentTenseOTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>
         C<u>V́</u>Cau CṼC<u>au</u> CV̆C<u>au</u>
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Cau neCṼC<u>au</u> neCV̆C<u>au</u>
-      </td>
+      </MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>
         C<u>V́</u>Cai CṼC<u>ai</u> CV̆C<u>ai</u>
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Cai neCṼC<u>ai</u> neCV̆C<u>ai</u>
-      </td>
+      </MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>
         C<u>V́</u>Co &nbsp;C<u>Ṽ</u>Co &nbsp;C<u>V̆</u>Co
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Co &nbsp;neC<u>Ṽ</u>Co &nbsp;neC<u>V̆</u>Co
-      </td>
+      </MobileTd>
     </tr>
   </tbody>
 )
@@ -234,19 +253,19 @@ export const presentTenseOTable = () => (
 export const presentTenseOShortTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>žinaũ sakaũ mataũ</td>
-      <td>nežinaũ nesakaũ nemataũ</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>žinaũ sakaũ mataũ</MobileTd>
+      <MobileTd>nežinaũ nesakaũ nemataũ</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>žinaĩ sakaĩ mataĩ</td>
-      <td>nežinaĩ nesakaĩ nemataĩ</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>žinaĩ sakaĩ mataĩ</MobileTd>
+      <MobileTd>nežinaĩ nesakaĩ nemataĩ</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>žìno &nbsp;sãko &nbsp;mãto</td>
-      <td>nežìno &nbsp;nesãko &nbsp;nemãto</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>žìno &nbsp;sãko &nbsp;mãto</MobileTd>
+      <MobileTd>nežìno &nbsp;nesãko &nbsp;nemãto</MobileTd>
     </tr>
   </tbody>
 )
@@ -254,19 +273,19 @@ export const presentTenseOShortTable = () => (
 export const presentTenseOCircumflexTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>rūkaũ laikaũ vaikaũ</td>
-      <td>negailiù nevilkiù netyliù</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>rūkaũ laikaũ vaikaũ</MobileTd>
+      <MobileTd>negailiù nevilkiù netyliù</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>rūkaĩ laikaĩ vaikaĩ</td>
-      <td>nerūkaĩ nelaikaĩ nevaikaĩ</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>rūkaĩ laikaĩ vaikaĩ</MobileTd>
+      <MobileTd>nerūkaĩ nelaikaĩ nevaikaĩ</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>rū̃ko &nbsp;laĩko &nbsp;vaĩko</td>
-      <td>nerū̃ko &nbsp;nelaĩko &nbsp;nevaĩko</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>rū̃ko &nbsp;laĩko &nbsp;vaĩko</MobileTd>
+      <MobileTd>nerū̃ko &nbsp;nelaĩko &nbsp;nevaĩko</MobileTd>
     </tr>
   </tbody>
 )
@@ -274,19 +293,19 @@ export const presentTenseOCircumflexTable = () => (
 export const presentTenseOAcuteTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>mókau táikau gliáudau</td>
-      <td>nemókau netáikau negliáudau</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>mókau táikau gliáudau</MobileTd>
+      <MobileTd>nemókau netáikau negliáudau</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>mókai táikai gliáudai</td>
-      <td>nemókai netáikai negliáudai</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>mókai táikai gliáudai</MobileTd>
+      <MobileTd>nemókai netáikai negliáudai</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>móko &nbsp;táiko &nbsp;gliáudo</td>
-      <td>nemóko &nbsp;netáiko &nbsp;negliáudo</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>móko &nbsp;táiko &nbsp;gliáudo</MobileTd>
+      <MobileTd>nemóko &nbsp;netáiko &nbsp;negliáudo</MobileTd>
     </tr>
   </tbody>
 )
@@ -296,31 +315,31 @@ export const presentTenseOAcuteTable = () => (
 export const pastTenseYtiTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>
         C<u>V́</u>Ciau CṼC<u>iaũ</u> CV̆C<u>iaũ</u>
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Ciau neCṼC<u>iaũ</u> neCV̆C<u>iaũ</u>
-      </td>
+      </MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>
         C<u>V́</u>Cei &nbsp;CṼC<u>eĩ</u> &nbsp;CV̆C<u>eĩ</u>
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Cei &nbsp;neCṼC<u>eĩ</u> &nbsp;neCV̆C<u>eĩ</u>
-      </td>
+      </MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>
         C<u>V́</u>Cė &nbsp; C<u>Ṽ</u>Cė &nbsp; C<u>V̆</u>Cė
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Cė &nbsp; neC<u>Ṽ</u>Cė &nbsp; neC<u>V̆</u>Cė
-      </td>
+      </MobileTd>
     </tr>
   </tbody>
 )
@@ -328,19 +347,34 @@ export const pastTenseYtiTable = () => (
 export const pastTenseYtiShortTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>sakiaũ žudžiaũ lipdžiaũ</td>
-      <td>nesakiaũ nežudžiaũ nelipdžiaũ</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>sakiaũ žudžiaũ lipdžiaũ</MobileTd>
+      <MobileTd>nesakiaũ nežudžiaũ nelipdžiaũ</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>sakeĩ &nbsp;žudeĩ &nbsp; lipdeĩ</td>
-      <td>nesakeĩ &nbsp;nežudeĩ &nbsp; nelipdeĩ</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>sakeĩ &nbsp;žudeĩ &nbsp; lipdeĩ</MobileTd>
+      <MobileTd>nesakeĩ &nbsp;nežudeĩ &nbsp; nelipdeĩ</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>sãkė &nbsp; žùdė &nbsp;&nbsp; lìpdė</td>
-      <td>nesãkė &nbsp; nežùdė &nbsp;&nbsp; nelìpdė</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>
+        <span className="desktop-view">
+          sãkė &nbsp; žùdė &nbsp;&nbsp; lìpdė
+        </span>
+        <span className="sr-view">
+          sãkė
+          <br />
+          žùdė
+          <br />
+          lìpdė
+        </span>
+      </MobileTd>
+      <MobileTd>
+        <span className="desktop-view">
+          nesãkė &nbsp; nežùdė &nbsp;&nbsp; nelìpdė
+        </span>
+      </MobileTd>
     </tr>
   </tbody>
 )
@@ -348,19 +382,19 @@ export const pastTenseYtiShortTable = () => (
 export const pastTenseYtiCircumflexTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>kinkiaũ tąsiaũ lipdžiaũ</td>
-      <td>nekinkiaũ netąsiaũ nelipdžiaũ</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>kinkiaũ tąsiaũ lipdžiaũ</MobileTd>
+      <MobileTd>nekinkiaũ netąsiaũ nelipdžiaũ</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>kinkeĩ &nbsp;tąseĩ &nbsp;lipdeĩ</td>
-      <td>nekinkeĩ &nbsp;netąseĩ &nbsp;nelipdeĩ</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>kinkeĩ &nbsp;tąseĩ &nbsp;lipdeĩ</MobileTd>
+      <MobileTd>nekinkeĩ &nbsp;netąseĩ &nbsp;nelipdeĩ</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>kiñkė &nbsp; tą̃sė &nbsp; kam̃šė</td>
-      <td>nekiñkė &nbsp; netą̃sė &nbsp; nekam̃šė</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>kiñkė &nbsp; tą̃sė &nbsp; kam̃šė</MobileTd>
+      <MobileTd>nekiñkė &nbsp; netą̃sė &nbsp; nekam̃šė</MobileTd>
     </tr>
   </tbody>
 )
@@ -368,19 +402,19 @@ export const pastTenseYtiCircumflexTable = () => (
 export const pastTenseYtiAcuteTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>ródžiau skáidžiau mė́čiau</td>
-      <td>neródžiau neskáidžiau nemė́čiau</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>ródžiau skáidžiau mė́čiau</MobileTd>
+      <MobileTd>neródžiau neskáidžiau nemė́čiau</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>ródei &nbsp; skáidei &nbsp; mė́tei</td>
-      <td>neródei &nbsp; neskáidei &nbsp; nemė́tei</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>ródei &nbsp; skáidei &nbsp; mė́tei</MobileTd>
+      <MobileTd>neródei &nbsp; neskáidei &nbsp; nemė́tei</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>ródė &nbsp;&nbsp; skáidė &nbsp;&nbsp; mė́tė</td>
-      <td>neródė &nbsp;&nbsp; neskáidė &nbsp;&nbsp; nemė́tė</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>ródė &nbsp;&nbsp; skáidė &nbsp;&nbsp; mė́tė</MobileTd>
+      <MobileTd>neródė &nbsp;&nbsp; neskáidė &nbsp;&nbsp; nemė́tė</MobileTd>
     </tr>
   </tbody>
 )
@@ -390,31 +424,31 @@ export const pastTenseYtiAcuteTable = () => (
 export const pastTenseOTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>
         C<u>V́</u>Cau CṼC<u>au</u> CV̆C<u>au</u>
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Cau neCṼC<u>au</u> neCV̆C<u>au</u>
-      </td>
+      </MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>
         C<u>V́</u>Cai CṼC<u>ai</u> CV̆C<u>ai</u>
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Cai neCṼC<u>ai</u> neCV̆C<u>ai</u>
-      </td>
+      </MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>
         C<u>V́</u>Co &nbsp;C<u>Ṽ</u>Co &nbsp;C<u>V̆</u>Co
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Co &nbsp;neC<u>Ṽ</u>Co &nbsp;neC<u>V̆</u>Co
-      </td>
+      </MobileTd>
     </tr>
   </tbody>
 )
@@ -422,19 +456,19 @@ export const pastTenseOTable = () => (
 export const pastTenseOShortTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>sukaũ likaũ tapaũ</td>
-      <td>nesukaũ nelikaũ netapaũ</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>sukaũ likaũ tapaũ</MobileTd>
+      <MobileTd>nesukaũ nelikaũ netapaũ</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>sukaĩ likaĩ tapaĩ</td>
-      <td>nesukaĩ nelikaĩ netapaĩ</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>sukaĩ likaĩ tapaĩ</MobileTd>
+      <MobileTd>nesukaĩ nelikaĩ netapaĩ</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>sùko &nbsp;lìko &nbsp;tãpo</td>
-      <td>nesùko &nbsp;nelìko &nbsp;netãpo</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>sùko &nbsp;lìko &nbsp;tãpo</MobileTd>
+      <MobileTd>nesùko &nbsp;nelìko &nbsp;netãpo</MobileTd>
     </tr>
   </tbody>
 )
@@ -442,19 +476,19 @@ export const pastTenseOShortTable = () => (
 export const pastTenseOCircumflexTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>vilkaũ rinkaũ grįžaũ</td>
-      <td>nevilkaũ nerinkaũ negrįžaũ</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>vilkaũ rinkaũ grįžaũ</MobileTd>
+      <MobileTd>nevilkaũ nerinkaũ negrįžaũ</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>vilkaĩ rinkaĩ grįžaĩ</td>
-      <td>nevilkaĩ nerinkaĩ negrįžaĩ</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>vilkaĩ rinkaĩ grįžaĩ</MobileTd>
+      <MobileTd>nevilkaĩ nerinkaĩ negrįžaĩ</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>vil̃ko &nbsp;riñko &nbsp;grį̃žo</td>
-      <td>nevil̃ko &nbsp;neriñko &nbsp;negrį̃žo</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>vil̃ko &nbsp;riñko &nbsp;grį̃žo</MobileTd>
+      <MobileTd>nevil̃ko &nbsp;neriñko &nbsp;negrį̃žo</MobileTd>
     </tr>
   </tbody>
 )
@@ -462,19 +496,19 @@ export const pastTenseOCircumflexTable = () => (
 export const pastTenseOAcuteTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>áugau šókau dė́jau</td>
-      <td>neáugau nešókau nedė́jau</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>áugau šókau dė́jau</MobileTd>
+      <MobileTd>neáugau nešókau nedė́jau</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>áugai šókai dė́jai</td>
-      <td>neáugai nešókai nedė́jai</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>áugai šókai dė́jai</MobileTd>
+      <MobileTd>neáugai nešókai nedė́jai</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>áugo &nbsp;šóko &nbsp;dė́jo</td>
-      <td>neáugo &nbsp;nešóko &nbsp;nedė́jo</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>áugo &nbsp;šóko &nbsp;dė́jo</MobileTd>
+      <MobileTd>neáugo &nbsp;nešóko &nbsp;nedė́jo</MobileTd>
     </tr>
   </tbody>
 )
@@ -484,31 +518,31 @@ export const pastTenseOAcuteTable = () => (
 export const pastTenseETable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>
         C<u>V́</u>Ciau CVC<u>iaũ</u> CV̆C<u>iaũ</u>
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Ciau <u>ne</u>CṼCiau <u>ne</u>CV̆Ciau
-      </td>
+      </MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>
         C<u>V́</u>Cei &nbsp;CṼC<u>eĩ</u> &nbsp;CV̆C<u>eĩ</u>
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Cei &nbsp;<u>ne</u>CṼCeĩ &nbsp;<u>ne</u>CV̆Ceĩ
-      </td>
+      </MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>
         C<u>V́</u>Cė &nbsp; C<u>Ṽ</u>Cė &nbsp; C<u>V̆</u>Cė
-      </td>
-      <td>
+      </MobileTd>
+      <MobileTd>
         neC<u>V́</u>Cė &nbsp; <u>ne</u>CṼCė &nbsp; <u>ne</u>CV̆Cė
-      </td>
+      </MobileTd>
     </tr>
   </tbody>
 )
@@ -516,19 +550,19 @@ export const pastTenseETable = () => (
 export const pastTenseEShortTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>lakiaũ mečiaũ gimiaũ</td>
-      <td>nèlakiau nèmečiau nègimiau</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>lakiaũ mečiaũ gimiaũ</MobileTd>
+      <MobileTd>nèlakiau nèmečiau nègimiau</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>lakeĩ &nbsp;meteĩ &nbsp;gimeĩ</td>
-      <td>nèlakei &nbsp;nèmetei &nbsp;nègimei</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>lakeĩ &nbsp;meteĩ &nbsp;gimeĩ</MobileTd>
+      <MobileTd>nèlakei &nbsp;nèmetei &nbsp;nègimei</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>lãkė &nbsp; mẽtė &nbsp; gìmė</td>
-      <td>nèlakė &nbsp; nèmetė &nbsp; nègimė</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>lãkė &nbsp; mẽtė &nbsp; gìmė</MobileTd>
+      <MobileTd>nèlakė &nbsp; nèmetė &nbsp; nègimė</MobileTd>
     </tr>
   </tbody>
 )
@@ -536,19 +570,19 @@ export const pastTenseEShortTable = () => (
 export const pastTenseECircumflexTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>rėkiaũ kenkiaũ vogiaũ</td>
-      <td>nèrėkiau nèkenkiau nèvogiau</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>rėkiaũ kenkiaũ vogiaũ</MobileTd>
+      <MobileTd>nèrėkiau nèkenkiau nèvogiau</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>rėkeĩ &nbsp;kenkeĩ &nbsp;vogeĩ</td>
-      <td>nèrėkei &nbsp;nèkenkei &nbsp;nèvogei</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>rėkeĩ &nbsp;kenkeĩ &nbsp;vogeĩ</MobileTd>
+      <MobileTd>nèrėkei &nbsp;nèkenkei &nbsp;nèvogei</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>rė̃kė &nbsp; keñkė &nbsp; võgė</td>
-      <td>nèrėkė &nbsp; nèkenkė &nbsp; nèvogė</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>rė̃kė &nbsp; keñkė &nbsp; võgė</MobileTd>
+      <MobileTd>nèrėkė &nbsp; nèkenkė &nbsp; nèvogė</MobileTd>
     </tr>
   </tbody>
 )
@@ -556,19 +590,19 @@ export const pastTenseECircumflexTable = () => (
 export const pastTenseEAcuteTable = () => (
   <tbody>
     <tr>
-      <td>I</td>
-      <td>gė́liau kéikiau mýniau</td>
-      <td>negė́liau nekéikiau nemýniau</td>
+      <MobileTd>I</MobileTd>
+      <MobileTd>gė́liau kéikiau mýniau</MobileTd>
+      <MobileTd>negė́liau nekéikiau nemýniau</MobileTd>
     </tr>
     <tr>
-      <td>II</td>
-      <td>gė́lei &nbsp;kéikei &nbsp;mýnei</td>
-      <td>negė́lei &nbsp;nekéikei &nbsp;nemýnei</td>
+      <MobileTd>II</MobileTd>
+      <MobileTd>gė́lei &nbsp;kéikei &nbsp;mýnei</MobileTd>
+      <MobileTd>negė́lei &nbsp;nekéikei &nbsp;nemýnei</MobileTd>
     </tr>
     <tr>
-      <td>III</td>
-      <td>gė́lė &nbsp; kéikė &nbsp; mýnė</td>
-      <td>negė́lė &nbsp; nekéikė &nbsp; nemýnė</td>
+      <MobileTd>III</MobileTd>
+      <MobileTd>gė́lė &nbsp; kéikė &nbsp; mýnė</MobileTd>
+      <MobileTd>negė́lė &nbsp; nekéikė &nbsp; nemýnė</MobileTd>
     </tr>
   </tbody>
 )
