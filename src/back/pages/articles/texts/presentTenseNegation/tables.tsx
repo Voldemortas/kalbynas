@@ -25,7 +25,9 @@ export const MobileTd = ({children}: {children: ReactNode}) => {
         className="sr-view"
         dangerouslySetInnerHTML={{__html: stackMarkup}}
       />
-      <span className="desktop-view">{children}</span>
+      <span aria-hidden={true} className="desktop-view">
+        {children}
+      </span>
     </td>
   )
 }
