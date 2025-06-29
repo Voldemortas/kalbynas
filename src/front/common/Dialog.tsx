@@ -7,6 +7,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import CancelSvg from 'front/common/CancelSvg.tsx'
 
 import style from './dialog.module.scss'
 
@@ -48,7 +49,7 @@ function Dialog({children}: DialogProps, ref: Ref<DialogRef>) {
         onKeyUp={() => setEnabled(false)}
         className={style('close')}
       >
-        &#128473;
+        <CancelSvg />
       </button>
       <div className={style('content')}>{children}</div>
     </dialog>
