@@ -275,7 +275,7 @@ export const presentTenseOCircumflexTable = () => (
     <tr>
       <MobileTd>I</MobileTd>
       <MobileTd>rūkaũ laikaũ vaikaũ</MobileTd>
-      <MobileTd>negailiù nevilkiù netyliù</MobileTd>
+      <MobileTd>nerūkaũ nelaikaũ nevaikaũ</MobileTd>
     </tr>
     <tr>
       <MobileTd>II</MobileTd>
@@ -358,23 +358,8 @@ export const pastTenseYtiShortTable = () => (
     </tr>
     <tr>
       <MobileTd>III</MobileTd>
-      <MobileTd>
-        <span className="desktop-view">
-          sãkė &nbsp; žùdė &nbsp;&nbsp; lìpdė
-        </span>
-        <span className="sr-view">
-          sãkė
-          <br />
-          žùdė
-          <br />
-          lìpdė
-        </span>
-      </MobileTd>
-      <MobileTd>
-        <span className="desktop-view">
-          nesãkė &nbsp; nežùdė &nbsp;&nbsp; nelìpdė
-        </span>
-      </MobileTd>
+      <MobileTd>sãkė &nbsp; žùdė &nbsp;&nbsp; lìpdė</MobileTd>
+      <MobileTd>nesãkė &nbsp; nežùdė &nbsp;&nbsp; nelìpdė</MobileTd>
     </tr>
   </tbody>
 )
