@@ -1,6 +1,12 @@
 import ItalicBlock from 'back/pages/common/components/ItalicBlock.tsx'
 import {alamarVerbs, eilmnr, eilmnrVerbs, galetiTuretiVerbs} from './lists'
 import {
+  pastTenseEAcuteTable,
+  pastTenseECircumflexTable,
+  pastTenseEShortTable,
+  pastTenseYtiAcuteTable,
+  pastTenseYtiCircumflexTable,
+  pastTenseYtiShortTable,
   presentTenseAAcuteTable,
   presentTenseACircumflexTable,
   presentTenseAShortTable,
@@ -13,12 +19,17 @@ import {
   presentTenseOCircumflexTable,
   presentTenseOShortTable,
   presentTenseOTable,
+  pastTenseETable,
+  pastTenseOTable,
+  pastTenseYtiTable,
 } from './tables'
 import {arrayToDetailsType, Details} from './Details'
 
 const A_CAPTION = '-(i)a asmenuotės veiksmažodžiai'
 const I_CAPTION = '-i asmenuotės veiksmažodžiai'
 const O_CAPTION = '-o asmenuotės veiksmažodžiai'
+const E_CAPTION = 'grynieji -ė asmenuotės veiksmažodžiai'
+const YTI_CAPTION = 'priesaginiai -ė asmenuotės veiksmažodžiai'
 const SHORT_CAPTION = 'su (istoriškai) trumpu balsiu'
 const ACUTE_CAPTION = 'su tvirtapradžiu balsiu'
 const CIRCUMFLEX_CAPTION = 'su tvirtagaliu balsiu'
@@ -56,6 +67,16 @@ const O_VERBS = arrayToDetailsType(
   conjugationWithAVowel(O_CAPTION)
 )
 
+const E_VERBS = arrayToDetailsType(
+  [pastTenseEShortTable, pastTenseECircumflexTable, pastTenseEAcuteTable],
+  conjugationWithAVowel(E_CAPTION)
+)
+
+const YTI_VERBS = arrayToDetailsType(
+  [pastTenseYtiShortTable, pastTenseYtiCircumflexTable, pastTenseYtiAcuteTable],
+  conjugationWithAVowel(YTI_CAPTION)
+)
+
 export default function Lithuanian() {
   return (
     <>
@@ -73,9 +94,19 @@ export default function Lithuanian() {
         </a>
         . Tad ėmiausi šiokio tokio tyrumuko.
       </p>
+      <h2>Priešdėliai</h2>
       <p>
-        Pradžioje galvojau, kad tai susiję su tvirtaprade priegaide, tačiau
-        pasirodo tai susiję ir su (istoriniu) šaknies balsio ilgiu.{' '}
+        Pradžiai reikėtų paminėti jog beveik visi priešdėliai, tiek mano
+        tarmėje, tiek BK veikia taip pat - vienintelė išimtis yra priešdėlis{' '}
+        {ItalicBlock('per-')}, kuris bet kuriuo atveju yra kirčiuotas, nes yra
+        tvirtapradis. Šiame straipsnyje kaip generinis priešdėlis bus vartojamas
+        neiginio priešdėlis {ItalicBlock('ne-')}.
+      </p>
+      <h2>Esamojo laiko veiksmažodžiai</h2>
+      <p>
+        Iš pradžių galvojau, kad kirčio šokinėjimas yra susijęs su tvirtaprade
+        priegaide, tačiau pasirodo tai susiję ir su (istoriniu) šaknies balsio
+        ilgiu.{' '}
         <i>
           Spustelėkite rodykles/trikampius norėdami pasiekti daugiau
           informacijos.
@@ -135,23 +166,65 @@ export default function Lithuanian() {
           </li>
         </ul>
       </p>
+      <h2>Nèkenčiu?</h2>
       <p>
-        <h2>Priešdėliai</h2>
-        <p>
-          Vietoje priešdėlio {ItalicBlock('ne-')} pabandžius kitus priešdėlis,
-          pasimatė jog visi, išskyrus {ItalicBlock('pér-')}, kuris esti
-          tvirtapradis ir yra visada kirčiuotas, elgiasi taip pat kaip ir
-          priešdėlis {ItalicBlock('ne-')}.
-        </p>
+        Straipsnio pradžioje buvo paminėta, jog mano tarmėje vietoje{' '}
+        <i>nekeñčia</i> yra tariama <i>nèkenčia</i>. Tačiau vien esamojo laiko
+        analizės neužtenka - ji neatsako, kodėl mano tarmėje veiksmažodžiai{' '}
+        <i>dỹla</i> ir <i>keñčia</i> elgiasi skirtingai ir yra <i>nedỹla</i> bei{' '}
+        <i>nèkeñčia</i>. Todėl buvo pažvelgta ir į kitą laiką - būtąjį kartinį.
+      </p>
+      <h2>Būtojo kartinio laiko veiksmažodžiai</h2>
+      <p>
+        Iš esmės vėlgi buvo padaryti panaši analizė, kaip ir esamajam laikui. Ją
+        bedarant buvo pastebėta, jog čia jau ne tik mano tarmėje, bet ir BK
+        skirtingi veiksmažodžiai, kurie iš pirmo žvilgsnio priklauso tai pačiai
+        asmenuotei, elgiasi skirtingai: <i>žaĩdė - nèžaidė</i>, bet{' '}
+        <i>taĩsė - netaĩsė</i>. Tad išsibandžius įvairius veiksmažodžius buvo
+        prieita išvados, kad tai yra nulemta ir bendraties - {ItalicBlock('-ė')}{' '}
+        asmenuotės veiksmažodžiai, kurie bendratyje turi priesagą -y- (tekste
+        toliau <i>priesaginiai</i>) išlaiko kirtį šaknyje bet kuriuo atveju.{' '}
+        <i>
+          Spustelėkite rodykles/trikampius norėdami pasiekti daugiau
+          informacijos.
+        </i>
+        {Details({
+          summary: {element: pastTenseETable, caption: E_CAPTION},
+          rest: E_VERBS,
+        })}
+        {Details({
+          summary: {element: pastTenseYtiTable, caption: YTI_CAPTION},
+          rest: YTI_VERBS,
+        })}
+        {Details({
+          summary: {element: pastTenseOTable, caption: O_CAPTION},
+          rest: O_VERBS,
+        })}
       </p>
       <p>
-        <h2>Nèkenčiu?</h2>
-        <p>
-          Straipsnio pradžioje buvo paminėta, jog mano tarmėje vietoje{' '}
-          <i>nekeñčia</i> yra tariama <i>nèkenčia</i>. Visa tai yra nulemta
-          būtojo kartinio laiko! Ir apie jo kirčiavimą bus galima perskaityti{' '}
-          <i>sekančiame</i> straipsnyje greitu metu.
-        </p>
+        Taigi, vėl pagal pateiktas lenteles galima pabandyti apibendrinti:
+        <ul>
+          <li>Tvirtapradės šaknys visados išlaiko kirtį šaknyje.</li>
+          <li>
+            <i>-o</i> asmenuočių veiksmažodžiai elgiasi taip pat, kaip ir
+            esamojo laiko {ItalicBlock('o-')} asmenuotės veiksmažodžiai.
+          </li>
+          <li>
+            Priesaginiai <i>-ė</i> asmenuotės veiksmažodžiai yra kirčiuojami
+            taip pat kaip ir {ItalicBlock('-o')} asmenuotė.
+          </li>
+          <li>
+            Netvirtapradžiai grynieji <i>-ė</i> asmenuotės veiksmažodžiai visada
+            permeta kirtį į priešdėlį.
+          </li>
+        </ul>
+      </p>
+      <h2>Nèkenčiu!</h2>
+      <p>
+        Taigi, toks kirčiavimas kaip <i>nèkenčiu</i> yra nulemtas būt. k. l.
+        pagal analogiją žodžiui <i>nèkentė</i>. O <i>nedyla</i> yra kirčiuojamas
+        kaip ir BK - <i>nedỹla</i>, mat būt. k. yra <i>nedìlo</i> - kita
+        asmenuotė ir kirtis išliekantis šaknyje.
       </p>
     </>
   )

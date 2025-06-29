@@ -1,6 +1,12 @@
 import ItalicBlock from 'back/pages/common/components/ItalicBlock.tsx'
 import {alamarVerbs, eilmnr, eilmnrVerbs, galetiTuretiVerbs} from './lists'
 import {
+  pastTenseEAcuteTable,
+  pastTenseECircumflexTable,
+  pastTenseEShortTable,
+  pastTenseYtiAcuteTable,
+  pastTenseYtiCircumflexTable,
+  pastTenseYtiShortTable,
   presentTenseAAcuteTable,
   presentTenseACircumflexTable,
   presentTenseAShortTable,
@@ -13,12 +19,17 @@ import {
   presentTenseOCircumflexTable,
   presentTenseOShortTable,
   presentTenseOTable,
+  pastTenseETable,
+  pastTenseOTable,
+  pastTenseYtiTable,
 } from './tables'
 import {arrayToDetailsType, Details} from './Details'
 
 const A_CAPTION = '-(i)a conjugation verbs'
 const I_CAPTION = '-i conjugation verbs'
 const O_CAPTION = '-o conjugation verbs'
+const E_CAPTION = 'Pure -ė conjugation verbs'
+const YTI_CAPTION = 'Suffixed -ė conjugation verbs'
 const SHORT_CAPTION = '(Historically) short'
 const ACUTE_CAPTION = 'Acute'
 const CIRCUMFLEX_CAPTION = 'Circumflex'
@@ -56,6 +67,16 @@ const O_VERBS = arrayToDetailsType(
   conjugationWithAVowel(O_CAPTION)
 )
 
+const E_VERBS = arrayToDetailsType(
+  [pastTenseEShortTable, pastTenseECircumflexTable, pastTenseEAcuteTable],
+  conjugationWithAVowel(E_CAPTION.toLowerCase())
+)
+
+const YTI_VERBS = arrayToDetailsType(
+  [pastTenseYtiShortTable, pastTenseYtiCircumflexTable, pastTenseYtiAcuteTable],
+  conjugationWithAVowel(YTI_CAPTION.toLowerCase())
+)
+
 export default function English() {
   return (
     <>
@@ -74,9 +95,18 @@ export default function English() {
         </a>
         . Thus I started some investigation.
       </p>
+      <h2>Prefixes</h2>
+      <p>
+        One shall note that almost all prefixes in my dialect work the same as
+        they do in the Stabdard Lithuanian, the only exception is the prefix{' '}
+        {ItalicBlock('per-')}, which is always carrying the stress for being
+        acute. In this article as the generic prefix the negation prefix{' '}
+        {ItalicBlock('ne-')} will be used.
+      </p>
+      <h2>Present tense verbs</h2>
       <p>
         At first I thought it had something to do with the acute, however, it
-        turns out it has to do with the (historically) short vowels too.{' '}
+        turns out it has to do with the (historically) short vowels as well.{' '}
         <i>Click on the arrow for detailed information.</i>
         {Details({
           summary: {element: presentTenseATable, caption: A_CAPTION},
@@ -131,23 +161,66 @@ export default function English() {
           </li>
         </ul>
       </p>
+      <h2>Nèkenčiu?</h2>
       <p>
-        <h2>Prefixes</h2>
-        <p>
-          Testing other prefixes besides the aforementioned {ItalicBlock('ne-')}{' '}
-          showed that every other prefix but {ItalicBlock('pér-')}, which is
-          acute and thus always carrying the stress, act like the prefix{' '}
-          {ItalicBlock('ne-')}.
-        </p>
+        In the begining of the article it was mentioned that the verb{' '}
+        <i>nekeñčia</i> is pronounced as <i>nèkenčia</i>. However, knowing only
+        the present tense is not enough - the question persists why in my
+        dialect the verbs <i>dỹla</i> and <i>keñčia</i> behave differently and
+        become <i>nedỹla</i> and <i>nèkeñčia</i>. Therefore other tense - the
+        past simple had to be looked at as well.
+      </p>
+      <h2>Simple past tense verbs</h2>
+      <p>
+        The pretty much the same analysis was done for the simple past verbs as
+        it was done for the present tense. Whilst doing it, it was noticed that
+        seemingly the same conjugation verbs behave differently in both my
+        dialect and the standard language : <i>žaĩdė - nèžaidė</i>, but{' '}
+        <i>taĩsė - netaĩsė</i>. Thus testing with some other verbs the
+        conclusion was made that {ItalicBlock('-ė')} conjugation verbs that have
+        the suffix -y- in the infinitive (later in text <i>suffixed</i>) keep
+        the stress in the root in all the cases.{' '}
+        <i>
+          Spustelėkite rodykles/trikampius norėdami pasiekti daugiau
+          informacijos.
+        </i>
+        <i>Click on the arrow for detailed information.</i>
+        {Details({
+          summary: {element: pastTenseETable, caption: E_CAPTION},
+          rest: E_VERBS,
+        })}
+        {Details({
+          summary: {element: pastTenseYtiTable, caption: YTI_CAPTION},
+          rest: YTI_VERBS,
+        })}
+        {Details({
+          summary: {element: pastTenseOTable, caption: O_CAPTION},
+          rest: O_VERBS,
+        })}
       </p>
       <p>
-        <h2>Nèkenčiu?</h2>
-        <p>
-          In the begining of the article it was said that in my dialect it's not{' '}
-          <i>nekeñčia</i> but <i>nèkenčia</i>. All of this is influenced by the
-          simple past tense. More about that shall be available soon in the next
-          article soon.
-        </p>
+        So once again, based on the tables we can summarise:
+        <ul>
+          <li>Acute stems always keep the stress on the root.</li>
+          <li>
+            <i>-o</i> conjugation works just like in the present tense.
+          </li>
+          <li>
+            Suffixed <i>-ė</i> conjugation verbs are stressed as if they
+            belonged to the {ItalicBlock('-o')} conjugation.
+          </li>
+          <li>
+            Non-acute pure <i>-ė</i> conjugation verbs put the stress on the
+            prefix for all the persons.
+          </li>
+        </ul>
+      </p>
+      <h2>Nèkenčiu!</h2>
+      <p>
+        The accentuation of <i>nèkenčiu</i> is made via analogy to{' '}
+        <i>nèkentė</i>. While <i>nedyla</i> is accentuation like in the standard{' '}
+        - <i>nedỹla</i>, as its past form is <i>nedìlo</i> - different
+        cojungation and the stress is remaining within the root.
       </p>
     </>
   )

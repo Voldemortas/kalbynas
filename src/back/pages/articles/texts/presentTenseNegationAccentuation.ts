@@ -6,10 +6,10 @@ import English from 'back/pages/articles/texts/presentTenseNegation/English.tsx'
 
 export default new Article({
   title: new Translation({
-    lt: 'Priešdėlinių esamojo laiko veiksmažodžių kirčiavimas',
-    en: 'Accentuation of the prefixed present tense verbs',
+    lt: 'Priešdėlinių veiksmažodžių kirčiavimas',
+    en: 'Accentuation of Prefixed Verbs',
   }),
-  date: new Date('2025-06-10'),
+  date: new Date('2025-06-29'),
   content: new Translation({
     lt: renderToStaticMarkup(Lithuanian()),
     en: renderToStaticMarkup(English()),
