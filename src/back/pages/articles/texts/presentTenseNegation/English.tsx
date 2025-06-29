@@ -22,6 +22,9 @@ import {
   pastTenseETable,
   pastTenseOTable,
   pastTenseYtiTable,
+  pastTenseOShortTable,
+  pastTenseOCircumflexTable,
+  pastTenseOAcuteTable,
 } from './tables'
 import {arrayToDetailsType, Details} from './Details'
 
@@ -58,7 +61,7 @@ const I_VERBS = arrayToDetailsType(
   conjugationWithAVowel(I_CAPTION)
 )
 
-const O_VERBS = arrayToDetailsType(
+const PRESENT_O_VERBS = arrayToDetailsType(
   [
     presentTenseOShortTable,
     presentTenseOCircumflexTable,
@@ -75,6 +78,11 @@ const E_VERBS = arrayToDetailsType(
 const YTI_VERBS = arrayToDetailsType(
   [pastTenseYtiShortTable, pastTenseYtiCircumflexTable, pastTenseYtiAcuteTable],
   conjugationWithAVowel(YTI_CAPTION.toLowerCase())
+)
+
+const PAST_O_VERBS = arrayToDetailsType(
+  [pastTenseOShortTable, pastTenseOCircumflexTable, pastTenseOAcuteTable],
+  conjugationWithAVowel(O_CAPTION)
 )
 
 export default function English() {
@@ -118,7 +126,7 @@ export default function English() {
         })}
         {Details({
           summary: {element: presentTenseOTable, caption: O_CAPTION},
-          rest: O_VERBS,
+          rest: PRESENT_O_VERBS,
         })}
       </p>
       <p>
@@ -191,7 +199,7 @@ export default function English() {
         })}
         {Details({
           summary: {element: pastTenseOTable, caption: O_CAPTION},
-          rest: O_VERBS,
+          rest: PAST_O_VERBS,
         })}
       </p>
       <p>
