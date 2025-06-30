@@ -105,10 +105,11 @@ export default function Lithuanian() {
       <h2>Priešdėliai</h2>
       <p>
         Pradžiai reikėtų paminėti jog beveik visi priešdėliai, tiek mano
-        tarmėje, tiek BK veikia taip pat - vienintelė išimtis yra priešdėlis{' '}
-        {ItalicBlock('per-')}, kuris bet kuriuo atveju yra kirčiuotas, nes yra
-        tvirtapradis. Šiame straipsnyje kaip generinis priešdėlis bus vartojamas
-        neiginio priešdėlis {ItalicBlock('ne-')}.
+        tarmėje, tiek BK veikia taip pat. Ir jie vienodai paklūsta kirčio
+        šokinėjimui. Vienintelis nešokinėjantis priešdėlis tiek mano tarmėje,
+        tiek BK yra priešdėlis {ItalicBlock('per-')}, kuris visada yra
+        kirčiuotas, nes yra tvirtapradis. Šiame straipsnyje kaip generinis
+        priešdėlis bus vartojamas neiginio priešdėlis {ItalicBlock('ne-')}.
       </p>
       <h2>Esamojo laiko veiksmažodžiai</h2>
       <p>

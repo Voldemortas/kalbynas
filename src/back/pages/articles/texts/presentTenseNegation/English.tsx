@@ -106,9 +106,10 @@ export default function English() {
       <h2>Prefixes</h2>
       <p>
         One shall note that almost all prefixes in my dialect work the same as
-        they do in the Stabdard Lithuanian, the only exception is the prefix{' '}
-        {ItalicBlock('per-')}, which is always carrying the stress for being
-        acute. In this article as the generic prefix the negation prefix{' '}
+        they do in the Standard Lithuanian and the behave the same when it comes
+        to stress replacement. Only the prefix {ItalicBlock('per-')} does not
+        care about the stress movement as it's always stressed for being acute.
+        In this article as the generic prefix the negation prefix{' '}
         {ItalicBlock('ne-')} will be used.
       </p>
       <h2>Present tense verbs</h2>
