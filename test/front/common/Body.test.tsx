@@ -20,6 +20,11 @@ describe('Dialog Component', () => {
     moduleMocker.clear()
   })
   it('Should render Body with Header and Nav', () => {
+    const decorateMock = mock()
+    Object.defineProperty(window, 'zdDecorateSuffixes', {
+      writable: true,
+      value: decorateMock,
+    })
     mockModuleScss('front/common/body.module.scss')
     spyOn(Nav, 'default').mockImplementation(() => <nav>nav</nav>)
     spyOn(Header, 'default').mockImplementation(() => <header>header</header>)
@@ -27,5 +32,6 @@ describe('Dialog Component', () => {
     expect(screen.getByText('header')).toBeInTheDocument()
     expect(screen.getByText('nav')).toBeInTheDocument()
     expect(screen.getByText('content')).toBeInTheDocument()
+    expect(decorateMock).toHaveBeenCalledTimes(1)
   })
 })

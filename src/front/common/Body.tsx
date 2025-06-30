@@ -1,4 +1,4 @@
-import React, {type ReactNode} from 'react'
+import React, {type ReactNode, useEffect} from 'react'
 import Nav, {type NavProps} from './Nav'
 import Header from './Header'
 import styles from './body.module.scss'
@@ -9,6 +9,10 @@ type Props = {
 }
 
 export default function Body({nav, children}: Props) {
+  useEffect(() => {
+    //@ts-ignore
+    window.zdDecorateSuffixes()
+  }, [])
   return (
     <>
       <Header />
