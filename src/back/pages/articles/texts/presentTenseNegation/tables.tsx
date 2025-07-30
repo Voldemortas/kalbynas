@@ -1,5 +1,5 @@
-import type {ReactNode} from 'react'
-import {renderToStaticMarkup} from 'react-dom/server'
+import type { ReactNode } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
 
 export const table = ({
   table,
@@ -14,7 +14,7 @@ export const table = ({
   </table>
 )
 
-export const MobileTd = ({children}: {children: ReactNode}) => {
+export const MobileTd = ({ children }: { children: ReactNode }) => {
   const stackMarkup = renderToStaticMarkup(children).replaceAll(
     /\s+/g,
     '<br />'
@@ -23,7 +23,7 @@ export const MobileTd = ({children}: {children: ReactNode}) => {
     <td>
       <span
         className="sr-view"
-        dangerouslySetInnerHTML={{__html: stackMarkup}}
+        dangerouslySetInnerHTML={{ __html: stackMarkup }}
       />
       <span aria-hidden={true} className="desktop-view">
         {children}
@@ -113,8 +113,8 @@ export const presentTenseAAcuteTable = () => (
     </tr>
     <tr>
       <MobileTd>II</MobileTd>
-      <MobileTd>kéiki &nbsp;léidi tvóji</MobileTd>
-      <MobileTd>nekéiki &nbsp;neléidi netvóji</MobileTd>
+      <MobileTd>kéiki &nbsp;léidi &nbsp; tvóji</MobileTd>
+      <MobileTd>nekéiki &nbsp;neléidi &nbsp; netvóji</MobileTd>
     </tr>
     <tr>
       <MobileTd>III</MobileTd>

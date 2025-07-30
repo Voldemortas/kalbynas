@@ -1,5 +1,5 @@
 import ItalicBlock from 'back/pages/common/components/ItalicBlock.tsx'
-import {alamarVerbs, eilmnr, eilmnrVerbs, galetiTuretiVerbs} from './lists'
+import { alamarVerbs, eilmnr, eilmnrVerbs, galetiTuretiVerbs } from './lists'
 import {
   pastTenseEAcuteTable,
   pastTenseECircumflexTable,
@@ -26,7 +26,7 @@ import {
   pastTenseOCircumflexTable,
   pastTenseOAcuteTable,
 } from './tables'
-import {arrayToDetailsType, Details} from './Details'
+import { arrayToDetailsType, Details } from './Details'
 
 const A_CAPTION = '-(i)a asmenuotės veiksmažodžiai'
 const I_CAPTION = '-i asmenuotės veiksmažodžiai'
@@ -121,15 +121,15 @@ export default function Lithuanian() {
           informacijos.
         </i>
         {Details({
-          summary: {element: presentTenseATable, caption: A_CAPTION},
+          summary: { element: presentTenseATable, caption: A_CAPTION },
           rest: A_VERBS,
         })}
         {Details({
-          summary: {element: presentTenseITable, caption: I_CAPTION},
+          summary: { element: presentTenseITable, caption: I_CAPTION },
           rest: I_VERBS,
         })}
         {Details({
-          summary: {element: presentTenseOTable, caption: O_CAPTION},
+          summary: { element: presentTenseOTable, caption: O_CAPTION },
           rest: PRESENT_O_VERBS,
         })}
       </p>
@@ -181,7 +181,7 @@ export default function Lithuanian() {
         <i>nekeñčia</i> yra tariama <i>nèkenčia</i>. Tačiau vien esamojo laiko
         analizės neužtenka - ji neatsako, kodėl mano tarmėje veiksmažodžiai{' '}
         <i>dỹla</i> ir <i>keñčia</i> elgiasi skirtingai ir yra <i>nedỹla</i> bei{' '}
-        <i>nèkeñčia</i>. Todėl buvo pažvelgta ir į kitą laiką - būtąjį kartinį.
+        <i>nèkenčia</i>. Todėl buvo pažvelgta ir į kitą laiką - būtąjį kartinį.
       </p>
       <h2>Būtojo kartinio laiko veiksmažodžiai</h2>
       <p>
@@ -198,15 +198,15 @@ export default function Lithuanian() {
           informacijos.
         </i>
         {Details({
-          summary: {element: pastTenseETable, caption: E_CAPTION},
+          summary: { element: pastTenseETable, caption: E_CAPTION },
           rest: E_VERBS,
         })}
         {Details({
-          summary: {element: pastTenseYtiTable, caption: YTI_CAPTION},
+          summary: { element: pastTenseYtiTable, caption: YTI_CAPTION },
           rest: YTI_VERBS,
         })}
         {Details({
-          summary: {element: pastTenseOTable, caption: O_CAPTION},
+          summary: { element: pastTenseOTable, caption: O_CAPTION },
           rest: PAST_O_VERBS,
         })}
       </p>

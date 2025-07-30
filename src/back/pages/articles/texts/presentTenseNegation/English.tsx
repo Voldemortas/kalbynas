@@ -1,5 +1,5 @@
 import ItalicBlock from 'back/pages/common/components/ItalicBlock.tsx'
-import {alamarVerbs, eilmnr, eilmnrVerbs, galetiTuretiVerbs} from './lists'
+import { alamarVerbs, eilmnr, eilmnrVerbs, galetiTuretiVerbs } from './lists'
 import {
   pastTenseEAcuteTable,
   pastTenseECircumflexTable,
@@ -26,7 +26,7 @@ import {
   pastTenseOCircumflexTable,
   pastTenseOAcuteTable,
 } from './tables'
-import {arrayToDetailsType, Details} from './Details'
+import { arrayToDetailsType, Details } from './Details'
 
 const A_CAPTION = '-(i)a conjugation verbs'
 const I_CAPTION = '-i conjugation verbs'
@@ -118,15 +118,15 @@ export default function English() {
         turns out it has to do with the (historically) short vowels as well.{' '}
         <i>Click on the arrow for detailed information.</i>
         {Details({
-          summary: {element: presentTenseATable, caption: A_CAPTION},
+          summary: { element: presentTenseATable, caption: A_CAPTION },
           rest: A_VERBS,
         })}
         {Details({
-          summary: {element: presentTenseITable, caption: I_CAPTION},
+          summary: { element: presentTenseITable, caption: I_CAPTION },
           rest: I_VERBS,
         })}
         {Details({
-          summary: {element: presentTenseOTable, caption: O_CAPTION},
+          summary: { element: presentTenseOTable, caption: O_CAPTION },
           rest: PRESENT_O_VERBS,
         })}
       </p>
@@ -176,7 +176,7 @@ export default function English() {
         <i>nekeñčia</i> is pronounced as <i>nèkenčia</i>. However, knowing only
         the present tense is not enough - the question persists why in my
         dialect the verbs <i>dỹla</i> and <i>keñčia</i> behave differently and
-        become <i>nedỹla</i> and <i>nèkeñčia</i>. Therefore other tense - the
+        become <i>nedỹla</i> and <i>nèkenčia</i>. Therefore other tense - the
         past simple had to be looked at as well.
       </p>
       <h2>Simple past tense verbs</h2>
@@ -191,15 +191,15 @@ export default function English() {
         the stress in the root in all the cases.{' '}
         <i>Click on the arrow for detailed information.</i>
         {Details({
-          summary: {element: pastTenseETable, caption: E_CAPTION},
+          summary: { element: pastTenseETable, caption: E_CAPTION },
           rest: E_VERBS,
         })}
         {Details({
-          summary: {element: pastTenseYtiTable, caption: YTI_CAPTION},
+          summary: { element: pastTenseYtiTable, caption: YTI_CAPTION },
           rest: YTI_VERBS,
         })}
         {Details({
-          summary: {element: pastTenseOTable, caption: O_CAPTION},
+          summary: { element: pastTenseOTable, caption: O_CAPTION },
           rest: PAST_O_VERBS,
         })}
       </p>
