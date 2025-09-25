@@ -1,17 +1,19 @@
-import pages, {getPage, type PageType, type RedirectType} from 'src/pages'
+import pages, { getPage, type PageType, type RedirectType } from 'src/pages'
 import renderReact from 'back/pages/common/renderReact'
 import getUrl from 'back/pages/common/getUrl'
 import IS_PROD from 'back/pages/common/isProd.ts'
-import {getConfigVars} from 'back/common/getConfigVar.ts'
+import { getConfigVars } from 'back/common/getConfigVar.ts'
 
 const lastUpdated = new Date().getTime().toString()
-const {HASH, KALBYNAS_PORT, HOSTNAME} = getConfigVars()
+const { HASH, KALBYNAS_PORT, HOSTNAME } = getConfigVars()
+
+Bun.spawn(['./build-status.ts'], { stdout: 'inherit' })
 
 const server = Bun.serve({
   port: KALBYNAS_PORT,
   hostname: HOSTNAME,
   websocket: {
-    async message(ws, message) {},
+    async message(ws, message) { },
     async open(ws) {
       ws.send(lastUpdated)
     },
@@ -24,7 +26,7 @@ const server = Bun.serve({
       }
     }
 
-    const {pathname} = getUrl(request)
+    const { pathname } = getUrl(request)
 
     if (/^\/static\//.test(pathname)) {
       return serveStatic(request)
@@ -61,7 +63,7 @@ async function serveStatic(
   staticPath?: string,
   params: string[] = []
 ) {
-  const {pathname, searchParams} = getUrl(request)
+  const { pathname } = getUrl(request)
   const file = Bun.file(`out${staticPath ?? pathname}`)
   if (!(await file.exists())) {
     return await FourOFour()
@@ -84,7 +86,7 @@ function getHeadersForRedirect(
   }
   if (params.length === 2) {
     if (params[0] === 'headers' && !!params[1]) {
-      return {headers: {...cache, ...JSON.parse(params[1])}}
+      return { headers: { ...cache, ...JSON.parse(params[1]) } }
     }
   }
   return {
@@ -96,7 +98,7 @@ function getCacheDuration(request: Request) {
   const WEEK = 604800
   const MONTH = 2592000
   const HOUR = 3600
-  const {pathname, searchParams} = getUrl(request)
+  const { pathname, searchParams } = getUrl(request)
   if (searchParams.get('hash') === HASH) {
     return MONTH
   }
@@ -116,7 +118,7 @@ function getCacheDuration(request: Request) {
 }
 
 async function FourOFour(request?: string) {
-  return new Response(null, {status: 404, statusText: 'Not found'})
+  return new Response(null, { status: 404, statusText: 'Not found' })
 }
 
 console.log(`Listening on ${server.url}`)

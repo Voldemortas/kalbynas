@@ -61,10 +61,10 @@ const config: PageType<ReactType | RedirectType | BackType>[] = [
     params: [],
   },
   {
-    path: '/status/build.json',
+    path: '/status/info.txt',
     resolve: {
       type: 'redirect',
-      path: '/status/build.json',
+      path: '/status/info.txt',
     },
     params: [],
   },
