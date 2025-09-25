@@ -1,9 +1,10 @@
-import {$} from 'bun'
+import { $ } from 'bun'
 import buildFront from './build-front'
-import type {PageType, ReactType} from './src/pages'
+import type { PageType, ReactType } from './src/pages'
 import pages from './src/pages'
 import buildBack from './build-back'
 import buildGlobalScss from './build-global.scss.ts'
+import buildStatus from './build-status.ts'
 
 export default async function build() {
   await $`rm -rf out`
@@ -18,6 +19,7 @@ export default async function build() {
     .map((p) => p.resolve.path)
   await buildFront(frontPaths)
   await buildBack()
+  await buildStatus()
 }
 
 await build()

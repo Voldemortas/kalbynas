@@ -37,6 +37,38 @@ const config: PageType<ReactType | RedirectType | BackType>[] = [
     params: [],
   },
   {
+    path: '/status/files.json',
+    resolve: {
+      type: 'redirect',
+      path: '/status/files.json',
+    },
+    params: [],
+  },
+  {
+    path: '/status/functions.json',
+    resolve: {
+      type: 'redirect',
+      path: '/status/functions.json',
+    },
+    params: [],
+  },
+  {
+    path: '/status/lines.json',
+    resolve: {
+      type: 'redirect',
+      path: '/status/lines.json',
+    },
+    params: [],
+  },
+  {
+    path: '/status/build.json',
+    resolve: {
+      type: 'redirect',
+      path: '/status/build.json',
+    },
+    params: [],
+  },
+  {
     path: '/',
     resolve: {
       type: 'react',

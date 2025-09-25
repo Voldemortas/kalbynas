@@ -1,9 +1,9 @@
 # Kalbynas
 
 [![test](https://github.com/Voldemortas/kalbynas/actions/workflows/test.yml/badge.svg)](https://github.com/Voldemortas/kalbynas/actions/workflows/test.yml)
-[![lines-coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Voldemortas/311fbde44b381b8a16f2876b9f0eb24b/raw/kalbynas-lines.json)](https://github.com/Voldemortas/kalbynas/actions/workflows/test-coverage.yml)
-[![functions-coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Voldemortas/311fbde44b381b8a16f2876b9f0eb24b/raw/kalbynas-functions.json)](https://github.com/Voldemortas/kalbynas/actions/workflows/test-coverage.yml)
-[![files-coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Voldemortas/311fbde44b381b8a16f2876b9f0eb24b/raw/kalbynas-files.json)](https://github.com/Voldemortas/kalbynas/actions/workflows/test-coverage.yml)
+![lines-coverage](https://img.shields.io/endpoint?url=https://kalbynas.lt/status/lines.json)
+![functions-coverage](https://img.shields.io/endpoint?url=https://kalbynas.lt/status/functions.json)
+![files-coverage](https://img.shields.io/endpoint?url=https://kalbynas.lt/status/files.json)
 
 ## Live project
 
