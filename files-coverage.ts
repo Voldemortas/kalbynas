@@ -1,10 +1,10 @@
-import {generateHsl} from './coverage.ts'
-import {readdir} from 'node:fs/promises'
+import { generateHsl } from './coverage.ts'
+import { readdir } from 'node:fs/promises'
 
 const SOURCE_ROOT = 'src'
 const TEST_ROOT = 'test'
 
-const jsFiles = (await readdir(SOURCE_ROOT, {recursive: true}))
+const jsFiles = (await readdir(SOURCE_ROOT, { recursive: true }))
   .filter(
     (fileName) =>
       fileName.endsWith('.ts') ||
@@ -14,7 +14,7 @@ const jsFiles = (await readdir(SOURCE_ROOT, {recursive: true}))
   )
   .filter((fileName) => !/\/translations\/\w+\.ts/.test(fileName))
 
-const testFiles = (await readdir(TEST_ROOT, {recursive: true}))
+const testFiles = (await readdir(TEST_ROOT, { recursive: true }))
   .filter(
     (fileName) =>
       fileName.endsWith('.test.ts') ||
@@ -32,7 +32,7 @@ console.log(
   JSON.stringify({
     schemaVersion: 1,
     label: 'Files coverage',
-    message: `${coveredPercentage}%`,
+    message: `${coveredPercentage.toFixed(2).replace(/(\.0+$)|(0+$)/, '')}%`,
     color: `hsl(${generateHsl(+coveredPercentage)}, 100%, 40%)`,
   })
 )
