@@ -40,7 +40,7 @@ const config: PageType<ReactType | RedirectType | BackType>[] = [
     path: '/',
     resolve: {
       type: 'react',
-      path: 'front/index/index.ts',
+      path: 'front/h1Text/index.ts',
       resolver: IndexBack,
     },
     params: [],
@@ -49,7 +49,7 @@ const config: PageType<ReactType | RedirectType | BackType>[] = [
     path: '/contact',
     resolve: {
       type: 'react',
-      path: 'front/index/index.ts',
+      path: 'front/h1Text/index.ts',
       resolver: ContactBack,
     },
     params: [],

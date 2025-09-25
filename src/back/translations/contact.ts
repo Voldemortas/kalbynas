@@ -2,7 +2,7 @@ import Translation, { type Translations } from 'back/common/Translation.ts'
 
 const translations: Translations = {
   h1: new Translation({
-    lt: 'Susiekite',
+    lt: 'Susisiekite',
     en: 'Contact me',
   }),
   text: new Translation({
