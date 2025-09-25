@@ -4,6 +4,7 @@ import makeNavigation from 'test/makeNavigation.ts'
 import Translation from 'back/common/Translation.ts'
 import * as getUrl from 'back/pages/common/getUrl.ts'
 import * as getNavigation from 'back/common/navigation.ts'
+import { ModuleMocker } from 'test/ModuleMocker'
 
 const REQUEST = mock() as unknown as Request
 const SUB = 'sub'
@@ -11,11 +12,14 @@ const TRANSLATIONS = { translation: 'berry good' }
 const TRANSLATION = { translation: new Translation({ lt: 'berry-good' }) }
 const NAVIGATION = makeNavigation('foo-bar')
 
+
+const moduleMocker = new ModuleMocker()
+
 describe('getPageWithAllTranslations', () => {
-  test('returns correct page implementation', () => {
+  test('returns correct page implementation', async () => {
     const getAllTranslatedMock = mock().mockReturnValue(TRANSLATIONS)
-    mock.module('back/common/getAllTranslated', () => ({
-      default: getAllTranslatedMock,
+    await moduleMocker.mock('back/common/getAllTranslated', () => ({
+      default: getAllTranslatedMock
     }))
     const getNavigationMock = spyOn(getNavigation, 'default').mockReturnValue(
       NAVIGATION
@@ -33,5 +37,6 @@ describe('getPageWithAllTranslations', () => {
     expect(getNavigationMock).toHaveBeenCalledWith(REQUEST, NAVIGATION.selected)
     expect(page).toEqual({ locale: 'lt', nav: NAVIGATION, ...TRANSLATIONS })
     mock.restore()
+    moduleMocker.clear()
   })
 })

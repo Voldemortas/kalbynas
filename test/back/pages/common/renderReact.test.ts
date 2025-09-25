@@ -9,14 +9,16 @@ import {
 } from 'bun:test'
 import assertHeaders from 'test/back/assertHeaders.ts'
 import renderReact from 'back/pages/common/renderReact.ts'
-import {htmlHeaders} from 'back/common/responseHeaders.ts'
-import * as Page from 'src/pages.ts'
+import { htmlHeaders } from 'back/common/responseHeaders.ts'
 import * as isProd from 'back/pages/common/isProd.ts'
+import { ModuleMocker } from 'test/ModuleMocker'
 
 const HASH = 'abc123'
-const DEFAULT_PARAMS = {hello: 'world'}
+const DEFAULT_PARAMS = { hello: 'world' }
 const DEFAULT_REQUEST = new Request('https://kalbynas.lt/test')
 const ENGLISH_REQUEST = new Request('https://en.kalbynas.lt/test')
+
+const moduleMocker = new ModuleMocker()
 
 describe('renderReact', () => {
   beforeEach(() => {
@@ -24,10 +26,11 @@ describe('renderReact', () => {
   })
   afterEach(() => {
     mock.restore()
+    moduleMocker.clear()
   })
 
   it('correctly renders default locale page', async () => {
-    const pageMock = mockGetPage()
+    const pageMock = await mockGetPage()
 
     const response = await renderReact(DEFAULT_REQUEST, HASH)
     const responseText = await response.text()
@@ -40,7 +43,7 @@ describe('renderReact', () => {
     assertHeaders(response, htmlHeaders.headers)
   })
   it('correctly renders english locale page', async () => {
-    const pageMock = mockGetPage()
+    const pageMock = await mockGetPage()
 
     const response = await renderReact(ENGLISH_REQUEST, HASH)
     const responseText = await response.text()
@@ -54,12 +57,15 @@ describe('renderReact', () => {
   })
 })
 
-function mockGetPage() {
-  const pageMock = mock().mockReturnValue({
+async function mockGetPage() {
+  const getPage = mock().mockReturnValue({
     resolve: {
       path: 'test.ts',
       resolver: () => DEFAULT_PARAMS,
     },
   })
-  return spyOn(Page, 'getPage').mockImplementation(pageMock)
+
+  await moduleMocker.mock('src/pages.ts', () => ({ getPage }))
+
+  return getPage
 }
