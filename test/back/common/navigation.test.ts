@@ -1,4 +1,4 @@
-import {describe, expect, test} from 'bun:test'
+import { describe, expect, test } from 'bun:test'
 import getNavigation from 'back/common/navigation.ts'
 
 describe('getUrl', () => {
@@ -19,6 +19,11 @@ describe('getUrl', () => {
           key: '/articles',
           link: '/articles',
           text: 'Articles',
+        },
+        {
+          key: '/contact',
+          link: '/contact',
+          text: 'Contact',
         },
       ],
       selected: 'a',
@@ -43,6 +48,11 @@ describe('getUrl', () => {
           key: '/articles',
           link: '/articles',
           text: 'Straipsniai',
+        },
+        {
+          key: '/contact',
+          link: '/contact',
+          text: 'Susisiekti',
         },
       ],
       selected: '/baltistics',

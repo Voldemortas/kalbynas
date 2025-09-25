@@ -1,4 +1,5 @@
 import IndexBack from './back/pages/index/index'
+import ContactBack from './back/pages/contacts/index'
 import DialectologyBack from './back/pages/dialectology/index'
 import ArticlesBack from './back/pages/articles/index'
 import BaltisticsBack from './back/pages/baltistics/index'
@@ -8,7 +9,7 @@ import getUrl from './back/pages/common/getUrl'
 import SingleArticle from 'back/pages/articles/singleArticle'
 import articleList from 'back/pages/articles/allArticles'
 
-const allArticles: PageType<ReactType>[] = articleList.map(({id}) => ({
+const allArticles: PageType<ReactType>[] = articleList.map(({ id }) => ({
   path: `/articles/${id.format()}`,
   resolve: {
     type: 'react',
@@ -41,6 +42,15 @@ const config: PageType<ReactType | RedirectType | BackType>[] = [
       type: 'react',
       path: 'front/index/index.ts',
       resolver: IndexBack,
+    },
+    params: [],
+  },
+  {
+    path: '/contact',
+    resolve: {
+      type: 'react',
+      path: 'front/index/index.ts',
+      resolver: ContactBack,
     },
     params: [],
   },
@@ -103,9 +113,9 @@ export function getPage(
   resolveType: 'react' | 'redirect' | 'back',
   conf = config
 ) {
-  const {pathname} = getUrl(request)
+  const { pathname } = getUrl(request)
   return conf.filter(
-    ({path, resolve}) => path === pathname && resolve.type === resolveType
+    ({ path, resolve }) => path === pathname && resolve.type === resolveType
   )[0]
 }
 

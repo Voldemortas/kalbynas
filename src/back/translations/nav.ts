@@ -1,4 +1,4 @@
-import Translation, {type Translations} from 'back/common/Translation.ts'
+import Translation, { type Translations } from 'back/common/Translation.ts'
 
 const translations: Translations = {
   dialectology: new Translation({
@@ -12,6 +12,10 @@ const translations: Translations = {
   articles: new Translation({
     lt: 'Straipsniai',
     en: 'Articles',
+  }),
+  contact: new Translation({
+    lt: 'Susisiekti',
+    en: 'Contact',
   }),
 }
 
