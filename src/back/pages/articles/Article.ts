@@ -1,8 +1,8 @@
-import Translation, {type Translations} from 'back/common/Translation'
+import Translation, { type Translations } from 'back/common/Translation'
 
 const DEFAULT_AUTHOR = new Translation({
-  lt: 'Autorius',
-  en: 'Author',
+  lt: 'Kalbyno autorius',
+  en: 'Kalbynas Author',
 })
 
 export default class Article {
@@ -70,7 +70,7 @@ export class ArticleList {
     articles.forEach((art) => this.addArticle(art))
   }
   public addArticle(article: Article) {
-    const newArticle = new Article({...article, date: article.date.format()})
+    const newArticle = new Article({ ...article, date: article.date.format() })
     if (this.list.length !== 0) {
       const previousArticle = this.list[this.list.length - 1]
       newArticle.previousTitle = previousArticle.title
