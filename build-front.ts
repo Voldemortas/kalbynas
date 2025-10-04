@@ -62,7 +62,7 @@ export default async function buildFront(entrypoints: string[]) {
       minify: isProd(),
       root: TEMP_DIR,
       target: 'browser',
-      splitting: true,
+      splitting: false,
     })
     if (!buildOutput.success) {
       console.error(buildOutput.logs)
