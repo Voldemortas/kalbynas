@@ -1,7 +1,7 @@
 import {afterAll, beforeAll, beforeEach, describe, expect, test} from 'bun:test'
 import parseArgs from 'back/common/parseArgs.ts'
-//TODO
-describe.todo('parseArgs', () => {
+
+describe('parseArgs', () => {
   let bunArgv: typeof Bun.argv
   beforeAll(() => {
     bunArgv = Bun.argv
