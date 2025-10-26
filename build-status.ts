@@ -1,6 +1,12 @@
 #!/usr/bin/env bun
-import { $ } from 'bun'
-import { log } from './builder'
+import {$} from 'bun'
+
+function log(...arg: any) {
+  console.log(
+    `[${new Date().toISOString().split('T')[1].replace('Z', '')}]`,
+    ...arg
+  )
+}
 
 async function buildStatus() {
   log('Reporting build status in the background')

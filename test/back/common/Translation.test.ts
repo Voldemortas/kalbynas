@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'bun:test'
 import Translation from 'back/common/Translation.ts'
-import {DEFAULT_ALTERNATE} from 'back/config.ts'
+import {DEFAULT_ALTERNATE} from 'build/config.ts'
 
 describe('Translation', () => {
   test('throws an error if default locale is missing', () => {

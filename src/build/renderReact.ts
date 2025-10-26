@@ -1,39 +1,39 @@
-import {htmlHeaders} from 'back/common/responseHeaders.ts'
-import {getPage, type PageType, type ReactType} from 'src/pages.ts'
-import getUrl from './getUrl'
-import isProd from './isProd.ts'
-import {ALTERNATES, DEFAULT_ALTERNATE, PROD_HOST} from 'back/config.ts'
+import {ALTERNATES, DEFAULT_ALTERNATE, PROD_HOST} from 'build/config.ts'
 import translations from 'back/translations/renderReact.ts'
-import defaultHtml from './default.html'
-import developmentHtml from './development.html'
+import type {ReactRoute, Route} from 'voldemortas-server/route'
+import {getPage, getUrl, htmlHeaders, isProd} from 'voldemortas-server/utils'
 
-export default async function renderReact(request: Request, hash: string) {
+export default async function renderReact(
+  request: Request,
+  hash: string,
+  routes: Route[],
+  defaultHtml: string,
+  developmentHtml: string,
+  replaceFn: (htmlContent: string) => string = (x) => x
+) {
   const {sub, pathname} = getUrl(request)
   const locale =
     ALTERNATES.find((alternate) => alternate === sub) ?? DEFAULT_ALTERNATE
   const htmlFile = await Bun.file(
-    (defaultHtml.index ?? defaultHtml).replaceAll(/^\./g, import.meta.dir)
+    defaultHtml.replaceAll(/^\./g, import.meta.dir)
   ).text()
 
-  const page = getPage(request, 'react') as PageType<ReactType>
-  const path = page.resolve.path.replace(/\.ts$/, '')
+  const page = getPage(request, 'react', routes) as ReactRoute
+  const path = page.reactPath.replace(/\.ts$/, '')
+  const devHtmlFile = Bun.file(developmentHtml)
+  const devHtml =
+    !isProd() && (await devHtmlFile.exists()) ? await devHtmlFile.text() : ''
 
   const newHtmlFile = htmlFile
+    .replace('<script id="dev"></script>', devHtml)
     .replace(
-      '<script id="dev"></script>',
-      isProd()
-        ? ''
-        : await Bun.file(
-            (developmentHtml.index ?? developmentHtml).replaceAll(
-              /^\./g,
-              import.meta.dir
-            )
-          ).text()
+      /([^\S\r\n]+)const hash = undefined\n/,
+      isProd() ? '' : `$1const hash = '${hash}'\n`
     )
     .replace('const hash = undefined', isProd() ? '' : `const hash = '${hash}'`)
     .replaceAll(
       'const globalParams = undefined',
-      `    const globalParams = ${JSON.stringify(page.resolve.resolver(request, page.params))}`
+      `const globalParams = ${JSON.stringify(page.resolver(request, page.params))}`
     )
     .replaceAll(/global.css/g, `global.css?hash=${hash}`)
     .replaceAll(/placeholderPath.css/g, `${path}.css?hash=${hash}`)

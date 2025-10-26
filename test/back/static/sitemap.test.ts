@@ -1,7 +1,7 @@
-import { describe, expect, test } from 'bun:test'
+import {describe, expect, test} from 'bun:test'
 import sitemap from 'back/static/sitemap.ts'
-import { textHeaders } from 'back/common/responseHeaders.ts'
 import assertHeaders from 'test/back/assertHeaders.ts'
+import {textHeaders} from 'voldemortas-server/utils'
 
 describe('sitemap.txt', () => {
   test('returns correct headers', () => {
@@ -17,9 +17,9 @@ describe('sitemap.txt', () => {
       'https://en.kalbynas.lt/',
       'https://en.kalbynas.lt/contact',
       'https://en.kalbynas.lt/dialectology',
+      'https://en.kalbynas.lt/baltistics',
       'https://en.kalbynas.lt/articles',
       'https://en.kalbynas.lt/articles/prefixed-verbs-accentuation',
-      'https://en.kalbynas.lt/baltistics',
     ])
   })
 })

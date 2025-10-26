@@ -1,4 +1,4 @@
-import type {ALTERNATES_TYPE} from 'back/config.ts'
+import type {ALTERNATES_TYPE} from 'build/config.ts'
 
 type globalParamsType<T> = {
   locale: ALTERNATES_TYPE

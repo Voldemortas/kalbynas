@@ -1,17 +1,16 @@
-import { describe, expect, mock, spyOn, test } from 'bun:test'
+import {describe, expect, mock, spyOn, test} from 'bun:test'
 import getPageWithAllTranslations from 'back/pages/common/getPageWithAllTranslations.ts'
 import makeNavigation from 'test/makeNavigation.ts'
 import Translation from 'back/common/Translation.ts'
-import * as getUrl from 'back/pages/common/getUrl.ts'
+import * as utils from 'voldemortas-server/utils'
 import * as getNavigation from 'back/common/navigation.ts'
-import { ModuleMocker } from 'test/ModuleMocker'
+import {ModuleMocker} from 'test/ModuleMocker'
 
 const REQUEST = mock() as unknown as Request
 const SUB = 'sub'
-const TRANSLATIONS = { translation: 'berry good' }
-const TRANSLATION = { translation: new Translation({ lt: 'berry-good' }) }
+const TRANSLATIONS = {translation: 'berry good'}
+const TRANSLATION = {translation: new Translation({lt: 'berry-good'})}
 const NAVIGATION = makeNavigation('foo-bar')
-
 
 const moduleMocker = new ModuleMocker()
 
@@ -19,13 +18,13 @@ describe('getPageWithAllTranslations', () => {
   test('returns correct page implementation', async () => {
     const getAllTranslatedMock = mock().mockReturnValue(TRANSLATIONS)
     await moduleMocker.mock('back/common/getAllTranslated', () => ({
-      default: getAllTranslatedMock
+      default: getAllTranslatedMock,
     }))
     const getNavigationMock = spyOn(getNavigation, 'default').mockReturnValue(
       NAVIGATION
     )
     //@ts-ignore
-    spyOn(getUrl, 'default').mockReturnValue({
+    spyOn(utils, 'getUrl').mockReturnValue({
       sub: SUB,
     })
     const page = getPageWithAllTranslations(
@@ -35,7 +34,7 @@ describe('getPageWithAllTranslations', () => {
     )
     expect(getAllTranslatedMock).toHaveBeenCalledWith(TRANSLATION, SUB, {})
     expect(getNavigationMock).toHaveBeenCalledWith(REQUEST, NAVIGATION.selected)
-    expect(page).toEqual({ locale: 'lt', nav: NAVIGATION, ...TRANSLATIONS })
+    expect(page).toEqual({locale: 'lt', nav: NAVIGATION, ...TRANSLATIONS})
     mock.restore()
     moduleMocker.clear()
   })

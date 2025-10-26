@@ -1,6 +1,6 @@
 {
   "name": "kalbynas.lt",
-  "module": "index.ts",
+  "module": "src/index.ts",
   "type": "module",
   "devDependencies": {
     "@biomejs/biome": "1.9.3",
@@ -22,14 +22,15 @@
   "dependencies": {
     "bun": "^1.2.17",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "voldemortas-server": "https://github.com/Voldemortas/voldemortas-server/releases/download/latest/latest.tgz"
   },
   "scripts": {
-    "build-prod": "NODE_ENV=production bun run build",
-    "build": "bun run build.ts",
-    "watch": "bun run watch.ts",
-    "serve": "bun run src/back/server.ts",
-    "serve-prod": "NODE_ENV=production bun run out/server.js",
+    "build-prod": "bun run src/index.ts --build --prod",
+    "build": "bun run src/index.ts --build",
+    "watch": "bun run src/index.ts --watch",
+    "serve": "bun run out/server.js --serve",
+    "serve-prod": "bun run out/server.js --serve --prod",
     "serve-pm2": "bunx --bun pm2 start",
     "prettify": "bunx prettier `git diff HEAD --name-only --diff-filter d`  --write"
   },

@@ -1,9 +1,9 @@
-import getUrl from 'back/pages/common/getUrl.ts'
+import {getUrl} from 'voldemortas-server/utils'
 import {
   ALTERNATES,
   type ALTERNATES_TYPE,
   DEFAULT_ALTERNATE,
-} from 'back/config.ts'
+} from 'build/config.ts'
 
 export default function getLocale(request: Request): ALTERNATES_TYPE {
   const {sub} = getUrl(request)

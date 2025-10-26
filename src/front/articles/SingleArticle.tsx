@@ -3,7 +3,7 @@ import React from 'react'
 import Body from 'front/common/Body'
 import type {NavProps} from 'front/common/Nav'
 import ArticleTranslations from 'front/translations/ArticleTranslations.ts'
-import type {ALTERNATES_TYPE} from 'back/config.ts'
+import type {ALTERNATES_TYPE} from 'build/config.ts'
 import getGlobalParams from 'front/common/getGlobalParams.ts'
 
 import styles from './singleArticle.module.scss'

@@ -1,5 +1,5 @@
 import getPageWithAllTranslations from 'back/pages/common/getPageWithAllTranslations.ts'
-import getUrl from '../common/getUrl'
+import {getUrl} from 'voldemortas-server/utils'
 import articleList from './allArticles'
 import getLocale from 'back/common/getLocale.ts'
 

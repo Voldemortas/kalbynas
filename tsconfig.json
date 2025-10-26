@@ -2,6 +2,7 @@
   "compilerOptions": {
     "paths": {
       "back/*": ["./src/back/*"],
+      "build/*": ["./src/build/*"],
       "front/*": ["./temp/*", "./src/front/*"],
       "src/*": ["./src/*"],
       "test/*": ["./test/*"]

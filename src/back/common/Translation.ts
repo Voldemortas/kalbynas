@@ -1,4 +1,4 @@
-import {type ALTERNATES_TYPE, DEFAULT_ALTERNATE} from 'back/config.ts'
+import {type ALTERNATES_TYPE, DEFAULT_ALTERNATE} from 'build/config.ts'
 
 export default class Translation {
   private locales: ALTERNATES_TYPE[]

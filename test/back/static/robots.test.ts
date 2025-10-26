@@ -1,7 +1,7 @@
 import {describe, expect, test} from 'bun:test'
 import robots from 'back/static/robots.ts'
-import {textHeaders} from 'back/common/responseHeaders.ts'
 import assertHeaders from 'test/back/assertHeaders.ts'
+import {textHeaders} from 'voldemortas-server/utils'
 
 describe('robots.txt', () => {
   test('returns correct headers', () => {
