@@ -19,7 +19,7 @@ export default async function renderReact(
   ).text()
 
   const page = getPage(request, 'react', routes) as ReactRoute
-  const path = page.reactPath.replace(/\.ts$/, '')
+  const path = page.reactPath.replace(/\.tsx$/, '')
   const devHtmlFile = Bun.file(developmentHtml)
   const devHtml =
     !isProd() && (await devHtmlFile.exists()) ? await devHtmlFile.text() : ''

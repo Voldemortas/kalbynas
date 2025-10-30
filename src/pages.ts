@@ -26,20 +26,20 @@ const routes: Route[] = [
     'headers',
     '{"content-type": "text/css"}',
   ]),
-  new ReactRoute('/', 'front/h1Text/index.ts', IndexBack),
-  new ReactRoute('/contact', 'front/h1Text/index.ts', ContactBack),
+  new ReactRoute('/', 'front/h1Text/index.tsx', IndexBack),
+  new ReactRoute('/contact', 'front/h1Text/index.tsx', ContactBack),
   new ReactRoute(
     '/dialectology',
-    'front/dialectology/index.ts',
+    'front/dialectology/index.tsx',
     DialectologyBack
   ),
-  new ReactRoute('/baltistics', 'front/baltistics/index.ts', BaltisticsBack),
-  new ReactRoute('/articles', 'front/articles/index.ts', ArticlesBack),
+  new ReactRoute('/baltistics', 'front/baltistics/index.tsx', BaltisticsBack),
+  new ReactRoute('/articles', 'front/articles/index.tsx', ArticlesBack),
   ...articleList.map(
     ({id}) =>
       new ReactRoute(
         `/articles/${id.format()}`,
-        'front/articles/SingleArticle.ts',
+        'front/articles/SingleArticle.tsx',
         SingleArticle
       )
   ),
