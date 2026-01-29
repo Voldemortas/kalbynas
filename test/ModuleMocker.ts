@@ -27,15 +27,11 @@ export type MockResult = {
 export class ModuleMocker {
   private mocks: MockResult[] = []
 
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   async mock(modulePath: string, renderMocks: () => Record<string, any>) {
-    // biome-ignore lint/style/useConst: <explanation>
     let original = {
       ...(await import(modulePath)),
     }
-    // biome-ignore lint/style/useConst: <explanation>
     let mocks = renderMocks()
-    // biome-ignore lint/style/useConst: <explanation>
     let result = {
       ...original,
       ...mocks,
@@ -50,7 +46,6 @@ export class ModuleMocker {
   }
 
   clear() {
-    // biome-ignore lint/complexity/noForEach: <explanation>
     this.mocks.forEach((mockResult) => mockResult.clear())
     this.mocks = []
   }
