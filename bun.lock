@@ -7,7 +7,7 @@
         "bun": "^1.2.17",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
-        "voldemortas-server": "https://github.com/Voldemortas/voldemortas-server/releases/download/latest/latest.tgz",
+        "voldemortas-server": "npm:@jsr/voldemortas__server",
       },
       "devDependencies": {
         "@biomejs/biome": "1.9.3",
@@ -213,7 +213,7 @@
 
     "undici-types": ["undici-types@7.16.0", "", {}, "sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw=="],
 
-    "voldemortas-server": ["voldemortas-server@https://github.com/Voldemortas/voldemortas-server/releases/download/latest/latest.tgz", { "peerDependencies": { "@types/bun": "^1.2.17", "@types/react": "^18.3.23", "@types/react-dom": "^18.3.7", "@types/sass": "^1.45.0", "bun": "^1.3.1", "react": "^18.3.1", "react-dom": "^18.3.1", "sass": "^1.89.2", "typescript": "^5" } }],
+    "voldemortas-server": ["@jsr/voldemortas__server@0.11.1", "https://npm.jsr.io/~/11/@jsr/voldemortas__server/0.11.1.tgz", { "dependencies": { "bun": "^1.3.1", "sass": "^1.89.2" } }, "sha512-NKXsdq0KJYGVbbs/XLEw/XH1lImRMk8GvedQ1tUSJvKinTMFQmmDBl0cQvcWbjNZvStHPdpKX3hxhe2+bZb4Lg=="],
 
     "webidl-conversions": ["webidl-conversions@7.0.0", "", {}, "sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g=="],
 
