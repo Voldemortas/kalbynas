@@ -25,18 +25,15 @@ export default function Header() {
         </a>
       </div>
       <div className={styles('languages--mobile')}>
-        <div
-          style={{
-            backgroundImage: 'url("/static/languageIcon.svg")',
-            width: 50,
-            height: 50,
-          }}
+        <span
           aria-labelledby="language-selector"
           onClick={() => languagesRef.current?.switch()}
           onKeyUp={() => languagesRef.current?.switch()}
           role="button"
           tabIndex={0}
-        />
+        >
+          A/文
+        </span>
         <div className="sr-only" id="language-selector">
           <span lang="en">Change language</span>
           <span lang="lt">Pakeisti kalbą</span>
