@@ -2,6 +2,14 @@ import React from 'react'
 import Diphthongs from './Diphthongs'
 import styles from './baltistics.module.scss'
 
+const primaryGreenCell = {
+  backgroundColor: 'light-dark(var(--color-green-2), var(--color-green-6))',
+}
+const secondaryGreenCell = {
+  backgroundColor: 'light-dark(var(--color-green-6), var(--color-green-4))',
+  color: 'light-dark(var(--color-green-black-dark), var(--color-green-black))',
+}
+
 export default function Baltistics(props: BaltisticsPageType) {
   return (
     <article>
@@ -71,27 +79,20 @@ export default function Baltistics(props: BaltisticsPageType) {
           <caption className="center">{props.commonVowelsCaption}</caption>
           <tbody>
             <tr>
-              <td style={{backgroundColor: 'var(--color-green-2)'}}>ī̆</td>
+              <td style={primaryGreenCell}>ī̆</td>
               <td colSpan={3} />
-              <td style={{backgroundColor: 'var(--color-green-2)'}}>ū̆</td>
+              <td style={primaryGreenCell}>ū̆</td>
             </tr>
             <tr>
               <td />
-              <td style={{backgroundColor: 'var(--color-green-2)'}}>ē̆</td>
+              <td style={primaryGreenCell}>ē̆</td>
               <td />
-              <td
-                style={{
-                  backgroundColor: 'var(--color-green-6)',
-                  color: 'var(--color-green-white)',
-                }}
-              >
-                ō
-              </td>
+              <td style={secondaryGreenCell}>ō</td>
               <td />
             </tr>
             <tr>
               <td colSpan={2} />
-              <td style={{backgroundColor: 'var(--color-green-2)'}}>ā̆</td>
+              <td style={primaryGreenCell}>ā̆</td>
               <td colSpan={2} />
             </tr>
           </tbody>

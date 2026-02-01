@@ -1,3 +1,18 @@
 $mobile-breakpoint: 800px;
 $header-height: 50px;
 $nav-width: 200px;
+
+* {
+  --color-green-white: #fafcfa;
+  --color-green-white-dark: #121a12;
+  --color-green-black: #04100c;
+  --color-green-black-dark: #e7f1ec;
+  --color-green-7: #173a2c;
+  --color-green-6: #2b644a;
+  --color-green-5: #38805f;
+  --color-green-4: #48ad7e;
+  --color-green-3: #6ec499;
+  --color-green-2: #99d6b5;
+  --color-green-1: #c4e9d1;
+  --default-font: 'Tahoma', sans-serif;
+}

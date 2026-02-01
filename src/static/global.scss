@@ -1,18 +1,5 @@
 @use '../front/variables.scss' as variables;
 
-* {
-  --color-green-white: #fafcfa;
-  --color-green-black: #04100c;
-  --color-green-7: #173a2c;
-  --color-green-6: #2b644a;
-  --color-green-5: #38805f;
-  --color-green-4: #48ad7e;
-  --color-green-3: #6ec499;
-  --color-green-2: #99d6b5;
-  --color-green-1: #c4e9d1;
-  --default-font: 'Tahoma', sans-serif;
-}
-
 html,
 body,
 #root {
@@ -22,13 +9,13 @@ body,
   padding: 0 !important;
   position: relative;
   font-size: 18px;
-  background-color: var(--color-green-white);
+  background-color: light-dark(var(--color-green-white), var(--color-green-white-dark));
   font-family: var(--default-font);
-  color: var(--color-green-black);
+  color: light-dark(var(--color-green-black), var(--color-green-black-dark));
 }
 
 a {
-  color: var(--color-green-6);
+  color: light-dark(var(--color-green-6), var(--color-green-2));
   text-decoration: none;
 
   &:hover,

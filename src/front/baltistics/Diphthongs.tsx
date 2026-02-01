@@ -4,6 +4,11 @@ const LONG_NUCLEUS = 'iueao'.split('').map((vowel) => `${vowel}\u0304`)
 const SHORT_NUCLEUS = 'iuea'.split('').map((vowel) => `${vowel}\u0306`)
 const OFFGLIDE = 'i̯ u̯ n m l r'.split(' ')
 
+const isGreenBackground = (nucleus: string, glide: string) =>
+  isGreen(nucleus, glide)
+    ? {backgroundColor: 'light-dark(var(--color-green-2), var(--color-green-6)'}
+    : {}
+
 function isGreen(nucleus: string, offglide: string) {
   if (SHORT_NUCLEUS.includes(nucleus)) {
     return true
@@ -51,11 +56,7 @@ export default function Diphthongs({
                 return (
                   <td
                     key={nucleus + glide}
-                    style={
-                      isGreen(nucleus, glide)
-                        ? {backgroundColor: 'var(--color-green-2)'}
-                        : {}
-                    }
+                    style={isGreenBackground(nucleus, glide)}
                   >
                     *{nucleus + glide}
                   </td>
@@ -92,11 +93,7 @@ export default function Diphthongs({
                 return (
                   <td
                     key={nucleus + glide}
-                    style={
-                      isGreen(nucleus, glide)
-                        ? {backgroundColor: 'var(--color-green-2)'}
-                        : {}
-                    }
+                    style={isGreenBackground(nucleus, glide)}
                   >
                     *{nucleus + glide}
                   </td>

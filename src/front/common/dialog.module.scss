@@ -3,7 +3,7 @@
   max-height: none !important;
   width: 100vw;
   height: 100vh;
-  background-color: var(--color-green-white);
+  background-color: light-dark(var(--color-green-white), var(--color-green-white-dark));
   border: 0;
   text-align: center;
   margin: 0;
