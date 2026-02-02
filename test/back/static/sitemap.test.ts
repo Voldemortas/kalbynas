@@ -20,6 +20,7 @@ describe('sitemap.txt', () => {
       'https://en.kalbynas.lt/baltistics',
       'https://en.kalbynas.lt/articles',
       'https://en.kalbynas.lt/articles/prefixed-verbs-accentuation',
+      'https://en.kalbynas.lt/morpheme-marker',
     ])
   })
 })

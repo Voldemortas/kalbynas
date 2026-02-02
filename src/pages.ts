@@ -9,6 +9,7 @@ import ContactBack from './back/pages/contacts/index'
 import DialectologyBack from './back/pages/dialectology/index'
 import ArticlesBack from './back/pages/articles/index'
 import BaltisticsBack from './back/pages/baltistics/index'
+import MorphemesBack from 'back/pages/morphemes/index'
 import Robots from './back/static/robots'
 import Sitemap from './back/static/sitemap'
 import SingleArticle from 'back/pages/articles/singleArticle'
@@ -42,6 +43,11 @@ const routes: Route[] = [
         'front/articles/SingleArticle.tsx',
         SingleArticle
       )
+  ),
+  new ReactRoute(
+    '/morpheme-marker',
+    'front/morphemes/index.tsx',
+    MorphemesBack
   ),
 ]
 
