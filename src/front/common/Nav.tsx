@@ -5,6 +5,12 @@ import CssSelector from 'front/common/CssSelector.tsx'
 import NavTranslations from 'front/translations/NavTranslations.ts'
 import getGlobalParams from 'front/common/getGlobalParams.ts'
 import type {ALTERNATES_TYPE} from 'build/config.ts'
+import osTheme from './cssThemes/osTheme.css' with {type: 'text'}
+import darkTheme from './cssThemes/darkTheme.css' with {type: 'text'}
+import lightTheme from './cssThemes/lightTheme.css' with {type: 'text'}
+import disabledZd from './cssThemes/disabledZd.css' with {type: 'text'}
+import dashesZd from './cssThemes/dashesZd.css' with {type: 'text'}
+import lithuanianZd from './cssThemes/lithuanianZd.css' with {type: 'text'}
 
 export type NavProps = {
   selected?: string
@@ -17,61 +23,30 @@ export default function Nav({selected = undefined, links}: NavProps) {
 
   const THEMES = {
     default: {
-      value: `:root {
-  color-scheme: light dark;
-  @media (prefers-color-scheme: light) {
-    color-scheme: light;
-  }
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
-}
-}`,
+      value: osTheme,
       text: NavTranslations.OS.format(locale),
     },
     dark: {
-      value: `:root {
-  color-scheme: dark;
-}`,
+      value: darkTheme,
       text: NavTranslations.dark.format(locale),
     },
     light: {
-      value: `:root {
-  color-scheme: light;
-}`,
+      value: lightTheme,
       text: NavTranslations.light.format(locale),
     },
   }
 
-  const DISABLED_STYLE = `.zd_prefix, .zd_root, .zd_suffix, .zd_flection, .zd_stem, .zd_infix, .zd_compound, .zd_reflexive {
-  &:not(.zd_important) {
-    --zd-default-size: 0;
-  }
-}`
-
   const MORPHEMES = {
     default: {
-      value: `.zd_prefix, .zd_root, .zd_suffix, .zd_flection, .zd_stem, .zd_infix, .zd_compound, .zd_reflexive {
-    & +.zd_prefix, +.zd_root, +.zd_suffix, +.zd_flection, +.zd_stem, +.zd_infix, +.zd_compound, +.zd_reflexive {
-      &:not(.zd_important)::before {
-        content: '-';
-        top: unset;
-        left: unset;
-        position: inherit;
-        display: inherit;
-      }
-    }
-  }
-  ${DISABLED_STYLE}
-`,
+      value: dashesZd,
       text: NavTranslations.dashes.format(locale),
     },
     disabled: {
-      value: DISABLED_STYLE,
+      value: disabledZd,
       text: NavTranslations.disabled.format(locale),
     },
     lithuanian: {
-      value: ``,
+      value: lithuanianZd,
       text: NavTranslations.school.format(locale),
     },
   }

@@ -1,0 +1,15 @@
+.zd_prefix, .zd_root, .zd_suffix, .zd_flection, .zd_stem, .zd_infix, .zd_compound, .zd_reflexive {
+    &:not(.zd_important) {
+        --zd-default-size: 0;
+    }
+
+    & +.zd_prefix, +.zd_root, +.zd_suffix, +.zd_flection, +.zd_stem, +.zd_infix, +.zd_compound, +.zd_reflexive {
+        &:not(.zd_important)::before {
+            content: '-';
+            top: unset;
+            left: unset;
+            position: inherit;
+            display: inherit;
+        }
+    }
+}

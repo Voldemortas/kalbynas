@@ -1,0 +1,5 @@
+.zd_prefix, .zd_root, .zd_suffix, .zd_flection, .zd_stem, .zd_infix, .zd_compound, .zd_reflexive {
+    &:not(.zd_important) {
+        --zd-default-size: 0;
+    }
+}
