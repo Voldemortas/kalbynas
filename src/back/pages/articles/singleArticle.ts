@@ -2,10 +2,11 @@ import getPageWithAllTranslations from 'back/pages/common/getPageWithAllTranslat
 import {getUrl} from 'voldemortas-server/utils'
 import articleList from './allArticles'
 import getLocale from 'back/common/getLocale.ts'
+import type {ReactRoute} from 'voldemortas-server/route'
 
 const NAV_LINK = '/articles'
 
-export default function getSingleArticle(request: Request, params: string[]) {
+export default function getSingleArticle(request: Request, route: ReactRoute) {
   const {pathname} = getUrl(request)
   const locale = getLocale(request)
   const id = /\/articles\/([\w-]+)$/.exec(pathname)

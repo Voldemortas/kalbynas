@@ -1,7 +1,8 @@
 import {getUrl, textHeaders} from 'voldemortas-server/utils'
 import routes from 'src/pages'
+import type {BackRoute} from 'voldemortas-server/route'
 
-export default function sitemap(request: Request, params: string[]) {
+export default function sitemap(request: Request, route: BackRoute) {
   const {origin} = getUrl(request, true)
 
   return new Response(
