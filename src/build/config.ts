@@ -1,5 +1,5 @@
 export const PROD_HOST = 'kalbynas.lt'
-export const ALTERNATES = ['lt', 'en'] as const
+export const ALTERNATES = ['lt', 'en', 'api'] as const
 export type ALTERNATES_TYPE = (typeof ALTERNATES)[number]
 export const DEFAULT_ALTERNATE: ALTERNATES_TYPE = 'lt'
 

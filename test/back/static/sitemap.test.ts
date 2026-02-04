@@ -5,13 +5,12 @@ import {textHeaders} from 'voldemortas-server/utils'
 
 describe('sitemap.txt', () => {
   test('returns correct headers', () => {
-    const response = sitemap(new Request('http://localhost:8080'), [])
+    const response = sitemap(new Request('http://localhost:8080'))
     assertHeaders(response, textHeaders.headers)
   })
-  test('returns correct body ', async () => {
+  test('returns correct body for en locale', async () => {
     const responseText = await sitemap(
-      new Request('http://en.kalbynas.lt'),
-      []
+      new Request('http://en.kalbynas.lt')
     ).text()
     expect(responseText.split('\n')).toStrictEqual([
       'https://en.kalbynas.lt/',
@@ -22,5 +21,23 @@ describe('sitemap.txt', () => {
       'https://en.kalbynas.lt/articles/prefixed-verbs-accentuation',
       'https://en.kalbynas.lt/morpheme-marker',
     ])
+  })
+  test('returns correct body for lt locale', async () => {
+    const responseText = await sitemap(new Request('http://kalbynas.lt')).text()
+    expect(responseText.split('\n')).toStrictEqual([
+      'https://kalbynas.lt/',
+      'https://kalbynas.lt/contact',
+      'https://kalbynas.lt/dialectology',
+      'https://kalbynas.lt/baltistics',
+      'https://kalbynas.lt/articles',
+      'https://kalbynas.lt/articles/prefixed-verbs-accentuation',
+      'https://kalbynas.lt/morpheme-marker',
+    ])
+  })
+  test('returns correct body for api.', async () => {
+    const responseText = await sitemap(
+      new Request('http://api.kalbynas.lt')
+    ).text()
+    expect(responseText).toStrictEqual('')
   })
 })

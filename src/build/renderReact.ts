@@ -14,6 +14,9 @@ export default async function renderReact(
   const {sub, pathname} = getUrl(request)
   const locale =
     ALTERNATES.find((alternate) => alternate === sub) ?? DEFAULT_ALTERNATE
+  if (locale === 'api') {
+    return new Response(null, {status: 404, statusText: 'Not found'})
+  }
   const htmlFile = await Bun.file(
     defaultHtml.replaceAll(/^\./g, import.meta.dir)
   ).text()

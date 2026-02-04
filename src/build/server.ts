@@ -12,7 +12,7 @@ if (isProd()) {
 const server = new Server({
   port: KALBYNAS_PORT,
   hostname: HOSTNAME,
-  routes: routes,
+  routes,
   staticPaths: [/^\/static\//, /^\/front\//],
   defaultHtml,
   developmentHtml: devHtml,
