@@ -12,12 +12,14 @@ import BaltisticsBack from './back/pages/baltistics/index'
 import MorphemesBack from 'back/pages/morphemes/index'
 import Robots from './back/static/robots'
 import Sitemap from './back/static/sitemap'
+import Api from './back/api'
 import SingleArticle from 'back/pages/articles/singleArticle'
 import articleList from 'back/pages/articles/allArticles'
 
 const routes: Route[] = [
   new BackRoute('/robots.txt', Robots),
   new BackRoute('/sitemap.txt', Sitemap),
+  new BackRoute(/\/api\/([^\/]+)\/([^\/]+)\/([^\/]+)\/([^\/]+)/, Api),
   new RedirectRoute('/status/files.json', '/status/files.json'),
   new RedirectRoute('/status/functions.json', '/status/functions.json'),
   new RedirectRoute('/status/lines.json', '/status/lines.json'),
