@@ -4,30 +4,19 @@ import {groupsError, threeRootsError} from 'back/api/errors.ts'
 import {GROUPS} from 'back/api/verbGroups.ts'
 import format from 'back/api/formatters.ts'
 
-/**
- * Documentation
- *
- * possible URLS:
- * one unaccented verb gets a table for Present Indicative
- * /api/verb/mesti-meta-metė/presInd
- * one accented verb gets a table for Present Indicative
- * /api/verb/mèsti-mẽta-mẽtė/presInd
- * one accented and one unaccented verb gets a table for Present Indicative
- * /api/verb/mèsti-mẽta-mẽtė,risti-rita-rito/presInd
- * one accented and one unaccented verb gets a table for Present Indicative and another table for Future Indicative
- * /api/verb/mèsti-mẽta-mẽtė,risti-rita-rito/presInd,futInd
- */
-
 const SPEECH_PART_KEYS = ['verb']
 
 const SPEECH_PARTS: Record<
   (typeof SPEECH_PART_KEYS)[number],
-  (roots: string, groups: string) => Object
+  (roots: string, groups: string) => Record<string, Record<string, any>>
 > = {
   verb,
 }
 
-function verb(rootsFromUrl: string, groupsFromUrl: string) {
+function verb(
+  rootsFromUrl: string,
+  groupsFromUrl: string
+): Record<string, Record<string, any>> {
   const roots = decodeURI(rootsFromUrl)
     .split(',')
     .map((r) => r.split('-'))
