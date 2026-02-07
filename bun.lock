@@ -8,7 +8,7 @@
         "bun": "^1.2.17",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
-        "voldemortas-server": "^1.0.0",
+        "voldemortas-server": "npm:@jsr/voldemortas__server@^1.1.1",
       },
       "devDependencies": {
         "@biomejs/biome": "1.9.3",
@@ -214,7 +214,7 @@
 
     "undici-types": ["undici-types@7.16.0", "", {}, "sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw=="],
 
-    "voldemortas-server": ["@jsr/voldemortas__server@1.0.0", "https://npm.jsr.io/~/11/@jsr/voldemortas__server/1.0.0.tgz", { "dependencies": { "bun": "^1.3.1", "sass": "^1.89.2" } }, "sha512-p3FRMDaGZTviW/Wi0aEnSA6P23IG1LRLZGjsMKLkj79McjgDy0qaUHx0eJZ55btK2+eBNZXScW8qSphTwiQ+Bg=="],
+    "voldemortas-server": ["@jsr/voldemortas__server@1.1.1", "https://npm.jsr.io/~/11/@jsr/voldemortas__server/1.1.1.tgz", { "dependencies": { "bun": "^1.3.1", "sass": "^1.89.2" } }, "sha512-ed3vw4KpRUkxCLvLilajktuh3XXtVbonLQtNn05VuzdC0WQtdwXLpyz/a+c/88aqnX1nFWBq3S8xQwUZrHxxlQ=="],
 
     "webidl-conversions": ["webidl-conversions@7.0.0", "", {}, "sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g=="],
 
