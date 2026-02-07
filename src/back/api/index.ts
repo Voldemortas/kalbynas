@@ -3,20 +3,20 @@ import {getUrl, getRegexParams} from 'voldemortas-server/utils'
 import {groupsError, threeRootsError} from 'back/api/errors.ts'
 import {GROUPS} from 'back/api/verbGroups.ts'
 import format from 'back/api/formatters.ts'
-
-const SPEECH_PART_KEYS = ['verb']
+import type {
+  GroupKeysType,
+  ResponseType,
+  SpeechPartsKeysType,
+} from 'back/api/types.ts'
 
 const SPEECH_PARTS: Record<
-  (typeof SPEECH_PART_KEYS)[number],
-  (roots: string, groups: string) => Record<string, Record<string, any>>
+  SpeechPartsKeysType,
+  (roots: string, groups: string) => ResponseType
 > = {
   verb,
 }
 
-function verb(
-  rootsFromUrl: string,
-  groupsFromUrl: string
-): Record<string, Record<string, any>> {
+function verb(rootsFromUrl: string, groupsFromUrl: string): ResponseType {
   const roots = decodeURI(rootsFromUrl)
     .split(',')
     .map((r) => r.split('-'))
@@ -32,11 +32,9 @@ function verb(
   return Object.fromEntries(
     roots.map((r) => [
       r.join('-'),
-      Object.fromEntries(
-        groups.map((g) => [g, GROUPS[g as keyof typeof GROUPS](r)])
-      ),
+      Object.fromEntries(groups.map((g) => [g, GROUPS[g as GroupKeysType](r)])),
     ])
-  )
+  ) as unknown as ResponseType
 }
 
 export default function index(request: Request, route: ReactRoute) {

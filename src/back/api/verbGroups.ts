@@ -9,7 +9,6 @@ import {
   conjugateMobileI,
   conjugateMobileO,
   copulaPresent,
-  type MOOD_TYPE,
 } from 'back/api/conjugations.ts'
 import {
   getInfinitiveRoot,
@@ -18,20 +17,16 @@ import {
   stripAllAccents,
   stripShortCircumflex,
 } from 'back/api/utils.ts'
+import type {MoodType, GroupKeysType} from 'back/api/types.ts'
 
-const GROUP_KEYS = ['presInd', 'pastInd', 'pastFreqInd', 'futInd'] as const
-
-export const GROUPS: Record<
-  (typeof GROUP_KEYS)[number],
-  (roots: string[]) => MOOD_TYPE
-> = {
+export const GROUPS: Record<GroupKeysType, (roots: string[]) => MoodType> = {
   presInd,
   pastInd,
   pastFreqInd,
   futInd,
 }
 
-export function presInd(roots: string[]): MOOD_TYPE {
+export function presInd(roots: string[]): MoodType {
   if (stripAllAccents(roots.join('-')) === `būti-yra-buvo`) {
     if (roots[1] === `yra\u0300`) {
       return copulaPresent
@@ -41,7 +36,7 @@ export function presInd(roots: string[]): MOOD_TYPE {
         key,
         stripShortCircumflex(value),
       ])
-    ) as MOOD_TYPE
+    ) as MoodType
   }
 
   const {root, pattern} = getPresentRoot(roots)
@@ -59,7 +54,7 @@ export function presInd(roots: string[]): MOOD_TYPE {
   return isShortOrCircumflex ? conjugateMobileA(root) : conjugateImmobileA(root)
 }
 
-export function pastInd(roots: string[]): MOOD_TYPE {
+export function pastInd(roots: string[]): MoodType {
   const {root, pattern} = getPastRoot(roots)
   const isShortOrCircumflex = root.includes(`\u0300`) || root.includes(`\u0303`)
   if (pattern === 'o') {
@@ -75,12 +70,12 @@ export function pastInd(roots: string[]): MOOD_TYPE {
   return isShortOrCircumflex ? conjugateMobileA(root) : conjugateImmobileA(root)
 }
 
-export function pastFreqInd(roots: string[]): MOOD_TYPE {
+export function pastFreqInd(roots: string[]): MoodType {
   const {root} = getInfinitiveRoot(roots)
   return conjugateImmobileO(root + 'dav')
 }
 
-export function futInd(roots: string[]): MOOD_TYPE {
+export function futInd(roots: string[]): MoodType {
   const {root} = getInfinitiveRoot(roots)
   return conjugateFuture(root)
 }

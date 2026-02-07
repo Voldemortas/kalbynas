@@ -1,5 +1,6 @@
 import {jsonHeaders} from 'voldemortas-server/utils'
 import {formatError} from 'back/api/errors.ts'
+import type {FormatKeysType, ResponseType} from 'back/api/types.ts'
 
 function formatXml(xml: string, tab: string = '\t') {
   let formatted = '',
@@ -15,21 +16,17 @@ function formatXml(xml: string, tab: string = '\t') {
   )
 }
 
-const FORMAT_KEYS = ['json', 'xml'] as const
+export const FORMATS: Record<FormatKeysType, (obj: ResponseType) => Response> =
+  {
+    json,
+    xml,
+  }
 
-export const FORMATS: Record<
-  (typeof FORMAT_KEYS)[number],
-  (obj: Record<string, Record<string, any>>) => Response
-> = {
-  json,
-  xml,
-}
-
-function json(obj: Record<string, Record<string, any>>): Response {
+function json(obj: ResponseType): Response {
   return new Response(JSON.stringify(obj), jsonHeaders)
 }
 
-function xml(obj: Record<string, Record<string, any>>): Response {
+function xml(obj: ResponseType): Response {
   function generateTag(
     name: string,
     children: string[] | string = [],
@@ -72,12 +69,9 @@ function xml(obj: Record<string, Record<string, any>>): Response {
   })
 }
 
-export default function format(
-  formatter: string,
-  obj: Record<string, Record<string, any>>
-): Response {
+export default function format(formatter: string, obj: ResponseType): Response {
   if (!Object.keys(FORMATS).includes(formatter)) {
     throw formatError
   }
-  return FORMATS[formatter as keyof typeof FORMATS](obj)
+  return FORMATS[formatter as FormatKeysType](obj)
 }

@@ -5,17 +5,9 @@ import {
   stripAllAccents,
   stripShortCircumflex,
 } from 'back/api/utils.ts'
+import type {MoodType} from 'back/api/types.ts'
 
-export type MOOD_TYPE = {
-  sg1: string
-  sg2: string
-  sg3: string
-  pl1: string
-  pl2: string
-  pl3: string
-}
-
-export function conjugateMobileO(root: string): MOOD_TYPE {
+export function conjugateMobileO(root: string): MoodType {
   const stresslessRoot = stripShortCircumflex(root)
   return {
     sg1: `${stresslessRoot}au\u0303`,
@@ -26,7 +18,8 @@ export function conjugateMobileO(root: string): MOOD_TYPE {
     pl3: `${root}o`,
   }
 }
-export function conjugateImmobileO(root: string): MOOD_TYPE {
+
+export function conjugateImmobileO(root: string): MoodType {
   return {
     sg1: `${root}au`,
     sg2: `${root}ai`,
@@ -37,7 +30,7 @@ export function conjugateImmobileO(root: string): MOOD_TYPE {
   }
 }
 
-export function conjugateMobileI(root: string): MOOD_TYPE {
+export function conjugateMobileI(root: string): MoodType {
   const stresslessRoot = stripShortCircumflex(root)
   return {
     sg1:
@@ -51,7 +44,7 @@ export function conjugateMobileI(root: string): MOOD_TYPE {
   }
 }
 
-export function conjugateImmobileI(root: string): MOOD_TYPE {
+export function conjugateImmobileI(root: string): MoodType {
   return {
     sg1: `${getPalatalizedRoot(root)}iu`.replace(/iiu$/, 'iu'),
     sg2: `${root}i`,
@@ -62,7 +55,7 @@ export function conjugateImmobileI(root: string): MOOD_TYPE {
   }
 }
 
-export function conjugateMobileA(root: string): MOOD_TYPE {
+export function conjugateMobileA(root: string): MoodType {
   const stresslessRoot = stripShortCircumflex(root)
   return {
     sg1: `${stresslessRoot}u\u0300`,
@@ -75,7 +68,7 @@ export function conjugateMobileA(root: string): MOOD_TYPE {
   }
 }
 
-export function conjugateImmobileA(root: string): MOOD_TYPE {
+export function conjugateImmobileA(root: string): MoodType {
   return {
     sg1: `${root}u`,
     sg2: `${getUnpalatalizedRoot(root)}i`.replace(/ii$/, 'i'),
@@ -86,7 +79,7 @@ export function conjugateImmobileA(root: string): MOOD_TYPE {
   }
 }
 
-export function conjugateMobileE(root: string): MOOD_TYPE {
+export function conjugateMobileE(root: string): MoodType {
   const stresslessRoot = stripShortCircumflex(root)
   return {
     sg1:
@@ -100,7 +93,7 @@ export function conjugateMobileE(root: string): MOOD_TYPE {
   }
 }
 
-export function conjugateImmobileE(root: string): MOOD_TYPE {
+export function conjugateImmobileE(root: string): MoodType {
   return {
     sg1: `${getPalatalizedRoot(root)}iau`.replace(/iiau$/, 'iau'),
     sg2: `${root}ei`,
@@ -111,7 +104,7 @@ export function conjugateImmobileE(root: string): MOOD_TYPE {
   }
 }
 
-export function conjugateFuture(root: string): MOOD_TYPE {
+export function conjugateFuture(root: string): MoodType {
   const accentlessRoot = stripAllAccents(root)
   const isMonosyllabicAndEndsInYU =
     accentlessRoot !== 'vy' &&
@@ -141,7 +134,7 @@ export function conjugateFuture(root: string): MOOD_TYPE {
   }
 }
 
-export const copulaPresent: MOOD_TYPE = {
+export const copulaPresent: MoodType = {
   sg1: `esu\u0300`,
   sg2: `esi\u0300`,
   sg3: `yra\u0300`,
