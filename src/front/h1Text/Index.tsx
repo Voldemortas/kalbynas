@@ -13,7 +13,6 @@ export default function Index({
   return (
     <Body nav={nav}>
       <h1>{h1}</h1>
-      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
       <p dangerouslySetInnerHTML={{__html: text}} />
     </Body>
   )

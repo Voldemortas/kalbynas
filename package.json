@@ -3,7 +3,6 @@
   "module": "src/index.ts",
   "type": "module",
   "devDependencies": {
-    "@biomejs/biome": "1.9.3",
     "@happy-dom/global-registrator": "^15.11.7",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",

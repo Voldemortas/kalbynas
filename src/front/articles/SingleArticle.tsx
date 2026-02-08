@@ -25,7 +25,6 @@ export default function SingleArticle(
             <time className={styles('time')}>{params.date}</time>
           </div>
         </header>
-        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: intended behaviour */}
         <section dangerouslySetInnerHTML={{__html: params.content}} />
         <footer>
           {!!params.previousId ? (
