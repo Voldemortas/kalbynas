@@ -30,8 +30,8 @@
     "build": "bun run src/index.ts --build",
     "watch": "bun run src/index.ts --watch",
     "serve": "bun run out/server.js --serve",
-    "serve-prod": "NODE_ENV=production bun run out/server.js --serve --prod; bun run src/cache.ts",
-    "serve-pm2": "NODE_ENV=production bunx --bun pm2 start; bun run src/cache.ts",
+    "serve-prod": "NODE_ENV=production bun run out/server.js --serve --prod",
+    "serve-pm2": "NODE_ENV=production bunx --bun pm2 start",
     "prettify": "bunx prettier `git diff HEAD --name-only --diff-filter d`  --write"
   },
   "browserslist": {
