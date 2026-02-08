@@ -26,12 +26,12 @@
     "voldemortas-server": "npm:@jsr/voldemortas__server@^1.1.1"
   },
   "scripts": {
-    "build-prod": "bun run src/index.ts --build --prod",
+    "build-prod": "NODE_ENV=production bun run src/index.ts --build --prod",
     "build": "bun run src/index.ts --build",
     "watch": "bun run src/index.ts --watch",
     "serve": "bun run out/server.js --serve",
-    "serve-prod": "bun run out/server.js --serve --prod",
-    "serve-pm2": "bunx --bun pm2 start",
+    "serve-prod": "NODE_ENV=production bun run out/server.js --serve --prod; bun run src/cache.ts",
+    "serve-pm2": "NODE_ENV=production bunx --bun pm2 start; bun run src/cache.ts",
     "prettify": "bunx prettier `git diff HEAD --name-only --diff-filter d`  --write"
   },
   "browserslist": {
