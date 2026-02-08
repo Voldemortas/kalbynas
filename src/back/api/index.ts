@@ -5,18 +5,18 @@ import {GROUPS} from 'back/api/verbGroups.ts'
 import format from 'back/api/formatters.ts'
 import type {
   GroupKeysType,
-  ResponseType,
+  InflectedRootsType,
   SpeechPartsKeysType,
 } from 'back/api/types.ts'
 
 const SPEECH_PARTS: Record<
   SpeechPartsKeysType,
-  (roots: string, groups: string) => ResponseType
+  (roots: string, groups: string) => InflectedRootsType
 > = {
   verb,
 }
 
-function verb(rootsFromUrl: string, groupsFromUrl: string): ResponseType {
+function verb(rootsFromUrl: string, groupsFromUrl: string): InflectedRootsType {
   const roots = decodeURI(rootsFromUrl)
     .split(',')
     .map((r) => r.split('-'))
@@ -32,9 +32,11 @@ function verb(rootsFromUrl: string, groupsFromUrl: string): ResponseType {
   return Object.fromEntries(
     roots.map((r) => [
       r.join('-'),
-      Object.fromEntries(groups.map((g) => [g, GROUPS[g as GroupKeysType](r)])),
+      Object.fromEntries(
+        groups.map((g) => [g as GroupKeysType, GROUPS[g as GroupKeysType](r)])
+      ),
     ])
-  ) as unknown as ResponseType
+  )
 }
 
 export default function index(request: Request, route: ReactRoute) {

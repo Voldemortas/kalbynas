@@ -1,12 +1,13 @@
 import {describe, expect, it} from 'bun:test'
 import format, {FORMATS} from 'back/api/formatters'
 import {formatError} from 'back/api/errors.ts'
+import type {InflectedRootsType} from 'back/api/types.ts'
 
 const CONTENT_HEADERS: Record<string, string> = {
   json: 'application/json',
   xml: 'application/xml',
 }
-const DATA = {
+const DATA: InflectedRootsType = {
   ['žūti-žūna-žuvo']: {
     futInd: {
       sg1: 'žūsiu',

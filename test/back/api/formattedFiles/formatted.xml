@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <results>
-    <form roots="žūti-žūna-žuvo">
+    <verb roots="žūti-žūna-žuvo">
         <futInd>
             <sg1>žūsiu</sg1>
             <sg2>žūsi</sg2>
@@ -17,8 +17,8 @@
             <pl2>žuvote</pl2>
             <pl3>žuvo</pl3>
         </pastInd>
-    </form>
-    <form roots="valgyti-valgo-valgė">
+    </verb>
+    <verb roots="valgyti-valgo-valgė">
         <futInd>
             <sg1>valgysiu</sg1>
             <sg2>valgysi</sg2>
@@ -35,5 +35,5 @@
             <pl2>valgėte</pl2>
             <pl3>valgė</pl3>
         </pastInd>
-    </form>
+    </verb>
 </results>

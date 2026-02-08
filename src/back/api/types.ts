@@ -1,3 +1,5 @@
+import type {PartialRecord} from 'back/common/types.ts'
+
 const GROUP_ARRAY = ['presInd', 'pastInd', 'pastFreqInd', 'futInd'] as const
 const FORMAT_ARRAY = ['json', 'xml'] as const
 const SPEECH_PART_ARRAY = ['verb']
@@ -15,4 +17,9 @@ export type MoodType = {
   pl3: string
 }
 
-export type ResponseType = Record<string, MoodType>
+export type InflectedType = PartialRecord<GroupKeysType, MoodType>
+export type InflectedRootsType = Record<string, InflectedType>
+
+export type VerbResponse = {
+  results: ({roots: string} & InflectedType)[]
+}
