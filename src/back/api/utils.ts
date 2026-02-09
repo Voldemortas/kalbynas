@@ -13,7 +13,7 @@ const vowels = 'aąeęėiįyouųū'
 
 export function metatonise3rdFuture(word: string) {
   const isLastSyllableLongAcute = new RegExp(
-    `[${longVowels}]\u0301[${consonants}]*s$`,
+    `[${longVowels}]\u0301[${consonants}]*[sš]$`,
     'i'
   )
   if (isLastSyllableLongAcute.test(word)) {
@@ -47,6 +47,14 @@ export function stripShortCircumflex(root: string) {
 
 export function stripAllAccents(root: string) {
   return root.replaceAll(/[\u0303\u0300\u0301]/g, '')
+}
+
+export function stripAllAccentsFromParadigm<T extends Record<string, string>>(
+  paradigm: T
+): T {
+  return Object.fromEntries(
+    Object.keys(paradigm).map((key) => [key, stripAllAccents(paradigm[key])])
+  ) as T
 }
 
 export function getUnpalatalizedRoot(root: string) {

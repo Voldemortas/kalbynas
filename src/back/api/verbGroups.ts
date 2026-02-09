@@ -9,13 +9,15 @@ import {
   conjugateMobileI,
   conjugateMobileO,
   copulaPresent,
+  siutiFuture,
+  vytiFuture,
 } from 'back/api/conjugations.ts'
 import {
   getInfinitiveRoot,
   getPastRoot,
   getPresentRoot,
   stripAllAccents,
-  stripShortCircumflex,
+  stripAllAccentsFromParadigm,
 } from 'back/api/utils.ts'
 import type {MoodType, GroupKeysType} from 'back/api/types.ts'
 
@@ -31,12 +33,7 @@ export function presInd(roots: string[]): MoodType {
     if (roots[1] === `yra\u0300`) {
       return copulaPresent
     }
-    return Object.fromEntries(
-      Object.entries(copulaPresent).map(([key, value]) => [
-        key,
-        stripShortCircumflex(value),
-      ])
-    ) as MoodType
+    return stripAllAccentsFromParadigm(copulaPresent)
   }
 
   const {root, pattern} = getPresentRoot(roots)
@@ -77,5 +74,14 @@ export function pastFreqInd(roots: string[]): MoodType {
 
 export function futInd(roots: string[]): MoodType {
   const {root} = getInfinitiveRoot(roots)
+  const dict = new Map([
+    [`vy`, stripAllAccentsFromParadigm(vytiFuture)],
+    [`vy\u0301`, vytiFuture],
+    [`siū`, stripAllAccentsFromParadigm(siutiFuture)],
+    [`siū\u0301`, siutiFuture],
+  ])
+  if (dict.has(root)) {
+    return dict.get(root)!
+  }
   return conjugateFuture(root)
 }

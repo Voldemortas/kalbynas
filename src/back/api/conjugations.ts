@@ -109,10 +109,7 @@ export function conjugateImmobileE(root: string): MoodType {
 export function conjugateFuture(root: string): MoodType {
   const accentlessRoot = stripAllAccents(root)
   const isMonosyllabicAndEndsInYU =
-    accentlessRoot !== 'vy' &&
-    accentlessRoot !== 'siū' &&
-    /[yū]$/.test(accentlessRoot) &&
-    isRootMonosyllabic(accentlessRoot)
+    /[yū]$/.test(accentlessRoot) && isRootMonosyllabic(accentlessRoot)
   const thirdRoot = isMonosyllabicAndEndsInYU
     ? root.replaceAll(
         /(.+)([yū])([\u0301\u0303]?)$/g,
@@ -148,4 +145,22 @@ export const copulaPresent: MoodType = {
   pl1: `e\u0303same`,
   pl2: `e\u0303sate`,
   pl3: `yra\u0300`,
+}
+
+export const vytiFuture: MoodType = {
+  sg1: `vy\u0301siu`,
+  sg2: `vy\u0301si`,
+  sg3: `vy\u0303s`,
+  pl1: `vy\u0301sime`,
+  pl2: `vy\u0301site`,
+  pl3: `vy\u0303s`,
+}
+
+export const siutiFuture: MoodType = {
+  sg1: `siū\u0301siu`,
+  sg2: `siū\u0301si`,
+  sg3: `siū\u0303s`,
+  pl1: `siū\u0301sime`,
+  pl2: `siū\u0301site`,
+  pl3: `siū\u0303s`,
 }

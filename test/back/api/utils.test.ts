@@ -10,6 +10,7 @@ import {
   isRootMonosyllabic,
   metatonise3rdFuture,
   appendSuffixWithAssimilation,
+  stripAllAccentsFromParadigm,
 } from 'back/api/utils'
 import {
   infinitiveRootError,
@@ -27,6 +28,23 @@ describe('api/utils', () => {
         expect(stripAllAccents(accented)).toStrictEqual(expected)
       }
     )
+  })
+  describe('stripAllAccentsFromParadigm', () => {
+    it('strips all accents from a paradigm', () => {
+      const paradigm = {
+        a: `pri\u0301ekis`,
+        b: `ga\u0303las`,
+        c: `gale\u0300`,
+        d: 'priekyje',
+      }
+      const expected = {
+        a: `priekis`,
+        b: `galas`,
+        c: `gale`,
+        d: 'priekyje',
+      }
+      expect(stripAllAccentsFromParadigm(paradigm)).toMatchObject(expected)
+    })
   })
   describe('stripShortCircumflex', () => {
     it.each([
@@ -157,6 +175,7 @@ describe('api/utils', () => {
       [`ma\u0301igys`, `ma\u0301igys`],
       [`mai\u0303gys`, `mai\u0303gys`],
       [`važiu\u0301os`, `važiuo\u0303s`],
+      [`brė\u0301kš`, `brė\u0303kš`],
     ])('checks %s', (data, expected) => {
       expect(metatonise3rdFuture(data)).toStrictEqual(expected)
     })
