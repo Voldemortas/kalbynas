@@ -2,13 +2,13 @@
   "results": [
     {
       "roots": "žūti-žūna-žuvo",
-      "futInd": {
-        "sg1": "žūsiu",
-        "sg2": "žūsi",
-        "sg3": "žus",
-        "pl1": "žūsime",
-        "pl2": "žūsite",
-        "pl3": "žus"
+      "presInd": {
+        "sg1": "žūnu",
+        "sg2": "žūni",
+        "sg3": "žūna",
+        "pl1": "žūname",
+        "pl2": "žūnate",
+        "pl3": "žūna"
       },
       "pastInd": {
         "sg1": "žuvau",
@@ -17,17 +17,41 @@
         "pl1": "žuvome",
         "pl2": "žuvote",
         "pl3": "žuvo"
+      },
+      "pastFreqInd": {
+        "sg1": "žūdavau",
+        "sg2": "žūdavai",
+        "sg3": "žūdavo",
+        "pl1": "žūdavome",
+        "pl2": "žūdavote",
+        "pl3": "žūdavo"
+      },
+      "futInd": {
+        "sg1": "žūsiu",
+        "sg2": "žūsi",
+        "sg3": "žus",
+        "pl1": "žūsime",
+        "pl2": "žūsite",
+        "pl3": "žus"
+      },
+      "cond": {
+        "sg1": "žūčiau",
+        "sg2": "žūtum",
+        "sg3": "žūtų",
+        "pl1": "žūtumėme",
+        "pl2": "žūtumėte",
+        "pl3": "žūtų"
       }
     },
     {
       "roots": "valgyti-valgo-valgė",
-      "futInd": {
-        "sg1": "valgysiu",
-        "sg2": "valgysi",
-        "sg3": "valgys",
-        "pl1": "valgysime",
-        "pl2": "valgysite",
-        "pl3": "valgys"
+      "presInd": {
+        "sg1": "valgau",
+        "sg2": "valgai",
+        "sg3": "valgo",
+        "pl1": "valgome",
+        "pl2": "valgote",
+        "pl3": "valgo"
       },
       "pastInd": {
         "sg1": "valgiau",
@@ -36,6 +60,30 @@
         "pl1": "valgėme",
         "pl2": "valgėte",
         "pl3": "valgė"
+      },
+      "pastFreqInd": {
+        "sg1": "valgydavau",
+        "sg2": "valgydavai",
+        "sg3": "valgydavo",
+        "pl1": "valgydavome",
+        "pl2": "valgydavote",
+        "pl3": "valgydavo"
+      },
+      "futInd": {
+        "sg1": "valgysiu",
+        "sg2": "valgysi",
+        "sg3": "valgys",
+        "pl1": "valgysime",
+        "pl2": "valgysite",
+        "pl3": "valgys"
+      },
+      "cond": {
+        "sg1": "valgyčiau",
+        "sg2": "valgytum",
+        "sg3": "valgytų",
+        "pl1": "valgytumėme",
+        "pl2": "valgytumėte",
+        "pl3": "valgytų"
       }
     }
   ]

@@ -1,7 +1,7 @@
 import type {ReactRoute} from 'voldemortas-server/route'
 import {getUrl, getRegexParams} from 'voldemortas-server/utils'
 import {groupsError, threeRootsError} from 'back/api/errors.ts'
-import {GROUPS} from 'back/api/verbGroups.ts'
+import {ALL_GROUPS, GROUPS} from 'back/api/verbGroups.ts'
 import format from 'back/api/formatters.ts'
 import type {
   GroupKeysType,
@@ -16,13 +16,30 @@ const SPEECH_PARTS: Record<
   verb,
 }
 
-function verb(rootsFromUrl: string, groupsFromUrl: string): InflectedRootsType {
+export function verb(
+  rootsFromUrl: string,
+  groupsFromUrl: string
+): InflectedRootsType {
   const roots = decodeURI(rootsFromUrl)
     .split(',')
     .map((r) => r.split('-'))
 
   if (roots.some((root) => root.length !== 3)) {
     throw threeRootsError
+  }
+
+  if (groupsFromUrl === ALL_GROUPS) {
+    return Object.fromEntries(
+      roots.map((r) => [
+        r.join('-'),
+        Object.fromEntries(
+          Object.keys(GROUPS).map((g) => [
+            g as GroupKeysType,
+            GROUPS[g as GroupKeysType](r),
+          ])
+        ),
+      ])
+    )
   }
 
   const groups = groupsFromUrl.split(',')

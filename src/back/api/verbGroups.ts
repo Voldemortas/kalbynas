@@ -22,6 +22,7 @@ import {
 } from 'back/api/utils.ts'
 import type {MoodType, GroupKeysType} from 'back/api/types.ts'
 
+export const ALL_GROUPS = 'all'
 export const GROUPS: Record<GroupKeysType, (roots: string[]) => MoodType> = {
   presInd,
   pastInd,

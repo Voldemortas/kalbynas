@@ -1,50 +1,13 @@
 import {describe, expect, it} from 'bun:test'
 import format, {FORMATS} from 'back/api/formatters'
 import {formatError} from 'back/api/errors.ts'
-import type {InflectedRootsType} from 'back/api/types.ts'
+import {verb} from 'back/api'
 
 const CONTENT_HEADERS: Record<string, string> = {
   json: 'application/json',
   xml: 'application/xml',
 }
-const DATA: InflectedRootsType = {
-  ['žūti-žūna-žuvo']: {
-    futInd: {
-      sg1: 'žūsiu',
-      sg2: 'žūsi',
-      sg3: 'žus',
-      pl1: 'žūsime',
-      pl2: 'žūsite',
-      pl3: 'žus',
-    },
-    pastInd: {
-      sg1: 'žuvau',
-      sg2: 'žuvai',
-      sg3: 'žuvo',
-      pl1: 'žuvome',
-      pl2: 'žuvote',
-      pl3: 'žuvo',
-    },
-  },
-  ['valgyti-valgo-valgė']: {
-    futInd: {
-      sg1: 'valgysiu',
-      sg2: 'valgysi',
-      sg3: 'valgys',
-      pl1: 'valgysime',
-      pl2: 'valgysite',
-      pl3: 'valgys',
-    },
-    pastInd: {
-      sg1: 'valgiau',
-      sg2: 'valgei',
-      sg3: 'valgė',
-      pl1: 'valgėme',
-      pl2: 'valgėte',
-      pl3: 'valgė',
-    },
-  },
-}
+const DATA = verb('žūti-žūna-žuvo,valgyti-valgo-valgė', 'all')
 
 describe('api/formatters', () => {
   it.each(Object.keys(FORMATS))('formats with %s', async (key, done) => {
