@@ -1,4 +1,5 @@
 import {
+  conjugateConditional,
   conjugateFuture,
   conjugateImmobileA,
   conjugateImmobileE,
@@ -26,6 +27,7 @@ export const GROUPS: Record<GroupKeysType, (roots: string[]) => MoodType> = {
   pastInd,
   pastFreqInd,
   futInd,
+  cond,
 }
 
 export function presInd(roots: string[]): MoodType {
@@ -84,4 +86,9 @@ export function futInd(roots: string[]): MoodType {
     return dict.get(root)!
   }
   return conjugateFuture(root)
+}
+
+export function cond(roots: string[]): MoodType {
+  const {root} = getInfinitiveRoot(roots)
+  return conjugateConditional(root)
 }

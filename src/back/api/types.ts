@@ -1,6 +1,12 @@
 import type {PartialRecord} from 'back/common/types.ts'
 
-const GROUP_ARRAY = ['presInd', 'pastInd', 'pastFreqInd', 'futInd'] as const
+const GROUP_ARRAY = [
+  'presInd',
+  'pastInd',
+  'pastFreqInd',
+  'futInd',
+  'cond',
+] as const
 const FORMAT_ARRAY = ['json', 'xml'] as const
 const SPEECH_PART_ARRAY = ['verb']
 

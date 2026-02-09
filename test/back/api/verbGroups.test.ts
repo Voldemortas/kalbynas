@@ -1,6 +1,12 @@
 import {describe, expect, it, spyOn} from 'bun:test'
 
-import {futInd, pastFreqInd, pastInd, presInd} from 'back/api/verbGroups.ts'
+import {
+  cond,
+  futInd,
+  pastFreqInd,
+  pastInd,
+  presInd,
+} from 'back/api/verbGroups.ts'
 import {copulaPresent, siutiFuture, vytiFuture} from 'back/api/conjugations.ts'
 import * as conjugations from 'back/api/conjugations'
 import {stripAllAccents, stripAllAccentsFromParadigm} from 'back/api/utils.ts'
@@ -85,7 +91,7 @@ describe('verb groups', () => {
     })
   })
   describe('past frequentative indicative', () => {
-    it.each(accentKeys)('conjugates co%scti', (accent) => {
+    it.each(accentKeys)('conjugates co%scdavo', (accent) => {
       const [roots, stem] = makeInfinitive(accent)
       const mood = makeRandomMood()
       const spy = spyOn(conjugations, 'conjugateImmobileO')
@@ -96,26 +102,37 @@ describe('verb groups', () => {
     })
   })
   describe('future indicative', () => {
-    it('conjugates siūti', () => {
+    it('conjugates siūs', () => {
       const siuti = [`siū\u0301ti`, `siu\u0300va`, `siu\u0300vo`]
       expect(futInd(siuti)).toMatchObject(siutiFuture)
       expect(futInd(siuti.map(stripAllAccents))).toMatchObject(
         stripAllAccentsFromParadigm(siutiFuture)
       )
     })
-    it('conjugates vyti', () => {
+    it('conjugates vys', () => {
       const vyti = [`vy\u0301ti`, `ve\u0303ja`, `vi\u0300jo`]
       expect(futInd(vyti)).toMatchObject(vytiFuture)
       expect(futInd(vyti.map(stripAllAccents))).toMatchObject(
         stripAllAccentsFromParadigm(vytiFuture)
       )
     })
-    it.each(accentKeys)('conjugates co%scti', (accent) => {
+    it.each(accentKeys)('conjugates co%scs', (accent) => {
       const [roots, stem] = makeInfinitive(accent)
       const mood = makeRandomMood()
       const spy = spyOn(conjugations, 'conjugateFuture')
       spy.mockImplementation((r) => mood)
       expect(futInd(roots)).toMatchObject(mood)
+      expect(spy).toHaveBeenCalledWith(stem)
+      spy.mockRestore()
+    })
+  })
+  describe('conditional', () => {
+    it.each(accentKeys)('conjugates co%sctų', (accent) => {
+      const [roots, stem] = makeInfinitive(accent)
+      const mood = makeRandomMood()
+      const spy = spyOn(conjugations, 'conjugateConditional')
+      spy.mockImplementation((r) => mood)
+      expect(cond(roots)).toMatchObject(mood)
       expect(spy).toHaveBeenCalledWith(stem)
       spy.mockRestore()
     })

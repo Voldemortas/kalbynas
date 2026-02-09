@@ -1,6 +1,7 @@
 import {describe, expect, it} from 'bun:test'
 
 import {
+  conjugateConditional,
   conjugateFuture,
   conjugateImmobileA,
   conjugateImmobileE,
@@ -37,6 +38,8 @@ const KEYS = [
   `sly\u0301s`,
   `ta\u0301iky`,
   `laiky\u0301`,
+  //COND
+  `žai\u0303s`,
 ] as const
 type keysType = (typeof KEYS)[number]
 
@@ -185,6 +188,14 @@ const DATA: Record<keysType, MoodType> = {
     pl2: `laiky\u0301site`,
     pl3: `laiky\u0303s`,
   },
+  [`žai\u0303s`]: {
+    sg1: `žai\u0303sčiau`,
+    sg2: `žai\u0303stum`,
+    sg3: `žai\u0303stų`,
+    pl1: `žai\u0303stumėme`,
+    pl2: `žai\u0303stumėte`,
+    pl3: `žai\u0303stų`,
+  },
 }
 
 describe('conjugations', () => {
@@ -215,6 +226,9 @@ describe('conjugations', () => {
     runTest(`sly\u0301s`, conjugateFuture)
     runTest(`ta\u0301iky`, conjugateFuture)
     runTest(`laiky\u0301`, conjugateFuture)
+  })
+  describe('conjugate Cond', () => {
+    runTest(`žai\u0303s`, conjugateConditional)
   })
 })
 

@@ -138,6 +138,18 @@ export function conjugateFuture(root: string): MoodType {
   }
 }
 
+export function conjugateConditional(root: string): MoodType {
+  const suffixedRoot = root + 't'
+  return {
+    sg1: `${getPalatalizedRoot(suffixedRoot)}au`,
+    sg2: `${suffixedRoot}um`,
+    sg3: `${suffixedRoot}ų`,
+    pl1: `${suffixedRoot}umėme`,
+    pl2: `${suffixedRoot}umėte`,
+    pl3: `${suffixedRoot}ų`,
+  }
+}
+
 export const copulaPresent: MoodType = {
   sg1: `esu\u0300`,
   sg2: `esi\u0300`,
