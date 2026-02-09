@@ -6,7 +6,40 @@ import {
 } from 'back/api/errors.ts'
 
 const consonants = 'bcčdfghjklmnprsštvzž'
+const longVowels = 'ąęįųėoyū'
+const shortVowels = 'aeiu'
+const resonants = 'lmnriuoe'
 const vowels = 'aąeęėiįyouųū'
+
+export function metatonise3rdFuture(word: string) {
+  const isLastSyllableLongAcute = new RegExp(
+    `[${longVowels}]\u0301[${consonants}]*s$`,
+    'i'
+  )
+  if (isLastSyllableLongAcute.test(word)) {
+    return word.replace(`\u0301`, `\u0303`)
+  }
+  const isLastSyllableDiphthongAcute = new RegExp(
+    `^(.*)([${shortVowels}])\u0301([${resonants}])([${consonants}]*s)$`,
+    'i'
+  )
+  if (isLastSyllableDiphthongAcute.test(word)) {
+    return word.replace(isLastSyllableDiphthongAcute, `$1$2$3\u0303$4`)
+  }
+  return word
+}
+
+export function appendSuffixWithAssimilation(
+  stem: string,
+  suffix: string,
+  assimilationMap: [string | RegExp, string][]
+): string {
+  const suffixedStem = stem + suffix
+  return assimilationMap.reduce(
+    (acc, cur) => acc.replace(cur[0], cur[1]),
+    suffixedStem
+  )
+}
 
 export function stripShortCircumflex(root: string) {
   return root.replaceAll(/[\u0303\u0300]/g, '')

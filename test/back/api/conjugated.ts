@@ -430,10 +430,10 @@ export const CONJUGATED: Record<
     futInd: {
       sg1: 'tikė́siu',
       sg2: 'tikė́si',
-      sg3: 'tikė́s',
+      sg3: 'tikė̃s',
       pl1: 'tikė́sime',
       pl2: 'tikė́site',
-      pl3: 'tikė́s',
+      pl3: 'tikė̃s',
     },
   },
   ['mylė́ti-mýli-mylė́jo']: {
@@ -464,10 +464,10 @@ export const CONJUGATED: Record<
     futInd: {
       sg1: 'mylė́siu',
       sg2: 'mylė́si',
-      sg3: 'mylė́s',
+      sg3: 'mylė̃s',
       pl1: 'mylė́sime',
       pl2: 'mylė́site',
-      pl3: 'mylė́s',
+      pl3: 'mylė̃s',
     },
   },
   ['girdėti-girdi-girdėjo']: {
@@ -532,10 +532,10 @@ export const CONJUGATED: Record<
     futInd: {
       sg1: 'girdė́siu',
       sg2: 'girdė́si',
-      sg3: 'girdė́s',
+      sg3: 'girdė̃s',
       pl1: 'girdė́sime',
       pl2: 'girdė́site',
-      pl3: 'girdė́s',
+      pl3: 'girdė̃s',
     },
   },
   ['siūti-siuva-siuvo']: {
@@ -600,10 +600,10 @@ export const CONJUGATED: Record<
     futInd: {
       sg1: 'siū́siu',
       sg2: 'siū́si',
-      sg3: 'siū́s',
+      sg3: `siū\u0303s`,
       pl1: 'siū́sime',
       pl2: 'siū́site',
-      pl3: 'siū́s',
+      pl3: `siū\u0303s`,
     },
   },
   ['vyti-veja-vijo']: {
@@ -668,10 +668,10 @@ export const CONJUGATED: Record<
     futInd: {
       sg1: 'výsiu',
       sg2: 'výsi',
-      sg3: 'výs',
+      sg3: `vy\u0303s`,
       pl1: 'výsime',
       pl2: 'výsite',
-      pl3: 'výs',
+      pl3: `vy\u0303s`,
     },
   },
   ['myžti-myža-myžo']: {

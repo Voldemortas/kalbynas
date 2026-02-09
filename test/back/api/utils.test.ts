@@ -8,6 +8,8 @@ import {
   getPastRoot,
   getInfinitiveRoot,
   isRootMonosyllabic,
+  metatonise3rdFuture,
+  appendSuffixWithAssimilation,
 } from 'back/api/utils'
 import {
   infinitiveRootError,
@@ -139,6 +141,48 @@ describe('api/utils', () => {
       ['pažin', false],
     ])('checks if %s is monosyllabic', (root, isMonosyllabic) => {
       expect(isRootMonosyllabic(root)).toStrictEqual(isMonosyllabic)
+    })
+  })
+  describe('metatonise3rdFuture', () => {
+    it.each([
+      [`ką\u0301s`, `ką\u0303s`],
+      [`ką\u0303s`, `ką\u0303s`],
+      [`kąs`, `kąs`],
+      [`gro\u0301s`, `gro\u0303s`],
+      [`gro\u0303s`, `gro\u0303s`],
+      [`gros`, `gros`],
+      [`ša\u0301us`, `šau\u0303s`],
+      [`šau\u0303s`, `šau\u0303s`],
+      [`šaus`, `šaus`],
+      [`ma\u0301igys`, `ma\u0301igys`],
+      [`mai\u0303gys`, `mai\u0303gys`],
+      [`važiu\u0301os`, `važiuo\u0303s`],
+    ])('checks %s', (data, expected) => {
+      expect(metatonise3rdFuture(data)).toStrictEqual(expected)
+    })
+  })
+  describe('appendSuffixWithAssimilation', () => {
+    it.each([
+      ['deg', 'degs'],
+      ['myž', 'myš'],
+      ['skęs', 'skęs'],
+      ['šiauš', 'šiauš'],
+    ])('correctly appends -s to %s- root', (root, expected) => {
+      expect(
+        appendSuffixWithAssimilation(root, 's', [
+          [/[sz]s$/, 's'],
+          [/[šž]s$/, 'š'],
+        ])
+      ).toStrictEqual(expected)
+    })
+    it.each([
+      ['deg', 'dek'],
+      ['myž', 'myžk'],
+      ['lėk', 'lėk'],
+    ])('correctly appends -k to %s- root', (root, expected) => {
+      expect(
+        appendSuffixWithAssimilation(root, 'k', [[/[kg]k$/, 'k']])
+      ).toStrictEqual(expected)
     })
   })
 })

@@ -1,7 +1,9 @@
 import {
+  appendSuffixWithAssimilation,
   getPalatalizedRoot,
   getUnpalatalizedRoot,
   isRootMonosyllabic,
+  metatonise3rdFuture,
   stripAllAccents,
   stripShortCircumflex,
 } from 'back/api/utils.ts'
@@ -114,23 +116,28 @@ export function conjugateFuture(root: string): MoodType {
   const thirdRoot = isMonosyllabicAndEndsInYU
     ? root.replaceAll(
         /(.+)([yū])([\u0301\u0303]?)$/g,
-        (m, r: string, v: string, a: string) =>
+        (_, r: string, v: string, a: string) =>
           `${r}${v === 'y' ? 'i' : 'u'}${a !== '' ? `\u0300` : ''}`
       )
     : root
 
-  function appendFutureSuffix(r: string, ending: string) {
-    const stem = r + 's'
-    return stem.replace(/ss$/, 's').replace(/[šž]s$/, 'š') + ending
-  }
+  const appendFutureSuffix = (r: string) =>
+    appendSuffixWithAssimilation(r, 's', [
+      [/[sz]s$/, 's'],
+      [/[šž]s$/, 'š'],
+    ])
+
+  const non3rd = appendFutureSuffix(root)
+
+  const third = metatonise3rdFuture(appendFutureSuffix(thirdRoot))
 
   return {
-    sg1: appendFutureSuffix(root, 'iu'),
-    sg2: appendFutureSuffix(root, 'i'),
-    sg3: appendFutureSuffix(thirdRoot, ''),
-    pl1: appendFutureSuffix(root, 'ime'),
-    pl2: appendFutureSuffix(root, 'ite'),
-    pl3: appendFutureSuffix(thirdRoot, ''),
+    sg1: `${non3rd}iu`,
+    sg2: `${non3rd}i`,
+    sg3: third,
+    pl1: `${non3rd}ime`,
+    pl2: `${non3rd}ite`,
+    pl3: third,
   }
 }
 
