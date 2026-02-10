@@ -5,40 +5,40 @@
             <sg1>žūnu</sg1>
             <sg2>žūni</sg2>
             <sg3>žūna</sg3>
-            <pl1>žūname</pl1>
-            <pl2>žūnate</pl2>
+            <pl1>žūname žūnam</pl1>
+            <pl2>žūnate žūnat</pl2>
             <pl3>žūna</pl3>
         </presInd>
         <pastInd>
             <sg1>žuvau</sg1>
             <sg2>žuvai</sg2>
             <sg3>žuvo</sg3>
-            <pl1>žuvome</pl1>
-            <pl2>žuvote</pl2>
+            <pl1>žuvome žuvom</pl1>
+            <pl2>žuvote žuvot</pl2>
             <pl3>žuvo</pl3>
         </pastInd>
         <pastFreqInd>
             <sg1>žūdavau</sg1>
             <sg2>žūdavai</sg2>
             <sg3>žūdavo</sg3>
-            <pl1>žūdavome</pl1>
-            <pl2>žūdavote</pl2>
+            <pl1>žūdavome žūdavom</pl1>
+            <pl2>žūdavote žūdavot</pl2>
             <pl3>žūdavo</pl3>
         </pastFreqInd>
         <futInd>
             <sg1>žūsiu</sg1>
             <sg2>žūsi</sg2>
             <sg3>žus</sg3>
-            <pl1>žūsime</pl1>
-            <pl2>žūsite</pl2>
+            <pl1>žūsime žūsim</pl1>
+            <pl2>žūsite žūsit</pl2>
             <pl3>žus</pl3>
         </futInd>
         <cond>
             <sg1>žūčiau</sg1>
-            <sg2>žūtum</sg2>
+            <sg2>žūtum žūtumei</sg2>
             <sg3>žūtų</sg3>
-            <pl1>žūtumėme</pl1>
-            <pl2>žūtumėte</pl2>
+            <pl1>žūtumėme žūtumėm žūtume</pl1>
+            <pl2>žūtumėte žūtumėt žūtute</pl2>
             <pl3>žūtų</pl3>
         </cond>
     </verb>
@@ -47,40 +47,40 @@
             <sg1>valgau</sg1>
             <sg2>valgai</sg2>
             <sg3>valgo</sg3>
-            <pl1>valgome</pl1>
-            <pl2>valgote</pl2>
+            <pl1>valgome valgom</pl1>
+            <pl2>valgote valgot</pl2>
             <pl3>valgo</pl3>
         </presInd>
         <pastInd>
             <sg1>valgiau</sg1>
             <sg2>valgei</sg2>
             <sg3>valgė</sg3>
-            <pl1>valgėme</pl1>
-            <pl2>valgėte</pl2>
+            <pl1>valgėme valgėm</pl1>
+            <pl2>valgėte valgėt</pl2>
             <pl3>valgė</pl3>
         </pastInd>
         <pastFreqInd>
             <sg1>valgydavau</sg1>
             <sg2>valgydavai</sg2>
             <sg3>valgydavo</sg3>
-            <pl1>valgydavome</pl1>
-            <pl2>valgydavote</pl2>
+            <pl1>valgydavome valgydavom</pl1>
+            <pl2>valgydavote valgydavot</pl2>
             <pl3>valgydavo</pl3>
         </pastFreqInd>
         <futInd>
             <sg1>valgysiu</sg1>
             <sg2>valgysi</sg2>
             <sg3>valgys</sg3>
-            <pl1>valgysime</pl1>
-            <pl2>valgysite</pl2>
+            <pl1>valgysime valgysim</pl1>
+            <pl2>valgysite valgysit</pl2>
             <pl3>valgys</pl3>
         </futInd>
         <cond>
             <sg1>valgyčiau</sg1>
-            <sg2>valgytum</sg2>
+            <sg2>valgytum valgytumei</sg2>
             <sg3>valgytų</sg3>
-            <pl1>valgytumėme</pl1>
-            <pl2>valgytumėte</pl2>
+            <pl1>valgytumėme valgytumėm valgytume</pl1>
+            <pl2>valgytumėte valgytumėt valgytute</pl2>
             <pl3>valgytų</pl3>
         </cond>
     </verb>

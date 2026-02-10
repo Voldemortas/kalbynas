@@ -11,6 +11,7 @@ import {
   metatonise3rdFuture,
   appendSuffixWithAssimilation,
   stripAllAccentsFromParadigm,
+  orderMood,
 } from 'back/api/utils'
 import {
   infinitiveRootError,
@@ -18,6 +19,7 @@ import {
   presentRootError,
   threeRootsError,
 } from 'back/api/errors.ts'
+import type {MoodType} from 'back/api/types.ts'
 
 describe('api/utils', () => {
   describe('stripAllAccents', () => {
@@ -202,6 +204,21 @@ describe('api/utils', () => {
       expect(
         appendSuffixWithAssimilation(root, 'k', [[/[kg]k$/, 'k']])
       ).toStrictEqual(expected)
+    })
+  })
+  describe('orderMood', () => {
+    it(`orders objects keys`, () => {
+      const mood: MoodType = {
+        sg2: 'a',
+        pl2: 'b',
+        pl1: 'c',
+        sg1: 'd',
+        sg3: 'e',
+        pl3: 'f',
+      }
+      expect(JSON.stringify(orderMood(mood))).toEqualIgnoringWhitespace(
+        `{"sg1":"d", "sg2":"a", "sg3":"e", "pl1":"c", "pl2":"b", "pl3":"f"}`
+      )
     })
   })
 })

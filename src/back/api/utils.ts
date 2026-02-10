@@ -4,6 +4,7 @@ import {
   presentRootError,
   threeRootsError,
 } from 'back/api/errors.ts'
+import type {MoodType} from 'back/api/types.ts'
 
 const consonants = 'bcčdfghjklmnprsštvzž'
 const longVowels = 'ąęįųėoyū'
@@ -113,4 +114,15 @@ export function isRootMonosyllabic(root: string) {
     'i'
   )
   return pattern.test(root)
+}
+
+export function orderMood(mood: MoodType): MoodType {
+  return {
+    sg1: mood.sg1,
+    sg2: mood.sg2,
+    sg3: mood.sg3,
+    pl1: mood.pl1,
+    pl2: mood.pl2,
+    pl3: mood.pl3,
+  }
 }

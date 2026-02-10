@@ -4,6 +4,7 @@ import {
   getUnpalatalizedRoot,
   isRootMonosyllabic,
   metatonise3rdFuture,
+  orderMood,
   stripAllAccents,
   stripShortCircumflex,
 } from 'back/api/utils.ts'
@@ -11,98 +12,95 @@ import type {MoodType} from 'back/api/types.ts'
 
 export function conjugateMobileO(root: string): MoodType {
   const stresslessRoot = stripShortCircumflex(root)
-  return {
+  return orderMood({
     sg1: `${stresslessRoot}au\u0303`,
     sg2: `${stresslessRoot}ai\u0303`,
-    sg3: `${root}o`,
-    pl1: `${root}ome`,
-    pl2: `${root}ote`,
-    pl3: `${root}o`,
-  }
+    ...conjugateThematicThirdAndPlural(root, 'o'),
+  })
 }
 
 export function conjugateImmobileO(root: string): MoodType {
-  return {
+  return orderMood({
     sg1: `${root}au`,
     sg2: `${root}ai`,
-    sg3: `${root}o`,
-    pl1: `${root}ome`,
-    pl2: `${root}ote`,
-    pl3: `${root}o`,
-  }
+    ...conjugateThematicThirdAndPlural(root, 'o'),
+  })
 }
 
 export function conjugateMobileI(root: string): MoodType {
   const stresslessRoot = stripShortCircumflex(root)
-  return {
+  return orderMood({
     sg1:
       `${getPalatalizedRoot(stresslessRoot)}iu`.replace(/iiu$/, 'iu') +
       `\u0300`,
     sg2: `${stresslessRoot}i\u0300`,
-    sg3: `${root}i`,
-    pl1: `${root}ime`,
-    pl2: `${root}ite`,
-    pl3: `${root}i`,
-  }
+    ...conjugateThematicThirdAndPlural(root, 'i'),
+  })
 }
 
 export function conjugateImmobileI(root: string): MoodType {
-  return {
+  return orderMood({
     sg1: `${getPalatalizedRoot(root)}iu`.replace(/iiu$/, 'iu'),
     sg2: `${root}i`,
-    sg3: `${root}i`,
-    pl1: `${root}ime`,
-    pl2: `${root}ite`,
-    pl3: `${root}i`,
-  }
+    ...conjugateThematicThirdAndPlural(root, 'i'),
+  })
 }
 
 export function conjugateMobileA(root: string): MoodType {
   const stresslessRoot = stripShortCircumflex(root)
-  return {
+  return orderMood({
     sg1: `${stresslessRoot}u\u0300`,
     sg2:
       `${getUnpalatalizedRoot(stresslessRoot)}i`.replace(/ii$/, 'i') + `\u0300`,
-    sg3: `${root}a`,
-    pl1: `${root}ame`,
-    pl2: `${root}ate`,
-    pl3: `${root}a`,
-  }
+    ...conjugateThematicThirdAndPlural(root, 'a'),
+  })
 }
 
 export function conjugateImmobileA(root: string): MoodType {
-  return {
+  return orderMood({
     sg1: `${root}u`,
     sg2: `${getUnpalatalizedRoot(root)}i`.replace(/ii$/, 'i'),
-    sg3: `${root}a`,
-    pl1: `${root}ame`,
-    pl2: `${root}ate`,
-    pl3: `${root}a`,
-  }
+    ...conjugateThematicThirdAndPlural(root, 'a'),
+  })
 }
 
 export function conjugateMobileE(root: string): MoodType {
   const stresslessRoot = stripShortCircumflex(root)
-  return {
+  return orderMood({
     sg1:
       `${getPalatalizedRoot(stresslessRoot)}iau`.replace(/iiau$/, 'iau') +
       `\u0303`,
     sg2: `${stresslessRoot}ei\u0303`,
-    sg3: `${root}ė`,
-    pl1: `${root}ėme`,
-    pl2: `${root}ėte`,
-    pl3: `${root}ė`,
-  }
+    ...conjugateThematicThirdAndPlural(root, 'ė'),
+  })
 }
 
 export function conjugateImmobileE(root: string): MoodType {
-  return {
+  return orderMood({
     sg1: `${getPalatalizedRoot(root)}iau`.replace(/iiau$/, 'iau'),
     sg2: `${root}ei`,
-    sg3: `${root}ė`,
-    pl1: `${root}ėme`,
-    pl2: `${root}ėte`,
-    pl3: `${root}ė`,
+    ...conjugateThematicThirdAndPlural(root, 'ė'),
+  })
+}
+
+function conjugateThematicThirdAndPlural(
+  root: string,
+  theme: string
+): Omit<MoodType, 'sg1' | 'sg2'> {
+  return {
+    sg3: `${root}${theme}`,
+    pl3: `${root}${theme}`,
+    ...conjugateThematicPlural(root, theme),
+  }
+}
+
+function conjugateThematicPlural(
+  root: string,
+  theme: string
+): Pick<MoodType, 'pl1' | 'pl2'> {
+  return {
+    pl1: `${root}${theme}me ${root}${theme}m`,
+    pl2: `${root}${theme}te ${root}${theme}t`,
   }
 }
 
@@ -128,51 +126,47 @@ export function conjugateFuture(root: string): MoodType {
 
   const third = metatonise3rdFuture(appendFutureSuffix(thirdRoot))
 
-  return {
+  return orderMood({
+    ...conjugateThematicThirdAndPlural(non3rd, 'i'),
     sg1: `${non3rd}iu`,
     sg2: `${non3rd}i`,
     sg3: third,
-    pl1: `${non3rd}ime`,
-    pl2: `${non3rd}ite`,
     pl3: third,
-  }
+  })
 }
 
 export function conjugateConditional(root: string): MoodType {
   const suffixedRoot = root + 't'
-  return {
+  return orderMood({
     sg1: `${getPalatalizedRoot(suffixedRoot)}au`,
-    sg2: `${suffixedRoot}um`,
+    sg2: `${suffixedRoot}um ${suffixedRoot}umei`,
     sg3: `${suffixedRoot}ų`,
-    pl1: `${suffixedRoot}umėme`,
-    pl2: `${suffixedRoot}umėte`,
+    pl1: `${suffixedRoot}umėme ${suffixedRoot}umėm ${suffixedRoot}ume`,
+    pl2: `${suffixedRoot}umėte ${suffixedRoot}umėt ${suffixedRoot}ute`,
     pl3: `${suffixedRoot}ų`,
-  }
+  })
 }
 
-export const copulaPresent: MoodType = {
+export const copulaPresent: MoodType = orderMood({
   sg1: `esu\u0300`,
   sg2: `esi\u0300`,
   sg3: `yra\u0300`,
-  pl1: `e\u0303same`,
-  pl2: `e\u0303sate`,
+  ...conjugateThematicPlural(`e\u0303s`, 'a'),
   pl3: `yra\u0300`,
-}
+})
 
-export const vytiFuture: MoodType = {
+export const vytiFuture: MoodType = orderMood({
   sg1: `vy\u0301siu`,
   sg2: `vy\u0301si`,
   sg3: `vy\u0303s`,
-  pl1: `vy\u0301sime`,
-  pl2: `vy\u0301site`,
+  ...conjugateThematicPlural(`vy\u0301s`, 'i'),
   pl3: `vy\u0303s`,
-}
+})
 
-export const siutiFuture: MoodType = {
+export const siutiFuture: MoodType = orderMood({
   sg1: `siū\u0301siu`,
   sg2: `siū\u0301si`,
   sg3: `siū\u0303s`,
-  pl1: `siū\u0301sime`,
-  pl2: `siū\u0301site`,
+  ...conjugateThematicPlural(`siū\u0301s`, 'i'),
   pl3: `siū\u0303s`,
-}
+})
