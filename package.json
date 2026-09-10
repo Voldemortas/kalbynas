@@ -1,49 +1,22 @@
 {
-  "name": "kalbynas.lt",
-  "module": "src/index.ts",
-  "type": "module",
-  "devDependencies": {
-    "@happy-dom/global-registrator": "^15.11.7",
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^14.6.1",
-    "@types/bun": "^1.2.17",
-    "@types/react": "^18.3.23",
-    "@types/react-dom": "^18.3.7",
-    "@types/sass": "^1.45.0",
-    "prettier": "^3.6.0",
-    "sass": "^1.89.2"
-  },
-  "peerDependencies": {
-    "typescript": "^5.6.2"
+  "name": "kalbynas",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch src/index.ts",
+    "prod": "NODE_ENV=production bun run src/index.ts"
   },
   "dependencies": {
-    "bun": "^1.2.17",
-    "chromium": "^3.0.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "voldemortas-server": "npm:@jsr/voldemortas__server@^1.1.1"
+    "@elysia/static": "^1.4.11",
+    "elysia": "latest",
+    "htmlfy": "^1.0.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
-  "scripts": {
-    "build-prod": "NODE_ENV=production bun run src/index.ts --build --prod",
-    "build": "bun run src/index.ts --build",
-    "watch": "bun run src/index.ts --watch",
-    "serve": "bun run out/server.js --serve",
-    "serve-prod": "NODE_ENV=production bun run out/server.js --serve --prod",
-    "serve-pm2": "NODE_ENV=production bunx --bun pm2 start",
-    "prettify": "bunx prettier `git diff HEAD --name-only --diff-filter d`  --write"
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "bun-types": "latest"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "module": "src/index.js"
 }
