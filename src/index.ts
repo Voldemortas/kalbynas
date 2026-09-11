@@ -41,4 +41,6 @@ app
     port: PORT,
   })
 
-console.log(`🦊 Elysia is running at ${PROJECT_BASE_URL}`)
+console.log(
+  `🦊 Elysia is running [${Bun.env.NODE_ENV?.toLowerCase() === 'production' ? 'PROD' : 'DEV'}] build at ${PROJECT_BASE_URL}`
+)

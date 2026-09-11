@@ -3,14 +3,21 @@ import Body from 'src/commons/react/Body'
 import {NavProps} from 'src/commons/react/Nav'
 import {REACT_JS_URL_PREFIX} from 'src/utils/hydrate'
 import ReactPageResolver from 'src/commons/ReactPageDictionary'
+import {ALTERNATES_TYPE} from 'src/commons/alternate'
 
 const URL = `${REACT_JS_URL_PREFIX}/morphemes.js`
 
 ReactPageResolver.register(URL, import.meta.path)
 
-export default function Morphemes(props: {nav: NavProps} & MorphemesPageType) {
+export default function Morphemes(
+  props: {
+    nav: NavProps
+    pathname: string
+    locale: ALTERNATES_TYPE
+  } & MorphemesPageType
+) {
   return (
-    <Body nav={props.nav}>
+    <Body nav={props.nav} locale={props.locale} pathname={props.pathname}>
       <article>
         <h1>{props.h1}</h1>
         <p>{props.intro}</p>

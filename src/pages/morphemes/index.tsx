@@ -3,7 +3,7 @@ import translations from 'src/translations/morphemes'
 import getPageWithAllTranslations from 'src/utils/pageWithAllTranslations'
 import renderReactPage from 'src/utils/reactPage'
 
-const NAV_LINK = ''
+const NAV_LINK = '/morphemes'
 
 export default async function getMorphemesPage({
   request,

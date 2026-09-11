@@ -3,7 +3,7 @@ import translations from 'src/translations/dialectology'
 import getPageWithAllTranslations from 'src/utils/pageWithAllTranslations'
 import renderReactPage from 'src/utils/reactPage'
 
-const NAV_LINK = ''
+const NAV_LINK = '/dialectology'
 
 export default async function getLandingPage({
   request,
