@@ -1,94 +1,20 @@
 import ItalicBlock from 'src/commons/react/ItalicBlock'
-import {alamarVerbs, eilmnr, eilmnrVerbs, galetiTuretiVerbs} from './lists'
-import {
-  pastTenseEAcuteTable,
-  pastTenseECircumflexTable,
-  pastTenseEShortTable,
-  pastTenseYtiAcuteTable,
-  pastTenseYtiCircumflexTable,
-  pastTenseYtiShortTable,
-  presentTenseAAcuteTable,
-  presentTenseACircumflexTable,
-  presentTenseAShortTable,
-  presentTenseATable,
-  presentTenseIAcuteTable,
-  presentTenseICircumflexTable,
-  presentTenseIShortTable,
-  presentTenseITable,
-  presentTenseOAcuteTable,
-  presentTenseOCircumflexTable,
-  presentTenseOShortTable,
-  presentTenseOTable,
-  pastTenseETable,
-  pastTenseOTable,
-  pastTenseYtiTable,
-  pastTenseOShortTable,
-  pastTenseOCircumflexTable,
-  pastTenseOAcuteTable,
-} from './tables'
-import {arrayToDetailsType, Details} from './Details'
+import {alamarVerbs, eilmnr, eilmnrVerbs, galetiTuretiVerbs} from './utils'
+import {PresentTables, PastTables} from './tables'
+import ReactPageResolver from 'src/commons/ReactPageDictionary'
+import {REACT_URL} from 'src/pages/articles/texts/presentTenseNegation/config'
+import {ALTERNATES_TYPE} from 'src/commons/alternate'
 
-const A_CAPTION = '-(i)a conjugation verbs'
-const I_CAPTION = '-i conjugation verbs'
-const O_CAPTION = '-o conjugation verbs'
-const E_CAPTION = 'Pure -ė conjugation verbs'
-const YTI_CAPTION = 'Suffixed -ė conjugation verbs'
-const SHORT_CAPTION = '(Historically) short'
-const ACUTE_CAPTION = 'Acute'
-const CIRCUMFLEX_CAPTION = 'Circumflex'
+const LOCALE: ALTERNATES_TYPE = 'en'
 
-function conjugationWithAVowel(conjugation: string) {
-  return [SHORT_CAPTION, CIRCUMFLEX_CAPTION, ACUTE_CAPTION].map(
-    (caption) => `${caption} ${conjugation}`
-  )
-}
-
-const A_VERBS = arrayToDetailsType(
-  [
-    presentTenseAShortTable,
-    presentTenseACircumflexTable,
-    presentTenseAAcuteTable,
-  ],
-  conjugationWithAVowel(A_CAPTION)
-)
-
-const I_VERBS = arrayToDetailsType(
-  [
-    presentTenseIShortTable,
-    presentTenseICircumflexTable,
-    presentTenseIAcuteTable,
-  ],
-  conjugationWithAVowel(I_CAPTION)
-)
-
-const PRESENT_O_VERBS = arrayToDetailsType(
-  [
-    presentTenseOShortTable,
-    presentTenseOCircumflexTable,
-    presentTenseOAcuteTable,
-  ],
-  conjugationWithAVowel(O_CAPTION)
-)
-
-const E_VERBS = arrayToDetailsType(
-  [pastTenseEShortTable, pastTenseECircumflexTable, pastTenseEAcuteTable],
-  conjugationWithAVowel(E_CAPTION.toLowerCase())
-)
-
-const YTI_VERBS = arrayToDetailsType(
-  [pastTenseYtiShortTable, pastTenseYtiCircumflexTable, pastTenseYtiAcuteTable],
-  conjugationWithAVowel(YTI_CAPTION.toLowerCase())
-)
-
-const PAST_O_VERBS = arrayToDetailsType(
-  [pastTenseOShortTable, pastTenseOCircumflexTable, pastTenseOAcuteTable],
-  conjugationWithAVowel(O_CAPTION)
-)
+ReactPageResolver.register(REACT_URL, import.meta.path, {
+  locales: LOCALE,
+})
 
 export default function English() {
   return (
     <>
-      <p>
+      <div>
         Everything started upon me stressing the word <i>nekenčiu</i> (I hate){' '}
         "incorrectly" - I was teaching foreigners and told the guys that the
         word was sressed as <i>nèkenčiu</i>, however, just to be sure I checked
@@ -102,35 +28,24 @@ export default function English() {
           common accentuation mistakes in the popular youth songs
         </a>
         . Thus I started some investigation.
-      </p>
+      </div>
       <h2>Prefixes</h2>
-      <p>
+      <div>
         One shall note that almost all prefixes in my dialect work the same as
         they do in the Standard Lithuanian and the behave the same when it comes
         to stress replacement. Only the prefix {ItalicBlock('per-')} does not
         care about the stress movement as it's always stressed for being acute.
         In this article as the generic prefix the negation prefix{' '}
         {ItalicBlock('ne-')} will be used.
-      </p>
+      </div>
       <h2>Present tense verbs</h2>
-      <p>
+      <div>
         At first I thought it had something to do with the acute, however, it
         turns out it has to do with the (historically) short vowels as well.{' '}
         <i>Click on the arrow for detailed information.</i>
-        {Details({
-          summary: {element: presentTenseATable, caption: A_CAPTION},
-          rest: A_VERBS,
-        })}
-        {Details({
-          summary: {element: presentTenseITable, caption: I_CAPTION},
-          rest: I_VERBS,
-        })}
-        {Details({
-          summary: {element: presentTenseOTable, caption: O_CAPTION},
-          rest: PRESENT_O_VERBS,
-        })}
-      </p>
-      <p>
+        <PresentTables locale={LOCALE} />
+      </div>
+      <div>
         Based on the tables we can summarise:
         <ul>
           <li>Acute stems always keep the stress on the root.</li>
@@ -146,8 +61,8 @@ export default function English() {
             moved onto the prefix {ItalicBlock('ne-')} for all the persons.
           </li>
         </ul>
-      </p>
-      <p>
+      </div>
+      <div>
         <h2>Exceptions</h2>
         After testing various verbs there were 3 kind of exceptions found:
         <ul>
@@ -160,7 +75,7 @@ export default function English() {
           <li>
             Verbs that in different forms have circumflex <i>{eilmnr}</i> and{' '}
             <i>i~en</i> pairs put the stress on the prefix:
-            {eilmnrVerbs()}
+            {eilmnrVerbs('and so on')}
           </li>
           <li>
             <i>-(i) conjugation</i> conjugations carrying circumflex{' '}
@@ -169,18 +84,18 @@ export default function English() {
             {alamarVerbs()}
           </li>
         </ul>
-      </p>
+      </div>
       <h2>Nèkenčiu?</h2>
-      <p>
+      <div>
         In the begining of the article it was mentioned that the verb{' '}
         <i>nekeñčia</i> is pronounced as <i>nèkenčia</i>. However, knowing only
         the present tense is not enough - the question persists why in my
         dialect the verbs <i>dỹla</i> and <i>keñčia</i> behave differently and
         become <i>nedỹla</i> and <i>nèkenčia</i>. Therefore other tense - the
         past simple had to be looked at as well.
-      </p>
+      </div>
       <h2>Simple past tense verbs</h2>
-      <p>
+      <div>
         The pretty much the same analysis was done for the simple past verbs as
         it was done for the present tense. Whilst doing it, it was noticed that
         seemingly the same conjugation verbs behave differently in both my
@@ -190,20 +105,9 @@ export default function English() {
         the suffix -y- in the infinitive (later in text <i>suffixed</i>) keep
         the stress in the root in all the cases.{' '}
         <i>Click on the arrow for detailed information.</i>
-        {Details({
-          summary: {element: pastTenseETable, caption: E_CAPTION},
-          rest: E_VERBS,
-        })}
-        {Details({
-          summary: {element: pastTenseYtiTable, caption: YTI_CAPTION},
-          rest: YTI_VERBS,
-        })}
-        {Details({
-          summary: {element: pastTenseOTable, caption: O_CAPTION},
-          rest: PAST_O_VERBS,
-        })}
-      </p>
-      <p>
+        <PastTables locale={LOCALE} />
+      </div>
+      <div>
         So once again, based on the tables we can summarise:
         <ul>
           <li>Acute stems always keep the stress on the root.</li>
@@ -219,14 +123,14 @@ export default function English() {
             prefix for all the persons.
           </li>
         </ul>
-      </p>
+      </div>
       <h2>Nèkenčiu!</h2>
-      <p>
+      <div>
         The accentuation of <i>nèkenčiu</i> is made via analogy to{' '}
         <i>nèkentė</i>. While <i>nedyla</i> is accentuation like in the standard{' '}
         - <i>nedỹla</i>, as its past form is <i>nedìlo</i> - different
         cojungation and the stress is remaining within the root.
-      </p>
+      </div>
     </>
   )
 }

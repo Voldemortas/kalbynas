@@ -9,4 +9,5 @@ Open Font License, Version 1.1 (http://scripts.sil.org/OFL).
 @font-face {
     font-family: DoulosSILW;
     src: url(/static/DoulosSIL-Regular.woff2);
+    font-display: swap;
 }

@@ -1,94 +1,20 @@
 import ItalicBlock from 'src/commons/react/ItalicBlock'
-import {alamarVerbs, eilmnr, eilmnrVerbs, galetiTuretiVerbs} from './lists'
-import {
-  pastTenseEAcuteTable,
-  pastTenseECircumflexTable,
-  pastTenseEShortTable,
-  pastTenseYtiAcuteTable,
-  pastTenseYtiCircumflexTable,
-  pastTenseYtiShortTable,
-  presentTenseAAcuteTable,
-  presentTenseACircumflexTable,
-  presentTenseAShortTable,
-  presentTenseATable,
-  presentTenseIAcuteTable,
-  presentTenseICircumflexTable,
-  presentTenseIShortTable,
-  presentTenseITable,
-  presentTenseOAcuteTable,
-  presentTenseOCircumflexTable,
-  presentTenseOShortTable,
-  presentTenseOTable,
-  pastTenseETable,
-  pastTenseOTable,
-  pastTenseYtiTable,
-  pastTenseOShortTable,
-  pastTenseOCircumflexTable,
-  pastTenseOAcuteTable,
-} from './tables'
-import {arrayToDetailsType, Details} from './Details'
+import {alamarVerbs, eilmnr, eilmnrVerbs, galetiTuretiVerbs} from './utils'
+import {PresentTables, PastTables} from './tables'
+import ReactPageResolver from 'src/commons/ReactPageDictionary'
+import {REACT_URL} from 'src/pages/articles/texts/presentTenseNegation/config'
+import {ALTERNATES_TYPE} from 'src/commons/alternate'
 
-const A_CAPTION = '-(i)a asmenuotės veiksmažodžiai'
-const I_CAPTION = '-i asmenuotės veiksmažodžiai'
-const O_CAPTION = '-o asmenuotės veiksmažodžiai'
-const E_CAPTION = 'grynieji -ė asmenuotės veiksmažodžiai'
-const YTI_CAPTION = 'priesaginiai -ė asmenuotės veiksmažodžiai'
-const SHORT_CAPTION = 'su (istoriškai) trumpu balsiu'
-const ACUTE_CAPTION = 'su tvirtapradžiu balsiu'
-const CIRCUMFLEX_CAPTION = 'su tvirtagaliu balsiu'
+const LOCALE: ALTERNATES_TYPE = 'lt'
 
-function conjugationWithAVowel(conjugation: string) {
-  return [SHORT_CAPTION, CIRCUMFLEX_CAPTION, ACUTE_CAPTION].map(
-    (caption) => `${conjugation} ${caption}`
-  )
-}
-
-const A_VERBS = arrayToDetailsType(
-  [
-    presentTenseAShortTable,
-    presentTenseACircumflexTable,
-    presentTenseAAcuteTable,
-  ],
-  conjugationWithAVowel(A_CAPTION)
-)
-
-const I_VERBS = arrayToDetailsType(
-  [
-    presentTenseIShortTable,
-    presentTenseICircumflexTable,
-    presentTenseIAcuteTable,
-  ],
-  conjugationWithAVowel(I_CAPTION)
-)
-
-const PRESENT_O_VERBS = arrayToDetailsType(
-  [
-    presentTenseOShortTable,
-    presentTenseOCircumflexTable,
-    presentTenseOAcuteTable,
-  ],
-  conjugationWithAVowel(O_CAPTION)
-)
-
-const E_VERBS = arrayToDetailsType(
-  [pastTenseEShortTable, pastTenseECircumflexTable, pastTenseEAcuteTable],
-  conjugationWithAVowel(E_CAPTION)
-)
-
-const YTI_VERBS = arrayToDetailsType(
-  [pastTenseYtiShortTable, pastTenseYtiCircumflexTable, pastTenseYtiAcuteTable],
-  conjugationWithAVowel(YTI_CAPTION)
-)
-
-const PAST_O_VERBS = arrayToDetailsType(
-  [pastTenseOShortTable, pastTenseOCircumflexTable, pastTenseOAcuteTable],
-  conjugationWithAVowel(O_CAPTION)
-)
+ReactPageResolver.register(REACT_URL, import.meta.path, {
+  locales: LOCALE,
+})
 
 export default function Lithuanian() {
   return (
     <>
-      <p>
+      <div>
         Viskas prasidėjo nuo mano „neteisingo“ žodžio <i>nekenčiu</i>{' '}
         sukirčiavimo - aš mokydamas kitakalbius lietuvių kalbos pasakiau, kad
         žodis yra <i>nèkenčiu</i>, bet dėl viso pikto pasitikrinau su{' '}
@@ -101,18 +27,18 @@ export default function Lithuanian() {
           dažnas neteisingas kirčiavmas jaunimo dainose
         </a>
         . Tad ėmiausi šiokio tokio tyrumuko.
-      </p>
+      </div>
       <h2>Priešdėliai</h2>
-      <p>
+      <div>
         Pradžiai reikėtų paminėti jog beveik visi priešdėliai, tiek mano
         tarmėje, tiek BK veikia taip pat. Ir jie vienodai paklūsta kirčio
         šokinėjimui. Vienintelis nešokinėjantis priešdėlis tiek mano tarmėje,
         tiek BK yra priešdėlis {ItalicBlock('per-')}, kuris visada yra
         kirčiuotas, nes yra tvirtapradis. Šiame straipsnyje kaip generinis
         priešdėlis bus vartojamas neiginio priešdėlis {ItalicBlock('ne-')}.
-      </p>
+      </div>
       <h2>Esamojo laiko veiksmažodžiai</h2>
-      <p>
+      <div>
         Iš pradžių galvojau, kad kirčio šokinėjimas yra susijęs su tvirtaprade
         priegaide, tačiau pasirodo tai susiję ir su (istoriniu) šaknies balsio
         ilgiu.{' '}
@@ -120,20 +46,9 @@ export default function Lithuanian() {
           Spustelėkite rodykles/trikampius norėdami pasiekti daugiau
           informacijos.
         </i>
-        {Details({
-          summary: {element: presentTenseATable, caption: A_CAPTION},
-          rest: A_VERBS,
-        })}
-        {Details({
-          summary: {element: presentTenseITable, caption: I_CAPTION},
-          rest: I_VERBS,
-        })}
-        {Details({
-          summary: {element: presentTenseOTable, caption: O_CAPTION},
-          rest: PRESENT_O_VERBS,
-        })}
-      </p>
-      <p>
+        <PresentTables locale={LOCALE} />
+      </div>
+      <div>
         Pagal pateiktas lenteles galima pabandyti apibendrinti:
         <ul>
           <li>Tvirtapradės šaknys visados išlaiko kirtį šaknyje.</li>
@@ -149,8 +64,8 @@ export default function Lithuanian() {
             peršoka į priešdėlį {ItalicBlock('ne-')} visuose asmenyse.
           </li>
         </ul>
-      </p>
-      <p>
+      </div>
+      <div>
         <h2>Išimtys</h2>
         Besitestuodamas įvairius veiksmažodžius užtikau trijų tipų išimtis:
         <ul>
@@ -164,7 +79,7 @@ export default function Lithuanian() {
             Veiksmažodžiai, kurie skirtingose formose turi besikaitaliojančias
             tvirtagales <i>{eilmnr}</i> ir <i>i~en</i> poras permeta kirtį ant
             priešdėlio:
-            {eilmnrVerbs()}
+            {eilmnrVerbs('ir t.t.')}
           </li>
           <li>
             <i>-(i) asmenuotės</i> veiksmažodžiai, turintys tvirtagalius{' '}
@@ -174,17 +89,17 @@ export default function Lithuanian() {
             {alamarVerbs()}
           </li>
         </ul>
-      </p>
+      </div>
       <h2>Nèkenčiu?</h2>
-      <p>
+      <div>
         Straipsnio pradžioje buvo paminėta, jog mano tarmėje vietoje{' '}
         <i>nekeñčia</i> yra tariama <i>nèkenčia</i>. Tačiau vien esamojo laiko
         analizės neužtenka - ji neatsako, kodėl mano tarmėje veiksmažodžiai{' '}
         <i>dỹla</i> ir <i>keñčia</i> elgiasi skirtingai ir yra <i>nedỹla</i> bei{' '}
         <i>nèkenčia</i>. Todėl buvo pažvelgta ir į kitą laiką - būtąjį kartinį.
-      </p>
+      </div>
       <h2>Būtojo kartinio laiko veiksmažodžiai</h2>
-      <p>
+      <div>
         Iš esmės vėlgi buvo padaryti panaši analizė, kaip ir esamajam laikui. Ją
         bedarant buvo pastebėta, jog čia jau ne tik mano tarmėje, bet ir BK
         skirtingi veiksmažodžiai, kurie iš pirmo žvilgsnio priklauso tai pačiai
@@ -197,20 +112,9 @@ export default function Lithuanian() {
           Spustelėkite rodykles/trikampius norėdami pasiekti daugiau
           informacijos.
         </i>
-        {Details({
-          summary: {element: pastTenseETable, caption: E_CAPTION},
-          rest: E_VERBS,
-        })}
-        {Details({
-          summary: {element: pastTenseYtiTable, caption: YTI_CAPTION},
-          rest: YTI_VERBS,
-        })}
-        {Details({
-          summary: {element: pastTenseOTable, caption: O_CAPTION},
-          rest: PAST_O_VERBS,
-        })}
-      </p>
-      <p>
+        <PastTables locale={LOCALE} />
+      </div>
+      <div>
         Taigi, vėl pagal pateiktas lenteles galima pabandyti apibendrinti:
         <ul>
           <li>Tvirtapradės šaknys visados išlaiko kirtį šaknyje.</li>
@@ -227,14 +131,14 @@ export default function Lithuanian() {
             permeta kirtį į priešdėlį.
           </li>
         </ul>
-      </p>
+      </div>
       <h2>Nèkenčiu!</h2>
-      <p>
+      <div>
         Taigi, toks kirčiavimas kaip <i>nèkenčiu</i> yra nulemtas būt. k. l.
         pagal analogiją žodžiui <i>nèkentė</i>. O <i>nedyla</i> yra kirčiuojamas
         kaip ir BK - <i>nedỹla</i>, mat būt. k. yra <i>nedìlo</i> - kita
         asmenuotė ir kirtis išliekantis šaknyje.
-      </p>
+      </div>
     </>
   )
 }

@@ -5,6 +5,9 @@ import {ALTERNATES_TYPE} from 'src/commons/alternate'
 import {frontTranslations} from 'src/translations/articles'
 import {REACT_JS_URL_PREFIX} from 'src/utils/hydrate'
 import ReactPageDictionary from 'src/commons/ReactPageDictionary'
+import React, {type ComponentType} from 'react'
+import {feature} from 'bun:bundle'
+import getComponentServerSide from 'src/utils/getComponentServerSide'
 
 const URL = `${REACT_JS_URL_PREFIX}/single-article.js`
 
@@ -20,19 +23,26 @@ export default function SingleArticle(
     nav: NavProps
     locale: ALTERNATES_TYPE
     pathname: string
+    preloads?: {default: ComponentType}[]
   }
 ) {
+  const Content = feature('CLIENT')
+    ? params.preloads![0].default
+    : getComponentServerSide(
+        ReactPageDictionary.getPath(params.content)![params.locale].path
+      )!
+
   return (
     <Body nav={params.nav} pathname={params.pathname} locale={params.locale}>
       <article>
         <header>
           <h1>{params.title}</h1>
-          <div className={'article__postTitle'}>
-            <address className={'article__author'}>{params.author}</address>,{' '}
-            <time className={'article__time'}>{params.date}</time>
+          <div className="article__postTitle">
+            <address className="article__author">{params.author}</address>,{' '}
+            <time className="article__time">{params.date}</time>
           </div>
         </header>
-        <section dangerouslySetInnerHTML={{__html: params.content}} />
+        <Content />
         <footer>
           {!!params.previousId ? (
             <a

@@ -3,6 +3,7 @@ import getPageWithAllTranslations from 'src/utils/pageWithAllTranslations'
 import renderReactPage from 'src/utils/reactPage'
 import SingleArticle, {url} from 'src/pages/articles/SingleArticle'
 import {type SingleArticlePageType} from 'src/pages/articles/SingleArticle'
+import {REACT_URL} from 'src/pages/articles/texts/presentTenseNegation/config'
 
 const NAV_LINK = '/articles'
 
@@ -26,6 +27,5 @@ export default async function singleArticleHandler({
     NAV_LINK,
     article.toTranslations()
   )
-
-  return renderReactPage(data, SingleArticle, url)
+  return renderReactPage(data, SingleArticle, url, [REACT_URL])
 }

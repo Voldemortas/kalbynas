@@ -193,6 +193,16 @@ caption {
   content: ' ā–ŗ';
 }
 
+.mobile-break {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .mobile-break {
+    display: block;
+  }
+}
+
 .body__container {
   display: flex;
 }

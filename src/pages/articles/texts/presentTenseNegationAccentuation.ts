@@ -1,8 +1,11 @@
-import Article from '../Article'
-import Lithuanian from './presentTenseNegation/Lithuanian'
-import English from './presentTenseNegation/English'
-import {renderToStaticMarkup} from 'react-dom/server'
+import Article from 'src/pages/articles/Article'
+import './presentTenseNegation/Lithuanian'
+import './presentTenseNegation/English'
 import Translation from 'src/commons/Translation'
+import {
+  PAGE_URL,
+  REACT_URL,
+} from 'src/pages/articles/texts/presentTenseNegation/config'
 
 export default new Article({
   title: new Translation({
@@ -10,9 +13,6 @@ export default new Article({
     en: 'Accentuation of Prefixed Verbs',
   }),
   date: new Date('2025-06-29'),
-  content: new Translation({
-    lt: renderToStaticMarkup(Lithuanian()),
-    en: renderToStaticMarkup(English()),
-  }),
-  id: new Translation('prefixed-verbs-accentuation'),
+  content: new Translation(REACT_URL),
+  id: new Translation(PAGE_URL),
 })

@@ -1,11 +1,14 @@
 import ReactPageDictionary from 'src/commons/ReactPageDictionary'
+import getLocale from 'src/utils/locale'
 
 export const REACT_JS_URL_PREFIX = '/pages'
 
 export default async function hydrateReact({
   params,
+  request,
 }: {
   params: {['*']: string}
+  request: Request
 }): Promise<Response> {
   const id = params['*']
 
@@ -15,15 +18,22 @@ export default async function hydrateReact({
     return new Response('NOT_FOUND', {status: 404})
   }
 
-  const componentPath = ReactPageDictionary.getPath(urlPath)!
+  const locale = getLocale(request)
+
+  const {path, client} = ReactPageDictionary.getPath(urlPath)![locale]
 
   const build = await Bun.build({
-    entrypoints: [componentPath],
+    entrypoints: [path],
     target: 'browser',
     format: 'esm',
     external: ['react', 'react/*', 'react-dom', 'react-dom/*'],
-    features: ['CLIENT'],
-    minify: Bun.env.NODE_ENV === 'production',
+    features: [
+      ...(client ? ['CLIENT'] : []),
+      ...(Bun.env.NODE_ENV?.toLowerCase() === 'production'
+        ? ['PRODUCTION']
+        : []),
+    ],
+    minify: Bun.env.NODE_ENV?.toLowerCase() === 'production',
   })
 
   if (!build.success) {
