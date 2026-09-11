@@ -1,6 +1,6 @@
 import React, {type ReactNode, useEffect} from 'react'
-import Nav, {type NavProps} from './Nav'
-import Header from './Header'
+import Nav, {type NavProps} from 'src/commons/react/Nav'
+import Header from 'src/commons/react/Header'
 import {feature} from 'bun:bundle'
 import {ALTERNATES_TYPE} from 'src/commons/alternate'
 

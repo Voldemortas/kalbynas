@@ -3,7 +3,7 @@ import {
   ALTERNATES_TYPE,
   DEFAULT_ALTERNATE,
 } from 'src/commons/alternate'
-import getUrl from './url'
+import getUrl from 'src/utils/url'
 
 export default function getLocale(request: Request): ALTERNATES_TYPE {
   const {sub} = getUrl(request)

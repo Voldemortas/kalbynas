@@ -1,5 +1,5 @@
 import React, {useRef} from 'react'
-import useChangeGlobalCssState from './useChangeGlobalCssState'
+import useChangeGlobalCssState from 'src/commons/react/useChangeGlobalCssState'
 
 export default function CssSelector<
   T extends Record<string & 'default', {text: string; value: string}>,

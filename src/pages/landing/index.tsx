@@ -1,4 +1,4 @@
-import Landing, {url} from './Landing'
+import Landing, {url} from 'src/pages/landing/Landing'
 import translations from 'src/translations/landing'
 import getPageWithAllTranslations from 'src/utils/pageWithAllTranslations'
 import renderReactPage from 'src/utils/reactPage'

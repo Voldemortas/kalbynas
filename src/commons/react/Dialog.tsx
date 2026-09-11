@@ -7,7 +7,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import CancelSvg from './CancelSvg'
+import CancelSvg from 'src/commons/react/CancelSvg'
 
 export type DialogRef = {
   switch: () => void

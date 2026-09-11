@@ -1,9 +1,9 @@
 import {type Translations} from 'src/commons/Translation'
-import getUrl from './url'
-import getAllTranslated from './allTranslated'
+import getUrl from 'src/utils/url'
+import getAllTranslated from 'src/utils/allTranslated'
 import {ALTERNATES_TYPE} from 'src/commons/alternate'
-import getNavigation from './navigation'
-import getLocale from './locale'
+import getNavigation from 'src/utils/navigation'
+import getLocale from 'src/utils/locale'
 
 export default function getPageWithAllTranslations<
   T extends Record<string, string>,

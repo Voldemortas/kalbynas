@@ -1,4 +1,4 @@
-import Dialectology, {url} from './Dialectology'
+import Dialectology, {url} from 'src/pages/dialectology/Dialectology'
 import translations from 'src/translations/dialectology'
 import getPageWithAllTranslations from 'src/utils/pageWithAllTranslations'
 import renderReactPage from 'src/utils/reactPage'

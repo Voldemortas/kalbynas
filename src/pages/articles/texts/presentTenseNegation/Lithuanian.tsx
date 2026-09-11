@@ -1,6 +1,14 @@
 import ItalicBlock from 'src/commons/react/ItalicBlock'
-import {alamarVerbs, eilmnr, eilmnrVerbs, galetiTuretiVerbs} from './utils'
-import {PresentTables, PastTables} from './tables'
+import {
+  alamarVerbs,
+  eilmnr,
+  eilmnrVerbs,
+  galetiTuretiVerbs,
+} from 'src/pages/articles/texts/presentTenseNegation/utils'
+import {
+  PresentTables,
+  PastTables,
+} from 'src/pages/articles/texts/presentTenseNegation/tables'
 import ReactPageResolver from 'src/commons/ReactPageDictionary'
 import {REACT_URL} from 'src/pages/articles/texts/presentTenseNegation/config'
 import {ALTERNATES_TYPE} from 'src/commons/alternate'

@@ -1,4 +1,7 @@
-import Baltistics, {BaltisticsPageType, url} from './Baltistics'
+import Baltistics, {
+  BaltisticsPageType,
+  url,
+} from 'src/pages/baltistics/Baltistics'
 import translations from 'src/translations/baltistics'
 import getPageWithAllTranslations from 'src/utils/pageWithAllTranslations'
 import renderReactPage from 'src/utils/reactPage'

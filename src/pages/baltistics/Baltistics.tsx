@@ -1,4 +1,4 @@
-import Diphthongs from './Diphthongs'
+import Diphthongs from 'src/pages/baltistics/Diphthongs'
 import Body from 'src/commons/react/Body'
 import {NavProps} from 'src/commons/react/Nav'
 import ReactPageResolver from 'src/commons/ReactPageDictionary'

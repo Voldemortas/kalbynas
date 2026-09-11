@@ -1,4 +1,4 @@
-import Morphemes, {MorphemesPageType, url} from './Morphemes'
+import Morphemes, {MorphemesPageType, url} from 'src/pages/morphemes/Morphemes'
 import translations from 'src/translations/morphemes'
 import getPageWithAllTranslations from 'src/utils/pageWithAllTranslations'
 import renderReactPage from 'src/utils/reactPage'

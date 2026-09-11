@@ -1,5 +1,5 @@
 import React, {useRef} from 'react'
-import Dialog, {type DialogRef} from './Dialog'
+import Dialog, {type DialogRef} from 'src/commons/react/Dialog'
 import {DEFAULT_ALTERNATE} from 'src/commons/alternate'
 import {feature} from 'bun:bundle'
 

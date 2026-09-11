@@ -1,13 +1,13 @@
 import React, {useRef} from 'react'
-import Dialog, {type DialogRef} from './Dialog'
-import CssSelector from './CssSelector'
+import Dialog, {type DialogRef} from 'src/commons/react/Dialog'
+import CssSelector from 'src/commons/react/CssSelector'
 import NavTranslations from 'src/translations/navFront'
-import osTheme from './cssThemes/osTheme.css' with {type: 'text'}
-import darkTheme from './cssThemes/darkTheme.css' with {type: 'text'}
-import lightTheme from './cssThemes/lightTheme.css' with {type: 'text'}
-import disabledZd from './cssThemes/disabledZd.css' with {type: 'text'}
-import dashesZd from './cssThemes/dashesZd.css' with {type: 'text'}
-import lithuanianZd from './cssThemes/lithuanianZd.css' with {type: 'text'}
+import osTheme from 'src/commons/react/cssThemes/osTheme.css' with {type: 'text'}
+import darkTheme from 'src/commons/react/cssThemes/darkTheme.css' with {type: 'text'}
+import lightTheme from 'src/commons/react/cssThemes/lightTheme.css' with {type: 'text'}
+import disabledZd from 'src/commons/react/cssThemes/disabledZd.css' with {type: 'text'}
+import dashesZd from 'src/commons/react/cssThemes/dashesZd.css' with {type: 'text'}
+import lithuanianZd from 'src/commons/react/cssThemes/lithuanianZd.css' with {type: 'text'}
 import {ALTERNATES_TYPE} from 'src/commons/alternate'
 
 export type NavProps = {

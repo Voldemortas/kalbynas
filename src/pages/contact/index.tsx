@@ -1,4 +1,4 @@
-import Contact, {url} from './Contact'
+import Contact, {url} from 'src/pages/contact/Contact'
 import translations from 'src/translations/contact'
 import getPageWithAllTranslations from 'src/utils/pageWithAllTranslations'
 import renderReactPage from 'src/utils/reactPage'

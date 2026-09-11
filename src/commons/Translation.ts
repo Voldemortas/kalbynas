@@ -1,4 +1,4 @@
-import {ALTERNATES_TYPE, DEFAULT_ALTERNATE} from './alternate'
+import {ALTERNATES_TYPE, DEFAULT_ALTERNATE} from 'src/commons/alternate'
 
 export default class Translation {
   private locales: ALTERNATES_TYPE[]
