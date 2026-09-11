@@ -29,6 +29,7 @@ Set your own environment variables in `.env`, the default fallback looks like th
 ```dotenv
 PORT=3000
 HOSTNAME=0.0.0.0
+HIDE_PORT=false
 SSL=false
 ```
 

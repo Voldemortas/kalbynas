@@ -3,11 +3,12 @@ import Dialog, {type DialogRef} from 'src/commons/react/Dialog'
 import {DEFAULT_ALTERNATE} from 'src/commons/alternate'
 import {feature} from 'bun:bundle'
 
-const {PORT, IS_SSL, HOSTNAME} = feature('CLIENT')
+const {PORT, IS_SSL, HOSTNAME, HIDE_PORT} = feature('CLIENT')
   ? {
       PORT: window.location.port,
       IS_SSL: window.location.protocol === 'https:',
       HOSTNAME: window.location.hostname,
+      HIDE_PORT: false,
     }
   : await import('src/commons/config')
 
@@ -85,5 +86,6 @@ export function getNewUrl(subdomain: string, pathname: string) {
   }
   const sub = subdomain === DEFAULT_ALTERNATE ? '' : `${subdomain}.`
   const protocol = `http${IS_SSL ? 's' : ''}://`
-  return protocol + sub + domain + ':' + PORT + pathname
+  const port = HIDE_PORT || PORT === '' ? '' : `:${PORT}`
+  return protocol + sub + domain + port + pathname
 }

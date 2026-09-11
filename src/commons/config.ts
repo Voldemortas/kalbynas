@@ -1,5 +1,6 @@
 export const HOSTNAME = Bun.env.HOSTNAME ?? '0.0.0.0'
 export const PORT = Bun.env.PORT ?? 3000
+export const HIDE_PORT = Bun.env.HIDE_PORT?.toLowerCase() === 'true'
 export const IS_SSL =
   Bun.env.SSL?.toLowerCase() === 'true' || Bun.env.SSL === '1'
 export const SSL_SUFFIX = IS_SSL ? 's' : ''
