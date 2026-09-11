@@ -1,7 +1,7 @@
 import {Elysia} from 'elysia'
 import {staticPlugin} from '@elysia/static'
 import hydrateReact, {REACT_JS_URL_PREFIX} from 'src/utils/hydrate'
-import {HOSTNAME, PORT, PROJECT_BASE_URL} from 'src/commons/config'
+import {PORT, PROJECT_BASE_URL} from 'src/commons/config'
 import getLandingPage from 'src/pages/landing'
 import getBaltisticsPage from 'src/pages/baltistics'
 import getDialectologyPage from 'src/pages/dialectology'
@@ -38,7 +38,6 @@ app
     () => new Response(Bun.file(`${import.meta.dirname}/static/favicon.ico`))
   )
   .listen({
-    hostname: HOSTNAME,
     port: PORT,
   })
 

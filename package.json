@@ -17,6 +17,7 @@
   "devDependencies": {
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "pm2-beta": "^6.0.4"
   }
 }
