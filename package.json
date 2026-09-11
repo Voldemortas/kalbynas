@@ -1,11 +1,11 @@
 {
   "name": "kalbynas",
-  "version": "1.0.50",
+  "version": "2.0.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
     "prod": "NODE_ENV=production bun run src/index.ts",
-    "serve": "bunx --bun pm2 start"
+    "serve": "pm2 start"
   },
   "dependencies": {
     "@elysia/static": "^1.4.11",
@@ -18,6 +18,5 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "bun-types": "latest"
-  },
-  "module": "src/index.js"
+  }
 }

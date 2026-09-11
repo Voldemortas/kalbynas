@@ -1,6 +1,9 @@
 module.exports = {
   name: 'Kalbynas',
-  script: 'src/index.ts',
-  interpreter: 'bun',
-  env: {NODE_ENV: 'production'},
+  script: 'bun run src/index.ts',
+  interpreter: 'none',
+  env: {
+    NODE_ENV: 'production',
+  },
 }
+
