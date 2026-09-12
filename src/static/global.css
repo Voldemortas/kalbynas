@@ -251,6 +251,8 @@ caption {
   background: transparent;
   border: none;
   padding: 0;
+  stroke-width: 5px;
+  stroke: light-dark(var(--color-green-black), var(--color-green-black-dark));
 }
 
 .header__header {
