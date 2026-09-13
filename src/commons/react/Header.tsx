@@ -27,7 +27,7 @@ export default function Header({pathname}: {pathname: string}) {
           rel="alternate"
           hrefLang="lt"
         >
-          <img src="/static/lt.png" alt="lietuvių k." loading="lazy" />
+          <img src="/static/lt.png" alt="lietuvių k." />
         </a>
         <a
           href={getNewUrl('en', pathname)}

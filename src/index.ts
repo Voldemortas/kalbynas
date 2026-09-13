@@ -12,8 +12,26 @@ import getContactsPage from 'src/pages/contact'
 import robots from 'src/pages/crawlers/robots'
 import sitemaps from 'src/pages/crawlers/sitemap'
 import allArticles from 'src/pages/articles/allArticles'
+import getMissingPage from 'src/pages/404'
+import getUrl from 'src/utils/url'
 
 const app = new Elysia()
+  .onRequest(({set}) => {
+    set.headers['Surrogate-Control'] = 'no-store'
+    set.headers['Cache-Control'] =
+      'no-store, no-cache, must-revalidate, proxy-revalidate'
+    // Deprecated though https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Pragma
+    set.headers['Pragma'] = 'no-cache'
+    set.headers['Expires'] = '0'
+  })
+  .onError(({code, set, request}) => {
+    console.log('error', getUrl(request).href)
+    if (code === 'NOT_FOUND') {
+      set.status = 404
+
+      return getMissingPage({request})
+    }
+  })
   .get('/', getLandingPage)
   .get('/baltistics', getBaltisticsPage)
   .get('/dialectology', getDialectologyPage)

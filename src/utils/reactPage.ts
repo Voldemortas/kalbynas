@@ -20,9 +20,12 @@ export default async function renderReactPage<
 >(
   data: T,
   Node: (data: T) => ReactNode,
-  reactUrl: string,
+  reactUrl: string | undefined,
   preloads: string[] = []
 ): Promise<Response> {
+  const conditionalRender = (text: string) =>
+    reactUrl === undefined ? '' : text
+
   const allPreloads = [...REACT_PRELOADS, reactUrl, ...preloads]
 
   const stream = await renderToReadableStream(React.createElement(Node, data))
@@ -32,6 +35,41 @@ export default async function renderReactPage<
     /<link rel="preload" as="image" href="[^"]*"\s*\/>/g,
     ''
   )
+
+  const importMap = `<script type="importmap">
+        {
+          "imports": {
+            ${
+              Bun.env.NODE_ENV?.toLowerCase() === 'production'
+                ? `"react": "https://esm.sh/react@19?prod",
+            "react/jsx-runtime": "https://esm.sh/react@19/jsx-runtime?prod",
+            "react-dom/client": "https://esm.sh/react-dom@19/client?prod"`
+                : `"react": "https://esm.sh/react@19?dev",
+            "react/jsx-runtime": "https://esm.sh/react@19/jsx-runtime?dev",
+            "react/jsx-dev-runtime": "https://esm.sh/react@19/jsx-dev-runtime?dev",
+            "react-dom/client": "https://esm.sh/react-dom@19/client?dev"`
+            }
+          }
+        }
+      </script>`
+
+  const hydrationScript = `<script type="module">
+      import React from 'react';
+      import {hydrateRoot} from 'react-dom/client';
+      import Component from '${reactUrl}';
+      const preloads = await Promise.all([${preloads.map((preload) => `import('${preload}')`).join(',')}]);
+      const data = ${JSON.stringify(data).replaceAll(
+        /":"(.*?(?<!\\))"/gs,
+        '":`$1`'
+      )};
+      hydrateRoot(
+        document.querySelector('react'),
+        React.createElement(Component, {...data, preloads}),
+        {           
+          onRecoverableError() {},
+        }
+      );
+    </script>`
 
   return new Response(
     htmlfy(
@@ -56,45 +94,14 @@ export default async function renderReactPage<
       <link rel="stylesheet" href="/static/global.css" />
       <script src="https://cdn.jsdelivr.net/gh/Voldemortas/zodziu-dalys@master/zodziu-dalys.js"></script>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Voldemortas/zodziu-dalys@master/zodziu-dalys.css" />
-      <script type="importmap">
-        {
-          "imports": {
-            ${
-              Bun.env.NODE_ENV?.toLowerCase() === 'production'
-                ? `"react": "https://esm.sh/react@19?prod",
-            "react/jsx-runtime": "https://esm.sh/react@19/jsx-runtime?prod",
-            "react-dom/client": "https://esm.sh/react-dom@19/client?prod"`
-                : `"react": "https://esm.sh/react@19?dev",
-            "react/jsx-runtime": "https://esm.sh/react@19/jsx-runtime?dev",
-            "react/jsx-dev-runtime": "https://esm.sh/react@19/jsx-dev-runtime?dev",
-            "react-dom/client": "https://esm.sh/react-dom@19/client?dev"`
-            }
-          }
-        }
-      </script>
-      ${allPreloads.map((preload) => `<link rel="modulepreload" href="${preload}" />`).join('\n      ')}
+      ${conditionalRender(importMap)}
+      ${conditionalRender(allPreloads.map((preload) => `<link rel="modulepreload" href="${preload}" />`).join('\n      '))}
   </head>
   <body>
       <react>
         ${html}
       </react>
-      <script type="module">
-      import React from 'react';
-      import {hydrateRoot} from 'react-dom/client';
-      import Component from '${reactUrl}';
-      const preloads = await Promise.all([${preloads.map((preload) => `import('${preload}')`).join(',')}]);
-      const data = ${JSON.stringify(data).replaceAll(
-        /":"(.*?(?<!\\))"/gs,
-        '":`$1`'
-      )};
-      hydrateRoot(
-        document.querySelector('react'),
-        React.createElement(Component, {...data, preloads}),
-        {           
-          onRecoverableError() {},
-        }
-      );
-    </script>
+      ${conditionalRender(hydrationScript)}
   </body>
 </html>`,
       {

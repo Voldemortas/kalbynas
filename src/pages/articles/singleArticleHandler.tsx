@@ -4,6 +4,7 @@ import renderReactPage from 'src/utils/reactPage'
 import SingleArticle, {url} from 'src/pages/articles/SingleArticle'
 import {type SingleArticlePageType} from 'src/pages/articles/SingleArticle'
 import {REACT_URL} from 'src/pages/articles/texts/presentTenseNegation/config'
+import getMissingPage from 'src/pages/404'
 
 const NAV_LINK = '/articles'
 
@@ -19,7 +20,7 @@ export default async function singleArticleHandler({
   const article = allArticles.find((article) => article.id.format() === id)
 
   if (!article) {
-    return new Response('NOT_FOUND', {status: 404})
+    return getMissingPage({request})
   }
 
   const data = getPageWithAllTranslations<SingleArticlePageType>(
