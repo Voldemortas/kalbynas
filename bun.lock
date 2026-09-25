@@ -14,7 +14,7 @@
       "devDependencies": {
         "@types/react": "^19.2.18",
         "@types/react-dom": "^19.2.7",
-        "@voldemortas/babysit": "npm:@jsr/voldemortas__babysit@^0.0.2",
+        "@voldemortas/babysit": "npm:@jsr/voldemortas__babysit@^0.0.4",
         "bun-types": "latest",
         "pm2-beta": "^6.0.4",
       },
@@ -47,7 +47,7 @@
 
     "@types/react-dom": ["@types/react-dom@19.2.7", "", { "peerDependencies": { "@types/react": "^19.2.0" } }, "sha512-I8bPpDLcHBv1qiIiXDCy71Rt8eQDKJP0sMSWJphDdAcdqiJ1sGpZamavoEIRZmYzjia9LuEb2HlYdDpmoENpvQ=="],
 
-    "@voldemortas/babysit": ["@jsr/voldemortas__babysit@0.0.2", "https://npm.jsr.io/~/11/@jsr/voldemortas__babysit/0.0.2.tgz", { "dependencies": { "dotenv": "^18.0.3", "zod": "^4.6.5" } }, "sha512-xMfu2YoG9JgfpfTSX9ejxUrA2rz1+ZqcG63iXUmGiYUDABJiED3iZ1vsAyym0xiqMeuM33yod17K7bOuca5BGw=="],
+    "@voldemortas/babysit": ["@jsr/voldemortas__babysit@0.0.4", "https://npm.jsr.io/~/11/@jsr/voldemortas__babysit/0.0.4.tgz", { "dependencies": { "dotenv": "^18.0.3", "zod": "^4.6.5" } }, "sha512-37Fz9anW5bR0VomM4Mpuh21FKpwVvmmSwo+DMQ/eMqU1YAnZOz5+cX2w8BN0vuSmxRtlsVG+1EHK8OmZ0o7RCA=="],
 
     "agent-base": ["agent-base@7.1.4", "", {}, "sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ=="],
 

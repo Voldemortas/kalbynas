@@ -6,6 +6,17 @@ const config: Config = {
   env: {
     NODE_ENV: 'production',
   },
+  web:
+    Bun.env.BABYSIT_PORT === undefined
+      ? undefined
+      : {
+          port: +Bun.env.BABYSIT_PORT,
+          disableAuth:
+            Bun.env.BABYSIT_USERNAME === undefined ||
+            Bun.env.BABYSIT_USERPASS === undefined,
+          userName: Bun.env.BABYSIT_USERNAME!,
+          userPass: Bun.env.BABYSIT_USERPASS!,
+        },
 }
 
 babysit(config)
